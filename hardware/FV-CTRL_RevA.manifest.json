@@ -1,0 +1,995 @@
+{
+  "project": "FV-CTRL",
+  "revision": "Rev A (Engineering Draft)",
+  "tool": "KiCad 10.0.7",
+  "date": "2026-10-16",
+  "summary": {
+    "total_components": 69,
+    "total_nets": 38,
+    "power_rails": [
+      "+12V_IN",
+      "+12V",
+      "+6V_A",
+      "+6V_B",
+      "+5V",
+      "+3V3",
+      "GND"
+    ]
+  },
+  "components": [
+    {
+      "ref": "J1",
+      "value": "12V_IN",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "12V DC input pluggable screw terminal",
+      "mpn": "Pluggable 2-pin 5.0mm"
+    },
+    {
+      "ref": "F1",
+      "value": "5A 250V",
+      "lib_id": "Device:Fuse",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "5A replaceable cartridge fuse in THT socket",
+      "mpn": "5x20mm 5A cartridge"
+    },
+    {
+      "ref": "Q1",
+      "value": "IRF9540N",
+      "lib_id": "Device:Q_PMOS",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "P-MOSFET reverse polarity protection",
+      "mpn": "IRF9540NPBF"
+    },
+    {
+      "ref": "R9",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "P-MOSFET gate-to-GND pull-down resistor",
+      "mpn": "10k 1/4W 5%"
+    },
+    {
+      "ref": "D1",
+      "value": "1.5KE15CA",
+      "lib_id": "Device:D_TVS",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "12V bidirectional TVS overvoltage clamp",
+      "mpn": "1.5KE15CA"
+    },
+    {
+      "ref": "J2",
+      "value": "XL4015_A (6.0V >=5A)",
+      "lib_id": "Connector_Generic:Conn_01x04",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "XL4015_A (6.0V >=5A) header (IN+, IN-, OUT+, OUT-)",
+      "mpn": "Breakout Module 4-pin"
+    },
+    {
+      "ref": "J3",
+      "value": "XL4015_B (6.0V >=5A)",
+      "lib_id": "Connector_Generic:Conn_01x04",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "XL4015_B (6.0V >=5A) header (IN+, IN-, OUT+, OUT-)",
+      "mpn": "Breakout Module 4-pin"
+    },
+    {
+      "ref": "J4",
+      "value": "BUCK_5V (Logic)",
+      "lib_id": "Connector_Generic:Conn_01x04",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "BUCK_5V (Logic) header (IN+, IN-, OUT+, OUT-)",
+      "mpn": "Breakout Module 4-pin"
+    },
+    {
+      "ref": "F2",
+      "value": "PTC 3A",
+      "lib_id": "Device:Polyfuse",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Resettable PTC fuse for Servo Rail A (~3A hold)",
+      "mpn": "Bourns MF-R300"
+    },
+    {
+      "ref": "C1",
+      "value": "1000-2200uF 16V",
+      "lib_id": "Device:C_Polarized",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Bulk servo filter capacitor (Rail A)",
+      "mpn": "1000uF 16V Radial"
+    },
+    {
+      "ref": "C3",
+      "value": "100nF",
+      "lib_id": "Device:C",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "High-frequency decoupling (Rail A)",
+      "mpn": "100nF 50V Ceramic"
+    },
+    {
+      "ref": "J5",
+      "value": "S1_TOP",
+      "lib_id": "Connector_Generic:Conn_01x03",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Column 1 Top Servo Header (GND, V+, SIG)",
+      "mpn": "3-pin Header"
+    },
+    {
+      "ref": "J6",
+      "value": "S1_BOT",
+      "lib_id": "Connector_Generic:Conn_01x03",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Column 1 Bottom Servo Header (GND, V+, SIG)",
+      "mpn": "3-pin Header"
+    },
+    {
+      "ref": "F3",
+      "value": "PTC 3A",
+      "lib_id": "Device:Polyfuse",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Resettable PTC fuse for Servo Rail B (~3A hold)",
+      "mpn": "Bourns MF-R300"
+    },
+    {
+      "ref": "C2",
+      "value": "1000-2200uF 16V",
+      "lib_id": "Device:C_Polarized",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Bulk servo filter capacitor (Rail B)",
+      "mpn": "1000uF 16V Radial"
+    },
+    {
+      "ref": "C4",
+      "value": "100nF",
+      "lib_id": "Device:C",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "High-frequency decoupling (Rail B)",
+      "mpn": "100nF 50V Ceramic"
+    },
+    {
+      "ref": "J7",
+      "value": "S2_TOP",
+      "lib_id": "Connector_Generic:Conn_01x03",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Column 2 Top Servo Header (GND, V+, SIG)",
+      "mpn": "3-pin Header"
+    },
+    {
+      "ref": "J8",
+      "value": "S2_BOT",
+      "lib_id": "Connector_Generic:Conn_01x03",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Column 2 Bottom Servo Header (GND, V+, SIG)",
+      "mpn": "3-pin Header"
+    },
+    {
+      "ref": "J_ESP32_L",
+      "value": "ESP32_Left (Pins 1-19)",
+      "lib_id": "Connector_Generic:Conn_01x19",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "ESP32 DevKit 38 Left 19-pin Socket Header",
+      "mpn": "19-pin Female Header 2.54mm"
+    },
+    {
+      "ref": "J_ESP32_R",
+      "value": "ESP32_Right (Pins 20-38)",
+      "lib_id": "Connector_Generic:Conn_01x19",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "ESP32 DevKit 38 Right 19-pin Socket Header",
+      "mpn": "19-pin Female Header 2.54mm"
+    },
+    {
+      "ref": "R1",
+      "value": "330R",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "330 ohm series protection for S1_TOP_PWM",
+      "mpn": "330R 1/4W 5%"
+    },
+    {
+      "ref": "R5",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "10k pull-down boot protection for S1_TOP_PWM",
+      "mpn": "10k 1/4W 5%"
+    },
+    {
+      "ref": "R2",
+      "value": "330R",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "330 ohm series protection for S1_BOT_PWM",
+      "mpn": "330R 1/4W 5%"
+    },
+    {
+      "ref": "R6",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "10k pull-down boot protection for S1_BOT_PWM",
+      "mpn": "10k 1/4W 5%"
+    },
+    {
+      "ref": "R3",
+      "value": "330R",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "330 ohm series protection for S2_TOP_PWM",
+      "mpn": "330R 1/4W 5%"
+    },
+    {
+      "ref": "R7",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "10k pull-down boot protection for S2_TOP_PWM",
+      "mpn": "10k 1/4W 5%"
+    },
+    {
+      "ref": "R4",
+      "value": "330R",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "330 ohm series protection for S2_BOT_PWM",
+      "mpn": "330R 1/4W 5%"
+    },
+    {
+      "ref": "R8",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "10k pull-down boot protection for S2_BOT_PWM",
+      "mpn": "10k 1/4W 5%"
+    },
+    {
+      "ref": "R13",
+      "value": "1k",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Base current limit resistor for IR driver",
+      "mpn": "1k 1/4W 5%"
+    },
+    {
+      "ref": "Q2",
+      "value": "S8050",
+      "lib_id": "Device:Q_NPN",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "NPN driver transistor for 38kHz IR burst transmitter",
+      "mpn": "S8050"
+    },
+    {
+      "ref": "R14",
+      "value": "120R",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Current limiting resistor for Col 1 IR LED",
+      "mpn": "120R 1/2W 5%"
+    },
+    {
+      "ref": "J11",
+      "value": "IR_TX1 (Col 1)",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Col 1 IR LED Emitter JST-XH 2-pin",
+      "mpn": "JST-XH 2-pin"
+    },
+    {
+      "ref": "R15",
+      "value": "120R",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Current limiting resistor for Col 2 IR LED",
+      "mpn": "120R 1/2W 5%"
+    },
+    {
+      "ref": "J12",
+      "value": "IR_TX2 (Col 2)",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Col 2 IR LED Emitter JST-XH 2-pin",
+      "mpn": "JST-XH 2-pin"
+    },
+    {
+      "ref": "J9",
+      "value": "IR_RX1",
+      "lib_id": "Connector_Generic:Conn_01x03",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Col 1 IR Receiver header (3V3, OUT, GND)",
+      "mpn": "JST-XH 3-pin"
+    },
+    {
+      "ref": "J10",
+      "value": "IR_RX2",
+      "lib_id": "Connector_Generic:Conn_01x03",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Col 2 IR Receiver header (3V3, OUT, GND)",
+      "mpn": "JST-XH 3-pin"
+    },
+    {
+      "ref": "J13",
+      "value": "LS1 (DNP)",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "footprint": "TBD",
+      "dnp": true,
+      "description": "Limit switch LS1 (DNP)",
+      "mpn": "JST-XH 2-pin"
+    },
+    {
+      "ref": "R16",
+      "value": "10k (DNP)",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": true,
+      "description": "10k pull-up for LS1 (DNP)",
+      "mpn": "10k 1/4W 5%"
+    },
+    {
+      "ref": "C7",
+      "value": "100nF (DNP)",
+      "lib_id": "Device:C",
+      "footprint": "TBD",
+      "dnp": true,
+      "description": "100nF filter capacitor for LS1 (DNP)",
+      "mpn": "100nF 50V Ceramic"
+    },
+    {
+      "ref": "J14",
+      "value": "LS2 (DNP)",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "footprint": "TBD",
+      "dnp": true,
+      "description": "Limit switch LS2 (DNP)",
+      "mpn": "JST-XH 2-pin"
+    },
+    {
+      "ref": "R17",
+      "value": "10k (DNP)",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": true,
+      "description": "10k pull-up for LS2 (DNP)",
+      "mpn": "10k 1/4W 5%"
+    },
+    {
+      "ref": "C8",
+      "value": "100nF (DNP)",
+      "lib_id": "Device:C",
+      "footprint": "TBD",
+      "dnp": true,
+      "description": "100nF filter capacitor for LS2 (DNP)",
+      "mpn": "100nF 50V Ceramic"
+    },
+    {
+      "ref": "J15",
+      "value": "LS3 (DNP)",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "footprint": "TBD",
+      "dnp": true,
+      "description": "Limit switch LS3 (DNP)",
+      "mpn": "JST-XH 2-pin"
+    },
+    {
+      "ref": "R18",
+      "value": "10k (DNP)",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": true,
+      "description": "10k pull-up for LS3 (DNP)",
+      "mpn": "10k 1/4W 5%"
+    },
+    {
+      "ref": "C9",
+      "value": "100nF (DNP)",
+      "lib_id": "Device:C",
+      "footprint": "TBD",
+      "dnp": true,
+      "description": "100nF filter capacitor for LS3 (DNP)",
+      "mpn": "100nF 50V Ceramic"
+    },
+    {
+      "ref": "J16",
+      "value": "LS4 (DNP)",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "footprint": "TBD",
+      "dnp": true,
+      "description": "Limit switch LS4 (DNP)",
+      "mpn": "JST-XH 2-pin"
+    },
+    {
+      "ref": "R19",
+      "value": "10k (DNP)",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": true,
+      "description": "10k pull-up for LS4 (DNP)",
+      "mpn": "10k 1/4W 5%"
+    },
+    {
+      "ref": "C10",
+      "value": "100nF (DNP)",
+      "lib_id": "Device:C",
+      "footprint": "TBD",
+      "dnp": true,
+      "description": "100nF filter capacitor for LS4 (DNP)",
+      "mpn": "100nF 50V Ceramic"
+    },
+    {
+      "ref": "C5",
+      "value": "10uF 16V",
+      "lib_id": "Device:C_Polarized",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "5V rail bulk decoupling capacitor",
+      "mpn": "10uF 16V Radial"
+    },
+    {
+      "ref": "C6",
+      "value": "100nF",
+      "lib_id": "Device:C",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "3.3V rail decoupling capacitor",
+      "mpn": "100nF 50V Ceramic"
+    },
+    {
+      "ref": "R20",
+      "value": "5.6k",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Current limiting for +12V LED",
+      "mpn": "5.6k 1/4W 5%"
+    },
+    {
+      "ref": "D2",
+      "value": "LED_+12V",
+      "lib_id": "Device:LED",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Green LED indicator for +12V",
+      "mpn": "3mm Green LED"
+    },
+    {
+      "ref": "R21",
+      "value": "2.2k",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Current limiting for +6V_A LED",
+      "mpn": "2.2k 1/4W 5%"
+    },
+    {
+      "ref": "D3",
+      "value": "LED_+6V_A",
+      "lib_id": "Device:LED",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Green LED indicator for +6V_A",
+      "mpn": "3mm Green LED"
+    },
+    {
+      "ref": "R22",
+      "value": "2.2k",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Current limiting for +6V_B LED",
+      "mpn": "2.2k 1/4W 5%"
+    },
+    {
+      "ref": "D4",
+      "value": "LED_+6V_B",
+      "lib_id": "Device:LED",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Green LED indicator for +6V_B",
+      "mpn": "3mm Green LED"
+    },
+    {
+      "ref": "R23",
+      "value": "1.5k",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Current limiting for +5V LED",
+      "mpn": "1.5k 1/4W 5%"
+    },
+    {
+      "ref": "D5",
+      "value": "LED_+5V",
+      "lib_id": "Device:LED",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Green LED indicator for +5V",
+      "mpn": "3mm Green LED"
+    },
+    {
+      "ref": "R24",
+      "value": "1.0k",
+      "lib_id": "Device:R",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Current limiting for +3V3 LED",
+      "mpn": "1.0k 1/4W 5%"
+    },
+    {
+      "ref": "D6",
+      "value": "LED_+3V3",
+      "lib_id": "Device:LED",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Green LED indicator for +3V3",
+      "mpn": "3mm Green LED"
+    },
+    {
+      "ref": "TP1",
+      "value": "TP_+12V",
+      "lib_id": "Connector:TestPoint",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Diagnostic Test Point for +12V",
+      "mpn": "Test Point Loop THT"
+    },
+    {
+      "ref": "TP2",
+      "value": "TP_+6V_A",
+      "lib_id": "Connector:TestPoint",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Diagnostic Test Point for +6V_A",
+      "mpn": "Test Point Loop THT"
+    },
+    {
+      "ref": "TP3",
+      "value": "TP_+6V_B",
+      "lib_id": "Connector:TestPoint",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Diagnostic Test Point for +6V_B",
+      "mpn": "Test Point Loop THT"
+    },
+    {
+      "ref": "TP4",
+      "value": "TP_+5V",
+      "lib_id": "Connector:TestPoint",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Diagnostic Test Point for +5V",
+      "mpn": "Test Point Loop THT"
+    },
+    {
+      "ref": "TP5",
+      "value": "TP_+3V3",
+      "lib_id": "Connector:TestPoint",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Diagnostic Test Point for +3V3",
+      "mpn": "Test Point Loop THT"
+    },
+    {
+      "ref": "TP6",
+      "value": "TP_GND",
+      "lib_id": "Connector:TestPoint",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Diagnostic Test Point for GND",
+      "mpn": "Test Point Loop THT"
+    },
+    {
+      "ref": "TP7",
+      "value": "TP_GND",
+      "lib_id": "Connector:TestPoint",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Diagnostic Test Point for GND",
+      "mpn": "Test Point Loop THT"
+    },
+    {
+      "ref": "TP8",
+      "value": "TP_SPARE_GPIO33",
+      "lib_id": "Connector:TestPoint",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Diagnostic Test Point for SPARE_GPIO33",
+      "mpn": "Test Point Loop THT"
+    },
+    {
+      "ref": "J17",
+      "value": "I2C_RESERVED",
+      "lib_id": "Connector_Generic:Conn_01x04",
+      "footprint": "TBD",
+      "dnp": false,
+      "description": "Reserved I2C 4-pin header (3V3, SDA, SCL, GND)",
+      "mpn": "4-pin Header 2.54mm"
+    }
+  ],
+  "nets": {
+    "+12V_IN": {
+      "type": "power",
+      "nodes": [
+        "J1.1",
+        "F1.1"
+      ]
+    },
+    "GND": {
+      "type": "power",
+      "nodes": [
+        "J1.2",
+        "R9.2",
+        "D1.2",
+        "J2.2",
+        "J2.4",
+        "J3.2",
+        "J3.4",
+        "J4.2",
+        "J4.4",
+        "C1.2",
+        "C3.2",
+        "J5.1",
+        "J6.1",
+        "C2.2",
+        "C4.2",
+        "J7.1",
+        "J8.1",
+        "J_ESP32_L.14",
+        "J_ESP32_R.13",
+        "J_ESP32_R.19",
+        "R5.2",
+        "R6.2",
+        "R7.2",
+        "R8.2",
+        "Q2.E",
+        "J9.3",
+        "J10.3",
+        "J13.2",
+        "C7.2",
+        "J14.2",
+        "C8.2",
+        "J15.2",
+        "C9.2",
+        "J16.2",
+        "C10.2",
+        "C5.2",
+        "C6.2",
+        "D2.2",
+        "D3.2",
+        "D4.2",
+        "D5.2",
+        "D6.2",
+        "TP6.1",
+        "TP7.1",
+        "J17.4"
+      ]
+    },
+    "+12V_FUSED": {
+      "type": "power",
+      "nodes": [
+        "F1.2",
+        "Q1.D"
+      ]
+    },
+    "NET_Q1_GATE": {
+      "type": "signal",
+      "nodes": [
+        "Q1.G",
+        "R9.1"
+      ]
+    },
+    "+12V": {
+      "type": "power",
+      "nodes": [
+        "Q1.S",
+        "D1.1",
+        "J2.1",
+        "J3.1",
+        "J4.1",
+        "R20.1",
+        "TP1.1"
+      ]
+    },
+    "+6V_A_RAW": {
+      "type": "power",
+      "nodes": [
+        "J2.3",
+        "F2.1"
+      ]
+    },
+    "+6V_B_RAW": {
+      "type": "power",
+      "nodes": [
+        "J3.3",
+        "F3.1"
+      ]
+    },
+    "+5V": {
+      "type": "power",
+      "nodes": [
+        "J4.3",
+        "J_ESP32_L.19",
+        "R14.1",
+        "R15.1",
+        "C5.1",
+        "R23.1",
+        "TP4.1"
+      ]
+    },
+    "+6V_A": {
+      "type": "power",
+      "nodes": [
+        "F2.2",
+        "C1.1",
+        "C3.1",
+        "J5.2",
+        "J6.2",
+        "R21.1",
+        "TP2.1"
+      ]
+    },
+    "S1_TOP_PWM": {
+      "type": "signal",
+      "nodes": [
+        "J5.3",
+        "R1.2",
+        "R5.1"
+      ]
+    },
+    "S1_BOT_PWM": {
+      "type": "signal",
+      "nodes": [
+        "J6.3",
+        "R2.2",
+        "R6.1"
+      ]
+    },
+    "+6V_B": {
+      "type": "power",
+      "nodes": [
+        "F3.2",
+        "C2.1",
+        "C4.1",
+        "J7.2",
+        "J8.2",
+        "R22.1",
+        "TP3.1"
+      ]
+    },
+    "S2_TOP_PWM": {
+      "type": "signal",
+      "nodes": [
+        "J7.3",
+        "R3.2",
+        "R7.1"
+      ]
+    },
+    "S2_BOT_PWM": {
+      "type": "signal",
+      "nodes": [
+        "J8.3",
+        "R4.2",
+        "R8.1"
+      ]
+    },
+    "+3V3": {
+      "type": "power",
+      "nodes": [
+        "J_ESP32_L.1",
+        "J9.1",
+        "J10.1",
+        "R16.2",
+        "R17.2",
+        "R18.2",
+        "R19.2",
+        "C6.1",
+        "R24.1",
+        "TP5.1",
+        "J17.1"
+      ]
+    },
+    "IR_RX1": {
+      "type": "signal",
+      "nodes": [
+        "J_ESP32_L.5",
+        "J9.2"
+      ]
+    },
+    "IR_RX2": {
+      "type": "signal",
+      "nodes": [
+        "J_ESP32_L.6",
+        "J10.2"
+      ]
+    },
+    "LS4": {
+      "type": "signal",
+      "nodes": [
+        "J_ESP32_L.7",
+        "J16.1",
+        "R19.1",
+        "C10.1"
+      ]
+    },
+    "SPARE_GPIO33": {
+      "type": "signal",
+      "nodes": [
+        "J_ESP32_L.8",
+        "TP8.1"
+      ]
+    },
+    "LS1": {
+      "type": "signal",
+      "nodes": [
+        "J_ESP32_L.9",
+        "J13.1",
+        "R16.1",
+        "C7.1"
+      ]
+    },
+    "LS2": {
+      "type": "signal",
+      "nodes": [
+        "J_ESP32_L.10",
+        "J14.1",
+        "R17.1",
+        "C8.1"
+      ]
+    },
+    "LS3": {
+      "type": "signal",
+      "nodes": [
+        "J_ESP32_L.11",
+        "J15.1",
+        "R18.1",
+        "C9.1"
+      ]
+    },
+    "ESP_S1_TOP_PWM": {
+      "type": "signal",
+      "nodes": [
+        "J_ESP32_R.8",
+        "R1.1"
+      ]
+    },
+    "ESP_S1_BOT_PWM": {
+      "type": "signal",
+      "nodes": [
+        "J_ESP32_R.9",
+        "R2.1"
+      ]
+    },
+    "ESP_S2_TOP_PWM": {
+      "type": "signal",
+      "nodes": [
+        "J_ESP32_R.11",
+        "R3.1"
+      ]
+    },
+    "ESP_S2_BOT_PWM": {
+      "type": "signal",
+      "nodes": [
+        "J_ESP32_R.12",
+        "R4.1"
+      ]
+    },
+    "I2C_SDA": {
+      "type": "signal",
+      "nodes": [
+        "J_ESP32_R.14",
+        "J17.2"
+      ]
+    },
+    "I2C_SCL": {
+      "type": "signal",
+      "nodes": [
+        "J_ESP32_R.17",
+        "J17.3"
+      ]
+    },
+    "ESP_IR_TX": {
+      "type": "signal",
+      "nodes": [
+        "J_ESP32_R.18",
+        "R13.1"
+      ]
+    },
+    "NET_Q2_BASE": {
+      "type": "signal",
+      "nodes": [
+        "R13.2",
+        "Q2.B"
+      ]
+    },
+    "IR_TX_RET": {
+      "type": "signal",
+      "nodes": [
+        "Q2.C",
+        "J11.2",
+        "J12.2"
+      ]
+    },
+    "NET_IR_TX1_ANODE": {
+      "type": "signal",
+      "nodes": [
+        "R14.2",
+        "J11.1"
+      ]
+    },
+    "NET_IR_TX2_ANODE": {
+      "type": "signal",
+      "nodes": [
+        "R15.2",
+        "J12.1"
+      ]
+    },
+    "NET_D2_ANODE": {
+      "type": "signal",
+      "nodes": [
+        "R20.2",
+        "D2.1"
+      ]
+    },
+    "NET_D3_ANODE": {
+      "type": "signal",
+      "nodes": [
+        "R21.2",
+        "D3.1"
+      ]
+    },
+    "NET_D4_ANODE": {
+      "type": "signal",
+      "nodes": [
+        "R22.2",
+        "D4.1"
+      ]
+    },
+    "NET_D5_ANODE": {
+      "type": "signal",
+      "nodes": [
+        "R23.2",
+        "D5.1"
+      ]
+    },
+    "NET_D6_ANODE": {
+      "type": "signal",
+      "nodes": [
+        "R24.2",
+        "D6.1"
+      ]
+    }
+  }
+}
