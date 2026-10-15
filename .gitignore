@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# KiCad local/backup files
+*.kicad_sch-bak
+*.kicad_pcb-bak
+*.kicad_pro-bak
+fp-info-cache
+_autosave-*
+*-backups/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temp / scratch files
+skidl_REPL.erc
+skidl_REPL.log
+test-erc.rpt
+
+# Antigravity / agent scratch
+.agents/
+fv-pcb-skills/
