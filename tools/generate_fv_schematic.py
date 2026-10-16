@@ -114,6 +114,94 @@ def get_pin_pos(lib_id: str, pin_num: str | int, sx: float, sy: float, rot: int 
         raise ValueError(f"Unsupported rotation: {rot}")
 
 
+FOOTPRINT_MAP = {
+    # Block 1: 12V Input & Protection
+    "J1": "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",
+    "F1": "Fuse:Fuseholder_Clip-5x20mm_Littelfuse_111_Inline_P20.00x5.00mm_D1.05mm_Horizontal",
+    "Q1": "Package_TO_SOT_THT:TO-220-3_Vertical",
+    "R9": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "D1": "Diode_THT:D_DO-201_P12.70mm_Horizontal",
+
+    # Block 2: Buck Converters (XH-M401 8A Servo Buck, Aux Buck DNP, MP1584EN 5V Logic)
+    "J2": "fv_modules:Converter_DCDC_XH-M401_8A",
+    "J3": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+    "J4": "fv_modules:Converter_DCDC_MP1584EN",
+
+    # Block 3: Servo Protection & Headers
+    "F2": "Fuse:Fuse_Bourns_MF-RG300",
+    "F3": "Fuse:Fuse_Bourns_MF-RG300",
+    "C1": "Capacitor_THT:CP_Radial_D12.5mm_P5.00mm",
+    "C3": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+    "C2": "Capacitor_THT:CP_Radial_D12.5mm_P5.00mm",
+    "C4": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+    "J5": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+    "J6": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+    "J7": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+    "J8": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+
+    # Block 4: ESP32 Headers & PWM Conditioning (0.9" / 22.86mm pitch confirmed)
+    "J18": "Connector_PinSocket_2.54mm:PinSocket_1x19_P2.54mm_Vertical",
+    "J19": "Connector_PinSocket_2.54mm:PinSocket_1x19_P2.54mm_Vertical",
+    "R1": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "R2": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "R3": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "R4": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "R5": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "R6": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "R7": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "R8": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+
+    # Block 5: IR TX Driver
+    "Q2": "Package_TO_SOT_THT:TO-92_Inline",
+    "R13": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "R14": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "R15": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "J11": "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical",
+    "J12": "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical",
+
+    # Block 6: IR RX Headers
+    "J9": "Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical",
+    "J10": "Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical",
+
+    # Block 7: Limit Switches (Optional DNP)
+    "J13": "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical",
+    "J14": "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical",
+    "J15": "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical",
+    "J16": "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical",
+    "R16": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "R17": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "R18": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "R19": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "C7": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+    "C8": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+    "C9": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+    "C10": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+
+    # Block 8: Diagnostics & Rail Decoupling
+    "D2": "LED_THT:LED_D3.0mm",
+    "D3": "LED_THT:LED_D3.0mm",
+    "D4": "LED_THT:LED_D3.0mm",
+    "D5": "LED_THT:LED_D3.0mm",
+    "D6": "LED_THT:LED_D3.0mm",
+    "R20": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "R21": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "R22": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "R23": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "R24": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "TP1": "TestPoint:TestPoint_Pad_D2.0mm",
+    "TP2": "TestPoint:TestPoint_Pad_D2.0mm",
+    "TP3": "TestPoint:TestPoint_Pad_D2.0mm",
+    "TP4": "TestPoint:TestPoint_Pad_D2.0mm",
+    "TP5": "TestPoint:TestPoint_Pad_D2.0mm",
+    "TP6": "TestPoint:TestPoint_Pad_D2.0mm",
+    "TP7": "TestPoint:TestPoint_Pad_D2.0mm",
+    "TP8": "TestPoint:TestPoint_Pad_D2.0mm",
+    "C5": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+    "C6": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+    "J17": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+}
+
+
 class SchBuilder:
     def __init__(self):
         self.lib_symbols = {}
@@ -133,6 +221,8 @@ class SchBuilder:
     def add_symbol(self, lib_id: str, ref: str, val: str, x: float, y: float, rot: int = 0,
                    pins_count: int = 2, footprint: str = "", desc: str = "", dnp: bool = False,
                    mpn: str = "TBD", pin_names: list = None):
+        if not footprint and ref in FOOTPRINT_MAP:
+            footprint = FOOTPRINT_MAP[ref]
         sym_uuid = gen_uuid()
         dnp_str = "yes" if dnp else "no"
         pin_blocks = []
@@ -450,18 +540,18 @@ def generate_all():
     # =========================================================================
     sb.add_box(20.32, 83.82, 124.46, 172.72,
                "2. STEP-DOWN BUCK CONVERTERS (BREAKOUT MODULES)",
-               "Buck A & B: XL4015 >=5A (Preset 6.0V before servos) | Buck C: 5V Logic (MP1584EN)")
+               "J2: Servo Buck XH-M401 (XL4016E1 8A, Preset 6.0V) | J4: 5V Logic (MP1584EN) | J3: Aux Buck (DNP)")
 
     bucks = [
-        ("J2", "XL4015_A (6.0V >=5A)", "+6V_A_RAW", 104.14),
-        ("J3", "XL4015_B (6.0V >=5A)", "+6V_B_RAW", 129.54),
-        ("J4", "BUCK_5V (Logic)", "+5V", 154.94),
+        ("J2", "XH-M401 (6.0V 8A)", "+6V_SERVO", 104.14, "XH-M401 (XL4016E1 8A 200W)", False),
+        ("J3", "AUX_BUCK (DNP)", "+6V_SERVO", 129.54, "Auxiliary 4-pin Header", True),
+        ("J4", "MP1584EN (5V Logic)", "+5V", 154.94, "MP1584EN Mini 3A Buck", False),
     ]
 
-    for j_ref, val, out_rail, y_pos in bucks:
+    for j_ref, val, out_rail, y_pos, mpn, dnp in bucks:
         sb.add_symbol("Connector_Generic:Conn_01x04", j_ref, val, 45.72, y_pos,
-                      pins_count=4, footprint="", desc=f"{val} header (IN+, IN-, OUT+, OUT-)",
-                      mpn="Breakout Module 4-pin")
+                      pins_count=4, desc=f"{val} header (IN+, IN-, OUT+, OUT-)",
+                      mpn=mpn, dnp=dnp)
         p1 = get_pin_pos("Connector_Generic:Conn_01x04", 1, 45.72, y_pos)
         p2 = get_pin_pos("Connector_Generic:Conn_01x04", 2, 45.72, y_pos)
         p3 = get_pin_pos("Connector_Generic:Conn_01x04", 3, 45.72, y_pos)
@@ -482,8 +572,8 @@ def generate_all():
         sb.add_label(out_rail, 60.96, p3[1])
         sb.record_net(out_rail, f"{j_ref}.3", "power")
 
-        # If 5V buck, place PWR_FLAG
-        if out_rail == "+5V":
+        # If 5V buck or main servo buck, place PWR_FLAG
+        if (out_rail == "+5V") or (out_rail == "+6V_SERVO" and not dnp):
             sb.add_junction(60.96, p3[1])
             sb.add_wire(60.96, p3[1], 60.96, p3[1] - 5.08)
             sb.add_power_sym("power:PWR_FLAG", 60.96, p3[1] - 5.08, 0)
@@ -508,8 +598,8 @@ def generate_all():
     p_F2_2 = get_pin_pos("Device:Polyfuse", 2, 152.4, 40.64)
 
     sb.add_wire(p_F2_1[0], p_F2_1[1], 142.24, p_F2_1[1])
-    sb.add_label("+6V_A_RAW", 142.24, p_F2_1[1])
-    sb.record_net("+6V_A_RAW", "F2.1", "power")
+    sb.add_label("+6V_SERVO", 142.24, p_F2_1[1])
+    sb.record_net("+6V_SERVO", "F2.1", "power")
 
     rail_a_y = p_F2_2[1]
 
@@ -593,8 +683,8 @@ def generate_all():
     p_F3_2 = get_pin_pos("Device:Polyfuse", 2, 152.4, 83.82)
 
     sb.add_wire(p_F3_1[0], p_F3_1[1], 142.24, p_F3_1[1])
-    sb.add_label("+6V_B_RAW", 142.24, p_F3_1[1])
-    sb.record_net("+6V_B_RAW", "F3.1", "power")
+    sb.add_label("+6V_SERVO", 142.24, p_F3_1[1])
+    sb.record_net("+6V_SERVO", "F3.1", "power")
 
     rail_b_y = p_F3_2[1]
 
