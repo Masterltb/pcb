@@ -48,7 +48,7 @@ class CodeGenerationTests(unittest.TestCase):
         required_symbols = [
             "J1", "J2", "J3", "J4", "J5", "J6", "J7", "J8", "J9", "J10",
             "J11", "J12", "J13", "J14", "J15", "J16", "J17",
-            "J_ESP32_L", "J_ESP32_R",
+            "J18", "J19",
             "F1", "F2", "F3", "Q1", "Q2", "D1",
             "R1", "R2", "R3", "R4", "R5", "R6", "R7", "R8", "R9", "R13", "R14", "R15",
             "C1", "C2", "C3", "C4", "C5", "C6",
@@ -82,8 +82,8 @@ class CodeGenerationTests(unittest.TestCase):
         self.assertIn("D1", components)
         self.assertIn("F2", components)
         self.assertIn("F3", components)
-        self.assertIn("J_ESP32_L", components)
-        self.assertIn("J_ESP32_R", components)
+        self.assertIn("J18", components)
+        self.assertIn("J19", components)
 
         for net in ["+12V_IN", "+12V", "+6V_A", "+6V_B", "+5V", "+3V3", "GND",
                     "S1_TOP_PWM", "S1_BOT_PWM", "S2_TOP_PWM", "S2_BOT_PWM", "IR_RX1", "IR_RX2"]:

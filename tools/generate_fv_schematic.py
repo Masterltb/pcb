@@ -677,8 +677,8 @@ def generate_all():
                "4. ESP32 DEVKIT 38 HEADER INTERFACE & PWM CONDITIONING",
                "Female socket headers | No strapping pins used | 330R series + 10k pull-down boot protection")
 
-    # Left Header: J_ESP32_L at (152.4, 157.48)
-    sb.add_symbol("Connector_Generic:Conn_01x19", "J_ESP32_L", "ESP32_Left (Pins 1-19)", 152.4, 157.48,
+    # Left ESP32 header: J18 at (152.4, 157.48)
+    sb.add_symbol("Connector_Generic:Conn_01x19", "J18", "ESP32_Left (Pins 1-19)", 152.4, 157.48,
                   pins_count=19, footprint="",
                   desc="ESP32 DevKit 38 Left 19-pin Socket Header", mpn="19-pin Female Header 2.54mm")
 
@@ -711,18 +711,18 @@ def generate_all():
         elif sig_name == "GND":
             sb.add_wire(pin_pt[0], pin_pt[1], 137.16, pin_pt[1])
             sb.add_power_sym("power:GND", 137.16, pin_pt[1], 0)
-            sb.record_net("GND", f"J_ESP32_L.{pin_idx}", "power")
+            sb.record_net("GND", f"J18.{pin_idx}", "power")
         else:
             sb.add_wire(pin_pt[0], pin_pt[1], 137.16, pin_pt[1])
             sb.add_label(sig_name, 137.16, pin_pt[1])
-            sb.record_net(sig_name, f"J_ESP32_L.{pin_idx}", sig_type)
+            sb.record_net(sig_name, f"J18.{pin_idx}", sig_type)
             if sig_name == "+3V3":
                 sb.add_junction(137.16, pin_pt[1])
                 sb.add_wire(137.16, pin_pt[1], 132.08, pin_pt[1])
                 sb.add_power_sym("power:PWR_FLAG", 132.08, pin_pt[1], 0)
 
-    # Right Header: J_ESP32_R at (203.2, 157.48)
-    sb.add_symbol("Connector_Generic:Conn_01x19", "J_ESP32_R", "ESP32_Right (Pins 20-38)", 203.2, 157.48,
+    # Right ESP32 header: J19 at (203.2, 157.48)
+    sb.add_symbol("Connector_Generic:Conn_01x19", "J19", "ESP32_Right (Pins 20-38)", 203.2, 157.48,
                   pins_count=19, footprint="",
                   desc="ESP32 DevKit 38 Right 19-pin Socket Header", mpn="19-pin Female Header 2.54mm")
 
@@ -755,11 +755,11 @@ def generate_all():
         elif sig_name == "GND":
             sb.add_wire(pin_pt[0], pin_pt[1], 187.96, pin_pt[1])
             sb.add_power_sym("power:GND", 187.96, pin_pt[1], 0)
-            sb.record_net("GND", f"J_ESP32_R.{pin_idx}", "power")
+            sb.record_net("GND", f"J19.{pin_idx}", "power")
         else:
             sb.add_wire(pin_pt[0], pin_pt[1], 213.36, pin_pt[1])
             sb.add_label(sig_name, 213.36, pin_pt[1])
-            sb.record_net(sig_name, f"J_ESP32_R.{pin_idx}", sig_type)
+            sb.record_net(sig_name, f"J19.{pin_idx}", sig_type)
 
     # --- SERVO PWM SIGNAL CONDITIONING (R1-R8) ---
     pwms = [

@@ -180,7 +180,7 @@
       "mpn": "3-pin Header"
     },
     {
-      "ref": "J_ESP32_L",
+      "ref": "J18",
       "value": "ESP32_Left (Pins 1-19)",
       "lib_id": "Connector_Generic:Conn_01x19",
       "footprint": "TBD",
@@ -189,7 +189,7 @@
       "mpn": "19-pin Female Header 2.54mm"
     },
     {
-      "ref": "J_ESP32_R",
+      "ref": "J19",
       "value": "ESP32_Right (Pins 20-38)",
       "lib_id": "Connector_Generic:Conn_01x19",
       "footprint": "TBD",
@@ -667,9 +667,9 @@
         "C4.2",
         "J7.1",
         "J8.1",
-        "J_ESP32_L.14",
-        "J_ESP32_R.13",
-        "J_ESP32_R.19",
+        "J18.14",
+        "J19.13",
+        "J19.19",
         "R5.2",
         "R6.2",
         "R7.2",
@@ -741,7 +741,7 @@
       "type": "power",
       "nodes": [
         "J4.3",
-        "J_ESP32_L.19",
+        "J18.19",
         "R14.1",
         "R15.1",
         "C5.1",
@@ -808,7 +808,7 @@
     "+3V3": {
       "type": "power",
       "nodes": [
-        "J_ESP32_L.1",
+        "J18.1",
         "J9.1",
         "J10.1",
         "R16.2",
@@ -824,21 +824,21 @@
     "IR_RX1": {
       "type": "signal",
       "nodes": [
-        "J_ESP32_L.5",
+        "J18.5",
         "J9.2"
       ]
     },
     "IR_RX2": {
       "type": "signal",
       "nodes": [
-        "J_ESP32_L.6",
+        "J18.6",
         "J10.2"
       ]
     },
     "LS4": {
       "type": "signal",
       "nodes": [
-        "J_ESP32_L.7",
+        "J18.7",
         "J16.1",
         "R19.1",
         "C10.1"
@@ -847,14 +847,14 @@
     "SPARE_GPIO33": {
       "type": "signal",
       "nodes": [
-        "J_ESP32_L.8",
+        "J18.8",
         "TP8.1"
       ]
     },
     "LS1": {
       "type": "signal",
       "nodes": [
-        "J_ESP32_L.9",
+        "J18.9",
         "J13.1",
         "R16.1",
         "C7.1"
@@ -863,7 +863,7 @@
     "LS2": {
       "type": "signal",
       "nodes": [
-        "J_ESP32_L.10",
+        "J18.10",
         "J14.1",
         "R17.1",
         "C8.1"
@@ -872,7 +872,7 @@
     "LS3": {
       "type": "signal",
       "nodes": [
-        "J_ESP32_L.11",
+        "J18.11",
         "J15.1",
         "R18.1",
         "C9.1"
@@ -881,49 +881,49 @@
     "ESP_S1_TOP_PWM": {
       "type": "signal",
       "nodes": [
-        "J_ESP32_R.8",
+        "J19.8",
         "R1.1"
       ]
     },
     "ESP_S1_BOT_PWM": {
       "type": "signal",
       "nodes": [
-        "J_ESP32_R.9",
+        "J19.9",
         "R2.1"
       ]
     },
     "ESP_S2_TOP_PWM": {
       "type": "signal",
       "nodes": [
-        "J_ESP32_R.11",
+        "J19.11",
         "R3.1"
       ]
     },
     "ESP_S2_BOT_PWM": {
       "type": "signal",
       "nodes": [
-        "J_ESP32_R.12",
+        "J19.12",
         "R4.1"
       ]
     },
     "I2C_SDA": {
       "type": "signal",
       "nodes": [
-        "J_ESP32_R.14",
+        "J19.14",
         "J17.2"
       ]
     },
     "I2C_SCL": {
       "type": "signal",
       "nodes": [
-        "J_ESP32_R.17",
+        "J19.17",
         "J17.3"
       ]
     },
     "ESP_IR_TX": {
       "type": "signal",
       "nodes": [
-        "J_ESP32_R.18",
+        "J19.18",
         "R13.1"
       ]
     },

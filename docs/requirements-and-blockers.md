@@ -92,7 +92,7 @@ Before advancing to PCB layout and Gerber release, the following design blockers
 ### Blocker 1: ESP32 DevKit 38-Pin Module Verification
 - **Issue:** ESP32 38-pin boards vary widely between manufacturers (ESP32-DevKitC, NodeMCU-32S, clones). Differences include row-to-row spacing (0.9" vs 1.0"), antenna overhang, and micro-USB connector position.
 - **Required User Action:** Measure the pin row spacing with calipers, confirm pin labeling on the physical board, and check USB connector protrusion.
-- **Schematic Action:** Implemented via two 19-pin female connector blocks (`J_ESP32_L`, `J_ESP32_R`) mapped to confirmed GPIO signals with explicit `no_connect` on unused pins.
+- **Schematic Action:** Implemented via two 19-pin female connector blocks (`J18`, `J19`) mapped to confirmed GPIO signals with explicit `no_connect` on unused pins.
 
 ### Blocker 2: XL4015 Step-Down Converter Module Specification
 - **Issue:** The XL4015 >=5A step-down module is purchased as a pre-assembled PCB module. Pad positions, terminal hole spacing, mounting hole locations, and heatsink clearances vary across suppliers.

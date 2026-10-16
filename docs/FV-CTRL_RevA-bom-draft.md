@@ -20,8 +20,8 @@
 | C4 | 100nF | `Device:C` | TBD | No | 100nF 50V Ceramic |
 | J7 | S2_TOP | `Connector_Generic:Conn_01x03` | TBD | No | 3-pin Header |
 | J8 | S2_BOT | `Connector_Generic:Conn_01x03` | TBD | No | 3-pin Header |
-| J_ESP32_L | ESP32_Left (Pins 1-19) | `Connector_Generic:Conn_01x19` | TBD | No | 19-pin Female Header 2.54mm |
-| J_ESP32_R | ESP32_Right (Pins 20-38) | `Connector_Generic:Conn_01x19` | TBD | No | 19-pin Female Header 2.54mm |
+| J18 | ESP32_Left (Pins 1-19) | `Connector_Generic:Conn_01x19` | TBD | No | 19-pin Female Header 2.54mm |
+| J19 | ESP32_Right (Pins 20-38) | `Connector_Generic:Conn_01x19` | TBD | No | 19-pin Female Header 2.54mm |
 | R1 | 330R | `Device:R` | TBD | No | 330R 1/4W 5% |
 | R5 | 10k | `Device:R` | TBD | No | 10k 1/4W 5% |
 | R2 | 330R | `Device:R` | TBD | No | 330R 1/4W 5% |
