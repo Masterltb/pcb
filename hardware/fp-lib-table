@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "fv_modules")(type "KiCad")(uri "${KIPRJMOD}/../libs/fv_modules.pretty")(options "")(descr "Custom breakout modules for FV-CTRL project"))
+)
