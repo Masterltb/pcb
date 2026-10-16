@@ -21,6 +21,8 @@ class CodeGenerationTests(unittest.TestCase):
         self.assertTrue((HARDWARE / "FV-CTRL_RevA.kicad_sch").exists(), "FV-CTRL_RevA.kicad_sch must exist")
         self.assertTrue((HARDWARE / "FV-CTRL_RevA.manifest.json").exists(), "FV-CTRL_RevA.manifest.json must exist")
         self.assertTrue((HARDWARE / "FV-CTRL_RevA.net.json").exists(), "FV-CTRL_RevA.net.json must exist")
+        self.assertTrue((HARDWARE / "FV-IR-RX_RevA.kicad_sch").exists(), "FV-IR-RX_RevA.kicad_sch must exist")
+        self.assertTrue((HARDWARE / "FV-IR-RX_RevA.manifest.json").exists(), "FV-IR-RX_RevA.manifest.json must exist")
         self.assertTrue((DOCS / "FV-CTRL_RevA-bom-draft.md").exists(), "FV-CTRL_RevA-bom-draft.md must exist")
 
     def test_native_schematic_structure(self):
@@ -111,11 +113,53 @@ class CodeGenerationTests(unittest.TestCase):
         self.assertTrue(erc_json.exists())
 
         erc_data = json.loads(erc_json.read_text(encoding="utf-8"))
-        # Count errors in JSON
         violations = erc_data.get("violations", [])
         errors = [v for v in violations if v.get("severity") == "error"]
         self.assertEqual(len(errors), 0, f"ERC errors found: {errors}")
 
+    def test_ir_rx_satellite_schematics(self):
+        """Test satellite IR RX schematic structure, components, and ERC."""
+        rx_path = HARDWARE / "FV-IR-RX_RevA.kicad_sch"
+        self.assertTrue(rx_path.exists())
+        content = rx_path.read_text(encoding="utf-8")
+
+        # Verify key symbols
+        self.assertIn('(property "Reference" "J1"', content)
+        self.assertIn('(property "Reference" "R1"', content)
+        self.assertIn('(property "Reference" "C1"', content)
+        self.assertIn('(property "Reference" "U1"', content)
+
+        # Verify nets
+        self.assertIn('(label "+3V3_FILT"', content)
+        self.assertIn('(label "IR_RX_OUT"', content)
+        self.assertIn('(lib_id "power:GND")', content)
+
+        # Verify manifest
+        manifest_path = HARDWARE / "FV-IR-RX_RevA.manifest.json"
+        self.assertTrue(manifest_path.exists())
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        comp_refs = {c["ref"] for c in manifest["components"]}
+        self.assertEqual(comp_refs, {"J1", "R1", "C1", "U1"})
+
+        # Run ERC on satellite boards
+        if shutil.which("kicad-cli") is not None:
+            for sch in [HARDWARE / "FV-IR-RX_RevA.kicad_sch",
+                        HARDWARE / "FV-IR-RX1_RevA.kicad_sch",
+                        HARDWARE / "FV-IR-RX2_RevA.kicad_sch"]:
+                out_rpt = REPORTS / f"erc_{sch.stem}.rpt"
+                cmd = [
+                    "kicad-cli", "sch", "erc",
+                    "--severity-all",
+                    "--format", "report",
+                    "--output", str(out_rpt),
+                    str(sch)
+                ]
+                res = subprocess.run(cmd, capture_output=True, text=True)
+                self.assertEqual(res.returncode, 0, f"ERC failed on {sch.name}:\n{res.stdout}\n{res.stderr}")
+                rpt_text = out_rpt.read_text(encoding="utf-8")
+                self.assertIn("Errors 0  Warnings 0", rpt_text, f"ERC violations in {sch.name}:\n{rpt_text}")
+
 
 if __name__ == "__main__":
     unittest.main()
+

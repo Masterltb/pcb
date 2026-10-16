@@ -1,0 +1,73 @@
+{
+  "title": "FV-IR-RX2 Rev A (Column 2 Satellite IR Receiver)",
+  "components": [
+    {
+      "ref": "J1",
+      "value": "JST_XH_3P",
+      "lib_id": "Connector_Generic:Conn_01x03",
+      "footprint": "Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical",
+      "dnp": false,
+      "description": "3-wire interface to mainboard (1:+3V3, 2:OUT, 3:GND)",
+      "mpn": "JST B3B-XH-A"
+    },
+    {
+      "ref": "R1",
+      "value": "100R",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "dnp": false,
+      "description": "100 Ohm 1/4W RC power filter resistor",
+      "mpn": "CF1/4W-100R"
+    },
+    {
+      "ref": "C1",
+      "value": "4.7uF",
+      "lib_id": "Device:C_Polarized",
+      "footprint": "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm",
+      "dnp": false,
+      "description": "4.7uF 16V electrolytic RC filter capacitor",
+      "mpn": "Radial-4.7uF-16V"
+    },
+    {
+      "ref": "U1",
+      "value": "TSOP38238 / VS1838B",
+      "lib_id": "Interface_Optical:TSOP581xx",
+      "footprint": "OptoDevice:Vishay_MINICAST-3Pin",
+      "dnp": false,
+      "description": "38kHz IR Receiver Module (TSOP38238 or VS1838B)",
+      "mpn": "TSOP38238 / VS1838B"
+    }
+  ],
+  "nets": {
+    "+3V3_IN": {
+      "type": "power",
+      "nodes": [
+        "J1.1",
+        "R1.1"
+      ]
+    },
+    "+3V3_FILT": {
+      "type": "power",
+      "nodes": [
+        "R1.2",
+        "C1.1",
+        "U1.3"
+      ]
+    },
+    "IR_RX2": {
+      "type": "signal",
+      "nodes": [
+        "U1.1",
+        "J1.2"
+      ]
+    },
+    "GND": {
+      "type": "power",
+      "nodes": [
+        "J1.3",
+        "C1.2",
+        "U1.2"
+      ]
+    }
+  }
+}
