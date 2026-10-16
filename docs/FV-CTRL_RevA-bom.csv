@@ -1,0 +1,70 @@
+﻿Reference,Value,Footprint,DNP,Description,MPN
+J1,12V_IN,"TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal",No,12V DC input pluggable screw terminal,Pluggable 2-pin 5.0mm
+F1,5A 250V,Fuse:Fuseholder_Clip-5x20mm_Littelfuse_111_Inline_P20.00x5.00mm_D1.05mm_Horizontal,No,5A replaceable cartridge fuse in THT socket,5x20mm 5A cartridge
+Q1,IRF9540N,Package_TO_SOT_THT:TO-220-3_Vertical,No,P-MOSFET reverse polarity protection,IRF9540NPBF
+R9,10k,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,No,P-MOSFET gate-to-GND pull-down resistor,10k 1/4W 5%
+D1,1.5KE15CA,Diode_THT:D_DO-201_P12.70mm_Horizontal,No,12V bidirectional TVS overvoltage clamp,1.5KE15CA
+J2,XH-M401 (6.0V 8A),fv_modules:Converter_DCDC_XH-M401_8A,No,"XH-M401 (6.0V 8A) header (IN+, IN-, OUT+, OUT-)",XH-M401 (XL4016E1 8A 200W)
+J3,AUX_BUCK (DNP),Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical,Yes,"AUX_BUCK (DNP) header (IN+, IN-, OUT+, OUT-)",Auxiliary 4-pin Header
+J4,MP1584EN (5V Logic),fv_modules:Converter_DCDC_MP1584EN,No,"MP1584EN (5V Logic) header (IN+, IN-, OUT+, OUT-)",MP1584EN Mini 3A Buck
+F2,PTC 3A,Fuse:Fuse_Bourns_MF-RG300,No,Resettable PTC fuse for Servo Rail A (~3A hold),Bourns MF-R300
+C1,1000-2200uF 16V,Capacitor_THT:CP_Radial_D12.5mm_P5.00mm,No,Bulk servo filter capacitor (Rail A),1000uF 16V Radial
+C3,100nF,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,No,High-frequency decoupling (Rail A),100nF 50V Ceramic
+J5,S1_TOP,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,No,"Column 1 Top Servo Header (GND, V+, SIG)",3-pin Header
+J6,S1_BOT,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,No,"Column 1 Bottom Servo Header (GND, V+, SIG)",3-pin Header
+F3,PTC 3A,Fuse:Fuse_Bourns_MF-RG300,No,Resettable PTC fuse for Servo Rail B (~3A hold),Bourns MF-R300
+C2,1000-2200uF 16V,Capacitor_THT:CP_Radial_D12.5mm_P5.00mm,No,Bulk servo filter capacitor (Rail B),1000uF 16V Radial
+C4,100nF,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,No,High-frequency decoupling (Rail B),100nF 50V Ceramic
+J7,S2_TOP,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,No,"Column 2 Top Servo Header (GND, V+, SIG)",3-pin Header
+J8,S2_BOT,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,No,"Column 2 Bottom Servo Header (GND, V+, SIG)",3-pin Header
+J18,ESP32_Left (Pins 1-19),Connector_PinSocket_2.54mm:PinSocket_1x19_P2.54mm_Vertical,No,ESP32 DevKit 38 Left 19-pin Socket Header,19-pin Female Header 2.54mm
+J19,ESP32_Right (Pins 20-38),Connector_PinSocket_2.54mm:PinSocket_1x19_P2.54mm_Vertical,No,ESP32 DevKit 38 Right 19-pin Socket Header,19-pin Female Header 2.54mm
+R1,330R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,No,330 ohm series protection for S1_TOP_PWM,330R 1/4W 5%
+R5,10k,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,No,10k pull-down boot protection for S1_TOP_PWM,10k 1/4W 5%
+R2,330R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,No,330 ohm series protection for S1_BOT_PWM,330R 1/4W 5%
+R6,10k,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,No,10k pull-down boot protection for S1_BOT_PWM,10k 1/4W 5%
+R3,330R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,No,330 ohm series protection for S2_TOP_PWM,330R 1/4W 5%
+R7,10k,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,No,10k pull-down boot protection for S2_TOP_PWM,10k 1/4W 5%
+R4,330R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,No,330 ohm series protection for S2_BOT_PWM,330R 1/4W 5%
+R8,10k,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,No,10k pull-down boot protection for S2_BOT_PWM,10k 1/4W 5%
+R13,1k,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,No,Base current limit resistor for IR driver,1k 1/4W 5%
+Q2,S8050,Package_TO_SOT_THT:TO-92_Inline,No,NPN driver transistor for 38kHz IR burst transmitter,S8050
+R14,120R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,No,Current limiting resistor for Col 1 IR LED,120R 1/2W 5%
+J11,IR_TX1 (Col 1),Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,No,Col 1 IR LED Emitter JST-XH 2-pin,JST-XH 2-pin
+R15,120R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,No,Current limiting resistor for Col 2 IR LED,120R 1/2W 5%
+J12,IR_TX2 (Col 2),Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,No,Col 2 IR LED Emitter JST-XH 2-pin,JST-XH 2-pin
+J9,IR_RX1,Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical,No,"Col 1 IR Receiver header (3V3, OUT, GND)",JST-XH 3-pin
+J10,IR_RX2,Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical,No,"Col 2 IR Receiver header (3V3, OUT, GND)",JST-XH 3-pin
+J13,LS1 (DNP),Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,Yes,Limit switch LS1 (DNP),JST-XH 2-pin
+R16,10k (DNP),Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,Yes,10k pull-up for LS1 (DNP),10k 1/4W 5%
+C7,100nF (DNP),Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,Yes,100nF filter capacitor for LS1 (DNP),100nF 50V Ceramic
+J14,LS2 (DNP),Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,Yes,Limit switch LS2 (DNP),JST-XH 2-pin
+R17,10k (DNP),Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,Yes,10k pull-up for LS2 (DNP),10k 1/4W 5%
+C8,100nF (DNP),Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,Yes,100nF filter capacitor for LS2 (DNP),100nF 50V Ceramic
+J15,LS3 (DNP),Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,Yes,Limit switch LS3 (DNP),JST-XH 2-pin
+R18,10k (DNP),Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,Yes,10k pull-up for LS3 (DNP),10k 1/4W 5%
+C9,100nF (DNP),Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,Yes,100nF filter capacitor for LS3 (DNP),100nF 50V Ceramic
+J16,LS4 (DNP),Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,Yes,Limit switch LS4 (DNP),JST-XH 2-pin
+R19,10k (DNP),Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,Yes,10k pull-up for LS4 (DNP),10k 1/4W 5%
+C10,100nF (DNP),Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,Yes,100nF filter capacitor for LS4 (DNP),100nF 50V Ceramic
+C5,10uF 16V,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,No,5V rail bulk decoupling capacitor,10uF 16V Radial
+C6,100nF,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,No,3.3V rail decoupling capacitor,100nF 50V Ceramic
+R20,5.6k,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,No,Current limiting for +12V LED,5.6k 1/4W 5%
+D2,LED_+12V,LED_THT:LED_D3.0mm,No,Green LED indicator for +12V,3mm Green LED
+R21,2.2k,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,No,Current limiting for +6V_A LED,2.2k 1/4W 5%
+D3,LED_+6V_A,LED_THT:LED_D3.0mm,No,Green LED indicator for +6V_A,3mm Green LED
+R22,2.2k,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,No,Current limiting for +6V_B LED,2.2k 1/4W 5%
+D4,LED_+6V_B,LED_THT:LED_D3.0mm,No,Green LED indicator for +6V_B,3mm Green LED
+R23,1.5k,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,No,Current limiting for +5V LED,1.5k 1/4W 5%
+D5,LED_+5V,LED_THT:LED_D3.0mm,No,Green LED indicator for +5V,3mm Green LED
+R24,1.0k,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,No,Current limiting for +3V3 LED,1.0k 1/4W 5%
+D6,LED_+3V3,LED_THT:LED_D3.0mm,No,Green LED indicator for +3V3,3mm Green LED
+TP1,TP_+12V,TestPoint:TestPoint_Pad_D2.0mm,No,Diagnostic Test Point for +12V,Test Point Loop THT
+TP2,TP_+6V_A,TestPoint:TestPoint_Pad_D2.0mm,No,Diagnostic Test Point for +6V_A,Test Point Loop THT
+TP3,TP_+6V_B,TestPoint:TestPoint_Pad_D2.0mm,No,Diagnostic Test Point for +6V_B,Test Point Loop THT
+TP4,TP_+5V,TestPoint:TestPoint_Pad_D2.0mm,No,Diagnostic Test Point for +5V,Test Point Loop THT
+TP5,TP_+3V3,TestPoint:TestPoint_Pad_D2.0mm,No,Diagnostic Test Point for +3V3,Test Point Loop THT
+TP6,TP_GND,TestPoint:TestPoint_Pad_D2.0mm,No,Diagnostic Test Point for GND,Test Point Loop THT
+TP7,TP_GND,TestPoint:TestPoint_Pad_D2.0mm,No,Diagnostic Test Point for GND,Test Point Loop THT
+TP8,TP_SPARE_GPIO33,TestPoint:TestPoint_Pad_D2.0mm,No,Diagnostic Test Point for SPARE_GPIO33,Test Point Loop THT
+J17,I2C_RESERVED,Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical,No,"Reserved I2C 4-pin header (3V3, SDA, SCL, GND)",4-pin Header 2.54mm

@@ -1,0 +1,191 @@
+{
+  "revision": "Rev A",
+  "rails": [
+    "+12V_IN",
+    "+12V",
+    "+6V_A",
+    "+6V_B",
+    "+5V",
+    "+3V3",
+    "GND"
+  ],
+  "connectors": [
+    {
+      "ref": "J1",
+      "value": "12V_IN",
+      "pins": [
+        "+12V_IN",
+        "GND"
+      ]
+    },
+    {
+      "ref": "J2",
+      "value": "XL4015_A",
+      "pins": [
+        "+12V",
+        "GND",
+        "+6V_A",
+        "GND"
+      ]
+    },
+    {
+      "ref": "J3",
+      "value": "XL4015_B",
+      "pins": [
+        "+12V",
+        "GND",
+        "+6V_B",
+        "GND"
+      ]
+    },
+    {
+      "ref": "J4",
+      "value": "BUCK_5V",
+      "pins": [
+        "+12V",
+        "GND",
+        "+5V",
+        "GND"
+      ]
+    },
+    {
+      "ref": "J5",
+      "value": "S1_TOP",
+      "pins": [
+        "GND",
+        "+6V_A",
+        "S1_TOP_PWM"
+      ]
+    },
+    {
+      "ref": "J6",
+      "value": "S1_BOT",
+      "pins": [
+        "GND",
+        "+6V_A",
+        "S1_BOT_PWM"
+      ]
+    },
+    {
+      "ref": "J7",
+      "value": "S2_TOP",
+      "pins": [
+        "GND",
+        "+6V_B",
+        "S2_TOP_PWM"
+      ]
+    },
+    {
+      "ref": "J8",
+      "value": "S2_BOT",
+      "pins": [
+        "GND",
+        "+6V_B",
+        "S2_BOT_PWM"
+      ]
+    },
+    {
+      "ref": "J9",
+      "value": "IR_RX1",
+      "pins": [
+        "+3V3",
+        "IR_RX1",
+        "GND"
+      ]
+    },
+    {
+      "ref": "J10",
+      "value": "IR_RX2",
+      "pins": [
+        "+3V3",
+        "IR_RX2",
+        "GND"
+      ]
+    }
+  ],
+  "signals": {
+    "S1_TOP_PWM": "GPIO16",
+    "S1_BOT_PWM": "GPIO17",
+    "S2_TOP_PWM": "GPIO18",
+    "S2_BOT_PWM": "GPIO19",
+    "IR_TX": "GPIO23",
+    "IR_RX1": "GPIO34",
+    "IR_RX2": "GPIO35",
+    "LS1": "GPIO25",
+    "LS2": "GPIO26",
+    "LS3": "GPIO27",
+    "LS4": "GPIO32"
+  },
+  "parts": [
+    {
+      "ref": "F1",
+      "value": "5A replaceable fuse",
+      "footprint": "THT Cartridge Holder 5x20mm"
+    },
+    {
+      "ref": "Q1",
+      "value": "P-MOSFET reverse polarity (IRF9540N)",
+      "footprint": "TO-220-3_Vertical"
+    },
+    {
+      "ref": "D1",
+      "value": "12V TVS (1.5KE15CA)",
+      "footprint": "DO-201AD_Horizontal"
+    },
+    {
+      "ref": "F2,F3",
+      "value": "PTC 3A per servo rail",
+      "footprint": "Bourns_MF-RHT_THT"
+    },
+    {
+      "ref": "R1-R4",
+      "value": "330R PWM series",
+      "footprint": "R_Axial_DIN0207"
+    },
+    {
+      "ref": "R5-R8",
+      "value": "10k PWM pull-down",
+      "footprint": "R_Axial_DIN0207"
+    },
+    {
+      "ref": "C1,C2",
+      "value": "1000-2200uF 16V servo bulk",
+      "footprint": "CP_Radial_D10.0mm"
+    },
+    {
+      "ref": "Q2",
+      "value": "S8050 or 2N2222 IR driver",
+      "footprint": "TO-92"
+    }
+  ],
+  "circuits": [
+    {
+      "name": "12V protection",
+      "path": "J1.1 -> F1 -> Q1 -> +12V; D1: +12V to GND"
+    },
+    {
+      "name": "servo rail A",
+      "path": "J2.3 -> F2 -> +6V_A; C1: +6V_A to GND"
+    },
+    {
+      "name": "servo rail B",
+      "path": "J3.3 -> F3 -> +6V_B; C2: +6V_B to GND"
+    },
+    {
+      "name": "PWM",
+      "path": "GPIO -> 330R -> Jx.SIG; 10k from Jx.SIG to GND (x4)"
+    },
+    {
+      "name": "IR TX",
+      "path": "GPIO23 -> 1k -> Q2 base; Q2 collector <- 2x(LED IR + resistor) from +5V; emitter -> GND"
+    },
+    {
+      "name": "IR RX",
+      "path": "J9/J10: +3V3, OUT to GPIO34/35, GND; each RX board has 100R + 4.7uF supply filter"
+    },
+    {
+      "name": "limit switches",
+      "path": "GPIO25/26/27/32: 10k pull-up to +3V3 and 100nF to GND; DNP"
+    }
+  ]
+}

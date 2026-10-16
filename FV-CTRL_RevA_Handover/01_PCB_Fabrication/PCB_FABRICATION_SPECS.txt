@@ -1,0 +1,28 @@
+================================================================================
+HO SO YEU CAU CONG NGHE SAN XUAT PCB (PCB FABRICATION SPECIFICATIONS)
+DU AN: FV-CTRL REV A (FRUIT VENDING DISPENSER CONTROLLER)
+================================================================================
+
+1. BO MACH CHINH (MAINBOARD - FV-CTRL_RevA_Gerbers.zip):
+   - Kich thuoc board (Board Dimensions): 100.0 mm x 100.0 mm (Hinh vuong)
+   - So lop dong (Layer Count): 2 lop (2-Layer)
+   - Vat lieu phoi (Base Material): FR-4 Standard (Tg 130-140C)
+   - Do day bo mach (Board Thickness): 1.6 mm (+/- 10%)
+   - Do day dong (Finished Copper Weight): 1 oz (35 um) - Chap nhan 2 oz neu co nhu cau
+   - Xu ly be mat (Surface Finish): Lead-Free HASL (hoac HASL with lead)
+   - Mau phu han (Solder Mask): Green (Xanh la cay tieu chuan) / Co the chon Mau Den
+   - Mau chu in linh kien (Silkscreen): White (Trang)
+   - Duong kinh lo khoan toi thieu (Min Hole / Drill): 0.40 mm (Via drill 0.4mm, Pad drill >= 0.8mm)
+   - Khoang cach an toan dong (Min Copper Clearance): 0.20 mm (8 mil)
+   - Khoang cach dong den mep bo (Edge Clearance): >= 0.55 mm
+   - Lo bat oc (Mounting Holes): 4 lo M3 (duong kinh 3.2 mm) tai 4 goc (4mm, 96mm)
+   - Yeu cau kiem tra (Testing): 100% Flying Probe Electrical Test
+
+2. BO VE TINH CAM BIEN HONG NGOAI (IR RX SATELLITE - FV-IR-RX_RevA_Gerbers.zip):
+   - Kich thuoc board (Board Dimensions): 18.0 mm x 42.0 mm
+   - So lop dong (Layer Count): 2 lop (2-Layer)
+   - So luong board tren he thong: 2 bo (IR RX1 va IR RX2)
+   - Quy cach vat lieu & be mat: Tuong tu bo mach chinh (FR-4, 1.6mm, 1 oz, HASL)
+   - Lo bat oc (Mounting Hole): 1 lo M3 (duong kinh 3.2 mm) tai dau tren board
+
+================================================================================
