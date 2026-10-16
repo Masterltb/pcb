@@ -159,7 +159,61 @@ class CodeGenerationTests(unittest.TestCase):
                 rpt_text = out_rpt.read_text(encoding="utf-8")
                 self.assertIn("Errors 0  Warnings 0", rpt_text, f"ERC violations in {sch.name}:\n{rpt_text}")
 
+    def test_native_pcb_generation_and_drc(self):
+        """Verify native mainboard PCB generation and 0 DRC violations / 0 unconnected pads."""
+        pcb_path = HARDWARE / "FV-CTRL_RevA.kicad_pcb"
+        self.assertTrue(pcb_path.exists(), "FV-CTRL_RevA.kicad_pcb must exist")
+
+        if shutil.which("kicad-cli") is not None:
+            drc_rpt = REPORTS / "drc.rpt"
+            cmd = [
+                "kicad-cli", "pcb", "drc",
+                "--severity-all",
+                "--format", "report",
+                "--output", str(drc_rpt),
+                str(pcb_path)
+            ]
+            res = subprocess.run(cmd, capture_output=True, text=True)
+            self.assertEqual(res.returncode, 0, f"DRC failed on {pcb_path.name}:\n{res.stdout}\n{res.stderr}")
+            rpt_text = drc_rpt.read_text(encoding="utf-8")
+            self.assertIn("Found 0 DRC violations", rpt_text, f"DRC violations found:\n{rpt_text}")
+            self.assertIn("Found 0 unconnected pads", rpt_text, f"Unconnected pads found:\n{rpt_text}")
+            self.assertIn("Found 0 Footprint errors", rpt_text, f"Footprint errors found:\n{rpt_text}")
+
+    def test_satellite_pcb_generation_and_drc(self):
+        """Verify satellite IR RX board generation and 0 DRC violations."""
+        for name in ["FV-IR-RX_RevA.kicad_pcb", "FV-IR-RX1_RevA.kicad_pcb", "FV-IR-RX2_RevA.kicad_pcb"]:
+            pcb_path = HARDWARE / name
+            self.assertTrue(pcb_path.exists(), f"{name} must exist")
+
+            if shutil.which("kicad-cli") is not None:
+                drc_rpt = REPORTS / f"drc_{pcb_path.stem}.rpt"
+                cmd = [
+                    "kicad-cli", "pcb", "drc",
+                    "--severity-all",
+                    "--format", "report",
+                    "--output", str(drc_rpt),
+                    str(pcb_path)
+                ]
+                res = subprocess.run(cmd, capture_output=True, text=True)
+                self.assertEqual(res.returncode, 0, f"DRC failed on {name}:\n{res.stdout}\n{res.stderr}")
+                rpt_text = drc_rpt.read_text(encoding="utf-8")
+                self.assertIn("Found 0 DRC violations", rpt_text, f"DRC violations in {name}:\n{rpt_text}")
+                self.assertIn("Found 0 unconnected pads", rpt_text, f"Unconnected pads in {name}:\n{rpt_text}")
+
+    def test_gerber_export(self):
+        """Verify Gerber and drill files exist and are populated."""
+        gerber_dir = ROOT / "gerbers" / "FV-CTRL_RevA"
+        self.assertTrue(gerber_dir.exists(), "Gerbers directory must exist")
+        gtl = gerber_dir / "FV-CTRL_RevA-F_Cu.gtl"
+        gbl = gerber_dir / "FV-CTRL_RevA-B_Cu.gbl"
+        drl = gerber_dir / "FV-CTRL_RevA.drl"
+        self.assertTrue(gtl.exists() and gtl.stat().st_size > 0, "F_Cu Gerber must exist and be non-empty")
+        self.assertTrue(gbl.exists() and gbl.stat().st_size > 0, "B_Cu Gerber must exist and be non-empty")
+        self.assertTrue(drl.exists() and drl.stat().st_size > 0, "Drill file must exist and be non-empty")
+
 
 if __name__ == "__main__":
     unittest.main()
+
 
