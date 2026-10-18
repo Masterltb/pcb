@@ -36,6 +36,9 @@ desktop.ini
 skidl_REPL.erc
 skidl_REPL.log
 test-erc.rpt
+report_dump.txt
+report_extracted.txt
+report_original_backup.docx
 
 # Antigravity / agent scratch
 .agents/
