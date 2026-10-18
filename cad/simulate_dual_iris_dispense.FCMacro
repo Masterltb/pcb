@@ -1,0 +1,328 @@
+# -*- coding: utf-8 -*-
+"""
+=============================================================================
+FreshVend - Dual-Tier Iris Escapement Dispensing Simulation Macro
+=============================================================================
+Author: Antigravity AI Assistant
+Project: FreshVend - Automated Fruit Vending Machine
+Description:
+    Runs inside FreeCAD GUI to animate the dual-tier iris aperture dispensing
+    mechanism with true FIFO stock rotation:
+    1. Standby: Mech 1 (Lower Iris) is CLOSED holding bottom bowl;
+                Mech 2 (Upper Iris) is OPEN.
+    2. Step 1: Mech 2 (Upper Iris) CLOSES, gripping Bowl #2 under rim.
+    3. Step 2: Mech 1 (Lower Iris) OPENS, freeing Bowl #1.
+    4. Step 3: Bowl #1 falls under gravity, breaks 38kHz IR beam (triggers drop confirmation),
+               and slides down chute to front customer retrieval door.
+    5. Step 4: Mech 1 (Lower Iris) CLOSES back.
+    6. Step 5: Mech 2 (Upper Iris) OPENS, dropping remaining stack down by 60mm onto Mech 1.
+    7. Standby restored, ready for next order.
+=============================================================================
+"""
+
+import time
+import math
+import FreeCAD
+import FreeCADGui as Gui
+from FreeCAD import Base, Vector, Rotation
+from PySide import QtGui, QtCore
+
+class FreshVendDispenseSimulator(QtGui.QDialog):
+    def __init__(self):
+        super(FreshVendDispenseSimulator, self).__init__()
+        self.doc = FreeCAD.ActiveDocument
+        if not self.doc or self.doc.Name != "FreshVend_Machine_3D":
+            # Try to open or switch to document
+            try:
+                self.doc = FreeCAD.getDocument("FreshVend_Machine_3D")
+                Gui.setActiveDocument("FreshVend_Machine_3D")
+            except Exception:
+                pass
+        
+        self.init_ui()
+        self.apply_visual_styling()
+        self.save_initial_placements()
+
+    def init_ui(self):
+        self.setWindowTitle("FreshVend: Dual-Iris Dispensing Simulator")
+        self.resize(420, 520)
+        
+        layout = QtGui.QVBoxLayout(self)
+        
+        # Title
+        title_lbl = QtGui.QLabel("<b>FreshVend: Dual-Iris FIFO Dispensing Simulation</b>")
+        title_lbl.setStyleSheet("font-size: 14px; color: #1E3A8A; margin-bottom: 6px;")
+        layout.addWidget(title_lbl)
+        
+        # Description
+        desc_lbl = QtGui.QLabel(
+            "Cơ chế màn chập Iris 2 tầng nhả tô trái cây (170mm, 850ml) theo chu trình FIFO:\n"
+            "• Cơ chế 1 (Dưới) & Cơ chế 2 (Trên) luân phiên đóng mở\n"
+            "• Khung máy 800 x 600 x 800 mm, cảm biến IR 38kHz xác nhận tô rơi"
+        )
+        desc_lbl.setWordWrap(True)
+        desc_lbl.setStyleSheet("color: #4B5563; font-size: 11px; margin-bottom: 10px;")
+        layout.addWidget(desc_lbl)
+        
+        # Action Buttons
+        btn_full = QtGui.QPushButton("▶ CHẠY CHU TRÌNH ĐẦY ĐỦ (AUTO FIFO)")
+        btn_full.setStyleSheet("background-color: #2563EB; color: white; font-weight: bold; padding: 10px; border-radius: 6px;")
+        btn_full.clicked.connect(self.run_full_cycle)
+        layout.addWidget(btn_full)
+        
+        grp_steps = QtGui.QGroupBox("Thao tác từng bước (Step-by-Step):")
+        steps_layout = QtGui.QVBoxLayout(grp_steps)
+        
+        self.btn_step1 = QtGui.QPushButton("1. Đóng Cơ chế 2 (TRÊN) - Giữ chồng tô phía trên")
+        self.btn_step1.clicked.connect(self.step1_close_upper)
+        steps_layout.addWidget(self.btn_step1)
+        
+        self.btn_step2 = QtGui.QPushButton("2. Mở Cơ chế 1 (DƯỚI) - Nhả tô đáy rơi")
+        self.btn_step2.clicked.connect(self.step2_open_lower)
+        steps_layout.addWidget(self.btn_step2)
+        
+        self.btn_step3 = QtGui.QPushButton("3. Tô rơi tự do & Cảm biến IR 38kHz báo nhận")
+        self.btn_step3.clicked.connect(self.step3_drop_bowl)
+        steps_layout.addWidget(self.btn_step3)
+        
+        self.btn_step4 = QtGui.QPushButton("4. Đóng Cơ chế 1 (DƯỚI) - Phục hồi cổng đáy")
+        self.btn_step4.clicked.connect(self.step4_close_lower)
+        steps_layout.addWidget(self.btn_step4)
+        
+        self.btn_step5 = QtGui.QPushButton("5. Mở Cơ chế 2 (TRÊN) - Chồng tô tụt xuống 1 nấc (60mm)")
+        self.btn_step5.clicked.connect(self.step5_open_upper)
+        steps_layout.addWidget(self.btn_step5)
+        
+        layout.addWidget(grp_steps)
+        
+        btn_reset = QtGui.QPushButton("↺ Đặt lại vị trí ban đầu (Reset Standby)")
+        btn_reset.setStyleSheet("background-color: #4B5563; color: white; padding: 6px; border-radius: 4px;")
+        btn_reset.clicked.connect(self.reset_positions)
+        layout.addWidget(btn_reset)
+        
+        # Console output log
+        layout.addWidget(QtGui.QLabel("<b>Nhật ký trạng thái Firmware (ESP32 State Machine):</b>"))
+        self.txt_log = QtGui.QTextEdit()
+        self.txt_log.setReadOnly(True)
+        self.txt_log.setStyleSheet("background-color: #111827; color: #10B981; font-family: Consolas, monospace; font-size: 11px;")
+        layout.addWidget(self.txt_log)
+        
+        self.log("[ESP32 FIRMWARE] System Initialized. State: IDLE")
+        self.log("[STATUS] Col 1 & 2: Lower Iris CLOSED, Upper Iris OPEN. Bowls ready.")
+
+    def log(self, msg):
+        self.txt_log.append(msg)
+        self.txt_log.verticalScrollBar().setValue(self.txt_log.verticalScrollBar().maximum())
+        QtGui.qApp.processEvents()
+
+    def apply_visual_styling(self):
+        """Set realistic CAD colors and materials."""
+        if not self.doc:
+            return
+        
+        # Color palette (RGB 0.0 - 1.0)
+        ALUMINUM = (0.75, 0.77, 0.80)
+        STEEL_ROD = (0.85, 0.88, 0.90)
+        PLASTIC_ORANGE = (1.0, 0.55, 0.1)
+        IRIS_BASE = (0.25, 0.28, 0.32)
+        IRIS_ROTOR = (0.35, 0.40, 0.45)
+        IRIS_BLADES = (0.85, 0.75, 0.35) # brass/gold
+        SERVO_BLACK = (0.15, 0.15, 0.18)
+        PCB_GREEN = (0.12, 0.55, 0.22)
+        IR_BEAM_RED = (1.0, 0.1, 0.1)
+        CHUTE_COLOR = (0.6, 0.7, 0.85)
+
+        for obj in self.doc.Objects:
+            v = getattr(obj, "ViewObject", None)
+            if not v:
+                continue
+            name = obj.Name
+            if "Frame" in name or "Baseplate" in name or "Support" in name:
+                v.ShapeColor = ALUMINUM
+            elif "Guide_Rods" in name:
+                v.ShapeColor = STEEL_ROD
+            elif "Bowl" in name:
+                v.ShapeColor = PLASTIC_ORANGE
+                v.Transparency = 25
+            elif "Stator" in name:
+                v.ShapeColor = IRIS_BASE
+            elif "Rotor" in name or "Ring" in name:
+                v.ShapeColor = IRIS_ROTOR
+            elif "Blades" in name:
+                v.ShapeColor = IRIS_BLADES
+            elif "Servo" in name:
+                v.ShapeColor = SERVO_BLACK
+            elif "PCB" in name or "Board" in name:
+                v.ShapeColor = PCB_GREEN
+            elif "Optical_Beam" in name:
+                v.ShapeColor = IR_BEAM_RED
+                v.Transparency = 10
+            elif "Chute" in name or "Slide" in name:
+                v.ShapeColor = CHUTE_COLOR
+                v.Transparency = 30
+
+        Gui.updateGui()
+
+    def save_initial_placements(self):
+        """Save base positions of all movable parts."""
+        self.init_placements = {}
+        if not self.doc:
+            return
+        for obj in self.doc.Objects:
+            self.init_placements[obj.Name] = obj.Placement.copy()
+
+    def reset_positions(self):
+        """Restore all parts to original standby state."""
+        if not self.doc:
+            return
+        for name, plc in self.init_placements.items():
+            obj = self.doc.getObject(name)
+            if obj:
+                obj.Placement = plc.copy()
+        
+        # Reset IR beam color
+        beam = self.doc.getObject("Col1_IR_Optical_Beam_Line")
+        if beam and hasattr(beam, "ViewObject"):
+            beam.ViewObject.ShapeColor = (1.0, 0.1, 0.1)
+
+        self.doc.recompute()
+        Gui.updateGui()
+        self.log("[RESET] Reset to initial Standby state: Lower Iris CLOSED, Upper Iris OPEN.")
+
+    def step1_close_upper(self):
+        """Rotate Upper Iris Rotor & Blades closed (clamp 2nd bowl)."""
+        self.log("--> [STEP 1] Đóng Cơ chế 2 (TRÊN - Upper Iris)...")
+        rotor = self.doc.getObject("Col1_Upper_Iris_Mech2_Drive_Rotor_Ring")
+        blades = self.doc.getObject("Col1_Upper_Iris_Mech2_Blades_x6_OPEN")
+        cx, cy, cz = 260.0, 300.0, 260.0
+        
+        # Animate rotation 0 to -28 degrees around Z at (cx, cy)
+        for i in range(15):
+            d_ang = -28.0 / 15.0
+            if rotor:
+                rotor.Placement.rotate(Vector(cx, cy, cz), Vector(0,0,1), d_ang)
+            if blades:
+                blades.Placement.rotate(Vector(cx, cy, cz), Vector(0,0,1), d_ang)
+            Gui.updateGui()
+            time.sleep(0.02)
+            
+        self.log("[STEP 1 SUCCESS] Cơ chế 2 đã ĐÓNG: Kẹp chặt tô thứ 2 (dưới vành 170mm). Chồng tô phía trên đã được giữ an toàn.")
+
+    def step2_open_lower(self):
+        """Rotate Lower Iris Rotor & Blades open (release bottom bowl)."""
+        self.log("--> [STEP 2] Mở Cơ chế 1 (DƯỚI - Lower Iris)...")
+        rotor = self.doc.getObject("Col1_Lower_Iris_Mech1_Drive_Rotor_Ring")
+        blades = self.doc.getObject("Col1_Lower_Iris_Mech1_Blades_x6_CLOSED")
+        cx, cy, cz = 260.0, 300.0, 200.0
+        
+        # Animate rotation from 0 to +28 degrees around Z
+        for i in range(15):
+            d_ang = 28.0 / 15.0
+            if rotor:
+                rotor.Placement.rotate(Vector(cx, cy, cz), Vector(0,0,1), d_ang)
+            if blades:
+                blades.Placement.rotate(Vector(cx, cy, cz), Vector(0,0,1), d_ang)
+            Gui.updateGui()
+            time.sleep(0.02)
+            
+        self.log("[STEP 2 SUCCESS] Cơ chế 1 đã MỞ: Đường kính mở đạt 185mm (> 170mm). Tô đáy bắt đầu rơi tự do.")
+
+    def step3_drop_bowl(self):
+        """Animate Bowl #1 falling vertically, crossing IR beam, and sliding to retrieval hatch."""
+        self.log("--> [STEP 3] Tô #1 rơi tự do qua cảm biến quang IR 38kHz...")
+        b1 = self.doc.getObject("Col1_Bowl_1_Bottom")
+        beam = self.doc.getObject("Col1_IR_Optical_Beam_Line")
+        if not b1:
+            return
+
+        # Fall from Z = 200 down to Z = 75 mm
+        for step in range(20):
+            b1.Placement.move(Vector(0, 0, -6.25))
+            Gui.updateGui()
+            time.sleep(0.015)
+            # Beam intersection at Z approx 120 mm
+            if step == 12:
+                if beam and hasattr(beam, "ViewObject"):
+                    beam.ViewObject.ShapeColor = (0.1, 1.0, 0.2) # Flash Green
+                self.log("[IR SENSOR] *** TÍN HIỆU RƠI XÁC NHẬN! (TSOP38238 ngắt tia 38kHz, OUT = LOW) ***")
+                Gui.updateGui()
+
+        # Slide along chute: forward Y from 300 to 50 mm, Z from 75 to 35 mm
+        self.log("--> [CHUTE] Tô trượt theo máng nghiêng ra cửa nhận của khách...")
+        for step in range(25):
+            b1.Placement.move(Vector(0, -10.0, -1.6))
+            Gui.updateGui()
+            time.sleep(0.015)
+
+        self.log("[STEP 3 SUCCESS] Tô #1 đã nằm tại khay nhận! Khách hàng có thể lấy tô.")
+
+    def step4_close_lower(self):
+        """Rotate Lower Iris Rotor & Blades closed back to 135mm aperture."""
+        self.log("--> [STEP 4] Đóng lại Cơ chế 1 (DƯỚI - Lower Iris)...")
+        rotor = self.doc.getObject("Col1_Lower_Iris_Mech1_Drive_Rotor_Ring")
+        blades = self.doc.getObject("Col1_Lower_Iris_Mech1_Blades_x6_CLOSED")
+        cx, cy, cz = 260.0, 300.0, 200.0
+        
+        for i in range(15):
+            d_ang = -28.0 / 15.0
+            if rotor:
+                rotor.Placement.rotate(Vector(cx, cy, cz), Vector(0,0,1), d_ang)
+            if blades:
+                blades.Placement.rotate(Vector(cx, cy, cz), Vector(0,0,1), d_ang)
+            Gui.updateGui()
+            time.sleep(0.02)
+            
+        self.log("[STEP 4 SUCCESS] Cơ chế 1 đã ĐÓNG LẠI: Khẩu độ thu hẹp 135mm, sẵn sàng hứng tô tiếp theo.")
+
+    def step5_open_upper(self):
+        """Rotate Upper Iris open, lowering Bowl #2 and remaining stack down by 60mm onto Lower Iris."""
+        self.log("--> [STEP 5] Mở Cơ chế 2 (TRÊN) - Hạ chồng tô xuống 1 nấc (60mm)...")
+        rotor = self.doc.getObject("Col1_Upper_Iris_Mech2_Drive_Rotor_Ring")
+        blades = self.doc.getObject("Col1_Upper_Iris_Mech2_Blades_x6_OPEN")
+        cx, cy, cz = 260.0, 300.0, 260.0
+        
+        # Open upper blades
+        for i in range(15):
+            d_ang = 28.0 / 15.0
+            if rotor:
+                rotor.Placement.rotate(Vector(cx, cy, cz), Vector(0,0,1), d_ang)
+            if blades:
+                blades.Placement.rotate(Vector(cx, cy, cz), Vector(0,0,1), d_ang)
+            Gui.updateGui()
+            time.sleep(0.015)
+
+        # Drop upper stack bowls (Bowl 2, 3, 4, 5) down by 60 mm
+        upper_bowls = [
+            self.doc.getObject("Col1_Bowl_2_UpperGate"),
+            self.doc.getObject("Col1_Bowl_3"),
+            self.doc.getObject("Col1_Bowl_4"),
+            self.doc.getObject("Col1_Bowl_5")
+        ]
+        
+        for step in range(20):
+            for b in upper_bowls:
+                if b:
+                    b.Placement.move(Vector(0, 0, -3.0))
+            Gui.updateGui()
+            time.sleep(0.015)
+            
+        self.log("[STEP 5 SUCCESS] Chồng tô đã tụt xuống tựa lên Cơ chế 1. Tô #2 trở thành tô đáy mới!")
+        self.log("[ESP32 FIRMWARE] CHU TRÌNH FIFO HOÀN TẤT. Sẵn sàng cho đơn hàng tiếp theo.")
+
+    def run_full_cycle(self):
+        """Run the complete automated FIFO dispense sequence sequentially."""
+        self.reset_positions()
+        time.sleep(0.3)
+        self.step1_close_upper()
+        time.sleep(0.3)
+        self.step2_open_lower()
+        time.sleep(0.3)
+        self.step3_drop_bowl()
+        time.sleep(0.3)
+        self.step4_close_lower()
+        time.sleep(0.3)
+        self.step5_open_upper()
+
+# Launch Dialog
+dialog = FreshVendDispenseSimulator()
+dialog.show()
