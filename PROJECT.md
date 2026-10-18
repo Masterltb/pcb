@@ -108,7 +108,7 @@ Phần điện lưới (AC) của nguồn tổ ong cần vỏ kín che đầu AC
 | Ngăn chứa tô có làm lạnh/làm mát không (ảnh hưởng ngưng tụ hơi nước lên board) | TODO(user) |
 | Nguy cơ nước, nước trái cây, bụi văng vào khu vực board; vị trí board trong máy | TODO(user) |
 | Rung động khi vận hành | TODO(user) |
-| Tô nhựa dùng một lần: đường kính miệng 17 cm, cao 6 cm, dung tích 850 ml; khối lượng khi đầy và chất liệu (trong suốt/mờ) | Đã cung cấp: miệng 17 cm, cao 6 cm, 850 ml; khối lượng khi đầy và chất liệu chưa xác nhận |
+| Tô nhựa dùng một lần: đường kính miệng 17 cm, cao 6 cm, dung tích 850 ml; khối lượng khi đầy và chất liệu (trong suốt/mờ) | Đã xác nhận: miệng 17 cm, cao 6 cm, 850 ml; Chất liệu: Nhựa PET/PP trong suốt hoàn toàn (đặt cảm biến IR góc chiếu lệch hoặc đón gờ vành để khúc xạ/tán xạ cản tia 940nm) |
 | Số tô tối đa mỗi cột, chiều cao chồng | TODO(user) |
 | Thời gian mở/đóng mỗi cơ cấu giữ (ms) với servo 360 | TODO(user) |
 | Chiều dài cáp servo, cáp IR (cm) | TODO(user) |
@@ -122,7 +122,7 @@ Máy trạng thái mỗi cột:
 `IDLE (TRÊN mở, DƯỚI đóng)` -> `CLOSE_TOP` -> `OPEN_BOT` -> `WAIT_IR (timeout T_ir)` -> `CLOSE_BOT` -> `OPEN_TOP` -> `IDLE`.
 - Bất biến: không bao giờ để TRÊN và DƯỚI cùng mở; mỗi cột chỉ một servo chạy tại một thời điểm (firmware có interlock).
 - IR timeout (tô không rơi, hết tô hoặc kẹt): đóng DƯỚI, KHÔNG mở TRÊN, báo lỗi `SOLD_OUT_OR_JAM`.
-- Mất điện giữa chu trình: servo 360 không có phản hồi vị trí nên sau khi khởi động lại trạng thái cơ khí là "không biết". Cần quy trình homing (limit switch hoặc chạy đóng theo thời gian dài hơn) trước khi cho bán. TODO(user): chọn cách.
+- Mất điện giữa chu trình: servo 360 điều khiển theo thời gian (Timed Rotation) kết hợp giám sát cảm biến rơi IR 38kHz (không cần thêm dây limit switch). Khi khởi động lại: thực hiện chu trình phục hồi đóng cả 2 cơ chế theo thời gian quy định để đưa về trạng thái an toàn trước khi vào IDLE.
 - Giá trị timeout T_ir, thời gian mỗi bước: TODO(user).
 
 ## 14. Ghi chú IR (cần xác nhận bằng datasheet và test thực tế)

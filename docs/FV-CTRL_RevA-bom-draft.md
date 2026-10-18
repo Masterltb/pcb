@@ -20,8 +20,19 @@
 | C4 | 100nF | `Device:C` | Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm | No | 100nF 50V Ceramic |
 | J7 | S2_TOP | `Connector_Generic:Conn_01x03` | Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical | No | 3-pin Header |
 | J8 | S2_BOT | `Connector_Generic:Conn_01x03` | Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical | No | 3-pin Header |
-| J18 | ESP32_Left (Pins 1-19) | `Connector_Generic:Conn_01x19` | Connector_PinSocket_2.54mm:PinSocket_1x19_P2.54mm_Vertical | No | 19-pin Female Header 2.54mm |
-| J19 | ESP32_Right (Pins 20-38) | `Connector_Generic:Conn_01x19` | Connector_PinSocket_2.54mm:PinSocket_1x19_P2.54mm_Vertical | No | 19-pin Female Header 2.54mm |
+| U3 | AMS1117-3.3 | `Regulator_Linear:AP1117-15` | Package_TO_SOT_SMD:SOT-223-3_TabPin2 | No | AMS1117-3.3 |
+| C11 | 10uF 16V | `Device:C_Polarized` | Capacitor_THT:CP_Radial_D5.0mm_P2.00mm | No | 10uF 16V Radial |
+| C12 | 22uF 16V | `Device:C_Polarized` | Capacitor_THT:CP_Radial_D5.0mm_P2.00mm | No | 22uF 16V Radial |
+| C13 | 100nF | `Device:C` | Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm | No | 100nF 50V Ceramic |
+| U2 | ESP32-WROOM-32 | `RF_Module:ESP32-WROOM-32` | RF_Module:ESP32-WROOM-32 | No | ESP32-WROOM-32E |
+| R10 | 10k | `Device:R` | Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal | No | 10k 1/4W 5% |
+| C14 | 100nF | `Device:C` | Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm | No | 100nF 50V Ceramic |
+| SW1 | SW_EN | `Switch:SW_Push` | Button_Switch_THT:SW_PUSH_6mm_H5mm | No | SW-PB-6mm |
+| R11 | 10k | `Device:R` | Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal | No | 10k 1/4W 5% |
+| SW2 | SW_BOOT | `Switch:SW_Push` | Button_Switch_THT:SW_PUSH_6mm_H5mm | No | SW-PB-6mm |
+| J20 | PROG_UART0 | `Connector_Generic:Conn_01x06` | Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical | No | Header 1x06 2.54mm |
+| J21 | SENSOR_ADC | `Connector_Generic:Conn_01x04` | Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical | No | Header 1x04 2.54mm |
+| J22 | SENSOR_DIGITAL | `Connector_Generic:Conn_01x08` | Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical | No | Header 1x08 2.54mm |
 | R1 | 330R | `Device:R` | Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal | No | 330R 1/4W 5% |
 | R5 | 10k | `Device:R` | Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal | No | 10k 1/4W 5% |
 | R2 | 330R | `Device:R` | Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal | No | 330R 1/4W 5% |

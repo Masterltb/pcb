@@ -40,7 +40,9 @@ def get_lib_symbol(lib_file: str, sym_name: str, target_lib_id: str) -> str:
     if not m:
         raise ValueError(f"Symbol '{sym_name}' not found in {lib_file}")
     body = m.group(0).strip()
+    short_target = target_lib_id.split(":")[-1]
     body = re.sub(rf'^\(symbol "{re.escape(sym_name)}"', f'(symbol "{target_lib_id}"', body, count=1)
+    body = re.sub(rf'\(symbol "{re.escape(sym_name)}(_[0-9]+_[0-9]+)"', rf'(symbol "{short_target}\1"', body)
     return "\t\t" + body.replace("\n", "\n\t\t")
 
 
@@ -90,8 +92,13 @@ PIN_DB = {
     "Connector_Generic:Conn_01x02": extract_symbol_pins("Connector_Generic.kicad_sym", "Conn_01x02"),
     "Connector_Generic:Conn_01x03": extract_symbol_pins("Connector_Generic.kicad_sym", "Conn_01x03"),
     "Connector_Generic:Conn_01x04": extract_symbol_pins("Connector_Generic.kicad_sym", "Conn_01x04"),
+    "Connector_Generic:Conn_01x06": extract_symbol_pins("Connector_Generic.kicad_sym", "Conn_01x06"),
+    "Connector_Generic:Conn_01x08": extract_symbol_pins("Connector_Generic.kicad_sym", "Conn_01x08"),
     "Connector_Generic:Conn_01x19": extract_symbol_pins("Connector_Generic.kicad_sym", "Conn_01x19"),
     "Connector:TestPoint": extract_symbol_pins("Connector.kicad_sym", "TestPoint"),
+    "Switch:SW_Push": extract_symbol_pins("Switch.kicad_sym", "SW_Push"),
+    "Regulator_Linear:AP1117-15": extract_symbol_pins("Regulator_Linear.kicad_sym", "AP1117-15"),
+    "RF_Module:ESP32-WROOM-32": extract_symbol_pins("RF_Module.kicad_sym", "ESP32-WROOM-32"),
     "power:GND": extract_symbol_pins("power.kicad_sym", "GND"),
     "power:+12V": extract_symbol_pins("power.kicad_sym", "+12V"),
     "power:+5V": extract_symbol_pins("power.kicad_sym", "+5V"),
@@ -139,9 +146,20 @@ FOOTPRINT_MAP = {
     "J7": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
     "J8": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
 
-    # Block 4: ESP32 Headers & PWM Conditioning (0.9" / 22.86mm pitch confirmed)
-    "J18": "Connector_PinSocket_2.54mm:PinSocket_1x19_P2.54mm_Vertical",
-    "J19": "Connector_PinSocket_2.54mm:PinSocket_1x19_P2.54mm_Vertical",
+    # Block 4: ESP32-WROOM-32 SMD MCU, 3.3V LDO, Programming & Expansion
+    "U2": "RF_Module:ESP32-WROOM-32",
+    "U3": "Package_TO_SOT_SMD:SOT-223-3_TabPin2",
+    "C11": "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm",
+    "C12": "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm",
+    "C13": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+    "C14": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+    "R10": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "R11": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+    "SW1": "Button_Switch_THT:SW_PUSH_6mm_H5mm",
+    "SW2": "Button_Switch_THT:SW_PUSH_6mm_H5mm",
+    "J20": "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical",
+    "J21": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+    "J22": "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical",
     "R1": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
     "R2": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
     "R3": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
@@ -422,8 +440,13 @@ def generate_all():
     sb.add_lib_symbol("Connector_Generic.kicad_sym", "Conn_01x02", "Connector_Generic:Conn_01x02")
     sb.add_lib_symbol("Connector_Generic.kicad_sym", "Conn_01x03", "Connector_Generic:Conn_01x03")
     sb.add_lib_symbol("Connector_Generic.kicad_sym", "Conn_01x04", "Connector_Generic:Conn_01x04")
+    sb.add_lib_symbol("Connector_Generic.kicad_sym", "Conn_01x06", "Connector_Generic:Conn_01x06")
+    sb.add_lib_symbol("Connector_Generic.kicad_sym", "Conn_01x08", "Connector_Generic:Conn_01x08")
     sb.add_lib_symbol("Connector_Generic.kicad_sym", "Conn_01x19", "Connector_Generic:Conn_01x19")
     sb.add_lib_symbol("Connector.kicad_sym", "TestPoint", "Connector:TestPoint")
+    sb.add_lib_symbol("Switch.kicad_sym", "SW_Push", "Switch:SW_Push")
+    sb.add_lib_symbol("Regulator_Linear.kicad_sym", "AP1117-15", "Regulator_Linear:AP1117-15")
+    sb.add_lib_symbol("RF_Module.kicad_sym", "ESP32-WROOM-32", "RF_Module:ESP32-WROOM-32")
     sb.add_lib_symbol("Device.kicad_sym", "R", "Device:R")
     sb.add_lib_symbol("Device.kicad_sym", "C", "Device:C")
     sb.add_lib_symbol("Device.kicad_sym", "C_Polarized", "Device:C_Polarized")
@@ -761,95 +784,264 @@ def generate_all():
     sb.record_net("S2_BOT_PWM", "J8.3", "signal")
 
     # =========================================================================
-    # BLOCK 4: ESP32 DEVKIT 38 HEADER INTERFACE & PWM CONDITIONING
+    # BLOCK 4: ESP32-WROOM-32 SMD MCU, 3.3V LDO, RESET, BOOT & SENSOR EXPANSION
     # =========================================================================
     sb.add_box(132.08, 114.3, 274.32, 213.36,
-               "4. ESP32 DEVKIT 38 HEADER INTERFACE & PWM CONDITIONING",
-               "Female socket headers | No strapping pins used | 330R series + 10k pull-down boot protection")
+               "4. ESP32-WROOM-32 SMD MCU, 3.3V LDO & EXPANSION",
+               "ESP32-WROOM-32 SMD | AMS1117-3.3 LDO | UART0 Flash | ADC & Digital Sensor Headers")
 
-    # Left ESP32 header: J18 at (152.4, 157.48)
-    sb.add_symbol("Connector_Generic:Conn_01x19", "J18", "ESP32_Left (Pins 1-19)", 152.4, 157.48,
-                  pins_count=19, footprint="",
-                  desc="ESP32 DevKit 38 Left 19-pin Socket Header", mpn="19-pin Female Header 2.54mm")
+    # 4.1. AMS1117-3.3 LDO Regulator at (152.4, 132.08)
+    sb.add_symbol("Regulator_Linear:AP1117-15", "U3", "AMS1117-3.3", 152.4, 132.08,
+                  footprint="", desc="3.3V 1A LDO voltage regulator (SOT-223)", mpn="AMS1117-3.3",
+                  pin_names=["1", "2", "3"])
+    p_u3_1 = get_pin_pos("Regulator_Linear:AP1117-15", 1, 152.4, 132.08)
+    p_u3_2 = get_pin_pos("Regulator_Linear:AP1117-15", 2, 152.4, 132.08)
+    p_u3_3 = get_pin_pos("Regulator_Linear:AP1117-15", 3, 152.4, 132.08)
 
-    esp_l_signals = {
+    # U3 Pin 3 (VI) -> +5V
+    sb.add_wire(p_u3_3[0], p_u3_3[1], 137.16, p_u3_3[1])
+    sb.add_label("+5V", 137.16, p_u3_3[1])
+    sb.record_net("+5V", "U3.3", "power")
+
+    # U3 Pin 1 (GND) -> GND
+    sb.add_power_sym("power:GND", p_u3_1[0], p_u3_1[1], 0)
+    sb.record_net("GND", "U3.1", "power")
+
+    # U3 Pin 2 (VO) -> +3V3 & PWR_FLAG
+    sb.add_wire(p_u3_2[0], p_u3_2[1], 167.64, p_u3_2[1])
+    sb.add_junction(167.64, p_u3_2[1])
+    sb.add_label("+3V3", 167.64, p_u3_2[1])
+    sb.record_net("+3V3", "U3.2", "power")
+
+    # C11: 10uF 16V input filter at (142.24, 142.24)
+    sb.add_symbol("Device:C_Polarized", "C11", "10uF 16V", 142.24, 142.24,
+                  pins_count=2, footprint="", desc="LDO input bulk capacitor", mpn="10uF 16V Radial")
+    p_c11_1 = get_pin_pos("Device:C_Polarized", 1, 142.24, 142.24)
+    p_c11_2 = get_pin_pos("Device:C_Polarized", 2, 142.24, 142.24)
+    sb.add_wire(137.16, p_u3_3[1], 142.24, p_u3_3[1])
+    sb.add_junction(142.24, p_u3_3[1])
+    sb.add_wire(142.24, p_u3_3[1], p_c11_1[0], p_c11_1[1])
+    sb.record_net("+5V", "C11.1", "power")
+    sb.add_power_sym("power:GND", p_c11_2[0], p_c11_2[1], 0)
+    sb.record_net("GND", "C11.2", "power")
+
+    # C12: 22uF 16V output filter at (162.56, 142.24)
+    sb.add_symbol("Device:C_Polarized", "C12", "22uF 16V", 162.56, 142.24,
+                  pins_count=2, footprint="", desc="LDO output bulk capacitor", mpn="22uF 16V Radial")
+    p_c12_1 = get_pin_pos("Device:C_Polarized", 1, 162.56, 142.24)
+    p_c12_2 = get_pin_pos("Device:C_Polarized", 2, 162.56, 142.24)
+    sb.add_wire(167.64, p_u3_2[1], 162.56, p_u3_2[1])
+    sb.add_junction(162.56, p_u3_2[1])
+    sb.add_wire(162.56, p_u3_2[1], p_c12_1[0], p_c12_1[1])
+    sb.record_net("+3V3", "C12.1", "power")
+    sb.add_power_sym("power:GND", p_c12_2[0], p_c12_2[1], 0)
+    sb.record_net("GND", "C12.2", "power")
+
+    # C13: 100nF high-frequency ceramic at (172.72, 142.24)
+    sb.add_symbol("Device:C", "C13", "100nF", 172.72, 142.24,
+                  pins_count=2, footprint="", desc="LDO output high-freq decoupling", mpn="100nF 50V Ceramic")
+    p_c13_1 = get_pin_pos("Device:C", 1, 172.72, 142.24)
+    p_c13_2 = get_pin_pos("Device:C", 2, 172.72, 142.24)
+    sb.add_wire(167.64, p_u3_2[1], 172.72, p_u3_2[1])
+    sb.add_junction(172.72, p_u3_2[1])
+    sb.add_wire(172.72, p_u3_2[1], p_c13_1[0], p_c13_1[1])
+    sb.record_net("+3V3", "C13.1", "power")
+    sb.add_power_sym("power:GND", p_c13_2[0], p_c13_2[1], 0)
+    sb.record_net("GND", "C13.2", "power")
+
+    # 4.2. ESP32-WROOM-32 SMD MCU at (195.58, 165.1)
+    sb.add_symbol("RF_Module:ESP32-WROOM-32", "U2", "ESP32-WROOM-32", 195.58, 165.1,
+                  pins_count=39, footprint="",
+                  desc="ESP32-WROOM-32 SMD Wi-Fi/BT module", mpn="ESP32-WROOM-32E")
+
+    p_u2 = {i: get_pin_pos("RF_Module:ESP32-WROOM-32", i, 195.58, 165.1) for i in range(1, 40)}
+
+    # Power Pins
+    sb.add_wire(p_u2[2][0], p_u2[2][1], p_u2[2][0], p_u2[2][1] - 5.08)
+    sb.add_label("+3V3", p_u2[2][0], p_u2[2][1] - 5.08)
+    sb.record_net("+3V3", "U2.2", "power")
+
+    sb.add_power_sym("power:GND", p_u2[1][0], p_u2[1][1], 0)
+    sb.record_net("GND", "U2.1", "power")
+    sb.record_net("GND", "U2.15", "power")
+    sb.record_net("GND", "U2.38", "power")
+    sb.record_net("GND", "U2.39", "power")
+
+    # Left Side Pins
+    sb.add_wire(p_u2[3][0], p_u2[3][1], 175.26, p_u2[3][1])
+    sb.add_label("ESP_EN", 175.26, p_u2[3][1])
+    sb.record_net("ESP_EN", "U2.3", "signal")
+
+    sb.add_wire(p_u2[4][0], p_u2[4][1], 175.26, p_u2[4][1])
+    sb.add_label("ADC_VP", 175.26, p_u2[4][1])
+    sb.record_net("ADC_VP", "U2.4", "signal")
+
+    sb.add_wire(p_u2[5][0], p_u2[5][1], 175.26, p_u2[5][1])
+    sb.add_label("ADC_VN", 175.26, p_u2[5][1])
+    sb.record_net("ADC_VN", "U2.5", "signal")
+
+    for p_idx in [17, 18, 19, 20, 21, 22, 32]:
+        sb.add_no_connect(p_u2[p_idx][0], p_u2[p_idx][1])
+
+    # Right Side Pins
+    esp_right_signals = {
+        25: ("ESP_IO0", "signal"),
+        35: ("ESP_TXD0", "signal"),
+        34: ("ESP_RXD0", "signal"),
+        24: ("EXP_IO2", "signal"),
+        26: ("EXP_IO4", "signal"),
+        29: ("EXP_IO5", "signal"),
+        16: ("EXP_IO13", "signal"),
+        13: ("EXP_IO14", "signal"),
+        27: ("ESP_S1_TOP_PWM", "signal"),
+        28: ("ESP_S1_BOT_PWM", "signal"),
+        30: ("ESP_S2_TOP_PWM", "signal"),
+        31: ("ESP_S2_BOT_PWM", "signal"),
+        33: ("I2C_SDA", "signal"),
+        36: ("I2C_SCL", "signal"),
+        37: ("ESP_IR_TX", "signal"),
+        10: ("LS1", "signal"),
+        11: ("LS2", "signal"),
+        12: ("LS3", "signal"),
+        8:  ("LS4", "signal"),
+        9:  ("SPARE_GPIO33", "signal"),
+        6:  ("IR_RX1", "signal"),
+        7:  ("IR_RX2", "signal"),
+    }
+
+    sb.add_no_connect(p_u2[14][0], p_u2[14][1])
+    sb.add_no_connect(p_u2[23][0], p_u2[23][1])
+
+    for p_num, (sig_name, sig_type) in esp_right_signals.items():
+        pt = p_u2[p_num]
+        sb.add_wire(pt[0], pt[1], 218.44, pt[1])
+        sb.add_label(sig_name, 218.44, pt[1])
+        sb.record_net(sig_name, f"U2.{p_num}", sig_type)
+
+    # 4.3. Reset Circuit (SW1, R10, C14) at (144.78, 157.48)
+    sb.add_symbol("Device:R", "R10", "10k", 144.78, 157.48, rot=90,
+                  footprint="", desc="EN pull-up resistor", mpn="10k 1/4W 5%")
+    p_r10_1 = get_pin_pos("Device:R", 1, 144.78, 157.48, rot=90)
+    p_r10_2 = get_pin_pos("Device:R", 2, 144.78, 157.48, rot=90)
+    sb.add_wire(137.16, 157.48, p_r10_1[0], p_r10_1[1])
+    sb.add_label("+3V3", 137.16, 157.48)
+    sb.record_net("+3V3", "R10.1", "power")
+
+    sb.add_wire(p_r10_2[0], 157.48, 154.94, 157.48)
+    sb.add_junction(154.94, 157.48)
+    sb.add_label("ESP_EN", 154.94, 157.48)
+    sb.record_net("ESP_EN", "R10.2", "signal")
+
+    sb.add_symbol("Device:C", "C14", "100nF", 154.94, 167.64,
+                  pins_count=2, footprint="", desc="EN delay filter capacitor", mpn="100nF 50V Ceramic")
+    p_c14_1 = get_pin_pos("Device:C", 1, 154.94, 167.64)
+    p_c14_2 = get_pin_pos("Device:C", 2, 154.94, 167.64)
+    sb.add_wire(154.94, 157.48, p_c14_1[0], p_c14_1[1])
+    sb.record_net("ESP_EN", "C14.1", "signal")
+    sb.add_power_sym("power:GND", p_c14_2[0], p_c14_2[1], 0)
+    sb.record_net("GND", "C14.2", "power")
+
+    sb.add_symbol("Switch:SW_Push", "SW1", "SW_EN", 167.64, 167.64,
+                  pins_count=2, footprint="", desc="Tactile Reset Button", mpn="SW-PB-6mm")
+    p_sw1_1 = get_pin_pos("Switch:SW_Push", 1, 167.64, 167.64)
+    p_sw1_2 = get_pin_pos("Switch:SW_Push", 2, 167.64, 167.64)
+    sb.add_wire(154.94, 157.48, 162.56, 157.48)
+    sb.add_junction(162.56, 157.48)
+    sb.add_wire(162.56, 157.48, 162.56, p_sw1_1[1])
+    sb.add_wire(162.56, p_sw1_1[1], p_sw1_1[0], p_sw1_1[1])
+    sb.record_net("ESP_EN", "SW1.1", "signal")
+    sb.add_power_sym("power:GND", p_sw1_2[0], p_sw1_2[1], 0)
+    sb.record_net("GND", "SW1.2", "power")
+
+    # 4.4. Boot Circuit (SW2, R11) at (144.78, 180.34)
+    sb.add_symbol("Device:R", "R11", "10k", 144.78, 180.34, rot=90,
+                  footprint="", desc="IO0 pull-up resistor", mpn="10k 1/4W 5%")
+    p_r11_1 = get_pin_pos("Device:R", 1, 144.78, 180.34, rot=90)
+    p_r11_2 = get_pin_pos("Device:R", 2, 144.78, 180.34, rot=90)
+    sb.add_wire(137.16, 180.34, p_r11_1[0], p_r11_1[1])
+    sb.add_label("+3V3", 137.16, 180.34)
+    sb.record_net("+3V3", "R11.1", "power")
+
+    sb.add_wire(p_r11_2[0], 180.34, 154.94, 180.34)
+    sb.add_junction(154.94, 180.34)
+    sb.add_label("ESP_IO0", 154.94, 180.34)
+    sb.record_net("ESP_IO0", "R11.2", "signal")
+
+    sb.add_symbol("Switch:SW_Push", "SW2", "SW_BOOT", 167.64, 180.34,
+                  pins_count=2, footprint="", desc="Tactile Boot Button", mpn="SW-PB-6mm")
+    p_sw2_1 = get_pin_pos("Switch:SW_Push", 1, 167.64, 180.34)
+    p_sw2_2 = get_pin_pos("Switch:SW_Push", 2, 167.64, 180.34)
+    sb.add_wire(154.94, 180.34, p_sw2_1[0], p_sw2_1[1])
+    sb.record_net("ESP_IO0", "SW2.1", "signal")
+    sb.add_power_sym("power:GND", p_sw2_2[0], p_sw2_2[1], 0)
+    sb.record_net("GND", "SW2.2", "power")
+
+    # 4.5. Programming & Expansion Headers (J20, J21, J22)
+    # J20: UART0 Flash/Debug Header (1x06) at (144.78, 203.2)
+    sb.add_symbol("Connector_Generic:Conn_01x06", "J20", "PROG_UART0", 144.78, 203.2,
+                  pins_count=6, footprint="", desc="UART0 Flashing & Serial Monitor Header", mpn="Header 1x06 2.54mm")
+    uart_pins = {
         1: ("+3V3", "power"),
-        2: (None, "nc"),
-        3: (None, "nc"),
-        4: (None, "nc"),
-        5: ("IR_RX1", "signal"),
-        6: ("IR_RX2", "signal"),
-        7: ("LS4", "signal"),
-        8: ("SPARE_GPIO33", "signal"),
-        9: ("LS1", "signal"),
-        10: ("LS2", "signal"),
-        11: ("LS3", "signal"),
-        12: (None, "nc"),
-        13: (None, "nc"),
-        14: ("GND", "power"),
-        15: (None, "nc"),
-        16: (None, "nc"),
-        17: (None, "nc"),
-        18: (None, "nc"),
-        19: ("+5V", "power"),
+        2: ("ESP_TXD0", "signal"),
+        3: ("ESP_RXD0", "signal"),
+        4: ("GND", "power"),
+        5: ("ESP_IO0", "signal"),
+        6: ("ESP_EN", "signal"),
     }
-
-    for pin_idx, (sig_name, sig_type) in esp_l_signals.items():
-        pin_pt = get_pin_pos("Connector_Generic:Conn_01x19", pin_idx, 152.4, 157.48)
-        if sig_type == "nc":
-            sb.add_no_connect(pin_pt[0], pin_pt[1])
-        elif sig_name == "GND":
-            sb.add_wire(pin_pt[0], pin_pt[1], 137.16, pin_pt[1])
-            sb.add_power_sym("power:GND", 137.16, pin_pt[1], 0)
-            sb.record_net("GND", f"J18.{pin_idx}", "power")
+    for p_num, (sig_name, sig_type) in uart_pins.items():
+        pt = get_pin_pos("Connector_Generic:Conn_01x06", p_num, 144.78, 203.2)
+        if sig_name == "GND":
+            sb.add_wire(pt[0], pt[1], pt[0] - 5.08, pt[1])
+            sb.add_power_sym("power:GND", pt[0] - 5.08, pt[1], 0)
+            sb.record_net("GND", f"J20.{p_num}", "power")
         else:
-            sb.add_wire(pin_pt[0], pin_pt[1], 137.16, pin_pt[1])
-            sb.add_label(sig_name, 137.16, pin_pt[1])
-            sb.record_net(sig_name, f"J18.{pin_idx}", sig_type)
-            if sig_name == "+3V3":
-                sb.add_junction(137.16, pin_pt[1])
-                sb.add_wire(137.16, pin_pt[1], 132.08, pin_pt[1])
-                sb.add_power_sym("power:PWR_FLAG", 132.08, pin_pt[1], 0)
+            sb.add_wire(pt[0], pt[1], pt[0] - 5.08, pt[1])
+            sb.add_label(sig_name, pt[0] - 5.08, pt[1])
+            sb.record_net(sig_name, f"J20.{p_num}", sig_type)
 
-    # Right ESP32 header: J19 at (203.2, 157.48)
-    sb.add_symbol("Connector_Generic:Conn_01x19", "J19", "ESP32_Right (Pins 20-38)", 203.2, 157.48,
-                  pins_count=19, footprint="",
-                  desc="ESP32 DevKit 38 Right 19-pin Socket Header", mpn="19-pin Female Header 2.54mm")
-
-    esp_r_signals = {
-        1: (None, "nc"),
-        2: (None, "nc"),
-        3: (None, "nc"),
-        4: (None, "nc"),
-        5: (None, "nc"),
-        6: (None, "nc"),
-        7: (None, "nc"),
-        8: ("ESP_S1_TOP_PWM", "signal"),
-        9: ("ESP_S1_BOT_PWM", "signal"),
-        10: (None, "nc"),
-        11: ("ESP_S2_TOP_PWM", "signal"),
-        12: ("ESP_S2_BOT_PWM", "signal"),
-        13: ("GND", "power"),
-        14: ("I2C_SDA", "signal"),
-        15: (None, "nc"),
-        16: (None, "nc"),
-        17: ("I2C_SCL", "signal"),
-        18: ("ESP_IR_TX", "signal"),
-        19: ("GND", "power"),
+    # J21: ADC Analog Sensor Header (1x04) at (167.64, 203.2)
+    sb.add_symbol("Connector_Generic:Conn_01x04", "J21", "SENSOR_ADC", 167.64, 203.2,
+                  pins_count=4, footprint="", desc="ADC Analog Sensor Interface (VP/VN)", mpn="Header 1x04 2.54mm")
+    adc_pins = {
+        1: ("+3V3", "power"),
+        2: ("ADC_VP", "signal"),
+        3: ("ADC_VN", "signal"),
+        4: ("GND", "power"),
     }
-
-    for pin_idx, (sig_name, sig_type) in esp_r_signals.items():
-        pin_pt = get_pin_pos("Connector_Generic:Conn_01x19", pin_idx, 203.2, 157.48)
-        if sig_type == "nc":
-            sb.add_no_connect(pin_pt[0], pin_pt[1])
-        elif sig_name == "GND":
-            sb.add_wire(pin_pt[0], pin_pt[1], 187.96, pin_pt[1])
-            sb.add_power_sym("power:GND", 187.96, pin_pt[1], 0)
-            sb.record_net("GND", f"J19.{pin_idx}", "power")
+    for p_num, (sig_name, sig_type) in adc_pins.items():
+        pt = get_pin_pos("Connector_Generic:Conn_01x04", p_num, 167.64, 203.2)
+        if sig_name == "GND":
+            sb.add_wire(pt[0], pt[1], pt[0] - 5.08, pt[1])
+            sb.add_power_sym("power:GND", pt[0] - 5.08, pt[1], 0)
+            sb.record_net("GND", f"J21.{p_num}", "power")
         else:
-            sb.add_wire(pin_pt[0], pin_pt[1], 213.36, pin_pt[1])
-            sb.add_label(sig_name, 213.36, pin_pt[1])
-            sb.record_net(sig_name, f"J19.{pin_idx}", sig_type)
+            sb.add_wire(pt[0], pt[1], pt[0] - 5.08, pt[1])
+            sb.add_label(sig_name, pt[0] - 5.08, pt[1])
+            sb.record_net(sig_name, f"J21.{p_num}", sig_type)
+
+    # J22: Digital Sensor Expansion Header (1x08) at (190.5, 203.2)
+    sb.add_symbol("Connector_Generic:Conn_01x08", "J22", "SENSOR_DIGITAL", 190.5, 203.2,
+                  pins_count=8, footprint="", desc="General Digital Sensor Expansion Header", mpn="Header 1x08 2.54mm")
+    exp_pins = {
+        1: ("+5V", "power"),
+        2: ("+3V3", "power"),
+        3: ("EXP_IO4", "signal"),
+        4: ("EXP_IO5", "signal"),
+        5: ("EXP_IO13", "signal"),
+        6: ("EXP_IO14", "signal"),
+        7: ("EXP_IO2", "signal"),
+        8: ("GND", "power"),
+    }
+    for p_num, (sig_name, sig_type) in exp_pins.items():
+        pt = get_pin_pos("Connector_Generic:Conn_01x08", p_num, 190.5, 203.2)
+        if sig_name == "GND":
+            sb.add_wire(pt[0], pt[1], pt[0] - 5.08, pt[1])
+            sb.add_power_sym("power:GND", pt[0] - 5.08, pt[1], 0)
+            sb.record_net("GND", f"J22.{p_num}", "power")
+        else:
+            sb.add_wire(pt[0], pt[1], pt[0] - 5.08, pt[1])
+            sb.add_label(sig_name, pt[0] - 5.08, pt[1])
+            sb.record_net(sig_name, f"J22.{p_num}", sig_type)
 
     # --- SERVO PWM SIGNAL CONDITIONING (R1-R8) ---
     pwms = [
