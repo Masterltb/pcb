@@ -4,8 +4,8 @@
   "tool": "KiCad 10.0.7",
   "date": "2026-10-16",
   "summary": {
-    "total_components": 69,
-    "total_nets": 37,
+    "total_components": 80,
+    "total_nets": 48,
     "power_rails": [
       "+12V_IN",
       "+12V",
@@ -180,22 +180,121 @@
       "mpn": "3-pin Header"
     },
     {
-      "ref": "J18",
-      "value": "ESP32_Left (Pins 1-19)",
-      "lib_id": "Connector_Generic:Conn_01x19",
-      "footprint": "Connector_PinSocket_2.54mm:PinSocket_1x19_P2.54mm_Vertical",
+      "ref": "U3",
+      "value": "AMS1117-3.3",
+      "lib_id": "Regulator_Linear:AP1117-15",
+      "footprint": "Package_TO_SOT_SMD:SOT-223-3_TabPin2",
       "dnp": false,
-      "description": "ESP32 DevKit 38 Left 19-pin Socket Header",
-      "mpn": "19-pin Female Header 2.54mm"
+      "description": "3.3V 1A LDO voltage regulator (SOT-223)",
+      "mpn": "AMS1117-3.3"
     },
     {
-      "ref": "J19",
-      "value": "ESP32_Right (Pins 20-38)",
-      "lib_id": "Connector_Generic:Conn_01x19",
-      "footprint": "Connector_PinSocket_2.54mm:PinSocket_1x19_P2.54mm_Vertical",
+      "ref": "C11",
+      "value": "10uF 16V",
+      "lib_id": "Device:C_Polarized",
+      "footprint": "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm",
       "dnp": false,
-      "description": "ESP32 DevKit 38 Right 19-pin Socket Header",
-      "mpn": "19-pin Female Header 2.54mm"
+      "description": "LDO input bulk capacitor",
+      "mpn": "10uF 16V Radial"
+    },
+    {
+      "ref": "C12",
+      "value": "22uF 16V",
+      "lib_id": "Device:C_Polarized",
+      "footprint": "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm",
+      "dnp": false,
+      "description": "LDO output bulk capacitor",
+      "mpn": "22uF 16V Radial"
+    },
+    {
+      "ref": "C13",
+      "value": "100nF",
+      "lib_id": "Device:C",
+      "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+      "dnp": false,
+      "description": "LDO output high-freq decoupling",
+      "mpn": "100nF 50V Ceramic"
+    },
+    {
+      "ref": "U2",
+      "value": "ESP32-WROOM-32",
+      "lib_id": "RF_Module:ESP32-WROOM-32",
+      "footprint": "fv_modules:ESP32-WROOM-32_HandSolder",
+      "dnp": false,
+      "description": "ESP32-WROOM-32 SMD Wi-Fi/BT module",
+      "mpn": "ESP32-WROOM-32E"
+    },
+    {
+      "ref": "R10",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "dnp": false,
+      "description": "EN pull-up resistor",
+      "mpn": "10k 1/4W 5%"
+    },
+    {
+      "ref": "C14",
+      "value": "100nF",
+      "lib_id": "Device:C",
+      "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+      "dnp": false,
+      "description": "EN delay filter capacitor",
+      "mpn": "100nF 50V Ceramic"
+    },
+    {
+      "ref": "SW1",
+      "value": "SW_EN",
+      "lib_id": "Switch:SW_Push",
+      "footprint": "Button_Switch_THT:SW_PUSH_6mm_H5mm",
+      "dnp": false,
+      "description": "Tactile Reset Button",
+      "mpn": "SW-PB-6mm"
+    },
+    {
+      "ref": "R11",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "dnp": false,
+      "description": "IO0 pull-up resistor",
+      "mpn": "10k 1/4W 5%"
+    },
+    {
+      "ref": "SW2",
+      "value": "SW_BOOT",
+      "lib_id": "Switch:SW_Push",
+      "footprint": "Button_Switch_THT:SW_PUSH_6mm_H5mm",
+      "dnp": false,
+      "description": "Tactile Boot Button",
+      "mpn": "SW-PB-6mm"
+    },
+    {
+      "ref": "J20",
+      "value": "PROG_UART0",
+      "lib_id": "Connector_Generic:Conn_01x06",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x06_P2.54mm_Vertical",
+      "dnp": false,
+      "description": "UART0 Flashing & Serial Monitor Header",
+      "mpn": "Header 1x06 2.54mm"
+    },
+    {
+      "ref": "J21",
+      "value": "SENSOR_ADC",
+      "lib_id": "Connector_Generic:Conn_01x04",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+      "dnp": false,
+      "description": "ADC Analog Sensor Interface (VP/VN)",
+      "mpn": "Header 1x04 2.54mm"
+    },
+    {
+      "ref": "J22",
+      "value": "SENSOR_DIGITAL",
+      "lib_id": "Connector_Generic:Conn_01x08",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical",
+      "dnp": false,
+      "description": "General Digital Sensor Expansion Header",
+      "mpn": "Header 1x08 2.54mm"
     },
     {
       "ref": "R1",
@@ -667,9 +766,20 @@
         "C4.2",
         "J7.1",
         "J8.1",
-        "J18.14",
-        "J19.13",
-        "J19.19",
+        "U3.1",
+        "C11.2",
+        "C12.2",
+        "C13.2",
+        "U2.1",
+        "U2.15",
+        "U2.38",
+        "U2.39",
+        "C14.2",
+        "SW1.2",
+        "SW2.2",
+        "J20.4",
+        "J21.4",
+        "J22.8",
         "R5.2",
         "R6.2",
         "R7.2",
@@ -736,7 +846,9 @@
       "type": "power",
       "nodes": [
         "J4.3",
-        "J18.19",
+        "U3.3",
+        "C11.1",
+        "J22.1",
         "R14.1",
         "R15.1",
         "C5.1",
@@ -803,7 +915,15 @@
     "+3V3": {
       "type": "power",
       "nodes": [
-        "J18.1",
+        "U3.2",
+        "C12.1",
+        "C13.1",
+        "U2.2",
+        "R10.1",
+        "R11.1",
+        "J20.1",
+        "J21.1",
+        "J22.2",
         "J9.1",
         "J10.1",
         "R16.2",
@@ -816,40 +936,141 @@
         "J17.1"
       ]
     },
-    "IR_RX1": {
+    "ESP_EN": {
       "type": "signal",
       "nodes": [
-        "J18.5",
-        "J9.2"
+        "U2.3",
+        "R10.2",
+        "C14.1",
+        "SW1.1",
+        "J20.6"
       ]
     },
-    "IR_RX2": {
+    "ADC_VP": {
       "type": "signal",
       "nodes": [
-        "J18.6",
-        "J10.2"
+        "U2.4",
+        "J21.2"
       ]
     },
-    "LS4": {
+    "ADC_VN": {
       "type": "signal",
       "nodes": [
-        "J18.7",
-        "J16.1",
-        "R19.1",
-        "C10.1"
+        "U2.5",
+        "J21.3"
       ]
     },
-    "SPARE_GPIO33": {
+    "ESP_IO0": {
       "type": "signal",
       "nodes": [
-        "J18.8",
-        "TP8.1"
+        "U2.25",
+        "R11.2",
+        "SW2.1",
+        "J20.5"
+      ]
+    },
+    "ESP_TXD0": {
+      "type": "signal",
+      "nodes": [
+        "U2.35",
+        "J20.2"
+      ]
+    },
+    "ESP_RXD0": {
+      "type": "signal",
+      "nodes": [
+        "U2.34",
+        "J20.3"
+      ]
+    },
+    "EXP_IO2": {
+      "type": "signal",
+      "nodes": [
+        "U2.24",
+        "J22.7"
+      ]
+    },
+    "EXP_IO4": {
+      "type": "signal",
+      "nodes": [
+        "U2.26",
+        "J22.3"
+      ]
+    },
+    "EXP_IO5": {
+      "type": "signal",
+      "nodes": [
+        "U2.29",
+        "J22.4"
+      ]
+    },
+    "EXP_IO13": {
+      "type": "signal",
+      "nodes": [
+        "U2.16",
+        "J22.5"
+      ]
+    },
+    "EXP_IO14": {
+      "type": "signal",
+      "nodes": [
+        "U2.13",
+        "J22.6"
+      ]
+    },
+    "ESP_S1_TOP_PWM": {
+      "type": "signal",
+      "nodes": [
+        "U2.27",
+        "R1.1"
+      ]
+    },
+    "ESP_S1_BOT_PWM": {
+      "type": "signal",
+      "nodes": [
+        "U2.28",
+        "R2.1"
+      ]
+    },
+    "ESP_S2_TOP_PWM": {
+      "type": "signal",
+      "nodes": [
+        "U2.30",
+        "R3.1"
+      ]
+    },
+    "ESP_S2_BOT_PWM": {
+      "type": "signal",
+      "nodes": [
+        "U2.31",
+        "R4.1"
+      ]
+    },
+    "I2C_SDA": {
+      "type": "signal",
+      "nodes": [
+        "U2.33",
+        "J17.2"
+      ]
+    },
+    "I2C_SCL": {
+      "type": "signal",
+      "nodes": [
+        "U2.36",
+        "J17.3"
+      ]
+    },
+    "ESP_IR_TX": {
+      "type": "signal",
+      "nodes": [
+        "U2.37",
+        "R13.1"
       ]
     },
     "LS1": {
       "type": "signal",
       "nodes": [
-        "J18.9",
+        "U2.10",
         "J13.1",
         "R16.1",
         "C7.1"
@@ -858,7 +1079,7 @@
     "LS2": {
       "type": "signal",
       "nodes": [
-        "J18.10",
+        "U2.11",
         "J14.1",
         "R17.1",
         "C8.1"
@@ -867,59 +1088,40 @@
     "LS3": {
       "type": "signal",
       "nodes": [
-        "J18.11",
+        "U2.12",
         "J15.1",
         "R18.1",
         "C9.1"
       ]
     },
-    "ESP_S1_TOP_PWM": {
+    "LS4": {
       "type": "signal",
       "nodes": [
-        "J19.8",
-        "R1.1"
+        "U2.8",
+        "J16.1",
+        "R19.1",
+        "C10.1"
       ]
     },
-    "ESP_S1_BOT_PWM": {
+    "SPARE_GPIO33": {
       "type": "signal",
       "nodes": [
-        "J19.9",
-        "R2.1"
+        "U2.9",
+        "TP8.1"
       ]
     },
-    "ESP_S2_TOP_PWM": {
+    "IR_RX1": {
       "type": "signal",
       "nodes": [
-        "J19.11",
-        "R3.1"
+        "U2.6",
+        "J9.2"
       ]
     },
-    "ESP_S2_BOT_PWM": {
+    "IR_RX2": {
       "type": "signal",
       "nodes": [
-        "J19.12",
-        "R4.1"
-      ]
-    },
-    "I2C_SDA": {
-      "type": "signal",
-      "nodes": [
-        "J19.14",
-        "J17.2"
-      ]
-    },
-    "I2C_SCL": {
-      "type": "signal",
-      "nodes": [
-        "J19.17",
-        "J17.3"
-      ]
-    },
-    "ESP_IR_TX": {
-      "type": "signal",
-      "nodes": [
-        "J19.18",
-        "R13.1"
+        "U2.7",
+        "J10.2"
       ]
     },
     "NET_Q2_BASE": {

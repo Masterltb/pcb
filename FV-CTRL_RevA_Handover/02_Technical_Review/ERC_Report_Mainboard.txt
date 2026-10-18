@@ -1,5 +1,5 @@
-ERC report (2026-10-16T20:08:50, Encoding UTF8)
-Report includes: Errors, Warnings, Exclusions
+ERC report (2026-10-18T18:56:08, Encoding UTF8)
+Report includes: Errors, Warnings
 
 ***** Sheet /
 
