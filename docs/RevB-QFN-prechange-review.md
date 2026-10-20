@@ -77,3 +77,5 @@ Jbungia: dùng via 0,40/0,20 mm bên ngoài paste pad, giữ annular ring và ho
 JaeBin, kiểm tra GND sau routing: vùng GND của C40 bị bao kín trên cả hai lớp. Chuyển tụ decoupling VDD_SDIO sang vùng GND nối được với plane chính, giữ gần hàng thoát chân và nối lại nguồn; không kéo một đường GND dài qua vùng bị bao kín rồi coi là đường hồi tốt. Jbungia: dời cùng via GND ngoài paste pad, kiểm tra courtyard với dãy điện trở SPI và flash, ERC/DRC sau thay đổi.
 
 Jbungia, trước hồ sơ DFM: kiểm tra mask expansion ứng viên 0,025 mm và web tối thiểu 0,10 mm cho soldermask xanh. Với pad QFN rộng 0,20 mm, pitch 0,35 mm, web danh định còn 0,10 mm; đây là biên tối thiểu cần xưởng duyệt registration, không phải dữ liệu yield. JaeBin: không đổi copper/paste/net theo bước này, kiểm tra mask quanh chân nguồn/RF/QFN và ERC/DRC sau khi đặt rule.
+
+Jbungia, kiểm tra bổ sung paste/via: dịch via GND ở pad SH và chân 5 USB, chân GND U5, và tăng khoảng cách via C13 khỏi mép paste. Các lỗ này không thuộc danh sách thermal EP cần fill/cap; không để mask của pad làm hở lỗ via. JaeBin: kéo theo các đoạn GND ngắn, giữ net và kiểm tra lại đường hồi/ERC/DRC sau dịch via.
