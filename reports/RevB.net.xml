@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>F:\project\repo-github\pcb\pcb\hardware\FV-CTRL_RevB.kicad_sch</source>
-    <date>2026-10-20T21:38:20</date>
+    <date>2026-10-20T22:12:44</date>
     <tool>Eeschema 10.0.7</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -1766,14 +1766,14 @@
       </units>
     </comp>
     <comp ref="U5">
-      <value>TLV803EA29DBZR</value>
+      <value>TLV803EA30DBZR</value>
       <footprint>Package_TO_SOT_SMD:SOT-23</footprint>
       <fields>
         <field name="Footprint">Package_TO_SOT_SMD:SOT-23</field>
         <field name="Datasheet"/>
         <field name="Description"/>
       </fields>
-      <libsource lib="fv_revb" part="TLV803EA29DBZR" description=""/>
+      <libsource lib="fv_revb" part="TLV803EA30DBZR" description=""/>
       <property name="Sheetname" value="2. ESP32 core"/>
       <property name="Sheetfile" value="FV-CTRL_RevB-02.kicad_sch"/>
       <sheetpath names="/2. ESP32 core/" tstamps="/2f82bbd1-4939-4e68-97f7-ea10a1688ed7/"/>
@@ -2759,7 +2759,7 @@
       </units>
     </comp>
     <comp ref="C31">
-      <value>1.5pF</value>
+      <value>0.5pF</value>
       <footprint>Capacitor_SMD:C_0201_0603Metric</footprint>
       <fields>
         <field name="Footprint">Capacitor_SMD:C_0201_0603Metric</field>
@@ -4342,10 +4342,10 @@
         <pin num="3" name="C" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="fv_revb" part="TLV803EA29DBZR">
+    <libpart lib="fv_revb" part="TLV803EA30DBZR">
       <fields>
         <field name="Reference">U</field>
-        <field name="Value">TLV803EA29DBZR</field>
+        <field name="Value">TLV803EA30DBZR</field>
         <field name="Footprint"/>
         <field name="Datasheet"/>
         <field name="Description"/>

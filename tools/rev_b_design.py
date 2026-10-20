@@ -41,7 +41,7 @@ CP=sym('CP2102N-A02-GQFN24',dict(enumerate(['RI','GND','D+','D-','VIO','VDD','VR
 LDO=sym('LD1117V33',{'1':'GND','2':'VOUT_3V3','3':'VIN_5V'},{'1':'power_in','2':'power_out','3':'power_in'})
 FLASH=sym('W25Q32JVSSIQ',{'1':'CS#','2':'DO_IO1','3':'WP#_IO2','4':'GND','5':'DI_IO0','6':'CLK','7':'HOLD#_IO3','8':'VCC'},{'4':'power_in','8':'power_in'})
 NPN=sym('MMBT3904',{'1':'B','2':'E','3':'C'})
-SUP=sym('TLV803EA29DBZR',{'1':'GND','2':'RESET_OD','3':'VDD'},{'1':'power_in','2':'open_collector','3':'power_in'})
+SUP=sym('TLV803EA30DBZR',{'1':'GND','2':'RESET_OD','3':'VDD'},{'1':'power_in','2':'open_collector','3':'power_in'})
 
 R0402='Resistor_SMD:R_0402_1005Metric';C0402='Capacitor_SMD:C_0402_1005Metric';C0603='Capacitor_SMD:C_0603_1608Metric'
 C0201='Capacitor_SMD:C_0201_0603Metric';L0201='Inductor_SMD:L_0201_0603Metric'
@@ -67,7 +67,7 @@ c('C41','100nF','VDD_SDIO','GND','Flash','GRM155R71C104KA88D')
 for num,net in [(30,'ESP_EN'),(31,'ESP_BOOT'),(34,'STRAP_GPIO5'),(35,'STRAP_GPIO15')]:r('R'+str(num),'10k',net,'+3V3','ESP32 core','RC0402FR-0710KL')
 for num,net in [(32,'STRAP_GPIO2'),(33,'STRAP_GPIO12')]:r('R'+str(num),'10k',net,'GND','ESP32 core','RC0402FR-0710KL')
 c('C20','1uF','ESP_EN','GND','ESP32 core','GRM155R61A105KE15D')
-add('U5','TLV803EA29DBZR',SUP,'Package_TO_SOT_SMD:SOT-23',{1:'GND',2:'ESP_EN',3:'+3V3'},'ESP32 core','TLV803EA29DBZR','2.93V supervisor, 200ms nominal delay; TI pin1=GND variant')
+add('U5','TLV803EA30DBZR',SUP,'Package_TO_SOT_SMD:SOT-23',{1:'GND',2:'ESP_EN',3:'+3V3'},'ESP32 core','TLV803EA30DBZR','3.08V supervisor, 200ms nominal delay; TI pin1=GND variant')
 c('C56','100nF','+3V3','GND','ESP32 core','GRM155R71C104KA88D')
 for num in [11,12]:
     add('C'+str(num),'10uF 50V','Device:C_Polarized','Capacitor_THT:CP_Radial_D5.0mm_P2.00mm',{1:'+5V' if num==11 else '+3V3',2:'GND'},'Power','EEUFR1H100','LDO input/output reservoir; min 10uF per ST')
@@ -86,7 +86,7 @@ c('C27','3.3nF','CAP2','CAP1','Clock / RF','GRM155R71H332KA01D')
 r('R37','20k','CAP2','CAP1','Clock / RF','RC0402FR-0720KL','CAP network per chip datasheet')
 c('C30','1.5pF','RF_CHIP','GND','Clock / RF','GRM0335C1H1R5BA01D',C0201,'INITIAL chip match; RF tune required')
 add('L1','2.7nH','Device:L',L0201,{1:'RF_CHIP',2:'RF_50'},'Clock / RF','LQP03TN2N7B02D','INITIAL chip match; RF tune required')
-c('C31','1.5pF','RF_50','GND','Clock / RF','GRM0335C1H1R5BA01D',C0201,'INITIAL chip match; RF tune required')
+c('C31','0.5pF','RF_50','GND','Clock / RF','GRM0335C1HR50BA01D',C0201,'INITIAL: D8 adds 0.9pF typ; combined nominal 1.4pF plus parasitics, RF tuning required')
 add('J20','SMA 50ohm ANT','Connector:Conn_Coaxial','Connector_Coaxial:SMA_Amphenol_132134_Vertical',{1:'RF_50',2:'GND'},'Clock / RF','Amphenol 132134','Use external 2.4GHz 50ohm antenna, correct SMA gender, not RP-SMA')
 add('D8','PESD5V0X1BL','Device:D_TVS','Diode_SMD:D_SOD-882',{1:'RF_50',2:'GND'},'Clock / RF','PESD5V0X1BL,315','0.9pF typical; include in RF tuning and validate ESD')
 

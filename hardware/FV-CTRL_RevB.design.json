@@ -1838,8 +1838,8 @@
     },
     {
       "ref": "U5",
-      "value": "TLV803EA29DBZR",
-      "lib_id": "fv_revb:TLV803EA29DBZR",
+      "value": "TLV803EA30DBZR",
+      "lib_id": "fv_revb:TLV803EA30DBZR",
       "footprint": "Package_TO_SOT_SMD:SOT-23",
       "pins": {
         "1": "GND",
@@ -1847,8 +1847,8 @@
         "3": "+3V3"
       },
       "sheet": "ESP32 core",
-      "mpn": "TLV803EA29DBZR",
-      "notes": "2.93V supervisor, 200ms nominal delay; TI pin1=GND variant",
+      "mpn": "TLV803EA30DBZR",
+      "notes": "3.08V supervisor, 200ms nominal delay; TI pin1=GND variant",
       "pos": [
         143,
         160,
@@ -2297,7 +2297,7 @@
     },
     {
       "ref": "C31",
-      "value": "1.5pF",
+      "value": "0.5pF",
       "lib_id": "Device:C",
       "footprint": "Capacitor_SMD:C_0201_0603Metric",
       "pins": {
@@ -2305,8 +2305,8 @@
         "2": "GND"
       },
       "sheet": "Clock / RF",
-      "mpn": "GRM0335C1H1R5BA01D",
-      "notes": "INITIAL chip match; RF tune required",
+      "mpn": "GRM0335C1HR50BA01D",
+      "notes": "INITIAL: D8 adds 0.9pF typ, combined nominal 1.4pF plus parasitics; RF tuning required",
       "pos": [
         143,
         160,

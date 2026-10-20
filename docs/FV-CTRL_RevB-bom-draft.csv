@@ -97,7 +97,7 @@ R35,10k,RC0402FR-0710KL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,
 R32,10k,RC0402FR-0710KL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,
 R33,10k,RC0402FR-0710KL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,
 C20,1uF,GRM155R61A105KE15D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
-U5,TLV803EA29DBZR,TLV803EA29DBZR,Package_TO_SOT_SMD:SOT-23,FIT,SMT,"2.93V supervisor, 200ms nominal delay; TI pin1=GND variant"
+U5,TLV803EA30DBZR,TLV803EA30DBZR,Package_TO_SOT_SMD:SOT-23,FIT,SMT,"3.08V supervisor, 200ms nominal delay; TI pin1=GND variant"
 C56,100nF,GRM155R71C104KA88D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
 C11,10uF 50V,EEUFR1H100,Capacitor_THT:CP_Radial_D5.0mm_P2.00mm,FIT,THT,LDO input/output reservoir; min 10uF per ST
 C12,10uF 50V,EEUFR1H100,Capacitor_THT:CP_Radial_D5.0mm_P2.00mm,FIT,THT,LDO input/output reservoir; min 10uF per ST
@@ -112,7 +112,7 @@ C23,100nF,GRM155R71C104KA88D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
 C21,1uF,GRM155R61A105KE15D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
 C22,100nF,GRM033R71C104KE14D,Capacitor_SMD:C_0201_0603Metric,FIT,SMT,
 L2,2.0nH,LQP03TN2N0B02D,Inductor_SMD:L_0201_0603Metric,FIT,SMT,600mA rating per Murata; RF supply filter
-Y1,40MHz CL10pF,ABM8-40.000MHZ-10-1-U-T,Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm,FIT,SMT,Configured 10ppm tolerance/stability option; availability requires sourcing confirmation
+Y1,40MHz CL10pF,ABM8-40.000MHZ-10-1-U-T,Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm,FIT,SMT,"Verified Abracon catalog: CL10pF, +/-10ppm tolerance and stability, 3225; -10..60C; sourcing/temperature range must be confirmed"
 R36,0R,RC0402JR-070RL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,Crystal harmonic tuning footprint
 C24,16pF,GRM1555C1H160JA01D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,"INITIAL: CL10pF, assumed stray2pF => C=16pF. Measure frequency and tune."
 C25,16pF,GRM1555C1H160JA01D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,INITIAL; not measured crystal tuning
@@ -121,7 +121,7 @@ C27,3.3nF,GRM155R71H332KA01D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
 R37,20k,RC0402FR-0720KL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,CAP network per chip datasheet
 C30,1.5pF,GRM0335C1H1R5BA01D,Capacitor_SMD:C_0201_0603Metric,FIT,SMT,INITIAL chip match; RF tune required
 L1,2.7nH,LQP03TN2N7B02D,Inductor_SMD:L_0201_0603Metric,FIT,SMT,INITIAL chip match; RF tune required
-C31,1.5pF,GRM0335C1H1R5BA01D,Capacitor_SMD:C_0201_0603Metric,FIT,SMT,INITIAL chip match; RF tune required
+C31,0.5pF,GRM0335C1HR50BA01D,Capacitor_SMD:C_0201_0603Metric,FIT,SMT,"INITIAL: D8 adds 0.9pF typ, combined nominal 1.4pF plus parasitics; RF tuning required"
 J20,SMA 50ohm ANT,Amphenol 132134,Connector_Coaxial:SMA_Amphenol_132134_Vertical,FIT,THT,"Use external 2.4GHz 50ohm antenna, correct SMA gender, not RP-SMA"
 D8,PESD5V0X1BL,"PESD5V0X1BL,315",Diode_SMD:D_SOD-882,FIT,SMT,0.9pF typical; include in RF tuning and validate ESD
 U2,CP2102N-A02-GQFN24,CP2102N-A02-GQFN24,Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm_ThermalVias,FIT,SMT,"Self powered 3.3V, VREGIN=VDD=VIO; USB does NOT power board; grounded EP with vias"

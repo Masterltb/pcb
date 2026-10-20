@@ -1444,7 +1444,7 @@
 			(at 161.2900 95.2500 0)
 			(effects (font (size 1.27 1.27)))
 		)
-		(property "Value" "1.5pF"
+		(property "Value" "0.5pF"
 			(at 161.2900 97.7900 0)
 			(effects (font (size 1.27 1.27)))
 		)

@@ -313,11 +313,11 @@
 				)
 				(embedded_fonts no)
 			)
-(symbol "fv_revb:TLV803EA29DBZR" (pin_names (offset 0.762)) (exclude_from_sim no) (in_bom yes) (on_board yes)
+(symbol "fv_revb:TLV803EA30DBZR" (pin_names (offset 0.762)) (exclude_from_sim no) (in_bom yes) (on_board yes)
       (property "Reference" "U" (at 0 7.62 0) (effects (font (size 1.27 1.27))))
-      (property "Value" "TLV803EA29DBZR" (at 0 -7.62 0) (effects (font (size 1.27 1.27))))
-      (symbol "TLV803EA29DBZR_0_1" (rectangle (start -17.78 5.08) (end 17.78 -5.08) (stroke (width 0.254) (type default)) (fill (type background))))
-      (symbol "TLV803EA29DBZR_1_1" (pin power_in line (at -22.86 1.27 0) (length 5.08) (name "GND" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))(pin open_collector line (at -22.86 -1.27 0) (length 5.08) (name "RESET_OD" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))(pin power_in line (at 22.86 0.0 180) (length 5.08) (name "VDD" (effects (font (size 1.016 1.016)))) (number "3" (effects (font (size 1.016 1.016)))))))
+      (property "Value" "TLV803EA30DBZR" (at 0 -7.62 0) (effects (font (size 1.27 1.27))))
+      (symbol "TLV803EA30DBZR_0_1" (rectangle (start -17.78 5.08) (end 17.78 -5.08) (stroke (width 0.254) (type default)) (fill (type background))))
+      (symbol "TLV803EA30DBZR_1_1" (pin power_in line (at -22.86 1.27 0) (length 5.08) (name "GND" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))(pin open_collector line (at -22.86 -1.27 0) (length 5.08) (name "RESET_OD" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))(pin power_in line (at 22.86 0.0 180) (length 5.08) (name "VDD" (effects (font (size 1.016 1.016)))) (number "3" (effects (font (size 1.016 1.016)))))))
 		(symbol "Device:L"
 				(pin_numbers
 					(hide yes)
@@ -820,7 +820,7 @@
 		(pin "2" (uuid "fd1e0606-f45b-4dd2-9266-3f6b53c9836b"))
 	)
 	(symbol
-		(lib_id "fv_revb:TLV803EA29DBZR")
+		(lib_id "fv_revb:TLV803EA30DBZR")
 		(at 259.0800 96.5200 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -832,7 +832,7 @@
 			(at 259.0800 86.3600 0)
 			(effects (font (size 1.27 1.27)))
 		)
-		(property "Value" "TLV803EA29DBZR"
+		(property "Value" "TLV803EA30DBZR"
 			(at 259.0800 106.6800 0)
 			(effects (font (size 1.27 1.27)))
 		)

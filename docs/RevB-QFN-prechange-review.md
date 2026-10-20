@@ -45,3 +45,19 @@ Chọn part và pin map thật -> schematic nhiều trang theo chức năng, ch�
 JaeBin: nguồn servo dùng chung nguồn gốc 12V, nên thêm supervisor reset độc lập thay vì chỉ dựa RC EN. Chọn TLV803EA29DBZR theo ví dụ TI: ngưỡng 2.93V, giữ reset khoảng 200ms, open-drain chia sẻ EN với nút RESET và auto-download, không tranh chấp ngõ ra push-pull. Cần đo brownout thực; không coi ngưỡng nominal là bảo vệ tuyệt đối flash hoặc mọi xung nhanh. Jbungia: SOT23-3 pin1 GND, pin2 RESET, pin3 VDD; không thay bằng các hậu tố R/V có pinout khác. Thêm 100nF sát nguồn supervisor và kiểm tra lại ERC/DRC.
 
 Nguồn: https://www.ti.com/lit/ds/symlink/tlv803e.pdf (ví dụ TLV803EA29DBZR và bảng pinout).
+
+## Review bổ sung: biên điện áp nguồn flash trước khi chốt BOM
+
+JaeBin: ở chế độ 3,3 V, VDD_SDIO nhận nguồn từ miền RTC qua điện trở nội khoảng 6 Ω; Espressif yêu cầu miền RTC giữ trên 3,0 V khi cấp flash 3,3 V. Vì vậy chọn bản supervisor **TLV803EA30DBZR, ngưỡng 3,08 V**, thay lựa chọn EA29 trước đó. Với sai số ngưỡng ±2%, ngưỡng giảm áp thấp nhất tính toán là 3,018 V; vẫn cần đo đáp ứng xung, sụt áp nội và dòng flash thực tế. Đây không phải bảo đảm không mất dữ liệu khi rút điện giữa lúc ghi flash. Firmware phải dùng cơ chế lưu dữ liệu chịu mất điện.
+
+Jbungia: EA30DBZR giữ pin 1 GND / 2 RESET / 3 VDD, cùng footprint SOT23, nên không đổi chân hoặc diện tích lắp. Không thay bằng R/V pinout. Đổi đồng bộ tên/value/MPN trong schematic, manifest, PCB và BOM; chạy lại ERC/DRC/parity. Biên giữa ngưỡng reset cao nhất và nguồn LDO thấp nhất phải được thử dưới tải Wi-Fi để loại trừ reset lặp.
+
+Nguồn: [Espressif: VDD_SDIO và reset](https://docs.espressif.com/projects/esp-hardware-design-guidelines/en/latest/esp32/schematic-checklist.html), [TI: TLV803EA30DBZR](https://www.ti.com/product/TLV803E/part-details/TLV803EA30DBZR), [TI datasheet: mã 30 = 3,08 V và pinout](https://www.ti.com/lit/ds/symlink/tlv803e.pdf).
+
+## Review RF trước sửa hình học và giá trị khởi đầu
+
+JaeBin: đoạn sau cuộn cảm tới SMA cần đường rộng nhất quán, không kéo dài vài mm bằng đường 0,15 mm qua từng pad shunt. Dời trục đường chính xuống y=152,5 mm, rộng ứng viên 1,1 mm, nối C31 và diode ESD D8 bằng các nhánh ngắn khoảng 0,425 mm. Giữ ground liên tục bên dưới; bề rộng này chưa được xác nhận 50 Ω. D8 có điện dung điển hình 0,9 pF, do đó không cộng thêm nguyên 1,5 pF của mạch tham khảo rồi coi là tương đương: chọn **C31 0,5 pF khởi đầu**, GRM0335C1HR50BA01D, để tổng điện dung nominal của hai linh kiện khoảng 1,4 pF, chưa gồm ký sinh. Điện dung ESD phụ thuộc bias/tần số và sai số, nên phép cộng này chỉ dùng chọn điểm bắt đầu đo; không phải nghiệm thu matching hoặc thay cho VNA/đo phát thu.
+
+Jbungia: không đổi footprint 0201; đường rộng tránh pad GND của C31/D8 nhờ nhánh shunt. Ground via gần tụ phải tent và tránh paste pad để giảm hút thiếc; vẫn cần xưởng duyệt. Chạy DRC sau đổi hình học, kiểm tra lại BOM và không đánh đồng giá trị ban đầu với giá trị RF đã tuning.
+
+Nguồn: [Murata model list xác nhận dòng 0,5 pF C0G 0201 50 V](https://www.murata.com/-/media/webrenewal/tool/library/common-pdf/static-model/component-list-s-mlcc-2506.ashx?cvid=20250805040438000000&la=ja-jp), [Nexperia PESD5V0X1BL](https://www.nexperia.com/product/PESD5V0X1BL), [Espressif RF layout](https://docs.espressif.com/projects/esp-hardware-design-guidelines/en/latest/esp32/pcb-layout-design.html).
