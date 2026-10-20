@@ -21,8 +21,8 @@
 
 ## Lệnh thường dùng
 ```
-kicad-cli sch erc --output reports/erc.rpt hardware/<ten>.kicad_sch
-kicad-cli pcb drc --output reports/drc.rpt hardware/<ten>.kicad_pcb
+kicad-cli sch erc --output reports/archive/reva/erc.rpt hardware/<ten>.kicad_sch
+kicad-cli pcb drc --output reports/archive/reva/drc.rpt hardware/<ten>.kicad_pcb
 kicad-cli pcb export gerbers --output gerbers/ hardware/<ten>.kicad_pcb
 kicad-cli pcb export drill --output gerbers/ hardware/<ten>.kicad_pcb
 ```
@@ -33,7 +33,7 @@ Autoroute: xuất DSN từ PCB Editor, chạy Freerouting, nhập lại SES. Lu�
 2. Gán footprint, đặt linh kiện theo ràng buộc mục 8 của PROJECT.md.
 3. Đi dây nhánh nguồn/servo trước, tín hiệu sau.
 4. DRC sạch -> người dùng duyệt -> xuất Gerber, BOM (MPN + phương án thay thế), checklist bring-up vào `docs/`.
-5. Rev A khoảng 5 tấm; ghi lỗi từ máy thật vào `docs/rev-notes.md` để làm Rev B.
+5. Rev A khoảng 5 tấm; ghi lỗi từ máy thật vào `docs/project/rev-notes.md` để làm Rev B.
 
 ## Debug
 - Khi người dùng báo lỗi trên board thật, hỏi triệu chứng và số đo (điện áp tại test point, LED nguồn nào tắt) trước khi đề xuất sửa.

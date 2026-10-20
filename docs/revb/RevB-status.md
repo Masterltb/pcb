@@ -39,7 +39,7 @@ Mục 9 của `AGENTS.md` yêu cầu duyệt rủi ro trước khi xuất Gerber
 
 ## Cách mở và đọc hồ sơ
 
-- Giải nén nguyên cấu trúc; mở `hardware/FV-CTRL_RevB.kicad_pro` bằng KiCad 10. Mở schematic từ file gốc để giữ quan hệ 9 trang chức năng và trang chỉ mục.
+- Giải nén nguyên cấu trúc; mở `hardware/revb/FV-CTRL_RevB.kicad_pro` bằng KiCad 10. Mở schematic từ file gốc để giữ quan hệ 9 trang chức năng và trang chỉ mục.
 - `libs/` là thư viện cục bộ; không di chuyển tách khỏi `hardware/`. Cần thư viện chuẩn KiCad 10 để sửa/gán footprint.
 - `RevB-front-assembly.svg` và `RevB-back-assembly.svg` là bản vẽ vector, phóng to để đọc. Mặt dưới đã được mirror để nhìn trực tiếp từ mặt dưới.
 - `FV-CTRL_RevB-SMT-position-review.csv` dùng mm, gốc phụ tại góc trái dưới PCB (tọa độ thiết kế 100,200 mm), Y dương hướng lên. Góc quay là quy ước KiCad; xưởng phải kiểm tra pin 1/rotation trên preview lắp ráp trước khi duyệt CPL.
@@ -47,4 +47,4 @@ Mục 9 của `AGENTS.md` yêu cầu duyệt rủi ro trước khi xuất Gerber
 - Ảnh 3D chỉ minh họa: bộ thư viện cài đặt hiện thiếu model STEP đúng của ESP32 QFN 5 × 5 mm và một số đầu nối. Vị trí U1 hiện có thể nhìn thấy pad thay vì thân chip. Không dùng ảnh này để duyệt chiều cao/cơ khí; dùng footprint, datasheet và mẫu thật.
 - Chưa kiểm chứng import RevB trong EasyEDA. File KiCad và báo cáo KiCad là nguồn kiểm tra của bản này.
 
-Chi tiết phép thử: `RevB-review-and-bringup.md`. Báo cáo gốc: `reports/RevB-final-erc.rpt`, `reports/RevB-final-drc.rpt` và `reports/RevB-functional-gate.json`.
+Chi tiết phép thử: `RevB-review-and-bringup.md`. Báo cáo gốc: `reports/revb/verified/RevB-final-erc.rpt`, `reports/revb/verified/RevB-final-drc.rpt` và `reports/revb/verified/RevB-functional-gate.json`.

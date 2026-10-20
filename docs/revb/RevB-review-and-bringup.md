@@ -34,7 +34,7 @@ Nguồn: [JLCPCB PCB capabilities](https://jlcpcb.com/capabilities/pcb-capabilit
 9. IR phát burst 38 kHz, không sóng mang liên tục. Thử có/không tô, ánh sáng môi trường, dây dưới 1 m và nhiễu khi servo hoạt động. Limit switch mặc định DNP; nếu lắp phải test debounce, đứt dây và trạng thái lỗi.
 10. Chạy chu trình FIFO với bốn tô khoảng 300 g mỗi cột; kiểm tra cơ cấu giữ thân tô, tô méo/kẹt, mất điện giữa chu trình và cơ chế ngăn hai cửa cùng mở. Chưa có thử nghiệm này thì chưa nghiệm thu sản phẩm.
 
-Ghi kết quả theo số serial mẫu, điện áp nguồn, tải, nhiệt độ và phiên bản firmware trong `docs/rev-notes.md`. Hiện chưa có dữ liệu đo trên mẫu thật.
+Ghi kết quả theo số serial mẫu, điện áp nguồn, tải, nhiệt độ và phiên bản firmware trong `docs/project/rev-notes.md`. Hiện chưa có dữ liệu đo trên mẫu thật.
 
 ## DFM của fanout QFN
 

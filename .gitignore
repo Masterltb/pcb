@@ -43,3 +43,8 @@ report_original_backup.docx
 # Antigravity / agent scratch
 .agents/
 fv-pcb-skills/
+
+# Generated routing/debug artifacts (local only)
+reports/revb/work/
+reports/reva2/work/
+reports/local/

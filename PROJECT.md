@@ -8,7 +8,7 @@
 - Hướng IC: **ESP32-D0WD-V3 (QFN48 5 x 5 mm), flash 3.3V rời**, không PSRAM. Không thay bằng ESP32-U4WDH vì flash trong package sử dụng GPIO16/17; ESP32-D0WDQ6-V3 6 x 6 mm đã được hãng đánh dấu NRND.
 - Nguồn 3.3V, flash, thạch anh 40MHz, reset/boot/strapping, USB-UART, mạch RF matching, ground/exposed-pad và khả năng lắp SMT phải được review trước khi thay schematic/PCB.
 - Chiều rộng RF 50 ohm, footprint/paste/via dưới QFN và BOM SMT cần chốt theo bản vẽ hãng và stackup/DFM xưởng. Không lấy kết quả ERC/DRC RevA2 làm bằng chứng cho RevB.
-- Hồ sơ review trước sửa: `docs/RevB-QFN-prechange-review.md`.
+- Hồ sơ review trước sửa: `docs/revb/RevB-QFN-prechange-review.md`.
 
 ## 1. Mục tiêu
 Thiết kế PCB 2 lớp, chi phí thấp nhất, tự hàn (THT), điều khiển 2 cột xuất tô theo cơ chế FIFO.
