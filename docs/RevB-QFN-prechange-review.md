@@ -67,3 +67,13 @@ Nguồn: [Murata model list xác nhận dòng 0,5 pF C0G 0201 50 V](https://www.
 JaeBin: các nhánh nguồn đi vòng trước khi thoát các chân lân cận tạo ra vùng kín quanh pad QFN. Thay bằng fanout có thứ tự: đoạn đầu vuông góc hàng pad, sau đó mở rộng ra hàng via ngoài thân IC; giữ nguyên ground dưới MCU, RF và crystal. Đưa tụ 100 nF C23 sát miền VDDA pin 1 bằng footprint 0201, cùng MPN GRM033R71C104KE14D đã chọn cho C22. Dời bộ RC CAP1/CAP2, đường boot và các tụ/IC lân cận khi cần để bảo toàn lối thoát; không đổi GPIO/net. Di chuyển supervisor khỏi hàng via và kéo tụ của nó theo sát chân VDD. Nguồn flash và CPU có tụ cục bộ sau các via thoát chân.
 
 Jbungia: via fanout 0,40/0,20 mm có annular ring 0,10 mm; giữ via ground EP 0,50/0,20 mm trong footprint hãng và các via khác theo thiết kế. Không dùng via-in-pad mở trên pad SMT. Yêu cầu này vẫn nằm trong chuẩn hai lớp 1 oz JLCPCB đang chuẩn bị; xưởng phải duyệt QFN/stencil/via EP. C23 0201 không đổi loại dịch vụ vì khối RF đã cần Standard PCBA. Kiểm tra courtyard, hole-to-hole, soldermask, clearance và parity sau bước fanout, rồi mới đi các kết nối còn lại.
+
+## Review trước sửa thoát chân USB và C27
+
+JaeBin: đường nguồn cục bộ CP2102N đang bao kín D− và VBUS sense. Tháo các đoạn 3,3 V cục bộ, thoát hai tín hiệu trước bằng via ngoài pad, sau đó nối lại VIO/VDD/VREGIN và tụ gần chân. Không đổi net, GPIO hoặc cơ chế USB chỉ truyền dữ liệu. C27 cần chuyển khỏi vùng kín gần VDDA; giữ mạng CAP1/CAP2 đúng giá trị và kiểm tra lại chiều dài đường nối.
+
+Jbungia: dùng via 0,40/0,20 mm bên ngoài paste pad, giữ annular ring và hole clearance theo rule hiện tại. Không giải quyết thiếu chỗ bằng via mở trong pad, thu nhỏ đường dưới 0,10 mm hoặc hạ clearance. Đối chiếu courtyard sau khi chuyển C27; chạy ERC/DRC trước bước nối lại.
+
+JaeBin, kiểm tra GND sau routing: vùng GND của C40 bị bao kín trên cả hai lớp. Chuyển tụ decoupling VDD_SDIO sang vùng GND nối được với plane chính, giữ gần hàng thoát chân và nối lại nguồn; không kéo một đường GND dài qua vùng bị bao kín rồi coi là đường hồi tốt. Jbungia: dời cùng via GND ngoài paste pad, kiểm tra courtyard với dãy điện trở SPI và flash, ERC/DRC sau thay đổi.
+
+Jbungia, trước hồ sơ DFM: kiểm tra mask expansion ứng viên 0,025 mm và web tối thiểu 0,10 mm cho soldermask xanh. Với pad QFN rộng 0,20 mm, pitch 0,35 mm, web danh định còn 0,10 mm; đây là biên tối thiểu cần xưởng duyệt registration, không phải dữ liệu yield. JaeBin: không đổi copper/paste/net theo bước này, kiểm tra mask quanh chân nguồn/RF/QFN và ERC/DRC sau khi đặt rule.

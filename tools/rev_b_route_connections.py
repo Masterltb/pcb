@@ -22,6 +22,7 @@ if __name__=='__main__':
   for item in report['unconnected_items']:
    first,second=item['items'];net=re.search(r'\[([^]]+)\]',first['description'])[1]
    if net=='GND' or 'Zone' in first['description'] or 'Zone' in second['description']:continue
+   if len(sys.argv)>3 and net in sys.argv[3].split(','):continue
    if len(sys.argv)>2 and sys.argv[2]=='power' and net not in ['+3V3','+3V3_RF','VDD_SDIO']:continue
    if len(sys.argv)>2 and sys.argv[2]=='caps' and net not in ['CAP1','CAP2']:continue
    pair=(net,key(first),key(second))
@@ -31,7 +32,8 @@ if __name__=='__main__':
   if not choices:break
   dist,pair=min(choices);net,aa,cc=pair
   before=FILE.read_bytes();baseline=sum(a['severity']=='error' for a in report['violations'])
-  width=.12 if 'U1:' in aa or 'U1:' in cc else .4 if net=='+3V3' else .3 if net in ['+3V3_RF','VDD_SDIO'] else .15
+  (ROOT/'reports/RevB-route-checkpoint.kicad_pcb').write_bytes(before)
+  width=.12 if 'U1:' in aa or 'U1:' in cc else .4 if net=='+3V3' else .3 if net in ['+3V3_RF','VDD_SDIO'] else .12
   print('ATTEMPT',pair,'distance',round(dist,2),'width',width,flush=True)
   signature=(net,*sorted(pair[1:]))
   try:route(net,aa,cc,width)

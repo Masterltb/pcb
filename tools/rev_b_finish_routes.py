@@ -52,7 +52,7 @@ def route(net,start,end,width=.12):
    if not own:
     for i,l in enumerate(LAYERS):
      if pad.IsOnLayer(l):rect(blocked[i],bb,margin)
-    rect(vb,bb,.325)
+    rect(vb,bb,.345)
    elif pad.GetAttribute()==p.PAD_ATTRIB_SMD:
     # No unqualified via-in-pad on a reflow pad.
     rect(vb,bb,.25)
@@ -67,13 +67,14 @@ def route(net,start,end,width=.12):
    continue
   if t.GetClass()=='PCB_VIA':
    center=xy(t.GetPosition());r=p.ToMM(t.GetWidth(p.F_Cu))/2
-   for i in range(2):capsule(blocked[i],center,center,r+margin)
-   capsule(vb,center,center,r+.325)
+   clearance_radius=max(r+.125,p.ToMM(t.GetDrillValue())/2+.245)+width/2
+   for i in range(2):capsule(blocked[i],center,center,clearance_radius)
+   capsule(vb,center,center,r+.345)
   else:
    aa,cc=xy(t.GetStart()),xy(t.GetEnd());r=p.ToMM(t.GetWidth())/2
    for i,l in enumerate(LAYERS):
     if t.IsOnLayer(l):capsule(blocked[i],aa,cc,r+margin)
-   capsule(vb,aa,cc,r+.325)
+   capsule(vb,aa,cc,r+.345)
  # Reference-plane track keepouts remain authoritative on the bottom layer.
  for z in b.Zones():
   if not z.GetIsRuleArea() or not z.GetDoNotAllowTracks():continue
@@ -95,11 +96,36 @@ def route(net,start,end,width=.12):
    if z.IsOnLayer(l):blocked[i]|=np.asarray(image)>0
  edge=math.ceil((.5+width/2)/STEP)
  blocked[:,:edge,:]=True;blocked[:,-edge:,:]=True;blocked[:,:,:edge]=True;blocked[:,:,-edge:]=True
- sources=[(i,idx(a[1]),idx(a[0])) for i in la];targets={(i,idx(c[1]),idx(c[0])) for i in lc}
+ def component_anchors(key,original,layers):
+  if key.startswith('='):return [(original,layers)]
+  if key.startswith('@'):seed=next(t for t in b.GetTracks() if t.m_Uuid.AsString()==key[1:])
+  else:
+   ref,pin=key.split(':');seed=next(q for q in refs[ref].Pads() if q.GetNumber()==pin)
+  conn=b.GetConnectivity();queue=[seed];seen=set();result=[]
+  while queue:
+   item=queue.pop();uid=item.m_Uuid.AsString()
+   if uid in seen:continue
+   seen.add(uid)
+   if item.GetNetname()!=net or item.GetClass() not in ['PCB_TRACK','PCB_VIA','PAD']:continue
+   ls=[i for i,l in enumerate(LAYERS) if item.IsOnLayer(l)]
+   if item.GetClass()=='PCB_TRACK':result.extend([(xy(item.GetStart()),ls),(xy(item.GetEnd()),ls)])
+   else:result.append((xy(item.GetPosition()),ls))
+   queue.extend(conn.GetConnectedItems(item))
+  return result or [(original,layers)]
+ anchors={}
+ def cells(points):
+  result=set()
+  for (xx,yy),ls in points:
+   for layer in ls:
+    u=(layer,idx(yy),idx(xx))
+    if not blocked[u]:result.add(u);anchors[u]=(xx,yy)
+  return result
+ sources=cells(component_anchors(start,a,la));targets=cells(component_anchors(end,c,lc))
  sources=[u for u in sources if not blocked[u]];targets={u for u in targets if not blocked[u]}
  if not sources or not targets:raise RuntimeError('Endpoint blocked '+str((sources,targets)))
- target_xy=(idx(c[1]),idx(c[0]));moves=[(0,1),(0,-1),(1,0),(-1,0),(1,1),(1,-1),(-1,1),(-1,-1)]
- def h(u):return math.hypot(u[1]-target_xy[0],u[2]-target_xy[1])
+ ty0=min(u[1] for u in targets);ty1=max(u[1] for u in targets);tx0=min(u[2] for u in targets);tx1=max(u[2] for u in targets)
+ moves=[(0,1),(0,-1),(1,0),(-1,0),(1,1),(1,-1),(-1,1),(-1,-1)]
+ def h(u):return math.hypot(max(ty0-u[1],0,u[1]-ty1),max(tx0-u[2],0,u[2]-tx1))
  heap=[(h(u),0,u) for u in sources];heapq.heapify(heap);cost={u:0 for u in sources};parent={};goal=None;beg=time.monotonic()
  while heap:
   _,g,u=heapq.heappop(heap)
@@ -134,13 +160,11 @@ def route(net,start,end,width=.12):
   before=tuple(path[i][j]-path[i-1][j] for j in range(3));after=tuple(path[i+1][j]-path[i][j] for j in range(3))
   if before!=after:short.append(path[i])
  short.append(path[-1])
- def pos(u):return existing_switch.get((u[1],u[2]),(u[2]*STEP+ORIGIN,u[1]*STEP+ORIGIN))
- segment(b,a,pos(short[0]),net,width,LAYERS[short[0][0]])
+ def pos(u):return anchors.get(u,existing_switch.get((u[1],u[2]),(u[2]*STEP+ORIGIN,u[1]*STEP+ORIGIN)))
  for u,v in zip(short,short[1:]):
   if u[0]!=v[0]:
    if (u[1],u[2]) not in existing_switch:via(b,*pos(u),net,diam=.4,drill=.2)
   else:segment(b,pos(u),pos(v),net,width,LAYERS[u[0]])
- segment(b,pos(short[-1]),c,net,width,LAYERS[short[-1][0]])
  b.BuildConnectivity();p.ZONE_FILLER(b).Fill(b.Zones());p.SaveBoard(str(FILE),b)
  print(net,start,end,'vertices',len(short),'length',round(cost[goal]*STEP,2),'mm incl via penalty; run ERC/DRC')
 

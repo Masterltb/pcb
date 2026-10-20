@@ -1,6 +1,6 @@
 {
   "status": "PASS",
   "errors": [],
-  "pcb_checked": false,
+  "pcb_checked": true,
   "limits": "Does not prove RF tuning, impedance, thermals, EMC/ESD, crystal accuracy, mechanical function or production qualification"
 }

@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>F:\project\repo-github\pcb\pcb\hardware\FV-CTRL_RevB.kicad_sch</source>
-    <date>2026-10-20T22:12:44</date>
+    <date>2026-10-21T01:14:15</date>
     <tool>Eeschema 10.0.7</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -1482,9 +1482,9 @@
     </comp>
     <comp ref="C23">
       <value>100nF</value>
-      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <footprint>Capacitor_SMD:C_0201_0603Metric</footprint>
       <fields>
-        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Footprint">Capacitor_SMD:C_0201_0603Metric</field>
         <field name="Datasheet"/>
         <field name="Description"/>
       </fields>
