@@ -8,7 +8,7 @@ import math,json
 import pcbnew as p
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-b=p.LoadBoard(str(ROOT/'hardware/FV-CTRL_RevB.kicad_pcb'));bad=[];minimum=999;closest=None
+b=p.LoadBoard(str(ROOT/'hardware/revb/FV-CTRL_RevB.kicad_pcb'));bad=[];minimum=999;closest=None
 expansion=p.ToMM(b.GetDesignSettings().m_SolderMaskExpansion)
 for via in b.GetTracks():
  if via.GetClass()!='PCB_VIA':continue
@@ -22,4 +22,4 @@ for via in b.GetTracks():
    if distance<minimum:minimum=distance;closest=item
    if distance<.05-1e-6:bad.append(item)
 result=dict(status='PASS' if not bad else 'FAIL',minimum_estimated_mask_to_drill_mm=round(minimum,6),closest=closest,violations=bad,limits='Bounding-box check, 0.05mm engineering mask-to-drill guard; excludes 25 thermal EP PTH pads requiring factory approval')
-(ROOT/'reports/RevB-via-paste-check.json').write_text(json.dumps(result,indent=2),encoding='utf-8');print(json.dumps(result,indent=2));raise SystemExit(bool(bad))
+(ROOT/'reports/revb/verified/RevB-via-paste-check.json').write_text(json.dumps(result,indent=2),encoding='utf-8');print(json.dumps(result,indent=2));raise SystemExit(bool(bad))

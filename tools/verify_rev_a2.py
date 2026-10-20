@@ -3,7 +3,7 @@ from pathlib import Path
 import xml.etree.ElementTree as ET
 import json,sys
 ROOT=Path(__file__).resolve().parents[1]
-xml=ET.parse(ROOT/'reports/RevA2.net.xml').getroot()
+xml=ET.parse(ROOT/'reports/reva2/verified/RevA2.net.xml').getroot()
 actual={}
 for net in xml.findall('nets/net'):
     for node in net.findall('node'): actual[node.attrib['ref']+'.'+node.attrib['pin']]=net.attrib['name'].removeprefix('/')
@@ -18,13 +18,13 @@ for node,net in {'J4.2':'+12V','J4.3':'GND','J4.4':'GND','J4.5':'+5V'}.items():r
 if not actual.get('J4.1','').startswith('unconnected-'):errors.append('Pololu EN must be NC')
 for i in [1,2]:
     require(f'J{i+8}.2',f'IR_RX{i}_CABLE');require(f'R{i+27}.1',f'IR_RX{i}_CABLE');require(f'R{i+27}.2',f'IR_RX{i}');require(f'R{i+25}.1',f'IR_RX{i}');require(f'R{i+25}.2','+3V3')
-spec=json.loads((ROOT/'hardware/FV-CTRL_RevA2.design.json').read_text())
+spec=json.loads((ROOT/'hardware/reva2/FV-CTRL_RevA2.design.json').read_text())
 for p in spec['parts']:
     for pin,net in p['pins'].items():
         if net is not None:require(p['ref']+'.'+pin,net)
 if '--pcb' in sys.argv:
     import pcbnew as pcb
-    board=pcb.LoadBoard(str(ROOT/'hardware/FV-CTRL_RevA2.kicad_pcb'))
+    board=pcb.LoadBoard(str(ROOT/'hardware/reva2/FV-CTRL_RevA2.kicad_pcb'))
     bnodes={fp.GetReference()+'.'+pad.GetNumber():pad.GetNetname().removeprefix('/') for fp in board.GetFootprints() for pad in fp.Pads() if pad.GetNumber()}
     for node,net in actual.items():
         if bnodes.get(node)!=net:errors.append(f'PCB {node}: {bnodes.get(node)} != schematic {net}')
@@ -36,5 +36,5 @@ if '--pcb' in sys.argv:
     for track in board.GetTracks():
         if track.GetClass()=='PCB_TRACK' and track.GetNetname().startswith(('/+12V','/+6V')) and track.GetWidth()<pcb.FromMM(2):errors.append('Power trace under 2mm: '+track.GetNetname())
 result=dict(status='FAIL' if errors else 'PASS',errors=errors,source='KiCad 10 exported XML',pcb_checked='--pcb' in sys.argv,limits='Does not prove thermal/EMC/ESD/mechanical safety or production qualification')
-(ROOT/'reports/RevA2-functional-gate.json').write_text(json.dumps(result,indent=2))
+(ROOT/'reports/reva2/verified/RevA2-functional-gate.json').write_text(json.dumps(result,indent=2))
 print(json.dumps(result,indent=2));sys.exit(bool(errors))

@@ -2,10 +2,10 @@
 from pathlib import Path
 import json,re,subprocess,sys,collections
 from rev_b_finish_routes import route,FILE
-ROOT=FILE.parent.parent;REPORT=ROOT/'reports/RevB-routing-drc.json'
+ROOT=Path(__file__).resolve().parents[1];REPORT=ROOT/'reports/revb/work/RevB-routing-drc.json'
 
 def check():
- for cmd in [ ['kicad-cli','sch','erc','--output',str(ROOT/'reports/RevB-routing-erc.rpt'),str(FILE.with_suffix('.kicad_sch'))],['kicad-cli','pcb','drc','--format','json','--schematic-parity','--output',str(REPORT),str(FILE)]]:
+ for cmd in [ ['kicad-cli','sch','erc','--output',str(ROOT/'reports/revb/work/RevB-routing-erc.rpt'),str(FILE.with_suffix('.kicad_sch'))],['kicad-cli','pcb','drc','--format','json','--schematic-parity','--output',str(REPORT),str(FILE)]]:
   subprocess.run(cmd,check=True,stdout=subprocess.DEVNULL)
  return json.loads(REPORT.read_text())
 
@@ -32,7 +32,7 @@ if __name__=='__main__':
   if not choices:break
   dist,pair=min(choices);net,aa,cc=pair
   before=FILE.read_bytes();baseline=sum(a['severity']=='error' for a in report['violations'])
-  (ROOT/'reports/RevB-route-checkpoint.kicad_pcb').write_bytes(before)
+  (ROOT/'reports/revb/work/RevB-route-checkpoint.kicad_pcb').write_bytes(before)
   width=.12 if 'U1:' in aa or 'U1:' in cc else .4 if net=='+3V3' else .3 if net in ['+3V3_RF','VDD_SDIO'] else .12
   print('ATTEMPT',pair,'distance',round(dist,2),'width',width,flush=True)
   signature=(net,*sorted(pair[1:]))

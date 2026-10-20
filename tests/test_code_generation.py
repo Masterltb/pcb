@@ -6,9 +6,9 @@ from pathlib import Path
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-HARDWARE = ROOT / "hardware"
-DOCS = ROOT / "docs"
-REPORTS = ROOT / "reports"
+HARDWARE = ROOT / "hardware/archive/reva"
+DOCS = ROOT / "docs/archive/reva"
+REPORTS = ROOT / "reports/archive/reva"
 
 class CodeGenerationTests(unittest.TestCase):
     def test_pipeline_audit_and_generation(self):
@@ -203,7 +203,7 @@ class CodeGenerationTests(unittest.TestCase):
 
     def test_gerber_export(self):
         """Verify Gerber and drill files exist and are populated."""
-        gerber_dir = ROOT / "gerbers" / "FV-CTRL_RevA"
+        gerber_dir = ROOT / "releases/archive/reva/gerbers" / "FV-CTRL_RevA"
         self.assertTrue(gerber_dir.exists(), "Gerbers directory must exist")
         gtl = gerber_dir / "FV-CTRL_RevA-F_Cu.gtl"
         gbl = gerber_dir / "FV-CTRL_RevA-B_Cu.gbl"

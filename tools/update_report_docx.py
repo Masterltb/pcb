@@ -10,11 +10,12 @@ Update report.docx to match current FreshVend engineering project:
 - CAD: FreeCAD 1.1 3D parametric assembly & kinematics simulation (800 x 600 x 800 mm chassis)
 """
 
+from pathlib import Path
 import docx
 from docx.shared import Pt, RGBColor
 
 def update_report():
-    doc = docx.Document("report.docx")
+    doc = docx.Document(str(Path(__file__).resolve().parents[1] / "docs/archive/reva/report.docx"))
     print("Loaded report.docx successfully.")
 
     # -------------------------------------------------------------
@@ -146,7 +147,7 @@ def update_report():
     )
     print("Updated P[156] (Section 4 Other Comments)")
 
-    doc.save("report.docx")
+    doc.save(str(Path(__file__).resolve().parents[1] / "docs/archive/reva/report.docx"))
     print("\nSUCCESS: Saved updated report.docx successfully!")
 
 if __name__ == "__main__":

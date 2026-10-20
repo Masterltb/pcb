@@ -112,14 +112,14 @@ def footprints():
     tptext=(STD/'TestPoint.pretty'/(name+'.kicad_mod')).read_text(encoding='utf-8')
     tptext=tptext.replace(name,'Keystone_5000_Carrier_D3').replace('(drill 1.5)','(drill 1.0)')
     (LIB/'Keystone_5000_Carrier_D3.kicad_mod').write_text(tptext,encoding='utf-8')
-    for parent,prefix in [(ROOT/'hardware','../'),(ROOT,'')]:
+    for parent,prefix in [(ROOT/'hardware/reva2','../../')]:
         (parent/'fp-lib-table').write_text(f'(fp_lib_table (version 7) (lib (name "fv_modules") (type "KiCad") (uri "${{KIPRJMOD}}/{prefix}libs/fv_modules.pretty") (options "") (descr "Legacy")) (lib (name "fv_reva2") (type "KiCad") (uri "${{KIPRJMOD}}/{prefix}libs/fv_reva2.pretty") (options "") (descr "Reviewed RevA2")))\n',encoding='utf-8')
-    project=json.loads((ROOT/'hardware/FV-CTRL_RevA.kicad_pro').read_text())
+    project=json.loads((ROOT/'hardware/archive/reva/FV-CTRL_RevA.kicad_pro').read_text())
     ds=project['board']['design_settings']; ds['drc_exclusions']=[]
     ds['rules'].update(min_clearance=.25,min_through_hole_diameter=.4,min_silk_clearance=.1)
     project['net_settings']['classes'][0].update(clearance=.25,track_width=.3,via_diameter=.8,via_drill=.4)
     ds['rule_severities'].update(footprint_type_mismatch='warning',missing_courtyard='warning')
-    (ROOT/'hardware'/f'{NAME}.kicad_pro').write_text(json.dumps(project,indent=2),encoding='utf-8')
+    (ROOT/'hardware/reva2'/f'{NAME}.kicad_pro').write_text(json.dumps(project,indent=2),encoding='utf-8')
 
 def schematic():
     sb=SchBuilder()
@@ -153,9 +153,9 @@ def schematic():
                 sb.record_net(net,p['ref']+'.'+num,'power' if net.startswith('+') or net=='GND' else 'signal')
     assert used=={p['ref'] for p in PARTS}, {p['ref'] for p in PARTS}-used
     text=sb.build().replace('(paper "A3")','(paper "A1")').replace('FV-CTRL Rev A (Fruit Vending Controller)','FV-CTRL RevA2 - External Dual XL4015').replace('Rev A (Engineering Draft)','RevA2 - ENGINEERING REVIEW').replace('2026-10-16','2026-10-20')
-    (ROOT/'hardware'/f'{NAME}.kicad_sch').write_text(text,encoding='utf-8')
-    (ROOT/'hardware'/f'{NAME}.design.json').write_text(json.dumps(dict(parts=PARTS,nets=sb.manifest_nets),indent=2),encoding='utf-8')
-    with (ROOT/'docs'/f'{NAME}-bom.csv').open('w',encoding='utf-8-sig',newline='') as f:
+    (ROOT/'hardware/reva2'/f'{NAME}.kicad_sch').write_text(text,encoding='utf-8')
+    (ROOT/'hardware/reva2'/f'{NAME}.design.json').write_text(json.dumps(dict(parts=PARTS,nets=sb.manifest_nets),indent=2),encoding='utf-8')
+    with (ROOT/'docs/reva2'/f'{NAME}-bom.csv').open('w',encoding='utf-8-sig',newline='') as f:
         w=csv.writer(f); w.writerow(['Reference','Value','MPN','Footprint','DNP','Release status'])
         for p in PARTS:w.writerow([p['ref'],p['value'],p['mpn'],p['footprint'],p['dnp'],'ENGINEERING - procurement not released'])
 

@@ -4,9 +4,9 @@ import json
 import subprocess
 
 root = Path(__file__).resolve().parents[1]
-hardware = root / "hardware"
-reports = root / "reports"
-report = root / "docs" / "audit-revA.md"
+hardware = root / "hardware/archive/reva"
+reports = root / "reports/archive/reva"
+report = root / "docs/archive/reva" / "audit-revA.md"
 
 native_sch = hardware / "FV-CTRL_RevA.kicad_sch"
 native_pcb = hardware / "FV-CTRL_RevA.kicad_pcb"

@@ -2,9 +2,10 @@
 from pathlib import Path
 import json,sys,math,re,xml.etree.ElementTree as E
 import pcbnew as p
-ROOT=Path(__file__).resolve().parents[1];NAME='FV-CTRL_RevB';FILE=ROOT/'hardware'/f'{NAME}.kicad_pcb'
+ROOT=Path(__file__).resolve().parents[1];NAME='FV-CTRL_RevB';FILE=ROOT/'hardware/revb'/f'{NAME}.kicad_pcb'
+(ROOT/'reports/revb/work').mkdir(parents=True,exist_ok=True)
 STD=Path('C:/Program Files/KiCad/10.0/share/kicad/footprints')
-spec=json.loads((ROOT/'hardware'/f'{NAME}.design.json').read_text());parts={a['ref']:a for a in spec['parts']}
+spec=json.loads((ROOT/'hardware/revb'/f'{NAME}.design.json').read_text());parts={a['ref']:a for a in spec['parts']}
 def pt(x,y):return p.VECTOR2I(p.FromMM(x),p.FromMM(y))
 def xy(v):return (p.ToMM(v.x),p.ToMM(v.y))
 def box(f):
@@ -58,12 +59,12 @@ PREF={'C13':(143,159,0),'C14':(137.5,155.0,90),'C15':(137.5,157,90),'C16':(138.5
 def place():
     b=p.BOARD();b.SetCopperLayerCount(2);b.SetFileName(str(FILE));ds=b.GetDesignSettings()
     ds.m_MinClearance=p.FromMM(.12);ds.m_TrackMinWidth=p.FromMM(.12);ds.m_MinThroughDrill=p.FromMM(.2);ds.m_HoleToHoleMin=p.FromMM(.25);ds.m_CopperEdgeClearance=p.FromMM(.5)
-    x=E.parse(ROOT/'reports/RevB.net.xml').getroot();nodemap={}
+    x=E.parse(ROOT/'reports/revb/verified/RevB.net.xml').getroot();nodemap={}
     for n in x.findall('nets/net'):
         net=p.NETINFO_ITEM(b,n.attrib['name']);b.Add(net)
         for node in n.findall('node'):nodemap[node.attrib['ref'],node.attrib['pin']]=net
     comps={c.attrib['ref']:c for c in x.findall('components/comp')}
-    old=p.LoadBoard(str(ROOT/'hardware/FV-CTRL_RevA2.kicad_pcb'));oldpos={f.GetReference():(*xy(f.GetPosition()),f.GetOrientationDegrees()) for f in old.GetFootprints()}
+    old=p.LoadBoard(str(ROOT/'hardware/reva2/FV-CTRL_RevA2.kicad_pcb'));oldpos={f.GetReference():(*xy(f.GetPosition()),f.GetOrientationDegrees()) for f in old.GetFootprints()}
     for part in spec['parts']:
         lib,name=part['footprint'].split(':');path=ROOT/'libs/fv_reva2.pretty' if lib=='fv_reva2' else STD/(lib+'.pretty')
         f=p.FootprintLoad(str(path),name)
@@ -114,7 +115,7 @@ def place():
     for idx,(xx,yy) in enumerate([(128,103),(198,135),(102,135)],1):
         f=p.FootprintLoad(str(STD/'Fiducial.pretty'),'Fiducial_1mm_Mask2mm');b.Add(f);f.SetReference('FID'+str(idx));f.SetAttributes(f.GetAttributes()|p.FP_BOARD_ONLY|p.FP_EXCLUDE_FROM_BOM|p.FP_EXCLUDE_FROM_POS_FILES);f.SetPosition(pt(xx,yy));f.Reference().SetVisible(False);f.Value().SetVisible(False)
     b.BuildConnectivity();p.SaveBoard(str(FILE),b)
-    (ROOT/'reports/RevB-placement.json').write_text(json.dumps({f.GetReference():[*xy(f.GetPosition()),f.GetOrientationDegrees()] for f in b.GetFootprints()},indent=2))
+    (ROOT/'reports/revb/work/RevB-placement.json').write_text(json.dumps({f.GetReference():[*xy(f.GetPosition()),f.GetOrientationDegrees()] for f in b.GetFootprints()},indent=2))
     print('Placement saved. Run ERC and DRC before routing.')
 
 def manual():
@@ -192,8 +193,8 @@ def strip_blocks(s,token):
     return s
 
 def exchange(power=False,protect_all=False):
-    b=p.LoadBoard(str(FILE));path=ROOT/'reports/RevB.dsn';assert p.ExportSpecctraDSN(b,str(path));s=path.read_text()
-    (ROOT/'reports/RevB-protected-copper.kicad_pcb').write_text(FILE.read_text())
+    b=p.LoadBoard(str(FILE));path=ROOT/'reports/revb/work/RevB.dsn';assert p.ExportSpecctraDSN(b,str(path));s=path.read_text()
+    (ROOT/'reports/revb/work/RevB-protected-copper.kicad_pcb').write_text(FILE.read_text())
     # Preserve GND planes. Freerouting plane_as_obstacle=false permits signal
     # routing through a pour while avoiding pointless pad-to-pad GND routing.
     # KiCad must refill and verify real island connectivity after SES import.
@@ -222,7 +223,7 @@ def exchange(power=False,protect_all=False):
         ns=re.sub(r'    \(class [^\n]+\n','',ns)
         for width,nn in [(2000,[n for n in nets if n in keep and n.startswith(('+12V','+6V'))]),(150,[n for n in nets if n in keep and not n.startswith(('+12V','+6V'))])]:
             if nn:ns=ns.rstrip()[:-1]+f'    (class "W{width}" '+' '.join('"'+n+'"' for n in nn)+f' (circuit (use_via "{via_name}")) (rule (width {width}) (clearance {250 if width==2000 else 120})))\n  )\n'
-        path=ROOT/'reports/RevB-power.dsn'
+        path=ROOT/'reports/revb/work/RevB-power.dsn'
     s=s[:start]+ns+s[end:]
     # Prevent autorouter from changing hand-routed RF/crystal and the completed
     # power pass. A later routing pass must preserve these exact copper paths.
@@ -236,9 +237,9 @@ def exchange(power=False,protect_all=False):
     path.write_text(s);print('Exported',path)
 
 def session(power=False):
-    b=p.LoadBoard(str(FILE));ses=ROOT/'reports'/('RevB-power.ses' if power else 'RevB.ses');assert p.ImportSpecctraSES(b,str(ses))
+    b=p.LoadBoard(str(FILE));ses=ROOT/'reports/revb/work'/('RevB-power.ses' if power else 'RevB.ses');assert p.ImportSpecctraSES(b,str(ses))
     p.SaveBoard(str(FILE),b)
-    snapshot=ROOT/'reports/RevB-protected-copper.kicad_pcb'
+    snapshot=ROOT/'reports/revb/work/RevB-protected-copper.kicad_pcb'
     if snapshot.exists():
         def critical(block):
             m=re.search(r'\(net "([^"]+)"\)',block);n=m[1] if m else ''
@@ -307,7 +308,7 @@ def fused():
     # Avoid pcbnew Remove(): this Windows SWIG build invalidates borrowed
     # footprint wrappers after track deletion. Filter serialized segment blocks.
     text=FILE.read_text();text=re.sub(r'\n\t\(segment\b[\s\S]*?\n\t\)',lambda m:'' if '(net "+12V_FUSED")' in m.group(0) else m.group(0),text)
-    tmp=ROOT/'reports/RevB-without-fused.kicad_pcb';tmp.write_text(text)
+    tmp=ROOT/'reports/revb/work/RevB-without-fused.kicad_pcb';tmp.write_text(text)
     oldb=b;b=p.LoadBoard(str(tmp));b.SetFileName(str(FILE))
     for a,c in zip(coords,coords[1:]):segment(b,a,c,net,2,p.B_Cu)
     segment(b,pads[0],pads[1],net,2,p.B_Cu)

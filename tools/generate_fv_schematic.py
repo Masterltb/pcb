@@ -1,10 +1,10 @@
 """Native KiCad 10 Schematic & Manifest Generator for FV-CTRL Rev A.
 
 Generates:
-1. hardware/FV-CTRL_RevA.kicad_sch - Native KiCad 10 schematic with 100% verified pin alignments
-2. hardware/FV-CTRL_RevA.manifest.json - Component & net manifest
-3. hardware/FV-CTRL_RevA.net.json - Backward-compatible netlist for validators
-4. docs/FV-CTRL_RevA-bom-draft.md - Draft BOM with MPNs and notes
+1. hardware/archive/reva/FV-CTRL_RevA.kicad_sch - Native KiCad 10 schematic with 100% verified pin alignments
+2. hardware/archive/reva/FV-CTRL_RevA.manifest.json - Component & net manifest
+3. hardware/archive/reva/FV-CTRL_RevA.net.json - Backward-compatible netlist for validators
+4. docs/archive/reva/FV-CTRL_RevA-bom-draft.md - Draft BOM with MPNs and notes
 """
 import json
 import re
@@ -13,8 +13,8 @@ import uuid
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-HARDWARE = ROOT / "hardware"
-DOCS = ROOT / "docs"
+HARDWARE = ROOT / "hardware/archive/reva"
+DOCS = ROOT / "docs/archive/reva"
 OUT_SCH = HARDWARE / "FV-CTRL_RevA.kicad_sch"
 OUT_MANIFEST = HARDWARE / "FV-CTRL_RevA.manifest.json"
 OUT_NETLIST = HARDWARE / "FV-CTRL_RevA.net.json"

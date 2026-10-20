@@ -7,7 +7,7 @@ ROOT = Path(__file__).resolve().parents[1]
 KICAD_FP_DIR = Path("C:/Program Files/KiCad/10.0/share/kicad/footprints")
 
 def build_ir_rx_board(dest_name="FV-IR-RX_RevA.kicad_pcb"):
-    manifest_path = ROOT / "hardware" / "FV-IR-RX_RevA.manifest.json"
+    manifest_path = ROOT / "hardware/archive/reva" / "FV-IR-RX_RevA.manifest.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     comps = manifest["components"]
     nets = manifest["nets"]
@@ -160,7 +160,7 @@ def build_ir_rx_board(dest_name="FV-IR-RX_RevA.kicad_pcb"):
     filler = pcbnew.ZONE_FILLER(board)
     filler.Fill(board.Zones())
 
-    out_file = ROOT / "hardware" / dest_name
+    out_file = ROOT / "hardware/archive/reva" / dest_name
     pcbnew.SaveBoard(str(out_file), board)
     print(f"Generated satellite board: {out_file}")
     return out_file

@@ -7,13 +7,13 @@ from pathlib import Path
 import json,csv
 import pcbnew as pcb
 ROOT=Path(__file__).resolve().parents[1]
-specpath=ROOT/'hardware/FV-CTRL_RevA2.design.json'
+specpath=ROOT/'hardware/reva2/FV-CTRL_RevA2.design.json'
 spec=json.loads(specpath.read_text())
 rows=[]
 for part in spec['parts']:
     ref=part['ref'];val=part['value'].split()[0]; status='Selected; incoming inspection and first article required'
     alt='Same specification from an authorized source; engineering requalification required'
-    source='docs/RevA2-review-and-bringup.md'
+    source='docs/reva2/RevA2-review-and-bringup.md'
     if ref.startswith('R'):
         code={'330R':'330R','10k':'10K','120R':'120R','5.6k':'5K6','2.2k':'2K2','1.5k':'1K5','1k':'1K'}[val]
         mpn='CFR-25JR-52-'+code;alt='MFR-25FBF52-'+code+' (candidate; confirm body/lead dimensions)'
@@ -70,16 +70,16 @@ for part in spec['parts']:
     part['mpn']=mpn
     rows.append([ref,part['value'],mpn,alt,part['footprint'],'DNP' if part['dnp'] else 'FIT',source,status])
 specpath.write_text(json.dumps(spec,indent=2),encoding='utf-8')
-with (ROOT/'docs/FV-CTRL_RevA2-bom.csv').open('w',encoding='utf-8-sig',newline='') as f:
+with (ROOT/'docs/reva2/FV-CTRL_RevA2-bom.csv').open('w',encoding='utf-8-sig',newline='') as f:
     w=csv.writer(f);w.writerow(['Ref','Value','Primary MPN','Alternative / qualification','Footprint','Population','Source / purchase','Status']);w.writerows(rows)
-schpath=ROOT/'hardware/FV-CTRL_RevA2.kicad_sch'
+schpath=ROOT/'hardware/reva2/FV-CTRL_RevA2.kicad_sch'
 s=schpath.read_text(encoding='utf-8').replace('TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm','fv_reva2:Keystone_5000_Carrier_D3').replace('10uF 25V','10uF 50V')
 schpath.write_text(s,encoding='utf-8')
-b=pcb.LoadBoard(str(ROOT/'hardware/FV-CTRL_RevA2.kicad_pcb'))
+b=pcb.LoadBoard(str(ROOT/'hardware/reva2/FV-CTRL_RevA2.kicad_pcb'))
 for fp in b.GetFootprints():
     if fp.GetReference()=='C5':fp.SetValue('10uF 50V')
     if fp.GetReference().startswith('TP'):
         fp.SetFPIDAsString('fv_reva2:Keystone_5000_Carrier_D3')
         for pad in fp.Pads():pad.SetDrillSize(pcb.VECTOR2I(pcb.FromMM(1),pcb.FromMM(1)))
-b.BuildConnectivity();pcb.ZONE_FILLER(b).Fill(b.Zones());pcb.SaveBoard(str(ROOT/'hardware/FV-CTRL_RevA2.kicad_pcb'),b)
+b.BuildConnectivity();pcb.ZONE_FILLER(b).Fill(b.Zones());pcb.SaveBoard(str(ROOT/'hardware/reva2/FV-CTRL_RevA2.kicad_pcb'),b)
 print('Updated sourced BOM and 1.0mm test-point drills. Run ERC, XML export, DRC and parity.')

@@ -2,7 +2,7 @@
 from pathlib import Path
 import xml.etree.ElementTree as ET,json,sys
 ROOT=Path(__file__).resolve().parents[1]
-x=ET.parse(ROOT/'reports/RevB.net.xml').getroot();actual={};errors=[]
+x=ET.parse(ROOT/'reports/revb/verified/RevB.net.xml').getroot();actual={};errors=[]
 for n in x.findall('nets/net'):
     for node in n.findall('node'):actual[node.attrib['ref'],node.attrib['pin']]=n.attrib['name']
 def expect(ref,pins):
@@ -23,7 +23,7 @@ expect('J2',{1:'+12V',2:'GND',3:'+6V_A_RAW',4:'GND'});expect('J3',{1:'+12V',2:'G
 expect('F2',{1:'+6V_A_RAW',2:'+6V_A'});expect('F3',{1:'+6V_B_RAW',2:'+6V_B'})
 for ref,rail,sig in [('J5','A','S1_TOP_PWM'),('J6','A','S1_BOT_PWM'),('J7','B','S2_TOP_PWM'),('J8','B','S2_BOT_PWM')]:expect(ref,{1:'GND',2:'+6V_'+rail,3:sig})
 for ref,net in [('D2','LED2_A'),('D3','LED3_A'),('D4','LED4_A'),('D5','LED5_A'),('D6','LED6_A')]:expect(ref,{1:'GND',2:net})
-spec=json.loads((ROOT/'hardware/FV-CTRL_RevB.design.json').read_text())
+spec=json.loads((ROOT/'hardware/revb/FV-CTRL_RevB.design.json').read_text())
 for part in spec['parts']:
     for pin,net in part['pins'].items():
         if net is not None:expect(part['ref'],{pin:net})
@@ -31,7 +31,7 @@ components=x.findall('components/comp')
 if len(components)!=len(spec['parts']):errors.append('Component count mismatch')
 if '--pcb' in sys.argv:
     import pcbnew as p
-    b=p.LoadBoard(str(ROOT/'hardware/FV-CTRL_RevB.kicad_pcb'));bnodes={}
+    b=p.LoadBoard(str(ROOT/'hardware/revb/FV-CTRL_RevB.kicad_pcb'));bnodes={}
     for fp in b.GetFootprints():
         for pad in fp.Pads():
             k=(fp.GetReference(),pad.GetNumber())
@@ -44,4 +44,4 @@ if '--pcb' in sys.argv:
     for t in b.GetTracks():
         if t.GetClass()=='PCB_TRACK' and t.GetNetname().startswith(('+12V','+6V')) and p.ToMM(t.GetWidth())<2:errors.append('Power below2mm '+t.GetNetname())
 result=dict(status='FAIL' if errors else 'PASS',errors=errors,pcb_checked='--pcb' in sys.argv,limits='Does not prove RF tuning, impedance, thermals, EMC/ESD, crystal accuracy, mechanical function or production qualification')
-(ROOT/'reports/RevB-functional-gate.json').write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2));sys.exit(bool(errors))
+(ROOT/'reports/revb/verified/RevB-functional-gate.json').write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2));sys.exit(bool(errors))

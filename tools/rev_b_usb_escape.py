@@ -7,7 +7,7 @@ import pcbnew as p
 from rev_b_layout import FILE,ROOT,pt,xy,segment,via
 
 def main():
- s=FILE.read_text();(ROOT/'reports/RevB-before-USB-escape.kicad_pcb').write_text(s)
+ s=FILE.read_text();(ROOT/'reports/revb/work/RevB-before-USB-escape.kicad_pcb').write_text(s)
  cap2_keep=['43e267d2-e1e9-4f5a-8644-5fc12a89d0c9','771397d6-65fc-4e49-bdae-1daa5cb9a885','6e608c19-5160-4d24-b8ba-57d2f0132eeb']
  def keep(m):
   block=m[0]

@@ -9,7 +9,7 @@ from generate_fv_schematic import SchBuilder,PIN_DB,extract_symbol_pins,get_pin_
 
 ROOT=Path(__file__).resolve().parents[1]
 NAME='FV-CTRL_RevB'
-OLD=json.loads((ROOT/'hardware/FV-CTRL_RevA2.design.json').read_text())
+OLD=json.loads((ROOT/'hardware/reva2/FV-CTRL_RevA2.design.json').read_text())
 PARTS=[copy.deepcopy(p) for p in OLD['parts'] if p['ref'] not in ['J18','J19','JP1']]
 for p in PARTS:p['sheet']='Interfaces'
 CUSTOM={}
@@ -166,26 +166,26 @@ def schematic():
                 sb.add_wire(px,py,end,py);global_label(sb,net,end,py,0 if dx<0 else 180)
         filename=f'{NAME}-{si+1:02}.kicad_sch'
         data=sb.build().replace('FV-CTRL Rev A (Fruit Vending Controller)',f'FV-CTRL RevB / {title}').replace('Rev A (Engineering Draft)','RevB - NOT RELEASED').replace('2026-10-16','2026-10-20').replace('2-layer THT | Dual-column FIFO servo & IR control','2-layer mixed SMT/THT | QFN bare IC | external SMA')
-        (ROOT/'hardware'/filename).write_text(data,encoding='utf-8')
+        (ROOT/'hardware/revb'/filename).write_text(data,encoding='utf-8')
         su=uid();sx=30+(si%3)*120;sy=45+(si//3)*65
         children.append(f'''(sheet (at {sx} {sy}) (size 105 40) (stroke (width 0.254) (type default)) (fill (color 0 0 0 0)) (uuid "{su}")
           (property "Sheetname" "{si+1}. {title}" (at {sx} {sy-2} 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
           (property "Sheetfile" "{filename}" (at {sx} {sy+42} 0) (effects (font (size 1.016 1.016)) (justify left top))))''')
     data=root.build().replace('FV-CTRL Rev A (Fruit Vending Controller)','FV-CTRL RevB - schematic index').replace('Rev A (Engineering Draft)','RevB - NOT RELEASED').replace('2026-10-16','2026-10-20').replace('2-layer THT | Dual-column FIFO servo & IR control','2-layer mixed SMT/THT | bare QFN | external SMA')
     data=data[:-2]+'\n'+ '\n'.join(children)+'\n)\n'
-    (ROOT/'hardware'/f'{NAME}.kicad_sch').write_text(data,encoding='utf-8')
-    (ROOT/'hardware'/f'{NAME}.design.json').write_text(json.dumps({'parts':PARTS},indent=2),encoding='utf-8')
-    with (ROOT/'docs'/f'{NAME}-bom-draft.csv').open('w',encoding='utf-8-sig',newline='') as f:
+    (ROOT/'hardware/revb'/f'{NAME}.kicad_sch').write_text(data,encoding='utf-8')
+    (ROOT/'hardware/revb'/f'{NAME}.design.json').write_text(json.dumps({'parts':PARTS},indent=2),encoding='utf-8')
+    with (ROOT/'docs/revb/bom'/f'{NAME}-bom-draft.csv').open('w',encoding='utf-8-sig',newline='') as f:
         w=csv.writer(f);w.writerow(['Reference','Value','MPN','Footprint','Population','Assembly','Qualification'])
         for p in PARTS:w.writerow([p['ref'],p['value'],p['mpn'],p['footprint'],'DNP' if p['dnp'] else 'FIT','SMT' if any(t in p['footprint'] for t in ['_SMD:','Package_SO:','Package_DFN','SOT_SMD','Crystal:','Connector_USB:']) else 'THT',p.get('notes','Incoming inspection and prototype qualification required')])
-    project=json.loads((ROOT/'hardware/FV-CTRL_RevA2.kicad_pro').read_text())
+    project=json.loads((ROOT/'hardware/reva2/FV-CTRL_RevA2.kicad_pro').read_text())
     ds=project['board']['design_settings'];ds['rules'].update(min_clearance=.12,min_track_width=.10,min_hole_clearance=.24,min_through_hole_diameter=.2,min_via_diameter=.45)
     project['net_settings']['classes'][0].update(clearance=.12,track_width=.2,via_diameter=.5,via_drill=.25)
-    (ROOT/'hardware'/f'{NAME}.kicad_pro').write_text(json.dumps(project,indent=2),encoding='utf-8')
+    (ROOT/'hardware/revb'/f'{NAME}.kicad_pro').write_text(json.dumps(project,indent=2),encoding='utf-8')
     library='(kicad_symbol_lib (version 20250114) (generator "fv_revb")\n'
     library+='\n'.join(body.replace(f'(symbol "{lib}"',f'(symbol "{lib.split(":")[1]}"',1) for lib,(body,_) in CUSTOM.items())+'\n)\n'
     (ROOT/'libs/fv_revb.kicad_sym').write_text(library,encoding='utf-8')
-    (ROOT/'hardware/sym-lib-table').write_text('(sym_lib_table (version 7) (lib (name "fv_revb") (type "KiCad") (uri "${KIPRJMOD}/../libs/fv_revb.kicad_sym") (options "") (descr "Bare ESP32 RevB")))\n',encoding='utf-8')
+    (ROOT/'hardware/revb/sym-lib-table').write_text('(sym_lib_table (version 7) (lib (name "fv_revb") (type "KiCad") (uri "${KIPRJMOD}/../../libs/fv_revb.kicad_sym") (options "") (descr "Bare ESP32 RevB")))\n',encoding='utf-8')
     print('RevB schematic generated:',len(PARTS),'parts, 9 functional pages plus index. Run ERC before any PCB work.')
 
 if __name__=='__main__':schematic()

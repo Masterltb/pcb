@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parents[1]
 
 def main():
  for suffix,refs in [('03',{'Y1':10,'J20':10,'D8':8}),('09',{'J21':14,'D9':8,'D10':8})]:
-  path=ROOT/f'hardware/FV-CTRL_RevB-{suffix}.kicad_sch'
+  path=ROOT/f'hardware/revb/FV-CTRL_RevB-{suffix}.kicad_sch'
   def adjust(match):
    block=match[0];ref=re.search(r'\(property "Reference" "([^"]+)"',block)
    if not ref or ref[1] not in refs:return block

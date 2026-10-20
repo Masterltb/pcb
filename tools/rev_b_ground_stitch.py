@@ -51,7 +51,7 @@ def candidates(b):
  return sorted(choices)
 
 def main():
- (ROOT/'reports/RevB-before-ground-stitches.kicad_pcb').write_bytes(FILE.read_bytes())
+ (ROOT/'reports/revb/work/RevB-before-ground-stitches.kicad_pcb').write_bytes(FILE.read_bytes())
  baseline=check();assert not any(v['severity']=='error' for v in baseline['violations'])
  count=0
  for _,layer,index,x,y in candidates(p.LoadBoard(str(FILE))):

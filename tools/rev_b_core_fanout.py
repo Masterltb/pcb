@@ -26,7 +26,7 @@ def main():
   net=p.NETINFO_ITEM(tmp,name);tmp.Add(net)
   for a in new.Pads():
    if a.GetNumber()==number:a.SetNet(net)
- new_uuid=new.m_Uuid.AsString();temp=ROOT/'reports/RevB-C23-footprint.kicad_pcb';p.SaveBoard(str(temp),tmp)
+ new_uuid=new.m_Uuid.AsString();temp=ROOT/'reports/revb/work/RevB-C23-footprint.kicad_pcb';p.SaveBoard(str(temp),tmp)
  new_block=blocks(temp.read_text(),'footprint')[0].group(0).replace(new_uuid,old_uuid)
  s=FILE.read_text()
  def keep(m):

@@ -1,11 +1,11 @@
 """Native KiCad 10 Schematic Generator for FV-IR-RX Satellite Boards.
 
 Generates:
-1. hardware/FV-IR-RX_RevA.kicad_sch - Standard satellite IR RX board schematic
-2. hardware/FV-IR-RX_RevA.manifest.json - Manifest of components and nets
+1. hardware/archive/reva/FV-IR-RX_RevA.kicad_sch - Standard satellite IR RX board schematic
+2. hardware/archive/reva/FV-IR-RX_RevA.manifest.json - Manifest of components and nets
 3. Optionally per-column specific schematics:
-   - hardware/FV-IR-RX1_RevA.kicad_sch (Column 1 satellite)
-   - hardware/FV-IR-RX2_RevA.kicad_sch (Column 2 satellite)
+   - hardware/archive/reva/FV-IR-RX1_RevA.kicad_sch (Column 1 satellite)
+   - hardware/archive/reva/FV-IR-RX2_RevA.kicad_sch (Column 2 satellite)
 """
 import json
 import re
@@ -15,8 +15,8 @@ import uuid
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-HARDWARE = ROOT / "hardware"
-REPORTS = ROOT / "reports"
+HARDWARE = ROOT / "hardware/archive/reva"
+REPORTS = ROOT / "reports/archive/reva"
 KICAD_SYM_DIR = Path("C:/Program Files/KiCad/10.0/share/kicad/symbols")
 
 

@@ -5,14 +5,14 @@ from pathlib import Path
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-HANDOVER = ROOT / "FV-CTRL_RevA_Handover"
+HANDOVER = ROOT / "releases/archive/reva/handover"
 
 # 1. Ensure fresh export of all artifacts
 print("1. Verifying and exporting fresh artifacts...")
-subprocess.run(["kicad-cli", "sch", "export", "pdf", "--output", str(ROOT / "docs" / "FV-CTRL_RevA_Schematic.pdf"), str(ROOT / "hardware" / "FV-CTRL_RevA.kicad_sch")], check=True)
-subprocess.run(["kicad-cli", "sch", "export", "pdf", "--output", str(ROOT / "docs" / "FV-IR-RX_RevA_Schematic.pdf"), str(ROOT / "hardware" / "FV-IR-RX_RevA.kicad_sch")], check=True)
-subprocess.run(["kicad-cli", "pcb", "export", "step", "--output", str(ROOT / "docs" / "FV-CTRL_RevA_3D.step"), str(ROOT / "hardware" / "FV-CTRL_RevA.kicad_pcb")], check=True)
-subprocess.run(["kicad-cli", "pcb", "export", "step", "--output", str(ROOT / "docs" / "FV-IR-RX_RevA_3D.step"), str(ROOT / "hardware" / "FV-IR-RX_RevA.kicad_pcb")], check=True)
+subprocess.run(["kicad-cli", "sch", "export", "pdf", "--output", str(ROOT / "docs/archive/reva" / "FV-CTRL_RevA_Schematic.pdf"), str(ROOT / "hardware/archive/reva" / "FV-CTRL_RevA.kicad_sch")], check=True)
+subprocess.run(["kicad-cli", "sch", "export", "pdf", "--output", str(ROOT / "docs/archive/reva" / "FV-IR-RX_RevA_Schematic.pdf"), str(ROOT / "hardware/archive/reva" / "FV-IR-RX_RevA.kicad_sch")], check=True)
+subprocess.run(["kicad-cli", "pcb", "export", "step", "--output", str(ROOT / "docs/archive/reva" / "FV-CTRL_RevA_3D.step"), str(ROOT / "hardware/archive/reva" / "FV-CTRL_RevA.kicad_pcb")], check=True)
+subprocess.run(["kicad-cli", "pcb", "export", "step", "--output", str(ROOT / "docs/archive/reva" / "FV-IR-RX_RevA_3D.step"), str(ROOT / "hardware/archive/reva" / "FV-IR-RX_RevA.kicad_pcb")], check=True)
 
 # 2. Reset handover folder
 if HANDOVER.exists():
@@ -27,8 +27,8 @@ p_rev.mkdir(parents=True, exist_ok=True)
 p_src.mkdir(parents=True, exist_ok=True)
 
 # 3. Populate 01_PCB_Fabrication
-shutil.copy2(ROOT / "gerbers" / "FV-CTRL_RevA_Gerbers.zip", p_fab / "FV-CTRL_RevA_Gerbers.zip")
-shutil.copy2(ROOT / "gerbers" / "FV-IR-RX_RevA_Gerbers.zip", p_fab / "FV-IR-RX_RevA_Gerbers.zip")
+shutil.copy2(ROOT / "releases/archive/reva/gerbers" / "FV-CTRL_RevA_Gerbers.zip", p_fab / "FV-CTRL_RevA_Gerbers.zip")
+shutil.copy2(ROOT / "releases/archive/reva/gerbers" / "FV-IR-RX_RevA_Gerbers.zip", p_fab / "FV-IR-RX_RevA_Gerbers.zip")
 
 fab_specs = """================================================================================
 HO SO YEU CAU CONG NGHE SAN XUAT PCB (PCB FABRICATION SPECIFICATIONS)
@@ -62,15 +62,15 @@ DU AN: FV-CTRL REV A (FRUIT VENDING DISPENSER CONTROLLER)
 (p_fab / "PCB_FABRICATION_SPECS.txt").write_text(fab_specs, encoding="utf-8")
 
 # 4. Populate 02_Technical_Review
-shutil.copy2(ROOT / "docs" / "FV-CTRL_RevA_Schematic.pdf", p_rev / "FV-CTRL_RevA_Schematic.pdf")
-shutil.copy2(ROOT / "docs" / "FV-IR-RX_RevA_Schematic.pdf", p_rev / "FV-IR-RX_RevA_Schematic.pdf")
-shutil.copy2(ROOT / "docs" / "FV-CTRL_RevA-bom.csv", p_rev / "FV-CTRL_RevA_BOM.csv")
-shutil.copy2(ROOT / "docs" / "FV-CTRL_RevA_3D.step", p_rev / "FV-CTRL_RevA_3D.step")
-shutil.copy2(ROOT / "docs" / "FV-IR-RX_RevA_3D.step", p_rev / "FV-IR-RX_RevA_3D.step")
+shutil.copy2(ROOT / "docs/archive/reva" / "FV-CTRL_RevA_Schematic.pdf", p_rev / "FV-CTRL_RevA_Schematic.pdf")
+shutil.copy2(ROOT / "docs/archive/reva" / "FV-IR-RX_RevA_Schematic.pdf", p_rev / "FV-IR-RX_RevA_Schematic.pdf")
+shutil.copy2(ROOT / "docs/archive/reva" / "FV-CTRL_RevA-bom.csv", p_rev / "FV-CTRL_RevA_BOM.csv")
+shutil.copy2(ROOT / "docs/archive/reva" / "FV-CTRL_RevA_3D.step", p_rev / "FV-CTRL_RevA_3D.step")
+shutil.copy2(ROOT / "docs/archive/reva" / "FV-IR-RX_RevA_3D.step", p_rev / "FV-IR-RX_RevA_3D.step")
 
-shutil.copy2(ROOT / "reports" / "erc.rpt", p_rev / "ERC_Report_Mainboard.txt")
-shutil.copy2(ROOT / "reports" / "drc.rpt", p_rev / "DRC_Report_Mainboard.txt")
-shutil.copy2(ROOT / "reports" / "drc_FV-IR-RX_RevA.rpt", p_rev / "DRC_Report_Satellite_IR.txt")
+shutil.copy2(ROOT / "reports/archive/reva" / "erc.rpt", p_rev / "ERC_Report_Mainboard.txt")
+shutil.copy2(ROOT / "reports/archive/reva" / "drc.rpt", p_rev / "DRC_Report_Mainboard.txt")
+shutil.copy2(ROOT / "reports/archive/reva" / "drc_FV-IR-RX_RevA.rpt", p_rev / "DRC_Report_Satellite_IR.txt")
 
 review_report = """# BAO CAO THAM DINH KY THUAT CHUYEN SAU (EXPERT ENGINEERING REVIEW)
 **Du an:** Bo dieu khien may nha coc hoa qua 2 cot (FV-CTRL Rev A)
@@ -135,9 +135,9 @@ review_report = """# BAO CAO THAM DINH KY THUAT CHUYEN SAU (EXPERT ENGINEERING R
 (p_rev / "EXPERT_DESIGN_VERIFICATION_REPORT.md").write_text(review_report, encoding="utf-8")
 
 # 5. Populate 03_KiCad_Source_Design
-for item in (ROOT / "hardware").glob("FV-*.*"):
+for item in (ROOT / "hardware/archive/reva").glob("FV-*.*"):
     shutil.copy2(item, p_src / item.name)
-shutil.copy2(ROOT / "hardware" / "fp-lib-table", p_src / "fp-lib-table")
+shutil.copy2(ROOT / "hardware/archive/reva" / "fp-lib-table", p_src / "fp-lib-table")
 shutil.copytree(ROOT / "libs", p_src / "libs", dirs_exist_ok=True)
 
 # 6. Create README Guide in Handover Root

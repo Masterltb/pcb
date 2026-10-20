@@ -3,7 +3,8 @@ from pathlib import Path
 import json,sys,re,xml.etree.ElementTree as ET
 import pcbnew as p
 ROOT=Path(__file__).resolve().parents[1]; NAME='FV-CTRL_RevA2'
-spec=json.loads((ROOT/'hardware'/f'{NAME}.design.json').read_text())
+(ROOT/'reports/reva2/work').mkdir(parents=True,exist_ok=True)
+spec=json.loads((ROOT/'hardware/reva2'/f'{NAME}.design.json').read_text())
 STD=Path('C:/Program Files/KiCad/10.0/share/kicad/footprints')
 def pt(x,y):return p.VECTOR2I(p.FromMM(x),p.FromMM(y))
 def rect(board,x1,y1,x2,y2,layer,width=.12):
@@ -55,11 +56,11 @@ def pack(b):
                 f.SetOrientationDegrees(angle);f.SetPosition(pt(x,y));occupied.append(box);break
         else:raise RuntimeError('No courtyard space for '+ref)
     placement={f.GetReference():[p.ToMM(f.GetPosition().x),p.ToMM(f.GetPosition().y),f.GetOrientationDegrees()] for f in fps.values()}
-    (ROOT/'reports/RevA2-placement.json').write_text(json.dumps(placement,indent=2))
+    (ROOT/'reports/reva2/verified/RevA2-placement.json').write_text(json.dumps(placement,indent=2))
 def place():
-    b=p.BOARD();b.SetCopperLayerCount(2);b.SetFileName(str(ROOT/'hardware'/f'{NAME}.kicad_pcb'))
+    b=p.BOARD();b.SetCopperLayerCount(2);b.SetFileName(str(ROOT/'hardware/reva2'/f'{NAME}.kicad_pcb'))
     ds=b.GetDesignSettings();ds.m_MinClearance=p.FromMM(.25);ds.m_TrackMinWidth=p.FromMM(.25);ds.m_MinThroughDrill=p.FromMM(.4);ds.m_HoleToHoleMin=p.FromMM(.25);ds.m_CopperEdgeClearance=p.FromMM(.5)
-    xml=ET.parse(ROOT/'reports/RevA2.net.xml').getroot();netmap={};nodemap={}
+    xml=ET.parse(ROOT/'reports/reva2/verified/RevA2.net.xml').getroot();netmap={};nodemap={}
     for net in xml.findall('nets/net'):
         name=net.attrib['name'];n=p.NETINFO_ITEM(b,name);b.Add(n);netmap[name]=n
         for node in net.findall('node'):nodemap[(node.attrib['ref'],node.attrib['pin'])]=n
@@ -92,12 +93,12 @@ def place():
     text(b,'FV-CTRL RevA2 2026-10-20',147,102,1)
     text(b,'ENGINEERING REVIEW - NOT RELEASED',147,105,.8,p.B_SilkS)
     text(b,'REMOVE JP1 BEFORE USB',143,192,.8,p.B_SilkS)
-    b.BuildConnectivity();p.SaveBoard(str(ROOT/'hardware'/f'{NAME}.kicad_pcb'),b)
+    b.BuildConnectivity();p.SaveBoard(str(ROOT/'hardware/reva2'/f'{NAME}.kicad_pcb'),b)
     print('Saved placement. Run DRC before routing.')
 
 def exchange(power_only=False):
-    b=p.LoadBoard(str(ROOT/'hardware'/f'{NAME}.kicad_pcb'))
-    path=ROOT/'reports/RevA2.dsn';assert p.ExportSpecctraDSN(b,str(path))
+    b=p.LoadBoard(str(ROOT/'hardware/reva2'/f'{NAME}.kicad_pcb'))
+    path=ROOT/'reports/reva2/work/RevA2.dsn';assert p.ExportSpecctraDSN(b,str(path))
     s=path.read_text()
     # Explicit classes for autorouter, preserving the hand-reviewed power widths.
     # Default KiCad DSN uses um resolution.
@@ -125,18 +126,18 @@ def exchange(power_only=False):
         start=s.index('  (network');end=s.index('  (wiring',start)
         ns=s[start:end];ns=re.sub(r'    \(net [\s\S]*?\n    \)',selected,ns)
         ns=re.sub(r'    \(class "W(?:800|500|300)"[^\n]*\n','',ns)
-        s=s[:start]+ns+s[end:];path=ROOT/'reports/RevA2-power.dsn'
+        s=s[:start]+ns+s[end:];path=ROOT/'reports/reva2/work/RevA2-power.dsn'
     path.write_text(s)
     print('DSN saved with explicit power/signal classes:',path)
 
 def session(power_only=False):
-    b=p.LoadBoard(str(ROOT/'hardware'/f'{NAME}.kicad_pcb'))
-    assert p.ImportSpecctraSES(b,str(ROOT/'reports'/('RevA2-power.ses' if power_only else 'RevA2.ses')))
-    b.BuildConnectivity();p.SaveBoard(str(ROOT/'hardware'/f'{NAME}.kicad_pcb'),b)
+    b=p.LoadBoard(str(ROOT/'hardware/reva2'/f'{NAME}.kicad_pcb'))
+    assert p.ImportSpecctraSES(b,str(ROOT/'reports/reva2/work'/('RevA2-power.ses' if power_only else 'RevA2.ses')))
+    b.BuildConnectivity();p.SaveBoard(str(ROOT/'hardware/reva2'/f'{NAME}.kicad_pcb'),b)
     print('Imported routing. Run DRC and inspect power paths before proceeding.')
 
 def finish():
-    b=p.LoadBoard(str(ROOT/'hardware'/f'{NAME}.kicad_pcb'))
+    b=p.LoadBoard(str(ROOT/'hardware/reva2'/f'{NAME}.kicad_pcb'))
     # Router neck-downs must still satisfy this project's manufacturing minimum.
     for t in b.GetTracks():
         if t.GetClass()=='PCB_TRACK':
@@ -152,11 +153,11 @@ def finish():
         outline=zone.Outline();outline.NewOutline()
         for x,y in [(100.6,100.6),(199.4,100.6),(199.4,199.4),(100.6,199.4)]:outline.Append(int(p.FromMM(x)),int(p.FromMM(y)))
         b.Add(zone)
-    b.BuildConnectivity();p.ZONE_FILLER(b).Fill(b.Zones());p.SaveBoard(str(ROOT/'hardware'/f'{NAME}.kicad_pcb'),b)
+    b.BuildConnectivity();p.ZONE_FILLER(b).Fill(b.Zones());p.SaveBoard(str(ROOT/'hardware/reva2'/f'{NAME}.kicad_pcb'),b)
     print('Applied min widths, edge correction, and GND pours. Run ERC/DRC.')
 
 def silk():
-    b=p.LoadBoard(str(ROOT/'hardware'/f'{NAME}.kicad_pcb'))
+    b=p.LoadBoard(str(ROOT/'hardware/reva2'/f'{NAME}.kicad_pcb'))
     for item in list(b.GetDrawings()):
         if item.GetClass()=='PCB_TEXT' and item.GetLayer() in [p.F_SilkS,p.B_SilkS]:item.SetLayer(p.Dwgs_User)
     def box(item):
@@ -196,5 +197,5 @@ def silk():
     for fp in sorted(b.GetFootprints(),key=lambda f:f.GetReference()):
         t=fp.Reference();t.SetVisible(True);t.SetTextSize(pt(.8,.8));t.SetTextThickness(p.FromMM(.12));t.SetTextAngle(p.EDA_ANGLE(0,p.DEGREES_T));t.SetKeepUpright(True)
         settle(t,(p.ToMM(t.GetPosition().x),p.ToMM(t.GetPosition().y)),8)
-    p.SaveBoard(str(ROOT/'hardware'/f'{NAME}.kicad_pcb'),b);print('Silkscreen references and pin labels placed. Run ERC/DRC.')
+    p.SaveBoard(str(ROOT/'hardware/reva2'/f'{NAME}.kicad_pcb'),b);print('Silkscreen references and pin labels placed. Run ERC/DRC.')
 if __name__=='__main__':{'place':place,'dsn':exchange,'power-dsn':lambda:exchange(True),'ses':session,'power-ses':lambda:session(True),'finish':finish,'silk':silk}[sys.argv[1]]()

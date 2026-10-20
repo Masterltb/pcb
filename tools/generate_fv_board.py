@@ -220,7 +220,7 @@ NET_SPECS_OPTIMAL = [
 ]
 
 def generate_clean_board():
-    manifest_path = ROOT / "hardware" / "FV-CTRL_RevA.manifest.json"
+    manifest_path = ROOT / "hardware/archive/reva" / "FV-CTRL_RevA.manifest.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     comps = manifest["components"]
     nets = manifest["nets"]
@@ -777,7 +777,7 @@ def generate_clean_board():
     filler = pcbnew.ZONE_FILLER(board)
     filler.Fill(board.Zones())
 
-    out_pcb = ROOT / "hardware" / "FV-CTRL_RevA.kicad_pcb"
+    out_pcb = ROOT / "hardware/archive/reva" / "FV-CTRL_RevA.kicad_pcb"
     pcbnew.SaveBoard(str(out_pcb), board)
     print("Saved clean board to:", str(out_pcb), flush=True)
 

@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 root = Path(__file__).resolve().parents[1]
-data = json.loads((root / "hardware" / "FV-CTRL_RevA.net.json").read_text(encoding="utf-8"))
+data = json.loads((root / "hardware/archive/reva" / "FV-CTRL_RevA.net.json").read_text(encoding="utf-8"))
 signals = data["signals"]
 errors = []
 required = {"S1_TOP_PWM", "S1_BOT_PWM", "S2_TOP_PWM", "S2_BOT_PWM", "IR_TX", "IR_RX1", "IR_RX2"}

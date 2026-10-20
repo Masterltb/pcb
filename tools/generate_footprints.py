@@ -3,7 +3,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 LIBS = ROOT / "libs" / "fv_modules.pretty"
-HARDWARE = ROOT / "hardware"
+HARDWARE = ROOT / "hardware/archive/reva"
 LIBS.mkdir(parents=True, exist_ok=True)
 
 
@@ -104,10 +104,10 @@ def gen_mp1584en():
 
 
 def gen_fp_lib_table():
-    """Register libs/fv_modules.pretty in hardware/fp-lib-table."""
+    """Register libs/fv_modules.pretty in hardware/archive/reva/fp-lib-table."""
     content = """(fp_lib_table
   (version 7)
-  (lib (name "fv_modules")(type "KiCad")(uri "${KIPRJMOD}/../libs/fv_modules.pretty")(options "")(descr "Custom breakout modules for FV-CTRL project"))
+  (lib (name "fv_modules")(type "KiCad")(uri "${KIPRJMOD}/../../../libs/fv_modules.pretty")(options "")(descr "Custom breakout modules for FV-CTRL project"))
 )
 """
     tbl = HARDWARE / "fp-lib-table"

@@ -2,8 +2,8 @@
 from pathlib import Path
 import json,csv
 ROOT=Path(__file__).resolve().parents[1]
-path=ROOT/'hardware/FV-CTRL_RevB.design.json';s=json.loads(path.read_text())
-old={r['Ref']:r for r in csv.DictReader((ROOT/'docs/FV-CTRL_RevA2-bom.csv').open(encoding='utf-8-sig'))}
+path=ROOT/'hardware/revb/FV-CTRL_RevB.design.json';s=json.loads(path.read_text())
+old={r['Ref']:r for r in csv.DictReader((ROOT/'docs/reva2/FV-CTRL_RevA2-bom.csv').open(encoding='utf-8-sig'))}
 refs={p['ref']:p for p in s['parts']}
 refs['Y1']['mpn']='ABM8-40.000MHZ-10-1-U-T'
 refs['Y1']['notes']='Verified Abracon catalog: CL10pF, +/-10ppm tolerance and stability, 3225; -10..60C; sourcing/temperature range must be confirmed'
@@ -42,10 +42,10 @@ for part in s['parts']:
  row=dict(Reference=ref,Value=part['value'],MPN=part['mpn'],Footprint=part['footprint'],Population='DNP' if part['dnp'] else 'FIT',Assembly='SMT factory' if smt else 'THT manual',Candidate_LCSC=code,Source=source,Alternative=alt,Status=status,Notes=part.get('notes',''))
  rows.append(row)
 path.write_text(json.dumps(s,indent=2),encoding='utf-8')
-with (ROOT/'docs/FV-CTRL_RevB-bom-draft.csv').open('w',encoding='utf-8-sig',newline='') as f:
+with (ROOT/'docs/revb/bom/FV-CTRL_RevB-bom-draft.csv').open('w',encoding='utf-8-sig',newline='') as f:
  w=csv.writer(f);w.writerow(['Reference','Value','MPN','Footprint','Population','Assembly','Qualification'])
  for r in rows:w.writerow([r['Reference'],r['Value'],r['MPN'],r['Footprint'],r['Population'],'SMT' if r['Assembly']=='SMT factory' else 'THT','; '.join(v for v in [r['Status'],r['Notes']] if v)])
 for filename,subset in [('FV-CTRL_RevB-bom-review.csv',rows),('FV-CTRL_RevB-SMT-quote.csv',[r for r in rows if r['Assembly']=='SMT factory' and r['Population']=='FIT']),('FV-CTRL_RevB-THT-assembly.csv',[r for r in rows if r['Assembly']=='THT manual'])]:
- with (ROOT/'docs'/filename).open('w',encoding='utf-8-sig',newline='') as f:
+ with (ROOT/'docs/revb/bom'/filename).open('w',encoding='utf-8-sig',newline='') as f:
   w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(subset)
 print('BOM review:',len(rows),'references;',sum(r['Assembly']=='SMT factory' and r['Population']=='FIT' for r in rows),'SMT references. Catalog IDs are candidates, not stock/price confirmations.')

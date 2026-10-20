@@ -150,7 +150,7 @@ def route(net,start,end,width=.12):
    for xx,yy,color in [(idx(a[0]),idx(a[1]),'red'),(idx(c[0]),idx(c[1]),'green')]:dr.ellipse((xx-3,yy-3,xx+3,yy+3),fill=color)
    for f in b.GetFootprints():
     xx,yy=xy(f.GetPosition());dr.text((idx(xx),idx(yy)),f.GetReference(),fill='blue')
-   im.crop((idx(136),idx(147),idx(148),idx(158))).resize((1200,1100)).save(str(FILE.parent.parent/f'reports/RevB-grid-{layer}.png'))
+   im.crop((idx(136),idx(147),idx(148),idx(158))).resize((1200,1100)).save(str(Path(__file__).resolve().parents[1]/f'reports/revb/work/RevB-grid-{layer}.png'))
   print('Search reached',len(cost),'states; debug grid saved')
   raise RuntimeError('No conservative route within 45s; placement/rip-up review needed')
  path=[goal]
