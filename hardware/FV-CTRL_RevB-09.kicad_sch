@@ -1228,11 +1228,11 @@
 		(dnp no)
 		(uuid "668308bf-3a22-4d7f-a1c1-94e3b394302c")
 		(property "Reference" "J21"
-			(at 193.0400 38.1000 0)
+			(at 193.0400 26.6400 0)
 			(effects (font (size 1.27 1.27)))
 		)
 		(property "Value" "USB MICRO DATA"
-			(at 193.0400 43.1800 0)
+			(at 193.0400 54.6400 0)
 			(effects (font (size 1.27 1.27)))
 		)
 		(property "Footprint" "Connector_USB:USB_Micro-B_Molex-105017-0001"
@@ -1584,11 +1584,11 @@
 		(dnp no)
 		(uuid "1a302e2c-d454-45a9-8326-e9b58f5819cc")
 		(property "Reference" "D9"
-			(at 334.0100 123.1900 0)
+			(at 325.1200 116.4600 0)
 			(effects (font (size 1.27 1.27)))
 		)
 		(property "Value" "PESD5V0X1BL"
-			(at 334.0100 125.7300 0)
+			(at 325.1200 132.4600 0)
 			(effects (font (size 1.27 1.27)))
 		)
 		(property "Footprint" "Diode_SMD:D_SOD-882"
@@ -1616,11 +1616,11 @@
 		(dnp no)
 		(uuid "9ff66efd-26d1-44b4-a42e-cf2f6414f8ab")
 		(property "Reference" "D10"
-			(at 201.9300 151.1300 0)
+			(at 193.0400 144.4000 0)
 			(effects (font (size 1.27 1.27)))
 		)
 		(property "Value" "PESD5V0X1BL"
-			(at 201.9300 153.6700 0)
+			(at 193.0400 160.4000 0)
 			(effects (font (size 1.27 1.27)))
 		)
 		(property "Footprint" "Diode_SMD:D_SOD-882"

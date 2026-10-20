@@ -1151,11 +1151,11 @@
 		(dnp no)
 		(uuid "2ef8103c-3503-4b7b-a927-e0e8604ae6ce")
 		(property "Reference" "Y1"
-			(at 55.8800 38.1000 0)
+			(at 55.8800 30.6400 0)
 			(effects (font (size 1.27 1.27)))
 		)
 		(property "Value" "40MHz CL10pF"
-			(at 55.8800 43.1800 0)
+			(at 55.8800 50.6400 0)
 			(effects (font (size 1.27 1.27)))
 		)
 		(property "Footprint" "Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm"
@@ -1473,11 +1473,11 @@
 		(dnp no)
 		(uuid "927f71c7-ef68-4179-9b89-37d1098f10e6")
 		(property "Reference" "J20"
-			(at 248.9200 93.9800 0)
+			(at 248.9200 86.5200 0)
 			(effects (font (size 1.27 1.27)))
 		)
 		(property "Value" "SMA 50ohm ANT"
-			(at 248.9200 99.0600 0)
+			(at 248.9200 106.5200 0)
 			(effects (font (size 1.27 1.27)))
 		)
 		(property "Footprint" "Connector_Coaxial:SMA_Amphenol_132134_Vertical"
@@ -1505,11 +1505,11 @@
 		(dnp no)
 		(uuid "3d0f785a-91b9-4e2d-bc8d-909472116df3")
 		(property "Reference" "D8"
-			(at 354.3300 95.2500 0)
+			(at 345.4400 88.5200 0)
 			(effects (font (size 1.27 1.27)))
 		)
 		(property "Value" "PESD5V0X1BL"
-			(at 354.3300 97.7900 0)
+			(at 345.4400 104.5200 0)
 			(effects (font (size 1.27 1.27)))
 		)
 		(property "Footprint" "Diode_SMD:D_SOD-882"

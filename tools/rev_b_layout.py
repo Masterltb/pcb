@@ -26,21 +26,25 @@ def polyarea(b,coords,layers,tracks=False,vias=False,copper=False):
     b.Add(z)
 
 def reference_areas(b):
-    for x1,y1,x2,y2 in [(140.2,151.2,145.8,156.8),(128,150.8,141,153.6)]:
+    for x1,y1,x2,y2 in [(140.2,151.2,145.8,156.8),(128,150.9,141,153.6)]:
         polyarea(b,[(x1,y1),(x2,y1),(x2,y2),(x1,y2)],[p.B_Cu],tracks=True)
     # Keep reference under the actual crystal body and clock paths. A bounding
     # rectangle over the entire unused fanout region needlessly traps power pins.
     polyarea(b,[(140.8,143.7),(145.2,143.7),(145.2,147.3),(140.8,147.3)],[p.B_Cu],tracks=True)
+    # The central area beneath the crystal body also stays free of top traces;
+    # its four corner-pad connections remain outside this small central window.
+    for x1,y1,x2,y2 in [(142.6,144.25,143.4,146.75),(141.4,145.25,144.6,145.75)]:
+        polyarea(b,[(x1,y1),(x2,y1),(x2,y2),(x1,y2)],[p.F_Cu],tracks=True)
     for t in b.GetTracks():
         if t.GetClass()!='PCB_TRACK' or not t.GetNetname().startswith('XTAL_'):continue
         a,c=xy(t.GetStart()),xy(t.GetEnd());dx,dy=c[0]-a[0],c[1]-a[1];length=math.hypot(dx,dy)
         if not length:continue
-        ux,uy=dx/length,dy/length;nx,ny=-uy*.35,ux*.35
-        a=(a[0]-ux*.35,a[1]-uy*.35);c=(c[0]+ux*.35,c[1]+uy*.35)
+        ux,uy=dx/length,dy/length;nx,ny=-uy*.30,ux*.30
+        a=(a[0]-ux*.30,a[1]-uy*.30);c=(c[0]+ux*.30,c[1]+uy*.30)
         polyarea(b,[(a[0]+nx,a[1]+ny),(c[0]+nx,c[1]+ny),(c[0]-nx,c[1]-ny),(a[0]-nx,a[1]-ny)],[p.B_Cu],tracks=True)
 
 FIXED={'U1':(143,154,0),'U4':(150.5,166,0),'U2':(143,185,0),'J20':(128.8,152.075,0),'J21':(143,196.5,0),
-       'Y1':(143,145.5,0),'R36':(142.2,149.0,90),'C24':(139.8,146.5,90),'C25':(146.2,144.5,90),
+       'Y1':(143,145.5,0),'R36':(142.2,148.5,90),'C24':(139.8,146.5,90),'C25':(146.2,144.5,90),
        'C30':(139.1,151.755,90),'L1':(137.8,152.075,180),'C31':(136.6,151.755,90),'D8':(134.4,151.75,90),
        'U3':(131,176,0),'SW1':(129,189,0),'SW2':(151,189,0),'C11':(124,175,0),'C12':(132,183,0),
        'C21':(135.5,156.5,0),'C22':(139.2,153.1,180),'C41':(156.2,163.8,0),
@@ -130,7 +134,7 @@ def manual():
     segment(b,(131.5,152.5),pos('J20',1),'RF_50',1.1)
     for ref in ['C31','D8']:
         pp=pos(ref,1);segment(b,pp,(pp[0],152.5),'RF_50',.2)
-    link(('U1',45),('R36',1),'XTAL_P',.12,[(142.475,150.8)])
+    link(('U1',45),('R36',1),'XTAL_P',.12,[(142.475,149.4)])
     link(('R36',2),('Y1',1),'XTAL_P_X',.15,[(142.2,148.0)])
     link(('Y1',1),('C24',1),'XTAL_P_X',.15)
     link(('U1',44),('C25',1),'XTAL_N',.12,[(142.825,150.6),(143.3,150.125),(143.3,149),(147.3,145),(147.3,144.98)])
@@ -187,8 +191,9 @@ def strip_blocks(s,token):
                 if depth==0:s=s[:start]+s[i+1:];break
     return s
 
-def exchange(power=False):
+def exchange(power=False,protect_all=False):
     b=p.LoadBoard(str(FILE));path=ROOT/'reports/RevB.dsn';assert p.ExportSpecctraDSN(b,str(path));s=path.read_text()
+    (ROOT/'reports/RevB-protected-copper.kicad_pcb').write_text(FILE.read_text())
     # Preserve GND planes. Freerouting plane_as_obstacle=false permits signal
     # routing through a pour while avoiding pointless pad-to-pad GND routing.
     # KiCad must refill and verify real island connectivity after SES import.
@@ -225,14 +230,25 @@ def exchange(power=False):
         block=m.group(0)
         net=re.search(r'\(net\s+("[^"]+"|[^\s)]+)\)',block)
         name=net.group(1).strip('"') if net else ''
-        return block.replace('(type route)','(type protect)') if name.startswith(('+12V','+6V','RF_','XTAL_')) or name in ['GND','+3V3','VDD_SDIO'] else block
+        return block.replace('(type route)','(type protect)') if protect_all or name.startswith(('+12V','+6V','RF_','XTAL_')) or name in ['GND','+3V3','+3V3_RF','VDD_SDIO'] else block
     # A wire ends immediately after its net/type fields; vias are single-line.
     s=re.sub(r'    \((?:wire|via)[^\n]+',protect_critical,s)
     path.write_text(s);print('Exported',path)
 
 def session(power=False):
     b=p.LoadBoard(str(FILE));ses=ROOT/'reports'/('RevB-power.ses' if power else 'RevB.ses');assert p.ImportSpecctraSES(b,str(ses))
-    b.BuildConnectivity();p.ZONE_FILLER(b).Fill(b.Zones());p.SaveBoard(str(FILE),b);print('SES imported and pours refilled. Run ERC/DRC.')
+    p.SaveBoard(str(FILE),b)
+    snapshot=ROOT/'reports/RevB-protected-copper.kicad_pcb'
+    if snapshot.exists():
+        def critical(block):
+            m=re.search(r'\(net "([^"]+)"\)',block);n=m[1] if m else ''
+            return n.startswith(('+12V','+6V','RF_','XTAL_')) or n in ['GND','+3V3','+3V3_RF','VDD_SDIO']
+        pattern=r'\n\t\((?:segment|via)\b[\s\S]*?\n\t\)'
+        saved=[m.group(0) for m in re.finditer(pattern,snapshot.read_text()) if critical(m.group(0))]
+        text=re.sub(pattern,lambda m:'' if critical(m.group(0)) else m.group(0),FILE.read_text())
+        at=text.rfind(')');FILE.write_text(text[:at]+''.join(saved)+'\n'+text[at:])
+        b=p.LoadBoard(str(FILE))
+    b.BuildConnectivity();p.ZONE_FILLER(b).Fill(b.Zones());p.SaveBoard(str(FILE),b);print('SES imported; protected copper restored exactly and pours refilled. Run ERC/DRC.')
 
 def fused():
     """Route this PTH-to-PTH power branch on B.Cu at full 2mm width.
@@ -314,4 +330,4 @@ def core_reference():
         if t.GetClass()=='PCB_TRACK' and t.GetWidth()<p.FromMM(.1):t.SetWidth(p.FromMM(.1))
     b.BuildConnectivity();p.ZONE_FILLER(b).Fill(b.Zones());p.SaveBoard(str(FILE),b);print('Reference keepouts and 1oz manufacturing floors updated. Run ERC/DRC.')
 
-if __name__=='__main__':{'place':place,'manual':manual,'ground':ground,'dsn':exchange,'power-dsn':lambda:exchange(True),'ses':session,'power-ses':lambda:session(True),'fused':fused,'core-reference':core_reference}[sys.argv[1]]()
+if __name__=='__main__':{'place':place,'manual':manual,'ground':ground,'dsn':exchange,'fanout-dsn':lambda:exchange(False,True),'power-dsn':lambda:exchange(True),'ses':session,'power-ses':lambda:session(True),'fused':fused,'core-reference':core_reference}[sys.argv[1]]()

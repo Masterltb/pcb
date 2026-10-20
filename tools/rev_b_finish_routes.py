@@ -15,6 +15,8 @@ LAYERS=[p.F_Cu,p.B_Cu]
 def route(net,start,end,width=.12):
  b=p.LoadBoard(str(FILE)); refs={f.GetReference():f for f in b.GetFootprints()}
  def endpoint(key):
+  if key.startswith('='):
+   x,y,layer=key[1:].split(',');return (float(x),float(y)),[int(layer)]
   if key.startswith('@'):
    item=next((t for t in b.GetTracks() if t.m_Uuid.AsString()==key[1:]),None)
    assert item and item.GetNetname()==net
@@ -26,6 +28,7 @@ def route(net,start,end,width=.12):
  a,la=endpoint(start);c,lc=endpoint(end)
  blocked=np.zeros((2,N,N),dtype=bool); vb=np.zeros((N,N),dtype=bool)
  def idx(v):return round((v-ORIGIN)/STEP)
+ existing_switch={}
  def limits(x1,y1,x2,y2):
   return max(0,math.ceil((x1-ORIGIN)/STEP)),max(0,math.ceil((y1-ORIGIN)/STEP)),min(N-1,math.floor((x2-ORIGIN)/STEP)),min(N-1,math.floor((y2-ORIGIN)/STEP))
  def rect(mask,bb,margin):
@@ -38,42 +41,56 @@ def route(net,start,end,width=.12):
   dx,dy=c[0]-a[0],c[1]-a[1];den=dx*dx+dy*dy
   u=np.clip(((xs-a[0])*dx+(ys-a[1])*dy)/den,0,1) if den else 0
   mask[y1:y2+1,x1:x2+1]|=(xs-a[0]-u*dx)**2+(ys-a[1]-u*dy)**2<=r*r
- margin=width/2+.135
+ # 0.12mm design clearance plus a 5um raster guard. Native DRC still decides.
+ margin=width/2+.125
  for f in b.GetFootprints():
   for pad in f.Pads():
    q=pad.GetBoundingBox();bb=tuple(p.ToMM(v) for v in [q.GetX(),q.GetY(),q.GetRight(),q.GetBottom()])
    own=pad.GetNetname()==net
+   if own and pad.IsOnLayer(p.F_Cu) and pad.IsOnLayer(p.B_Cu):
+    xx,yy=xy(pad.GetPosition());existing_switch[idx(yy),idx(xx)]=(xx,yy)
    if not own:
     for i,l in enumerate(LAYERS):
      if pad.IsOnLayer(l):rect(blocked[i],bb,margin)
-    rect(vb,bb,.385)
+    rect(vb,bb,.325)
    elif pad.GetAttribute()==p.PAD_ATTRIB_SMD:
     # No unqualified via-in-pad on a reflow pad.
-    rect(vb,bb,.30)
+    rect(vb,bb,.25)
    else:
     # An existing PTH already changes layers. Never drill another via in it.
     rect(vb,bb,.12)
  for t in b.GetTracks():
   if t.GetNetname()==net:
    if t.GetClass()=='PCB_VIA':
-    center=xy(t.GetPosition());capsule(vb,center,center,p.ToMM(t.GetDrillValue())/2+.125+.265)
+    center=xy(t.GetPosition());capsule(vb,center,center,p.ToMM(t.GetDrillValue())/2+.10+.265)
+    existing_switch[idx(center[1]),idx(center[0])]=center
    continue
   if t.GetClass()=='PCB_VIA':
    center=xy(t.GetPosition());r=p.ToMM(t.GetWidth(p.F_Cu))/2
    for i in range(2):capsule(blocked[i],center,center,r+margin)
-   capsule(vb,center,center,r+.385)
+   capsule(vb,center,center,r+.325)
   else:
    aa,cc=xy(t.GetStart()),xy(t.GetEnd());r=p.ToMM(t.GetWidth())/2
    for i,l in enumerate(LAYERS):
     if t.IsOnLayer(l):capsule(blocked[i],aa,cc,r+margin)
-   capsule(vb,aa,cc,r+.385)
+   capsule(vb,aa,cc,r+.325)
  # Reference-plane track keepouts remain authoritative on the bottom layer.
  for z in b.Zones():
   if not z.GetIsRuleArea() or not z.GetDoNotAllowTracks():continue
   outline=z.Outline().COutline(0);coords=[xy(outline.CPoint(i)) for i in range(outline.PointCount())]
-  from PIL import Image,ImageDraw,ImageFilter
-  image=Image.new('L',(N,N));ImageDraw.Draw(image).polygon([(idx(x),idx(y)) for x,y in coords],fill=255)
-  image=image.filter(ImageFilter.MaxFilter(2*math.ceil(width/2/STEP)+1))
+  from PIL import Image,ImageDraw
+  # Offset convex keepout edges in their normal direction. A square image
+  # dilation over-blocks diagonal clock corridors by sqrt(2).
+  area=sum(coords[i][0]*coords[(i+1)%len(coords)][1]-coords[(i+1)%len(coords)][0]*coords[i][1] for i in range(len(coords)))
+  normals=[]
+  for aa,cc in zip(coords,coords[1:]+coords[:1]):
+   dx,dy=cc[0]-aa[0],cc[1]-aa[1];length=math.hypot(dx,dy)
+   normals.append((dy/length,-dx/length) if area>0 else (-dy/length,dx/length))
+  expanded=[];radius=width/2+.025
+  for j,(xx,yy) in enumerate(coords):
+   n1,n2=normals[j-1],normals[j];den=1+n1[0]*n2[0]+n1[1]*n2[1]
+   expanded.append((xx+radius*(n1[0]+n2[0])/den,yy+radius*(n1[1]+n2[1])/den))
+  image=Image.new('L',(N,N));ImageDraw.Draw(image).polygon([(idx(x),idx(y)) for x,y in expanded],fill=255)
   for i,l in enumerate(LAYERS):
    if z.IsOnLayer(l):blocked[i]|=np.asarray(image)>0
  edge=math.ceil((.5+width/2)/STEP)
@@ -96,8 +113,8 @@ def route(net,start,end,width=.12):
    if dy and dx and (blocked[l,y,xx] or blocked[l,yy,x]):continue
    v=(l,yy,xx);ng=g+(math.sqrt(2) if dx and dy else 1)
    if ng<cost.get(v,1e30):cost[v]=ng;parent[v]=u;heapq.heappush(heap,(ng+h(v),ng,v))
-  if not vb[y,x] and not blocked[1-l,y,x]:
-   v=(1-l,y,x);ng=g+24
+  if ((y,x) in existing_switch or not vb[y,x]) and not blocked[1-l,y,x]:
+   v=(1-l,y,x);ng=g+(.1 if (y,x) in existing_switch else 24)
    if ng<cost.get(v,1e30):cost[v]=ng;parent[v]=u;heapq.heappush(heap,(ng+h(v),ng,v))
  if goal is None:
   from PIL import Image,ImageDraw
@@ -117,10 +134,11 @@ def route(net,start,end,width=.12):
   before=tuple(path[i][j]-path[i-1][j] for j in range(3));after=tuple(path[i+1][j]-path[i][j] for j in range(3))
   if before!=after:short.append(path[i])
  short.append(path[-1])
- def pos(u):return (u[2]*STEP+ORIGIN,u[1]*STEP+ORIGIN)
+ def pos(u):return existing_switch.get((u[1],u[2]),(u[2]*STEP+ORIGIN,u[1]*STEP+ORIGIN))
  segment(b,a,pos(short[0]),net,width,LAYERS[short[0][0]])
  for u,v in zip(short,short[1:]):
-  if u[0]!=v[0]:via(b,*pos(u),net)
+  if u[0]!=v[0]:
+   if (u[1],u[2]) not in existing_switch:via(b,*pos(u),net,diam=.4,drill=.2)
   else:segment(b,pos(u),pos(v),net,width,LAYERS[u[0]])
  segment(b,pos(short[-1]),c,net,width,LAYERS[short[-1][0]])
  b.BuildConnectivity();p.ZONE_FILLER(b).Fill(b.Zones());p.SaveBoard(str(FILE),b)

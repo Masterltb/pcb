@@ -61,3 +61,9 @@ JaeBin: đoạn sau cuộn cảm tới SMA cần đường rộng nhất quán, 
 Jbungia: không đổi footprint 0201; đường rộng tránh pad GND của C31/D8 nhờ nhánh shunt. Ground via gần tụ phải tent và tránh paste pad để giảm hút thiếc; vẫn cần xưởng duyệt. Chạy DRC sau đổi hình học, kiểm tra lại BOM và không đánh đồng giá trị ban đầu với giá trị RF đã tuning.
 
 Nguồn: [Murata model list xác nhận dòng 0,5 pF C0G 0201 50 V](https://www.murata.com/-/media/webrenewal/tool/library/common-pdf/static-model/component-list-s-mlcc-2506.ashx?cvid=20250805040438000000&la=ja-jp), [Nexperia PESD5V0X1BL](https://www.nexperia.com/product/PESD5V0X1BL), [Espressif RF layout](https://docs.espressif.com/projects/esp-hardware-design-guidelines/en/latest/esp32/pcb-layout-design.html).
+
+## Review fanout QFN trước khi đi lại vùng MCU
+
+JaeBin: các nhánh nguồn đi vòng trước khi thoát các chân lân cận tạo ra vùng kín quanh pad QFN. Thay bằng fanout có thứ tự: đoạn đầu vuông góc hàng pad, sau đó mở rộng ra hàng via ngoài thân IC; giữ nguyên ground dưới MCU, RF và crystal. Đưa tụ 100 nF C23 sát miền VDDA pin 1 bằng footprint 0201, cùng MPN GRM033R71C104KE14D đã chọn cho C22. Dời bộ RC CAP1/CAP2, đường boot và các tụ/IC lân cận khi cần để bảo toàn lối thoát; không đổi GPIO/net. Di chuyển supervisor khỏi hàng via và kéo tụ của nó theo sát chân VDD. Nguồn flash và CPU có tụ cục bộ sau các via thoát chân.
+
+Jbungia: via fanout 0,40/0,20 mm có annular ring 0,10 mm; giữ via ground EP 0,50/0,20 mm trong footprint hãng và các via khác theo thiết kế. Không dùng via-in-pad mở trên pad SMT. Yêu cầu này vẫn nằm trong chuẩn hai lớp 1 oz JLCPCB đang chuẩn bị; xưởng phải duyệt QFN/stencil/via EP. C23 0201 không đổi loại dịch vụ vì khối RF đã cần Standard PCBA. Kiểm tra courtyard, hole-to-hole, soldermask, clearance và parity sau bước fanout, rồi mới đi các kết nối còn lại.

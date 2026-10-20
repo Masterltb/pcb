@@ -2050,14 +2050,14 @@
       "ref": "C23",
       "value": "100nF",
       "lib_id": "Device:C",
-      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "footprint": "Capacitor_SMD:C_0201_0603Metric",
       "pins": {
         "1": "+3V3",
         "2": "GND"
       },
       "sheet": "ESP32 core",
-      "mpn": "GRM155R71C104KA88D",
-      "notes": "",
+      "mpn": "GRM033R71C104KE14D",
+      "notes": "Local VDDA pin1 bypass; Standard PCBA 0201",
       "pos": [
         143,
         160,
