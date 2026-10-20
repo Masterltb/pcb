@@ -1,0 +1,13 @@
+{
+  "structure_version": 2,
+  "moved_files": 380,
+  "preexisting_dirty_files_preserved": 18,
+  "preexisting_edits_excluded_from_commits": true,
+  "revb_copper_and_native_pcb_unchanged": true,
+  "revb_erc_drc": "PASS: 0 violations / 0 opens / 0 parity",
+  "reva2_main_and_rx_erc_drc": "PASS: 0 violations / 0 opens / 0 parity",
+  "extracted_zip_erc_drc": "PASS",
+  "zip_crc_sha256_and_native_source": "PASS",
+  "python_compileall": "PASS",
+  "legacy_generators_executed": false
+}

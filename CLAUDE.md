@@ -4,7 +4,7 @@
 
 ## Môi trường
 - Windows, KiCad 10 (`kicad-cli`), Python 3.11, Freerouting 2.5.0 (cần Java 25) tại `F:\programs\freerouting`.
-- Project KiCad nằm trong `hardware/`. Footprint tự tạo nằm trong `libs/`. Tài liệu xuất ra nằm trong `docs/`.
+- Project hiện hành nằm trong `hardware/revb/`; RevA2 ở `hardware/reva2/`, RevA lịch sử ở `hardware/archive/reva/`. Footprint tự tạo nằm trong `libs/`. Tài liệu xuất ra nằm trong `docs/`.
 - Repo dùng git. Mỗi thay đổi thiết kế có ý nghĩa là một commit riêng.
 
 ## Quy tắc bắt buộc
@@ -21,10 +21,10 @@
 
 ## Lệnh thường dùng
 ```
-kicad-cli sch erc --output reports/archive/reva/erc.rpt hardware/<ten>.kicad_sch
-kicad-cli pcb drc --output reports/archive/reva/drc.rpt hardware/<ten>.kicad_pcb
-kicad-cli pcb export gerbers --output gerbers/ hardware/<ten>.kicad_pcb
-kicad-cli pcb export drill --output gerbers/ hardware/<ten>.kicad_pcb
+kicad-cli sch erc --output reports/revb/verified/RevB-final-erc.rpt hardware/revb/<ten>.kicad_sch
+kicad-cli pcb drc --output reports/revb/verified/RevB-final-drc.rpt hardware/revb/<ten>.kicad_pcb
+kicad-cli pcb export gerbers --output releases/revb/fabrication/ hardware/revb/<ten>.kicad_pcb
+kicad-cli pcb export drill --output releases/revb/fabrication/ hardware/revb/<ten>.kicad_pcb
 ```
 Autoroute: xuất DSN từ PCB Editor, chạy Freerouting, nhập lại SES. Luôn xem lại đi dây nhánh 12V và servo bằng tay.
 

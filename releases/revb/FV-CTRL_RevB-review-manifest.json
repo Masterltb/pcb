@@ -1,7 +1,8 @@
 {
   "type": "engineering-review-only",
+  "layout_version": 2,
   "design_commit": "a7dd57b",
-  "branch": "feat/esp32-qfn-sma",
+  "branch": "chore/repository-structure",
   "native_schematic_files": 10,
   "smt_references": 62,
   "thermal_ep_holes": 25,
@@ -13,6 +14,6 @@
   "factory_approved": false,
   "physical_qualification": "NOT RUN",
   "zip_file": "FV-CTRL_RevB-review.zip",
-  "zip_sha256": "ad67aad98daba7c1fb45410a87e4280620998f382110e9eb313726f5240eecb7",
-  "archived_files": 73
+  "zip_sha256": "7d259e7ab93e840688e1c662fa15523f16897c5d4af3b05623221d6be03ad04c",
+  "archived_files": 75
 }

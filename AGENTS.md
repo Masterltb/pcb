@@ -21,10 +21,10 @@
 
 ## Lệnh thường dùng
 ```
-kicad-cli sch erc --output reports/archive/reva/erc.rpt hardware/<ten>.kicad_sch
-kicad-cli pcb drc --output reports/archive/reva/drc.rpt hardware/<ten>.kicad_pcb
-kicad-cli pcb export gerbers --output gerbers/ hardware/<ten>.kicad_pcb
-kicad-cli pcb export drill --output gerbers/ hardware/<ten>.kicad_pcb
+kicad-cli sch erc --output reports/revb/verified/RevB-final-erc.rpt hardware/revb/<ten>.kicad_sch
+kicad-cli pcb drc --output reports/revb/verified/RevB-final-drc.rpt hardware/revb/<ten>.kicad_pcb
+kicad-cli pcb export gerbers --output releases/revb/fabrication/ hardware/revb/<ten>.kicad_pcb
+kicad-cli pcb export drill --output releases/revb/fabrication/ hardware/revb/<ten>.kicad_pcb
 ```
 Autoroute: xuất DSN từ PCB Editor, chạy Freerouting, nhập lại SES. Luôn xem lại đi dây nhánh 12V và servo bằng tay.
 
