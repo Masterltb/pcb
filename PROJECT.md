@@ -19,6 +19,7 @@ Kế hoạch: làm Rev A khoảng 5 tấm, chạy thử trên máy thật, ghi l
 - **2 LED IR phát** (mỗi cột 1 cái) đặt đối diện receiver, nối về mainboard bằng cáp 2 dây. Điện trở hạn dòng nằm trên mainboard.
 - Mọi dây ngoài board đều qua đầu nối. Không hàn dây trực tiếp vào PCB.
 - Người dùng xác nhận ngày 2026-10-20: giữ hai buck servo riêng, mỗi cột một buck; không dùng chung một buck cho cả hai cột.
+- Cập nhật được người dùng duyệt ngày 2026-10-20: hai XL4015 gá riêng trong hộp điện, nối mainboard bằng đầu nối cắm rời; không dùng footprint module cắm trực tiếp trên mainboard. Giữ bảo vệ, GND chung và hai rail 6V độc lập; không nối song song đầu ra hai buck.
 
 ```
 12V (nguồn tổ ong) -> [cầu chì, đế thay được] -> [chống ngược cực] -> [TVS] -> rail 12V
@@ -94,7 +95,7 @@ Tránh strapping pin: GPIO 0, 2, 12, 15. Không đổi bảng này khi chưa h�
 - File gán chân firmware (`pins.h`) khớp mục 5.
 
 ## 10. Việc chưa chốt (cần người dùng đo/xác nhận)
-- Ngày 2026-10-20: người dùng cho biết chưa mua các module đang được hỏi (ESP32/buck); chưa có mẫu thật để chốt footprint. Cần xác nhận mẫu mua và đo thực tế trước khi tiếp tục phần footprint/layout phụ thuộc module.
+- Ngày 2026-10-20: chưa mua module. Người dùng cho phép chọn sản phẩm cụ thể kèm link mua và thiết kế theo bản vẽ sản phẩm, thay yêu cầu chờ đo mẫu trước khi chuẩn bị footprint. Không suy tọa độ chân/lỗ từ ảnh; hàng nhận phải được kiểm tra đúng revision và thử lắp trước sản xuất. Hai XL4015 gá ngoài nên không cần footprint cắm module lên mainboard.
 - Kích thước và khoảng cách chân thật của 2 module XL4015 >=5A sẽ mua/dùng (đo bằng thước kẹp).
 - Khoảng cách giữa 2 hàng header của ESP32 DevKit 38 chân đang dùng.
 - Test IR với đúng loại tô (tô trong suốt có thể không chắn tia 940nm).
