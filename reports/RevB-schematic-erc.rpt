@@ -1,0 +1,30 @@
+ERC report (2026-10-20T20:56:27, Encoding UTF8)
+Report includes: Errors, Warnings
+
+***** Sheet /
+
+***** Sheet /1. Power/
+
+***** Sheet /4. Flash/
+
+***** Sheet /7. Limits DNP/
+
+***** Sheet /2. ESP32 core/
+
+***** Sheet /5. Servo/
+
+***** Sheet /8. Diagnostics/
+
+***** Sheet /3. Clock / RF/
+
+***** Sheet /6. IR/
+
+***** Sheet /9. USB / programming/
+
+ ** ERC messages: 0  Errors 0  Warnings 0
+
+ ** Ignored checks:
+    - Global label only appears once in the schematic
+    - Four connection points are joined together
+    - SPICE model issue
+    - Assigned footprint doesn't match footprint filters

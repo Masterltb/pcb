@@ -1,0 +1,248 @@
+(kicad_sch
+	(version 20250114)
+	(generator "fv_native_generator")
+	(generator_version "10.0")
+	(uuid "2e68a6dc-98a4-420e-a1d9-5a08590c7bd2")
+	(paper "A3")
+	(title_block
+		(title "FV-CTRL RevB - schematic index")
+		(date "2026-10-20")
+		(rev "RevB - NOT RELEASED")
+		(company "FV Project")
+		(comment 1 "Code-generated native KiCad 10 schematic")
+		(comment 2 "2-layer THT | Dual-column FIFO servo & IR control")
+	)
+	(lib_symbols
+		(symbol "power:PWR_FLAG"
+				(power global)
+				(pin_numbers
+					(hide yes)
+				)
+				(pin_names
+					(offset 0)
+					(hide yes)
+				)
+				(exclude_from_sim no)
+				(in_bom yes)
+				(on_board yes)
+				(in_pos_files yes)
+				(duplicate_pin_numbers_are_jumpers no)
+				(property "Reference" "#FLG"
+					(at 0 1.905 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Value" "PWR_FLAG"
+					(at 0 3.81 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Footprint" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Datasheet" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Description" "Special symbol for telling ERC where power comes from"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_keywords" "flag power"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(symbol "PWR_FLAG_0_0"
+					(pin power_out line
+						(at 0 0 90)
+						(length 0)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "PWR_FLAG_0_1"
+					(polyline
+						(pts
+							(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+				)
+				(embedded_fonts no)
+			)
+	)
+	(rectangle
+		(start 15.0000 15.0000)
+		(end 395.0000 270.0000)
+		(stroke (width 0.254) (type dash))
+		(fill (type none))
+		(uuid "4b8a72bc-ee56-4620-82de-f3f453b69051")
+	)
+	(text "FV-CTRL RevB - bare ESP32 / external SMA"
+		(exclude_from_sim no)
+		(at 18.8100 20.0800 0)
+		(effects (font (size 2.0 2.0) bold) (justify left bottom))
+		(uuid "04b4bdbe-da74-4556-a973-887ac33d1b28")
+	)
+	(text "ENGINEERING DRAFT - NOT FOR FABRICATION"
+		(exclude_from_sim no)
+		(at 18.8100 24.5000 0)
+		(effects (font (size 1.27 1.27) italic) (justify left bottom))
+		(uuid "8f2a7bb4-3c22-47f9-a5bd-2936241ec7ab")
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 64.7700 250.1900 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5762ef21-7f46-4df1-bc09-1e7f3c6d8c13")
+		(property "Reference" "#PWR1000"
+			(at 64.7700 247.6500 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(property "Value" "PWR_FLAG"
+			(at 64.7700 247.6500 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" ""
+			(at 64.7700 250.1900 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(pin "1" (uuid "2a4d83b7-17ee-412a-838a-12f7b9961f29"))
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 180.3400 250.1900 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9f690cb2-c565-4990-b690-27a987c49ff1")
+		(property "Reference" "#PWR1001"
+			(at 180.3400 247.6500 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(property "Value" "PWR_FLAG"
+			(at 180.3400 247.6500 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" ""
+			(at 180.3400 250.1900 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(pin "1" (uuid "b532a698-5195-41e4-b2af-e7c8eda6ff42"))
+	)
+	(wire
+		(pts
+			(xy 64.7700 250.1900) (xy 59.6900 250.1900)
+		)
+		(stroke (width 0) (type default))
+		(uuid "d199ffe3-ddd5-4ea1-a062-9547c2c40134")
+	)
+	(wire
+		(pts
+			(xy 180.3400 250.1900) (xy 175.2600 250.1900)
+		)
+		(stroke (width 0) (type default))
+		(uuid "78245c1e-76ee-40bc-84e8-9e648bcf0889")
+	)
+(global_label "+5V" (shape passive) (at 59.6900 250.1900 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "6a7f9c38-f452-4b96-a2f7-52f8ce75ac41"))
+(global_label "+3V3_RF" (shape passive) (at 175.2600 250.1900 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "5a9ba4d9-7790-4764-8e59-3d4ced601a54"))
+
+
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+
+(sheet (at 30 45) (size 105 40) (stroke (width 0.254) (type default)) (fill (color 0 0 0 0)) (uuid "b968e39c-57f7-4c0e-a654-cda49823c48e")
+          (property "Sheetname" "1. Power" (at 30 43 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
+          (property "Sheetfile" "FV-CTRL_RevB-01.kicad_sch" (at 30 87 0) (effects (font (size 1.016 1.016)) (justify left top))))
+(sheet (at 150 45) (size 105 40) (stroke (width 0.254) (type default)) (fill (color 0 0 0 0)) (uuid "7ae26ab1-851b-4269-b086-d7e3012fb121")
+          (property "Sheetname" "2. ESP32 core" (at 150 43 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
+          (property "Sheetfile" "FV-CTRL_RevB-02.kicad_sch" (at 150 87 0) (effects (font (size 1.016 1.016)) (justify left top))))
+(sheet (at 270 45) (size 105 40) (stroke (width 0.254) (type default)) (fill (color 0 0 0 0)) (uuid "9301d418-127e-4d77-8cb3-fe90320cbcf9")
+          (property "Sheetname" "3. Clock / RF" (at 270 43 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
+          (property "Sheetfile" "FV-CTRL_RevB-03.kicad_sch" (at 270 87 0) (effects (font (size 1.016 1.016)) (justify left top))))
+(sheet (at 30 110) (size 105 40) (stroke (width 0.254) (type default)) (fill (color 0 0 0 0)) (uuid "0a3ae8e9-d273-490e-aa88-22dd7d72aa39")
+          (property "Sheetname" "4. Flash" (at 30 108 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
+          (property "Sheetfile" "FV-CTRL_RevB-04.kicad_sch" (at 30 152 0) (effects (font (size 1.016 1.016)) (justify left top))))
+(sheet (at 150 110) (size 105 40) (stroke (width 0.254) (type default)) (fill (color 0 0 0 0)) (uuid "dcb0dc10-d65e-496b-bcad-e51c2022ed19")
+          (property "Sheetname" "5. Servo" (at 150 108 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
+          (property "Sheetfile" "FV-CTRL_RevB-05.kicad_sch" (at 150 152 0) (effects (font (size 1.016 1.016)) (justify left top))))
+(sheet (at 270 110) (size 105 40) (stroke (width 0.254) (type default)) (fill (color 0 0 0 0)) (uuid "8a5222c8-49ff-4db7-9f75-450cf16125aa")
+          (property "Sheetname" "6. IR" (at 270 108 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
+          (property "Sheetfile" "FV-CTRL_RevB-06.kicad_sch" (at 270 152 0) (effects (font (size 1.016 1.016)) (justify left top))))
+(sheet (at 30 175) (size 105 40) (stroke (width 0.254) (type default)) (fill (color 0 0 0 0)) (uuid "75e8d5a6-9d4e-4870-95fe-16fa1195478e")
+          (property "Sheetname" "7. Limits DNP" (at 30 173 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
+          (property "Sheetfile" "FV-CTRL_RevB-07.kicad_sch" (at 30 217 0) (effects (font (size 1.016 1.016)) (justify left top))))
+(sheet (at 150 175) (size 105 40) (stroke (width 0.254) (type default)) (fill (color 0 0 0 0)) (uuid "15a41588-dd71-4052-80fa-38a252799b53")
+          (property "Sheetname" "8. Diagnostics" (at 150 173 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
+          (property "Sheetfile" "FV-CTRL_RevB-08.kicad_sch" (at 150 217 0) (effects (font (size 1.016 1.016)) (justify left top))))
+(sheet (at 270 175) (size 105 40) (stroke (width 0.254) (type default)) (fill (color 0 0 0 0)) (uuid "55db2130-37e2-475b-a777-7b7829974701")
+          (property "Sheetname" "9. USB / programming" (at 270 173 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
+          (property "Sheetfile" "FV-CTRL_RevB-09.kicad_sch" (at 270 217 0) (effects (font (size 1.016 1.016)) (justify left top))))
+)

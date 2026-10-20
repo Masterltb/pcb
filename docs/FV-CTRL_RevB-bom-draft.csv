@@ -1,0 +1,148 @@
+﻿Reference,Value,MPN,Footprint,Population,Assembly,Qualification
+J1,12V INPUT,1757242 + mating 1757019,"Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal",FIT,THT,Incoming inspection and prototype qualification required
+J2,XL4015 A: 12/G/6/G,1757268 + mating 1757035,"Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_4-G-5,08_1x04_P5.08mm_Horizontal",FIT,THT,Incoming inspection and prototype qualification required
+J3,XL4015 B: 12/G/6/G,1757268 + mating 1757035,"Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_4-G-5,08_1x04_P5.08mm_Horizontal",FIT,THT,Incoming inspection and prototype qualification required
+F1,T5A - VERIFY I2T,SCHURTER 0001.2511 + 2x Littelfuse 01110001L,Fuse:Fuseholder_Clip-5x20mm_Littelfuse_111_Inline_P20.00x5.00mm_D1.05mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+Q1,IRF4905PBF,IRF4905PBF,fv_reva2:PMOS_GDS,FIT,THT,Incoming inspection and prototype qualification required
+R9,10k,CFR-25JR-52-10K,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+D1,1.5KE15CA,Littelfuse 1.5KE15CA,Diode_THT:D_DO-201AD_P15.24mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+D7,BZX55C12,BZX55C12,Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+F2,MF-R300,MF-R300,fv_reva2:MF_R300,FIT,THT,Incoming inspection and prototype qualification required
+F3,MF-R300,MF-R300,fv_reva2:MF_R300,FIT,THT,Incoming inspection and prototype qualification required
+C1,2200uF 16V,EEUFR1C222,Capacitor_THT:CP_Radial_D12.5mm_P5.00mm,FIT,THT,Incoming inspection and prototype qualification required
+C3,100nF,K104K15X7RF53H5,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,FIT,THT,Incoming inspection and prototype qualification required
+C2,2200uF 16V,EEUFR1C222,Capacitor_THT:CP_Radial_D12.5mm_P5.00mm,FIT,THT,Incoming inspection and prototype qualification required
+C4,100nF,K104K15X7RF53H5,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,FIT,THT,Incoming inspection and prototype qualification required
+J4,5V D24V25F5,Pololu 2850 D24V25F5 + 1x05 female socket,fv_reva2:Pololu_D24V25F5,FIT,THT,Incoming inspection and prototype qualification required
+C5,10uF 50V,EEUFR1H100,Capacitor_THT:CP_Radial_D5.0mm_P2.00mm,FIT,THT,Incoming inspection and prototype qualification required
+C6,100nF,K104K15X7RF53H5,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,FIT,THT,Incoming inspection and prototype qualification required
+J5,S1_TOP,M20-9990346,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,FIT,THT,Incoming inspection and prototype qualification required
+R1,330R,CFR-25JR-52-330R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+R5,10k,CFR-25JR-52-10K,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+J6,S1_BOT,M20-9990346,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,FIT,THT,Incoming inspection and prototype qualification required
+R2,330R,CFR-25JR-52-330R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+R6,10k,CFR-25JR-52-10K,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+J7,S2_TOP,M20-9990346,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,FIT,THT,Incoming inspection and prototype qualification required
+R3,330R,CFR-25JR-52-330R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+R7,10k,CFR-25JR-52-10K,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+J8,S2_BOT,M20-9990346,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,FIT,THT,Incoming inspection and prototype qualification required
+R4,330R,CFR-25JR-52-330R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+R8,10k,CFR-25JR-52-10K,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+J9,IR RX1 3V3/OUT/G,B3B-XH-A + XHP-3 + SXH-001T-P0.6,Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical,FIT,THT,Incoming inspection and prototype qualification required
+R26,10k,CFR-25JR-52-10K,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+R28,1k,CFR-25JR-52-1K,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+J10,IR RX2 3V3/OUT/G,B3B-XH-A + XHP-3 + SXH-001T-P0.6,Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical,FIT,THT,Incoming inspection and prototype qualification required
+R27,10k,CFR-25JR-52-10K,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+R29,1k,CFR-25JR-52-1K,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+J11,IR TX1 A/K,B2B-XH-A + XHP-2 + SXH-001T-P0.6,Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,FIT,THT,Incoming inspection and prototype qualification required
+R14,120R,CFR-25JR-52-120R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+J12,IR TX2 A/K,B2B-XH-A + XHP-2 + SXH-001T-P0.6,Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,FIT,THT,Incoming inspection and prototype qualification required
+R15,120R,CFR-25JR-52-120R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+R13,330R,CFR-25JR-52-330R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+R25,10k,CFR-25JR-52-10K,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+Q2,P2N2222AG,P2N2222AG,fv_reva2:NPN_CBE,FIT,THT,Incoming inspection and prototype qualification required
+J13,LS1 DNP,B2B-XH-A + XHP-2 + SXH-001T-P0.6,Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,DNP,THT,Incoming inspection and prototype qualification required
+R16,10k,CFR-25JR-52-10K,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,DNP,THT,Incoming inspection and prototype qualification required
+C7,100nF,K104K15X7RF53H5,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,DNP,THT,Incoming inspection and prototype qualification required
+J14,LS2 DNP,B2B-XH-A + XHP-2 + SXH-001T-P0.6,Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,DNP,THT,Incoming inspection and prototype qualification required
+R17,10k,CFR-25JR-52-10K,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,DNP,THT,Incoming inspection and prototype qualification required
+C8,100nF,K104K15X7RF53H5,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,DNP,THT,Incoming inspection and prototype qualification required
+J15,LS3 DNP,B2B-XH-A + XHP-2 + SXH-001T-P0.6,Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,DNP,THT,Incoming inspection and prototype qualification required
+R18,10k,CFR-25JR-52-10K,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,DNP,THT,Incoming inspection and prototype qualification required
+C9,100nF,K104K15X7RF53H5,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,DNP,THT,Incoming inspection and prototype qualification required
+J16,LS4 DNP,B2B-XH-A + XHP-2 + SXH-001T-P0.6,Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,DNP,THT,Incoming inspection and prototype qualification required
+R19,10k,CFR-25JR-52-10K,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,DNP,THT,Incoming inspection and prototype qualification required
+C10,100nF,K104K15X7RF53H5,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,DNP,THT,Incoming inspection and prototype qualification required
+J17,I2C 3V3/SDA/SCL/G,M20-9990446,Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical,FIT,THT,Incoming inspection and prototype qualification required
+R20,5.6k,CFR-25JR-52-5K6,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+D2,+12V,WP710A10GD,LED_THT:LED_D3.0mm,FIT,THT,Incoming inspection and prototype qualification required
+R21,2.2k,CFR-25JR-52-2K2,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+D3,+6V_A,WP710A10GD,LED_THT:LED_D3.0mm,FIT,THT,Incoming inspection and prototype qualification required
+R22,2.2k,CFR-25JR-52-2K2,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+D4,+6V_B,WP710A10GD,LED_THT:LED_D3.0mm,FIT,THT,Incoming inspection and prototype qualification required
+R23,1.5k,CFR-25JR-52-1K5,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+D5,+5V,WP710A10GD,LED_THT:LED_D3.0mm,FIT,THT,Incoming inspection and prototype qualification required
+R24,1k,CFR-25JR-52-1K,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,FIT,THT,Incoming inspection and prototype qualification required
+D6,+3V3,WP710A10GD,LED_THT:LED_D3.0mm,FIT,THT,Incoming inspection and prototype qualification required
+TP1,+12V,5000,fv_reva2:Keystone_5000_Carrier_D3,FIT,THT,Incoming inspection and prototype qualification required
+TP2,+6V_A,5000,fv_reva2:Keystone_5000_Carrier_D3,FIT,THT,Incoming inspection and prototype qualification required
+TP3,+6V_B,5000,fv_reva2:Keystone_5000_Carrier_D3,FIT,THT,Incoming inspection and prototype qualification required
+TP4,+5V,5000,fv_reva2:Keystone_5000_Carrier_D3,FIT,THT,Incoming inspection and prototype qualification required
+TP5,+3V3,5000,fv_reva2:Keystone_5000_Carrier_D3,FIT,THT,Incoming inspection and prototype qualification required
+TP6,GND,5001,fv_reva2:Keystone_5000_Carrier_D3,FIT,THT,Incoming inspection and prototype qualification required
+TP7,GND,5001,fv_reva2:Keystone_5000_Carrier_D3,FIT,THT,Incoming inspection and prototype qualification required
+TP8,SPARE_GPIO33,5000,fv_reva2:Keystone_5000_Carrier_D3,FIT,THT,Incoming inspection and prototype qualification required
+H1,M3 MOUNT,"M3 nylon spacer/screw set, enclosure dependent",MountingHole:MountingHole_3.2mm_M3,FIT,THT,Incoming inspection and prototype qualification required
+H2,M3 MOUNT,"M3 nylon spacer/screw set, enclosure dependent",MountingHole:MountingHole_3.2mm_M3,FIT,THT,Incoming inspection and prototype qualification required
+H3,M3 MOUNT,"M3 nylon spacer/screw set, enclosure dependent",MountingHole:MountingHole_3.2mm_M3,FIT,THT,Incoming inspection and prototype qualification required
+H4,M3 MOUNT,"M3 nylon spacer/screw set, enclosure dependent",MountingHole:MountingHole_3.2mm_M3,FIT,THT,Incoming inspection and prototype qualification required
+U1,ESP32-D0WD-V3,ESP32-D0WD-V3,Package_DFN_QFN:QFN-48-1EP_5x5mm_P0.35mm_EP3.7x3.7mm_ThermalVias,FIT,SMT,Bare IC; 5x5mm; 16 ground vias 0.2mm; bottom tented by mask definition; assembler review/X-ray required
+U3,LD1117V33,LD1117V33,Package_TO_SOT_THT:TO-220-3_Vertical,FIT,THT,800mA; thermal qualification required at (5-3.3)*I
+U4,W25Q32JVSSIQ,W25Q32JVSSIQ,Package_SO:SOIC-8_5.3x5.3mm_P1.27mm,FIT,SMT,"4MB, 3.3V; firmware/QE qualification required"
+R40,0R,RC0402JR-070RL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,Series tuning footprint near ESP32
+R41,0R,RC0402JR-070RL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,Series tuning footprint near ESP32
+R42,0R,RC0402JR-070RL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,Series tuning footprint near ESP32
+R43,0R,RC0402JR-070RL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,Series tuning footprint near ESP32
+R44,0R,RC0402JR-070RL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,Series tuning footprint near ESP32
+R45,0R,RC0402JR-070RL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,Series tuning footprint near ESP32
+R47,10k,RC0402FR-0710KL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,
+R48,10k,RC0402FR-0710KL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,
+R49,10k,RC0402FR-0710KL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,
+C40,1uF,GRM155R61A105KE15D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
+C41,100nF,GRM155R71C104KA88D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
+R30,10k,RC0402FR-0710KL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,
+R31,10k,RC0402FR-0710KL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,
+R34,10k,RC0402FR-0710KL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,
+R35,10k,RC0402FR-0710KL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,
+R32,10k,RC0402FR-0710KL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,
+R33,10k,RC0402FR-0710KL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,
+C20,1uF,GRM155R61A105KE15D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
+C11,10uF 50V,EEUFR1H100,Capacitor_THT:CP_Radial_D5.0mm_P2.00mm,FIT,THT,LDO input/output reservoir; min 10uF per ST
+C12,10uF 50V,EEUFR1H100,Capacitor_THT:CP_Radial_D5.0mm_P2.00mm,FIT,THT,LDO input/output reservoir; min 10uF per ST
+C13,10uF,GRM188R60J106ME47D,Capacitor_SMD:C_0603_1608Metric,FIT,SMT,Verify effective capacitance at 3.3V
+C14,10uF,GRM188R60J106ME47D,Capacitor_SMD:C_0603_1608Metric,FIT,SMT,Verify effective capacitance at 3.3V
+C15,10uF,GRM188R60J106ME47D,Capacitor_SMD:C_0603_1608Metric,FIT,SMT,Verify effective capacitance at 3.3V
+C16,100nF,GRM155R71C104KA88D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
+C17,100nF,GRM155R71C104KA88D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
+C18,100nF,GRM155R71C104KA88D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
+C19,100nF,GRM155R71C104KA88D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
+C23,100nF,GRM155R71C104KA88D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
+C21,1uF,GRM155R61A105KE15D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
+C22,100nF,GRM033R71C104KE14D,Capacitor_SMD:C_0201_0603Metric,FIT,SMT,
+L2,2.0nH,LQP03TN2N0B02D,Inductor_SMD:L_0201_0603Metric,FIT,SMT,600mA rating per Murata; RF supply filter
+Y1,40MHz CL10pF,ABM8G-40.000MHZ-10-1-U-T,Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm,FIT,SMT,Configured 10ppm tolerance/stability option; availability requires sourcing confirmation
+R36,0R,RC0402JR-070RL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,Crystal harmonic tuning footprint
+C24,16pF,GRM1555C1H160JA01D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,"INITIAL: CL10pF, assumed stray2pF => C=16pF. Measure frequency and tune."
+C25,16pF,GRM1555C1H160JA01D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,INITIAL; not measured crystal tuning
+C26,10nF,GRM155R71C103KA01D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
+C27,3.3nF,GRM155R71H332KA01D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
+R37,20k,RC0402FR-0720KL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,CAP network per chip datasheet
+C30,1.5pF,GRM0335C1H1R5BA01D,Capacitor_SMD:C_0201_0603Metric,FIT,SMT,INITIAL chip match; RF tune required
+L1,2.7nH,LQP03TN2N7B02D,Inductor_SMD:L_0201_0603Metric,FIT,SMT,INITIAL chip match; RF tune required
+C31,1.5pF,GRM0335C1H1R5BA01D,Capacitor_SMD:C_0201_0603Metric,FIT,SMT,INITIAL chip match; RF tune required
+J20,SMA 50ohm ANT,Amphenol 132134,Connector_Coaxial:SMA_Amphenol_132134_Vertical,FIT,THT,"Use external 2.4GHz 50ohm antenna, correct SMA gender, not RP-SMA"
+D8,PESD5V0X1BL,"PESD5V0X1BL,315",Diode_SMD:D_SOD-882,FIT,SMT,0.9pF typical; include in RF tuning and validate ESD
+U2,CP2102N-A02-GQFN24,CP2102N-A02-GQFN24,Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm,FIT,SMT,"Self powered 3.3V, VREGIN=VDD=VIO; USB does NOT power board"
+J21,USB MICRO DATA,Molex 105017-0001,Connector_USB:USB_Micro-B_Molex-105017-0001,FIT,SMT,Board needs 12V during programming; no USB power injection
+R50,22.1k,RC0402FR-0722K1L,Resistor_SMD:R_0402_1005Metric,FIT,SMT,
+R51,47.5k,RC0402FR-0747K5L,Resistor_SMD:R_0402_1005Metric,FIT,SMT,
+R52,1k,RC0402FR-071KL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,
+R53,499R,RC0402FR-07499RL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,Place close to ESP32
+C50,4.7uF,GRM155R60J475ME87D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
+C51,4.7uF,GRM155R60J475ME87D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
+C52,4.7uF,GRM155R60J475ME87D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
+C53,100nF,GRM155R71C104KA88D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
+C54,100nF,GRM155R71C104KA88D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
+C55,100nF,GRM155R71C104KA88D,Capacitor_SMD:C_0402_1005Metric,FIT,SMT,
+D9,PESD5V0X1BL,"PESD5V0X1BL,315",Diode_SMD:D_SOD-882,FIT,SMT,Place at USB connector; system ESD test not run
+D10,PESD5V0X1BL,"PESD5V0X1BL,315",Diode_SMD:D_SOD-882,FIT,SMT,Place at USB connector; system ESD test not run
+Q3,MMBT3904,MMBT3904LT1G,Package_TO_SOT_SMD:SOT-23,FIT,SMT,Cross coupled auto-download; verify DTR/RTS truth table and timing
+Q4,MMBT3904,MMBT3904LT1G,Package_TO_SOT_SMD:SOT-23,FIT,SMT,Cross coupled auto-download; verify DTR/RTS truth table and timing
+R54,10k,RC0402FR-0710KL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,
+R55,10k,RC0402FR-0710KL,Resistor_SMD:R_0402_1005Metric,FIT,SMT,
+SW1,RESET,Omron B3F-1000,Button_Switch_THT:SW_PUSH_6mm,FIT,THT,Manual recovery/programming
+SW2,BOOT,Omron B3F-1000,Button_Switch_THT:SW_PUSH_6mm,FIT,THT,Manual recovery/programming
+TP9,ESP_EN,Keystone 5000,fv_reva2:Keystone_5000_Carrier_D3,FIT,THT,
+TP10,ESP_BOOT,Keystone 5000,fv_reva2:Keystone_5000_Carrier_D3,FIT,THT,
+TP11,UART_TX,Keystone 5000,fv_reva2:Keystone_5000_Carrier_D3,FIT,THT,
+TP12,UART_RX,Keystone 5000,fv_reva2:Keystone_5000_Carrier_D3,FIT,THT,
