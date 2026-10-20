@@ -11,12 +11,14 @@ Kế hoạch: làm Rev A khoảng 5 tấm, chạy thử trên máy thật, ghi l
 - Trạng thái nghỉ (giả định, CẦN XÁC NHẬN): DƯỚI đóng giữ chồng tô, TRÊN mở.
 - Không bao giờ để TRÊN và DƯỚI cùng mở. Mỗi cột chỉ có 1 servo chạy tại một thời điểm.
 - Servo là loại 360 độ (continuous rotation): điều khiển theo thời gian, không có phản hồi vị trí. Phản hồi chính là cảm biến IR; limit switch là tùy chọn dự phòng chống lệch thời gian.
+- Người dùng làm rõ: 24 cm là kích thước vành iris, không phải đường kính lỗ khi đóng. Các cánh khép để giữ phần thân tô; khả năng giữ tải và biến dạng tô cần thử thực tế.
 
 ## 3. Kiến trúc
 - **Mainboard** (100 x 100 mm tối đa): nguồn, ESP32, đầu nối.
 - **2 board RX cảm biến IR nhỏ** (mỗi cột 1 tấm) đặt tại máng rơi tô: TSOP/VS1838B + lọc nguồn, nối về mainboard bằng cáp 3 dây.
 - **2 LED IR phát** (mỗi cột 1 cái) đặt đối diện receiver, nối về mainboard bằng cáp 2 dây. Điện trở hạn dòng nằm trên mainboard.
 - Mọi dây ngoài board đều qua đầu nối. Không hàn dây trực tiếp vào PCB.
+- Người dùng xác nhận ngày 2026-10-20: giữ hai buck servo riêng, mỗi cột một buck; không dùng chung một buck cho cả hai cột.
 
 ```
 12V (nguồn tổ ong) -> [cầu chì, đế thay được] -> [chống ngược cực] -> [TVS] -> rail 12V
@@ -92,6 +94,7 @@ Tránh strapping pin: GPIO 0, 2, 12, 15. Không đổi bảng này khi chưa h�
 - File gán chân firmware (`pins.h`) khớp mục 5.
 
 ## 10. Việc chưa chốt (cần người dùng đo/xác nhận)
+- Ngày 2026-10-20: người dùng cho biết chưa mua các module đang được hỏi (ESP32/buck); chưa có mẫu thật để chốt footprint. Cần xác nhận mẫu mua và đo thực tế trước khi tiếp tục phần footprint/layout phụ thuộc module.
 - Kích thước và khoảng cách chân thật của 2 module XL4015 >=5A sẽ mua/dùng (đo bằng thước kẹp).
 - Khoảng cách giữa 2 hàng header của ESP32 DevKit 38 chân đang dùng.
 - Test IR với đúng loại tô (tô trong suốt có thể không chắn tia 940nm).
@@ -105,14 +108,14 @@ Phần điện lưới (AC) của nguồn tổ ong cần vỏ kín che đầu AC
 | Hạng mục | Giá trị |
 |---|---|
 | Nơi đặt máy (trong nhà / ngoài trời / có điều hòa) | TODO(user) |
-| Ngăn chứa tô có làm lạnh/làm mát không (ảnh hưởng ngưng tụ hơi nước lên board) | TODO(user) |
-| Nguy cơ nước, nước trái cây, bụi văng vào khu vực board; vị trí board trong máy | TODO(user) |
+| Ngăn chứa tô có làm lạnh/làm mát không (ảnh hưởng ngưng tụ hơi nước lên board) | Hiện chưa có cơ chế làm lạnh; nguy cơ ngưng tụ chưa xác định, cần đánh giá lại khi chọn hệ làm lạnh. |
+| Nguy cơ nước, nước trái cây, bụi văng vào khu vực board; vị trí board trong máy | PCB đặt trong hộp điện riêng bên ngoài khoang chứa tô. TODO(user): mức bảo vệ hộp trước nước/bụi và đường đi dây. |
 | Rung động khi vận hành | TODO(user) |
-| Tô nhựa dùng một lần: đường kính miệng 17 cm, cao 6 cm, dung tích 850 ml; khối lượng khi đầy và chất liệu (trong suốt/mờ) | Đã xác nhận: miệng 17 cm, cao 6 cm, 850 ml; Chất liệu: Nhựa PET/PP trong suốt hoàn toàn (đặt cảm biến IR góc chiếu lệch hoặc đón gờ vành để khúc xạ/tán xạ cản tia 940nm) |
-| Số tô tối đa mỗi cột, chiều cao chồng | TODO(user) |
+| Tô nhựa dùng một lần: đường kính miệng 17 cm, cao 6 cm, dung tích 850 ml; khối lượng khi đầy và chất liệu (trong suốt/mờ) | Đã xác nhận: miệng 17 cm, cao 6 cm, 850 ml; khoảng 300 g mỗi tô đầy. Chất liệu: Nhựa PET/PP trong suốt hoàn toàn; phương án IR chiếu lệch hoặc đón gờ vành cần thử thực tế. |
+| Số tô tối đa mỗi cột, chiều cao chồng | Khoảng 4 tô/cột, tổng khối lượng tô khoảng 1.2 kg/cột. TODO(user): chiều cao chồng thực tế; chưa suy ra lực/mô-men servo từ khối lượng này. |
 | Thời gian mở/đóng mỗi cơ cấu giữ (ms) với servo 360 | TODO(user) |
-| Chiều dài cáp servo, cáp IR (cm) | TODO(user) |
-| Kích thước hộp chứa board, vị trí gá, hướng cổng USB | TODO(user) |
+| Chiều dài cáp servo, cáp IR (cm) | Người dùng ước lượng dưới 1 m; cần kiểm thử với cáp và đầu nối thực tế. |
+| Kích thước hộp chứa board, vị trí gá, hướng cổng USB | Hộp điện riêng bên ngoài khoang chứa tô. TODO(user): kích thước hộp, vị trí gá, hướng cổng USB. |
 | Có thêm màn hình / nút / thanh toán / WiFi / cảm biến hết hàng / nhiệt độ không (ảnh hưởng GPIO dự phòng) | TODO(user) |
 | Két nước tản nhiệt (ngoài phạm vi PCB Rev A): mục tiêu làm mát, nhiệt độ nước đặt, nhiệt độ môi trường, thể tích két, chiều dài ống, vị trí và nguồn làm lạnh | TODO(user) |
 | Số board cần, ngân sách mỗi board, nhà sản xuất (Rev A khoảng 5 tấm) | TODO(user) |
