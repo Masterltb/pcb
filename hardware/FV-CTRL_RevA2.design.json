@@ -1,0 +1,1635 @@
+{
+  "parts": [
+    {
+      "ref": "J1",
+      "value": "12V INPUT",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "footprint": "Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal",
+      "pins": {
+        "1": "+12V_IN",
+        "2": "GND"
+      },
+      "pos": [
+        108,
+        108,
+        180
+      ],
+      "mpn": "Phoenix 1757242 + plug 1757019",
+      "dnp": false
+    },
+    {
+      "ref": "J2",
+      "value": "XL4015 A: 12/G/6/G",
+      "lib_id": "Connector_Generic:Conn_01x04",
+      "footprint": "Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_4-G-5,08_1x04_P5.08mm_Horizontal",
+      "pins": {
+        "1": "+12V",
+        "2": "GND",
+        "3": "+6V_A_RAW",
+        "4": "GND"
+      },
+      "pos": [
+        133,
+        108,
+        180
+      ],
+      "mpn": "Phoenix 1757268 + plug 1757035",
+      "dnp": false
+    },
+    {
+      "ref": "J3",
+      "value": "XL4015 B: 12/G/6/G",
+      "lib_id": "Connector_Generic:Conn_01x04",
+      "footprint": "Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_4-G-5,08_1x04_P5.08mm_Horizontal",
+      "pins": {
+        "1": "+12V",
+        "2": "GND",
+        "3": "+6V_B_RAW",
+        "4": "GND"
+      },
+      "pos": [
+        163,
+        108,
+        180
+      ],
+      "mpn": "Phoenix 1757268 + plug 1757035",
+      "dnp": false
+    },
+    {
+      "ref": "F1",
+      "value": "T5A - VERIFY I2T",
+      "lib_id": "Device:Fuse",
+      "footprint": "Fuse:Fuseholder_Clip-5x20mm_Littelfuse_111_Inline_P20.00x5.00mm_D1.05mm_Horizontal",
+      "pins": {
+        "1": "+12V_IN",
+        "2": "+12V_FUSED"
+      },
+      "pos": [
+        108,
+        122,
+        0
+      ],
+      "mpn": "Littelfuse 0215005.MXP + 2x 01110001L; interrupt rating review required",
+      "dnp": false
+    },
+    {
+      "ref": "Q1",
+      "value": "IRF4905PBF",
+      "lib_id": "Device:Q_PMOS",
+      "footprint": "fv_reva2:PMOS_GDS",
+      "pins": {
+        "G": "Q1_GATE",
+        "D": "+12V_FUSED",
+        "S": "+12V"
+      },
+      "pos": [
+        137,
+        124,
+        0
+      ],
+      "mpn": "Infineon IRF4905PBF",
+      "dnp": false
+    },
+    {
+      "ref": "R9",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "Q1_GATE",
+        "2": "GND"
+      },
+      "pos": [
+        137,
+        133,
+        0
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "D1",
+      "value": "1.5KE15CA",
+      "lib_id": "Device:D_TVS",
+      "footprint": "Diode_THT:D_DO-201AD_P15.24mm_Horizontal",
+      "pins": {
+        "1": "+12V",
+        "2": "GND"
+      },
+      "pos": [
+        148,
+        122,
+        0
+      ],
+      "mpn": "Littelfuse 1.5KE15CA",
+      "dnp": false
+    },
+    {
+      "ref": "D7",
+      "value": "BZX55C12",
+      "lib_id": "Device:D_Zener",
+      "footprint": "Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal",
+      "pins": {
+        "1": "+12V",
+        "2": "Q1_GATE"
+      },
+      "pos": [
+        148,
+        131,
+        0
+      ],
+      "mpn": "Vishay BZX55C12",
+      "dnp": false
+    },
+    {
+      "ref": "F2",
+      "value": "MF-R300",
+      "lib_id": "Device:Polyfuse",
+      "footprint": "fv_reva2:MF_R300",
+      "pins": {
+        "1": "+6V_A_RAW",
+        "2": "+6V_A"
+      },
+      "pos": [
+        168,
+        123,
+        0
+      ],
+      "mpn": "Bourns MF-R300",
+      "dnp": false
+    },
+    {
+      "ref": "F3",
+      "value": "MF-R300",
+      "lib_id": "Device:Polyfuse",
+      "footprint": "fv_reva2:MF_R300",
+      "pins": {
+        "1": "+6V_B_RAW",
+        "2": "+6V_B"
+      },
+      "pos": [
+        185,
+        123,
+        0
+      ],
+      "mpn": "Bourns MF-R300",
+      "dnp": false
+    },
+    {
+      "ref": "C1",
+      "value": "2200uF 16V",
+      "lib_id": "Device:C_Polarized",
+      "footprint": "Capacitor_THT:CP_Radial_D12.5mm_P5.00mm",
+      "pins": {
+        "1": "+6V_A",
+        "2": "GND"
+      },
+      "pos": [
+        168,
+        140,
+        0
+      ],
+      "mpn": "Panasonic EEU-FR1C222 (C1/C2); other capacitors pending exact MPN",
+      "dnp": false
+    },
+    {
+      "ref": "C3",
+      "value": "100nF",
+      "lib_id": "Device:C",
+      "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+      "pins": {
+        "1": "+6V_A",
+        "2": "GND"
+      },
+      "pos": [
+        168,
+        150,
+        0
+      ],
+      "mpn": "Kemet C315 series; select capacitance suffix",
+      "dnp": false
+    },
+    {
+      "ref": "C2",
+      "value": "2200uF 16V",
+      "lib_id": "Device:C_Polarized",
+      "footprint": "Capacitor_THT:CP_Radial_D12.5mm_P5.00mm",
+      "pins": {
+        "1": "+6V_B",
+        "2": "GND"
+      },
+      "pos": [
+        185,
+        140,
+        0
+      ],
+      "mpn": "Panasonic EEU-FR1C222 (C1/C2); other capacitors pending exact MPN",
+      "dnp": false
+    },
+    {
+      "ref": "C4",
+      "value": "100nF",
+      "lib_id": "Device:C",
+      "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+      "pins": {
+        "1": "+6V_B",
+        "2": "GND"
+      },
+      "pos": [
+        185,
+        150,
+        0
+      ],
+      "mpn": "Kemet C315 series; select capacitance suffix",
+      "dnp": false
+    },
+    {
+      "ref": "J4",
+      "value": "5V D24V25F5",
+      "lib_id": "Connector_Generic:Conn_01x05",
+      "footprint": "fv_reva2:Pololu_D24V25F5",
+      "pins": {
+        "1": "+5V",
+        "2": "GND",
+        "3": "GND",
+        "4": "+12V",
+        "5": null
+      },
+      "pos": [
+        113,
+        138,
+        0
+      ],
+      "mpn": "Pololu 2850 D24V25F5; socket + male header",
+      "dnp": false
+    },
+    {
+      "ref": "JP1",
+      "value": "REMOVE BEFORE USB",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical",
+      "pins": {
+        "1": "+5V",
+        "2": "+5V_DEVKIT"
+      },
+      "pos": [
+        124,
+        193,
+        0
+      ],
+      "mpn": "Harwin M20-9990246 + M7567-05 shunt",
+      "dnp": false
+    },
+    {
+      "ref": "J18",
+      "value": "DEVKITC V4 LEFT",
+      "lib_id": "Connector_Generic:Conn_01x19",
+      "footprint": "Connector_PinSocket_2.54mm:PinSocket_1x19_P2.54mm_Vertical",
+      "pins": {
+        "1": "+3V3",
+        "2": null,
+        "3": null,
+        "4": null,
+        "5": "IR_RX1",
+        "6": "IR_RX2",
+        "7": "LS4",
+        "8": "SPARE_GPIO33",
+        "9": "LS1",
+        "10": "LS2",
+        "11": "LS3",
+        "12": null,
+        "13": null,
+        "14": "GND",
+        "15": null,
+        "16": null,
+        "17": null,
+        "18": null,
+        "19": "+5V_DEVKIT"
+      },
+      "pos": [
+        130,
+        150,
+        0
+      ],
+      "mpn": "Samtec SSQ-119-03-G-S; DevKitC-32E separate assembly item",
+      "dnp": false
+    },
+    {
+      "ref": "J19",
+      "value": "DEVKITC V4 RIGHT",
+      "lib_id": "Connector_Generic:Conn_01x19",
+      "footprint": "Connector_PinSocket_2.54mm:PinSocket_1x19_P2.54mm_Vertical",
+      "pins": {
+        "1": "GND",
+        "2": "ESP_IR_TX",
+        "3": "I2C_SCL",
+        "4": null,
+        "5": null,
+        "6": "I2C_SDA",
+        "7": "GND",
+        "8": "ESP_S2_BOT_PWM",
+        "9": "ESP_S2_TOP_PWM",
+        "10": null,
+        "11": "ESP_S1_BOT_PWM",
+        "12": "ESP_S1_TOP_PWM",
+        "13": null,
+        "14": null,
+        "15": null,
+        "16": null,
+        "17": null,
+        "18": null,
+        "19": null
+      },
+      "pos": [
+        155.4,
+        150,
+        0
+      ],
+      "mpn": "Samtec SSQ-119-03-G-S; DevKitC-32E separate assembly item",
+      "dnp": false
+    },
+    {
+      "ref": "C5",
+      "value": "10uF 25V",
+      "lib_id": "Device:C_Polarized",
+      "footprint": "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm",
+      "pins": {
+        "1": "+5V",
+        "2": "GND"
+      },
+      "pos": [
+        123,
+        139,
+        0
+      ],
+      "mpn": "Panasonic EEU-FR1C222 (C1/C2); other capacitors pending exact MPN",
+      "dnp": false
+    },
+    {
+      "ref": "C6",
+      "value": "100nF",
+      "lib_id": "Device:C",
+      "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+      "pins": {
+        "1": "+3V3",
+        "2": "GND"
+      },
+      "pos": [
+        119,
+        153,
+        0
+      ],
+      "mpn": "Kemet C315 series; select capacitance suffix",
+      "dnp": false
+    },
+    {
+      "ref": "J5",
+      "value": "S1_TOP",
+      "lib_id": "Connector_Generic:Conn_01x03",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+      "pins": {
+        "1": "GND",
+        "2": "+6V_A",
+        "3": "S1_TOP_PWM"
+      },
+      "pos": [
+        194,
+        157,
+        0
+      ],
+      "mpn": "Harwin M20-9990346",
+      "dnp": false
+    },
+    {
+      "ref": "R1",
+      "value": "330R",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "ESP_S1_TOP_PWM",
+        "2": "S1_TOP_PWM"
+      },
+      "pos": [
+        168,
+        157,
+        0
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "R5",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "S1_TOP_PWM",
+        "2": "GND"
+      },
+      "pos": [
+        181,
+        157,
+        90
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "J6",
+      "value": "S1_BOT",
+      "lib_id": "Connector_Generic:Conn_01x03",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+      "pins": {
+        "1": "GND",
+        "2": "+6V_A",
+        "3": "S1_BOT_PWM"
+      },
+      "pos": [
+        194,
+        167,
+        0
+      ],
+      "mpn": "Harwin M20-9990346",
+      "dnp": false
+    },
+    {
+      "ref": "R2",
+      "value": "330R",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "ESP_S1_BOT_PWM",
+        "2": "S1_BOT_PWM"
+      },
+      "pos": [
+        168,
+        167,
+        0
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "R6",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "S1_BOT_PWM",
+        "2": "GND"
+      },
+      "pos": [
+        181,
+        167,
+        90
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "J7",
+      "value": "S2_TOP",
+      "lib_id": "Connector_Generic:Conn_01x03",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+      "pins": {
+        "1": "GND",
+        "2": "+6V_B",
+        "3": "S2_TOP_PWM"
+      },
+      "pos": [
+        194,
+        177,
+        0
+      ],
+      "mpn": "Harwin M20-9990346",
+      "dnp": false
+    },
+    {
+      "ref": "R3",
+      "value": "330R",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "ESP_S2_TOP_PWM",
+        "2": "S2_TOP_PWM"
+      },
+      "pos": [
+        168,
+        177,
+        0
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "R7",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "S2_TOP_PWM",
+        "2": "GND"
+      },
+      "pos": [
+        181,
+        177,
+        90
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "J8",
+      "value": "S2_BOT",
+      "lib_id": "Connector_Generic:Conn_01x03",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical",
+      "pins": {
+        "1": "GND",
+        "2": "+6V_B",
+        "3": "S2_BOT_PWM"
+      },
+      "pos": [
+        194,
+        187,
+        0
+      ],
+      "mpn": "Harwin M20-9990346",
+      "dnp": false
+    },
+    {
+      "ref": "R4",
+      "value": "330R",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "ESP_S2_BOT_PWM",
+        "2": "S2_BOT_PWM"
+      },
+      "pos": [
+        168,
+        187,
+        0
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "R8",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "S2_BOT_PWM",
+        "2": "GND"
+      },
+      "pos": [
+        181,
+        187,
+        90
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "J9",
+      "value": "IR RX1 3V3/OUT/G",
+      "lib_id": "Connector_Generic:Conn_01x03",
+      "footprint": "Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical",
+      "pins": {
+        "1": "+3V3",
+        "2": "IR_RX1",
+        "3": "GND"
+      },
+      "pos": [
+        106,
+        156,
+        270
+      ],
+      "mpn": "JST B3B-XH-A + XHP-3 + SXH-001T-P0.6",
+      "dnp": false
+    },
+    {
+      "ref": "J10",
+      "value": "IR RX2 3V3/OUT/G",
+      "lib_id": "Connector_Generic:Conn_01x03",
+      "footprint": "Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical",
+      "pins": {
+        "1": "+3V3",
+        "2": "IR_RX2",
+        "3": "GND"
+      },
+      "pos": [
+        106,
+        168,
+        270
+      ],
+      "mpn": "JST B3B-XH-A + XHP-3 + SXH-001T-P0.6",
+      "dnp": false
+    },
+    {
+      "ref": "J11",
+      "value": "IR TX1 A/K",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "footprint": "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical",
+      "pins": {
+        "1": "IR_TX1_A",
+        "2": "IR_TX_RET"
+      },
+      "pos": [
+        106,
+        180,
+        270
+      ],
+      "mpn": "JST B2B-XH-A + XHP-2 + SXH-001T-P0.6",
+      "dnp": false
+    },
+    {
+      "ref": "R14",
+      "value": "120R",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "+5V",
+        "2": "IR_TX1_A"
+      },
+      "pos": [
+        115,
+        180,
+        0
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "J12",
+      "value": "IR TX2 A/K",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "footprint": "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical",
+      "pins": {
+        "1": "IR_TX2_A",
+        "2": "IR_TX_RET"
+      },
+      "pos": [
+        106,
+        191,
+        270
+      ],
+      "mpn": "JST B2B-XH-A + XHP-2 + SXH-001T-P0.6",
+      "dnp": false
+    },
+    {
+      "ref": "R15",
+      "value": "120R",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "+5V",
+        "2": "IR_TX2_A"
+      },
+      "pos": [
+        115,
+        191,
+        0
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "R13",
+      "value": "330R",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "ESP_IR_TX",
+        "2": "Q2_BASE"
+      },
+      "pos": [
+        114,
+        172,
+        0
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "R25",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "Q2_BASE",
+        "2": "GND"
+      },
+      "pos": [
+        123,
+        164,
+        90
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "Q2",
+      "value": "P2N2222AG",
+      "lib_id": "Device:Q_NPN",
+      "footprint": "fv_reva2:NPN_CBE",
+      "pins": {
+        "C": "IR_TX_RET",
+        "B": "Q2_BASE",
+        "E": "GND"
+      },
+      "pos": [
+        123,
+        174,
+        0
+      ],
+      "mpn": "onsemi P2N2222AG; do not substitute PN2222 without pinout check",
+      "dnp": false
+    },
+    {
+      "ref": "J13",
+      "value": "LS1 DNP",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "footprint": "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical",
+      "pins": {
+        "1": "LS1",
+        "2": "GND"
+      },
+      "pos": [
+        162,
+        195,
+        0
+      ],
+      "mpn": "JST B2B-XH-A + XHP-2",
+      "dnp": true
+    },
+    {
+      "ref": "R16",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "LS1",
+        "2": "+3V3"
+      },
+      "pos": [
+        107,
+        147,
+        90
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": true
+    },
+    {
+      "ref": "C7",
+      "value": "100nF",
+      "lib_id": "Device:C",
+      "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+      "pins": {
+        "1": "LS1",
+        "2": "GND"
+      },
+      "pos": [
+        107,
+        143,
+        0
+      ],
+      "mpn": "Kemet C315 series; select capacitance suffix",
+      "dnp": true
+    },
+    {
+      "ref": "J14",
+      "value": "LS2 DNP",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "footprint": "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical",
+      "pins": {
+        "1": "LS2",
+        "2": "GND"
+      },
+      "pos": [
+        172,
+        195,
+        0
+      ],
+      "mpn": "JST B2B-XH-A + XHP-2",
+      "dnp": true
+    },
+    {
+      "ref": "R17",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "LS2",
+        "2": "+3V3"
+      },
+      "pos": [
+        119,
+        147,
+        90
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": true
+    },
+    {
+      "ref": "C8",
+      "value": "100nF",
+      "lib_id": "Device:C",
+      "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+      "pins": {
+        "1": "LS2",
+        "2": "GND"
+      },
+      "pos": [
+        119,
+        143,
+        0
+      ],
+      "mpn": "Kemet C315 series; select capacitance suffix",
+      "dnp": true
+    },
+    {
+      "ref": "J15",
+      "value": "LS3 DNP",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "footprint": "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical",
+      "pins": {
+        "1": "LS3",
+        "2": "GND"
+      },
+      "pos": [
+        182,
+        195,
+        0
+      ],
+      "mpn": "JST B2B-XH-A + XHP-2",
+      "dnp": true
+    },
+    {
+      "ref": "R18",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "LS3",
+        "2": "+3V3"
+      },
+      "pos": [
+        131,
+        147,
+        90
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": true
+    },
+    {
+      "ref": "C9",
+      "value": "100nF",
+      "lib_id": "Device:C",
+      "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+      "pins": {
+        "1": "LS3",
+        "2": "GND"
+      },
+      "pos": [
+        131,
+        143,
+        0
+      ],
+      "mpn": "Kemet C315 series; select capacitance suffix",
+      "dnp": true
+    },
+    {
+      "ref": "J16",
+      "value": "LS4 DNP",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "footprint": "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical",
+      "pins": {
+        "1": "LS4",
+        "2": "GND"
+      },
+      "pos": [
+        192,
+        195,
+        0
+      ],
+      "mpn": "JST B2B-XH-A + XHP-2",
+      "dnp": true
+    },
+    {
+      "ref": "R19",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "LS4",
+        "2": "+3V3"
+      },
+      "pos": [
+        143,
+        147,
+        90
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": true
+    },
+    {
+      "ref": "C10",
+      "value": "100nF",
+      "lib_id": "Device:C",
+      "footprint": "Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm",
+      "pins": {
+        "1": "LS4",
+        "2": "GND"
+      },
+      "pos": [
+        143,
+        143,
+        0
+      ],
+      "mpn": "Kemet C315 series; select capacitance suffix",
+      "dnp": true
+    },
+    {
+      "ref": "J17",
+      "value": "I2C 3V3/SDA/SCL/G",
+      "lib_id": "Connector_Generic:Conn_01x04",
+      "footprint": "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical",
+      "pins": {
+        "1": "+3V3",
+        "2": "I2C_SDA",
+        "3": "I2C_SCL",
+        "4": "GND"
+      },
+      "pos": [
+        117,
+        198,
+        90
+      ],
+      "mpn": "Harwin M20-9990446",
+      "dnp": false
+    },
+    {
+      "ref": "R20",
+      "value": "5.6k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "+12V",
+        "2": "LED2_A"
+      },
+      "pos": [
+        108,
+        132,
+        0
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "D2",
+      "value": "+12V",
+      "lib_id": "Device:LED",
+      "footprint": "LED_THT:LED_D3.0mm",
+      "pins": {
+        "1": "GND",
+        "2": "LED2_A"
+      },
+      "pos": [
+        118,
+        132,
+        0
+      ],
+      "mpn": "Kingbright L-934GD; resistor-limited indicator",
+      "dnp": false
+    },
+    {
+      "ref": "R21",
+      "value": "2.2k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "+6V_A",
+        "2": "LED3_A"
+      },
+      "pos": [
+        168,
+        113,
+        0
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "D3",
+      "value": "+6V_A",
+      "lib_id": "Device:LED",
+      "footprint": "LED_THT:LED_D3.0mm",
+      "pins": {
+        "1": "GND",
+        "2": "LED3_A"
+      },
+      "pos": [
+        178,
+        113,
+        0
+      ],
+      "mpn": "Kingbright L-934GD; resistor-limited indicator",
+      "dnp": false
+    },
+    {
+      "ref": "R22",
+      "value": "2.2k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "+6V_B",
+        "2": "LED4_A"
+      },
+      "pos": [
+        185,
+        113,
+        0
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "D4",
+      "value": "+6V_B",
+      "lib_id": "Device:LED",
+      "footprint": "LED_THT:LED_D3.0mm",
+      "pins": {
+        "1": "GND",
+        "2": "LED4_A"
+      },
+      "pos": [
+        195,
+        113,
+        0
+      ],
+      "mpn": "Kingbright L-934GD; resistor-limited indicator",
+      "dnp": false
+    },
+    {
+      "ref": "R23",
+      "value": "1.5k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "+5V",
+        "2": "LED5_A"
+      },
+      "pos": [
+        108,
+        151,
+        0
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "D5",
+      "value": "+5V",
+      "lib_id": "Device:LED",
+      "footprint": "LED_THT:LED_D3.0mm",
+      "pins": {
+        "1": "GND",
+        "2": "LED5_A"
+      },
+      "pos": [
+        118,
+        151,
+        0
+      ],
+      "mpn": "Kingbright L-934GD; resistor-limited indicator",
+      "dnp": false
+    },
+    {
+      "ref": "R24",
+      "value": "1k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "+3V3",
+        "2": "LED6_A"
+      },
+      "pos": [
+        119,
+        158,
+        0
+      ],
+      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "D6",
+      "value": "+3V3",
+      "lib_id": "Device:LED",
+      "footprint": "LED_THT:LED_D3.0mm",
+      "pins": {
+        "1": "GND",
+        "2": "LED6_A"
+      },
+      "pos": [
+        129,
+        158,
+        0
+      ],
+      "mpn": "Kingbright L-934GD; resistor-limited indicator",
+      "dnp": false
+    },
+    {
+      "ref": "TP1",
+      "value": "+12V",
+      "lib_id": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm",
+      "pins": {
+        "1": "+12V"
+      },
+      "pos": [
+        145,
+        115,
+        0
+      ],
+      "mpn": "Keystone 5000 loop; verify lead fit before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "TP2",
+      "value": "+6V_A",
+      "lib_id": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm",
+      "pins": {
+        "1": "+6V_A"
+      },
+      "pos": [
+        166,
+        154,
+        0
+      ],
+      "mpn": "Keystone 5000 loop; verify lead fit before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "TP3",
+      "value": "+6V_B",
+      "lib_id": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm",
+      "pins": {
+        "1": "+6V_B"
+      },
+      "pos": [
+        184,
+        154,
+        0
+      ],
+      "mpn": "Keystone 5000 loop; verify lead fit before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "TP4",
+      "value": "+5V",
+      "lib_id": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm",
+      "pins": {
+        "1": "+5V"
+      },
+      "pos": [
+        120,
+        132,
+        0
+      ],
+      "mpn": "Keystone 5000 loop; verify lead fit before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "TP5",
+      "value": "+3V3",
+      "lib_id": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm",
+      "pins": {
+        "1": "+3V3"
+      },
+      "pos": [
+        124,
+        158,
+        0
+      ],
+      "mpn": "Keystone 5000 loop; verify lead fit before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "TP6",
+      "value": "GND",
+      "lib_id": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm",
+      "pins": {
+        "1": "GND"
+      },
+      "pos": [
+        128,
+        114,
+        0
+      ],
+      "mpn": "Keystone 5000 loop; verify lead fit before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "TP7",
+      "value": "GND",
+      "lib_id": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm",
+      "pins": {
+        "1": "GND"
+      },
+      "pos": [
+        190,
+        132,
+        0
+      ],
+      "mpn": "Keystone 5000 loop; verify lead fit before ordering",
+      "dnp": false
+    },
+    {
+      "ref": "TP8",
+      "value": "SPARE_GPIO33",
+      "lib_id": "Connector:TestPoint",
+      "footprint": "TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm",
+      "pins": {
+        "1": "SPARE_GPIO33"
+      },
+      "pos": [
+        124,
+        185,
+        0
+      ],
+      "mpn": "Keystone 5000 loop; verify lead fit before ordering",
+      "dnp": false
+    }
+  ],
+  "nets": {
+    "+12V_IN": {
+      "type": "power",
+      "nodes": [
+        "J1.1",
+        "F1.1"
+      ]
+    },
+    "GND": {
+      "type": "power",
+      "nodes": [
+        "J1.2",
+        "J2.2",
+        "J2.4",
+        "J3.2",
+        "J3.4",
+        "R9.2",
+        "D1.2",
+        "C1.2",
+        "C3.2",
+        "C2.2",
+        "C4.2",
+        "J4.2",
+        "J4.3",
+        "C5.2",
+        "J18.14",
+        "J19.1",
+        "J19.7",
+        "C6.2",
+        "J17.4",
+        "J5.1",
+        "R5.2",
+        "J6.1",
+        "R6.2",
+        "J7.1",
+        "R7.2",
+        "J8.1",
+        "R8.2",
+        "J9.3",
+        "J10.3",
+        "R25.2",
+        "Q2.E",
+        "J13.2",
+        "C7.2",
+        "J14.2",
+        "C8.2",
+        "J15.2",
+        "C9.2",
+        "J16.2",
+        "C10.2",
+        "D2.1",
+        "D3.1",
+        "D4.1",
+        "D5.1",
+        "D6.1",
+        "TP6.1",
+        "TP7.1"
+      ]
+    },
+    "+12V": {
+      "type": "power",
+      "nodes": [
+        "J2.1",
+        "J3.1",
+        "Q1.S",
+        "D1.1",
+        "D7.1",
+        "J4.4",
+        "R20.1",
+        "TP1.1"
+      ]
+    },
+    "+6V_A_RAW": {
+      "type": "power",
+      "nodes": [
+        "J2.3",
+        "F2.1"
+      ]
+    },
+    "+6V_B_RAW": {
+      "type": "power",
+      "nodes": [
+        "J3.3",
+        "F3.1"
+      ]
+    },
+    "+12V_FUSED": {
+      "type": "power",
+      "nodes": [
+        "F1.2",
+        "Q1.D"
+      ]
+    },
+    "Q1_GATE": {
+      "type": "signal",
+      "nodes": [
+        "Q1.G",
+        "R9.1",
+        "D7.2"
+      ]
+    },
+    "+6V_A": {
+      "type": "power",
+      "nodes": [
+        "F2.2",
+        "C1.1",
+        "C3.1",
+        "J5.2",
+        "J6.2",
+        "R21.1",
+        "TP2.1"
+      ]
+    },
+    "+6V_B": {
+      "type": "power",
+      "nodes": [
+        "F3.2",
+        "C2.1",
+        "C4.1",
+        "J7.2",
+        "J8.2",
+        "R22.1",
+        "TP3.1"
+      ]
+    },
+    "+5V": {
+      "type": "power",
+      "nodes": [
+        "J4.1",
+        "JP1.1",
+        "C5.1",
+        "R14.1",
+        "R15.1",
+        "R23.1",
+        "TP4.1"
+      ]
+    },
+    "+5V_DEVKIT": {
+      "type": "power",
+      "nodes": [
+        "JP1.2",
+        "J18.19"
+      ]
+    },
+    "+3V3": {
+      "type": "power",
+      "nodes": [
+        "J18.1",
+        "C6.1",
+        "J17.1",
+        "J9.1",
+        "J10.1",
+        "R16.2",
+        "R17.2",
+        "R18.2",
+        "R19.2",
+        "R24.1",
+        "TP5.1"
+      ]
+    },
+    "IR_RX1": {
+      "type": "signal",
+      "nodes": [
+        "J18.5",
+        "J9.2"
+      ]
+    },
+    "IR_RX2": {
+      "type": "signal",
+      "nodes": [
+        "J18.6",
+        "J10.2"
+      ]
+    },
+    "LS4": {
+      "type": "signal",
+      "nodes": [
+        "J18.7",
+        "J16.1",
+        "R19.1",
+        "C10.1"
+      ]
+    },
+    "SPARE_GPIO33": {
+      "type": "signal",
+      "nodes": [
+        "J18.8",
+        "TP8.1"
+      ]
+    },
+    "LS1": {
+      "type": "signal",
+      "nodes": [
+        "J18.9",
+        "J13.1",
+        "R16.1",
+        "C7.1"
+      ]
+    },
+    "LS2": {
+      "type": "signal",
+      "nodes": [
+        "J18.10",
+        "J14.1",
+        "R17.1",
+        "C8.1"
+      ]
+    },
+    "LS3": {
+      "type": "signal",
+      "nodes": [
+        "J18.11",
+        "J15.1",
+        "R18.1",
+        "C9.1"
+      ]
+    },
+    "ESP_IR_TX": {
+      "type": "signal",
+      "nodes": [
+        "J19.2",
+        "R13.1"
+      ]
+    },
+    "I2C_SCL": {
+      "type": "signal",
+      "nodes": [
+        "J19.3",
+        "J17.3"
+      ]
+    },
+    "I2C_SDA": {
+      "type": "signal",
+      "nodes": [
+        "J19.6",
+        "J17.2"
+      ]
+    },
+    "ESP_S2_BOT_PWM": {
+      "type": "signal",
+      "nodes": [
+        "J19.8",
+        "R4.1"
+      ]
+    },
+    "ESP_S2_TOP_PWM": {
+      "type": "signal",
+      "nodes": [
+        "J19.9",
+        "R3.1"
+      ]
+    },
+    "ESP_S1_BOT_PWM": {
+      "type": "signal",
+      "nodes": [
+        "J19.11",
+        "R2.1"
+      ]
+    },
+    "ESP_S1_TOP_PWM": {
+      "type": "signal",
+      "nodes": [
+        "J19.12",
+        "R1.1"
+      ]
+    },
+    "S1_TOP_PWM": {
+      "type": "signal",
+      "nodes": [
+        "J5.3",
+        "R1.2",
+        "R5.1"
+      ]
+    },
+    "S1_BOT_PWM": {
+      "type": "signal",
+      "nodes": [
+        "J6.3",
+        "R2.2",
+        "R6.1"
+      ]
+    },
+    "S2_TOP_PWM": {
+      "type": "signal",
+      "nodes": [
+        "J7.3",
+        "R3.2",
+        "R7.1"
+      ]
+    },
+    "S2_BOT_PWM": {
+      "type": "signal",
+      "nodes": [
+        "J8.3",
+        "R4.2",
+        "R8.1"
+      ]
+    },
+    "IR_TX1_A": {
+      "type": "signal",
+      "nodes": [
+        "J11.1",
+        "R14.2"
+      ]
+    },
+    "IR_TX_RET": {
+      "type": "signal",
+      "nodes": [
+        "J11.2",
+        "J12.2",
+        "Q2.C"
+      ]
+    },
+    "IR_TX2_A": {
+      "type": "signal",
+      "nodes": [
+        "J12.1",
+        "R15.2"
+      ]
+    },
+    "Q2_BASE": {
+      "type": "signal",
+      "nodes": [
+        "R13.2",
+        "R25.1",
+        "Q2.B"
+      ]
+    },
+    "LED2_A": {
+      "type": "signal",
+      "nodes": [
+        "R20.2",
+        "D2.2"
+      ]
+    },
+    "LED3_A": {
+      "type": "signal",
+      "nodes": [
+        "R21.2",
+        "D3.2"
+      ]
+    },
+    "LED4_A": {
+      "type": "signal",
+      "nodes": [
+        "R22.2",
+        "D4.2"
+      ]
+    },
+    "LED5_A": {
+      "type": "signal",
+      "nodes": [
+        "R23.2",
+        "D5.2"
+      ]
+    },
+    "LED6_A": {
+      "type": "signal",
+      "nodes": [
+        "R24.2",
+        "D6.2"
+      ]
+    }
+  }
+}

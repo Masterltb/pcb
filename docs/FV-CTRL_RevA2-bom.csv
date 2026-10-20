@@ -1,0 +1,73 @@
+﻿Reference,Value,MPN,Footprint,DNP,Release status
+J1,12V INPUT,Phoenix 1757242 + plug 1757019,"Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal",False,ENGINEERING - procurement not released
+J2,XL4015 A: 12/G/6/G,Phoenix 1757268 + plug 1757035,"Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_4-G-5,08_1x04_P5.08mm_Horizontal",False,ENGINEERING - procurement not released
+J3,XL4015 B: 12/G/6/G,Phoenix 1757268 + plug 1757035,"Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_4-G-5,08_1x04_P5.08mm_Horizontal",False,ENGINEERING - procurement not released
+F1,T5A - VERIFY I2T,Littelfuse 0215005.MXP + 2x 01110001L; interrupt rating review required,Fuse:Fuseholder_Clip-5x20mm_Littelfuse_111_Inline_P20.00x5.00mm_D1.05mm_Horizontal,False,ENGINEERING - procurement not released
+Q1,IRF4905PBF,Infineon IRF4905PBF,fv_reva2:PMOS_GDS,False,ENGINEERING - procurement not released
+R9,10k,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,False,ENGINEERING - procurement not released
+D1,1.5KE15CA,Littelfuse 1.5KE15CA,Diode_THT:D_DO-201AD_P15.24mm_Horizontal,False,ENGINEERING - procurement not released
+D7,BZX55C12,Vishay BZX55C12,Diode_THT:D_DO-35_SOD27_P7.62mm_Horizontal,False,ENGINEERING - procurement not released
+F2,MF-R300,Bourns MF-R300,fv_reva2:MF_R300,False,ENGINEERING - procurement not released
+F3,MF-R300,Bourns MF-R300,fv_reva2:MF_R300,False,ENGINEERING - procurement not released
+C1,2200uF 16V,Panasonic EEU-FR1C222 (C1/C2); other capacitors pending exact MPN,Capacitor_THT:CP_Radial_D12.5mm_P5.00mm,False,ENGINEERING - procurement not released
+C3,100nF,Kemet C315 series; select capacitance suffix,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,False,ENGINEERING - procurement not released
+C2,2200uF 16V,Panasonic EEU-FR1C222 (C1/C2); other capacitors pending exact MPN,Capacitor_THT:CP_Radial_D12.5mm_P5.00mm,False,ENGINEERING - procurement not released
+C4,100nF,Kemet C315 series; select capacitance suffix,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,False,ENGINEERING - procurement not released
+J4,5V D24V25F5,Pololu 2850 D24V25F5; socket + male header,fv_reva2:Pololu_D24V25F5,False,ENGINEERING - procurement not released
+JP1,REMOVE BEFORE USB,Harwin M20-9990246 + M7567-05 shunt,Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,False,ENGINEERING - procurement not released
+J18,DEVKITC V4 LEFT,Samtec SSQ-119-03-G-S; DevKitC-32E separate assembly item,Connector_PinSocket_2.54mm:PinSocket_1x19_P2.54mm_Vertical,False,ENGINEERING - procurement not released
+J19,DEVKITC V4 RIGHT,Samtec SSQ-119-03-G-S; DevKitC-32E separate assembly item,Connector_PinSocket_2.54mm:PinSocket_1x19_P2.54mm_Vertical,False,ENGINEERING - procurement not released
+C5,10uF 25V,Panasonic EEU-FR1C222 (C1/C2); other capacitors pending exact MPN,Capacitor_THT:CP_Radial_D5.0mm_P2.00mm,False,ENGINEERING - procurement not released
+C6,100nF,Kemet C315 series; select capacitance suffix,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,False,ENGINEERING - procurement not released
+J5,S1_TOP,Harwin M20-9990346,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,False,ENGINEERING - procurement not released
+R1,330R,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,False,ENGINEERING - procurement not released
+R5,10k,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,False,ENGINEERING - procurement not released
+J6,S1_BOT,Harwin M20-9990346,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,False,ENGINEERING - procurement not released
+R2,330R,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,False,ENGINEERING - procurement not released
+R6,10k,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,False,ENGINEERING - procurement not released
+J7,S2_TOP,Harwin M20-9990346,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,False,ENGINEERING - procurement not released
+R3,330R,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,False,ENGINEERING - procurement not released
+R7,10k,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,False,ENGINEERING - procurement not released
+J8,S2_BOT,Harwin M20-9990346,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,False,ENGINEERING - procurement not released
+R4,330R,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,False,ENGINEERING - procurement not released
+R8,10k,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,False,ENGINEERING - procurement not released
+J9,IR RX1 3V3/OUT/G,JST B3B-XH-A + XHP-3 + SXH-001T-P0.6,Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical,False,ENGINEERING - procurement not released
+J10,IR RX2 3V3/OUT/G,JST B3B-XH-A + XHP-3 + SXH-001T-P0.6,Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical,False,ENGINEERING - procurement not released
+J11,IR TX1 A/K,JST B2B-XH-A + XHP-2 + SXH-001T-P0.6,Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,False,ENGINEERING - procurement not released
+R14,120R,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,False,ENGINEERING - procurement not released
+J12,IR TX2 A/K,JST B2B-XH-A + XHP-2 + SXH-001T-P0.6,Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,False,ENGINEERING - procurement not released
+R15,120R,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,False,ENGINEERING - procurement not released
+R13,330R,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,False,ENGINEERING - procurement not released
+R25,10k,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,False,ENGINEERING - procurement not released
+Q2,P2N2222AG,onsemi P2N2222AG; do not substitute PN2222 without pinout check,fv_reva2:NPN_CBE,False,ENGINEERING - procurement not released
+J13,LS1 DNP,JST B2B-XH-A + XHP-2,Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,True,ENGINEERING - procurement not released
+R16,10k,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,True,ENGINEERING - procurement not released
+C7,100nF,Kemet C315 series; select capacitance suffix,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,True,ENGINEERING - procurement not released
+J14,LS2 DNP,JST B2B-XH-A + XHP-2,Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,True,ENGINEERING - procurement not released
+R17,10k,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,True,ENGINEERING - procurement not released
+C8,100nF,Kemet C315 series; select capacitance suffix,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,True,ENGINEERING - procurement not released
+J15,LS3 DNP,JST B2B-XH-A + XHP-2,Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,True,ENGINEERING - procurement not released
+R18,10k,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,True,ENGINEERING - procurement not released
+C9,100nF,Kemet C315 series; select capacitance suffix,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,True,ENGINEERING - procurement not released
+J16,LS4 DNP,JST B2B-XH-A + XHP-2,Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,True,ENGINEERING - procurement not released
+R19,10k,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,True,ENGINEERING - procurement not released
+C10,100nF,Kemet C315 series; select capacitance suffix,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P5.00mm,True,ENGINEERING - procurement not released
+J17,I2C 3V3/SDA/SCL/G,Harwin M20-9990446,Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical,False,ENGINEERING - procurement not released
+R20,5.6k,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,False,ENGINEERING - procurement not released
+D2,+12V,Kingbright L-934GD; resistor-limited indicator,LED_THT:LED_D3.0mm,False,ENGINEERING - procurement not released
+R21,2.2k,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,False,ENGINEERING - procurement not released
+D3,+6V_A,Kingbright L-934GD; resistor-limited indicator,LED_THT:LED_D3.0mm,False,ENGINEERING - procurement not released
+R22,2.2k,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,False,ENGINEERING - procurement not released
+D4,+6V_B,Kingbright L-934GD; resistor-limited indicator,LED_THT:LED_D3.0mm,False,ENGINEERING - procurement not released
+R23,1.5k,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,False,ENGINEERING - procurement not released
+D5,+5V,Kingbright L-934GD; resistor-limited indicator,LED_THT:LED_D3.0mm,False,ENGINEERING - procurement not released
+R24,1k,Vishay MRS25; select resistance suffix before ordering,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal,False,ENGINEERING - procurement not released
+D6,+3V3,Kingbright L-934GD; resistor-limited indicator,LED_THT:LED_D3.0mm,False,ENGINEERING - procurement not released
+TP1,+12V,Keystone 5000 loop; verify lead fit before ordering,TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm,False,ENGINEERING - procurement not released
+TP2,+6V_A,Keystone 5000 loop; verify lead fit before ordering,TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm,False,ENGINEERING - procurement not released
+TP3,+6V_B,Keystone 5000 loop; verify lead fit before ordering,TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm,False,ENGINEERING - procurement not released
+TP4,+5V,Keystone 5000 loop; verify lead fit before ordering,TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm,False,ENGINEERING - procurement not released
+TP5,+3V3,Keystone 5000 loop; verify lead fit before ordering,TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm,False,ENGINEERING - procurement not released
+TP6,GND,Keystone 5000 loop; verify lead fit before ordering,TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm,False,ENGINEERING - procurement not released
+TP7,GND,Keystone 5000 loop; verify lead fit before ordering,TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm,False,ENGINEERING - procurement not released
+TP8,SPARE_GPIO33,Keystone 5000 loop; verify lead fit before ordering,TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm,False,ENGINEERING - procurement not released
