@@ -1,0 +1,18 @@
+{
+  "type": "engineering-review-only",
+  "design_commit": "a7dd57b",
+  "branch": "feat/esp32-qfn-sma",
+  "native_schematic_files": 10,
+  "smt_references": 62,
+  "thermal_ep_holes": 25,
+  "erc_violations": 0,
+  "drc_violations": 0,
+  "unconnected": 0,
+  "schematic_parity": 0,
+  "gerber_exported": false,
+  "factory_approved": false,
+  "physical_qualification": "NOT RUN",
+  "zip_file": "FV-CTRL_RevB-review.zip",
+  "zip_sha256": "ad67aad98daba7c1fb45410a87e4280620998f382110e9eb313726f5240eecb7",
+  "archived_files": 73
+}

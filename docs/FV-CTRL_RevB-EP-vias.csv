@@ -1,0 +1,26 @@
+﻿Reference,EP_pad,X_mm_board_coordinates,Y_mm_board_coordinates,Drill_mm,Copper_diameter_mm,Factory_note
+U2,25,141.95,183.95,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U2,25,141.95,185.0,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U2,25,141.95,186.05,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U2,25,143.0,183.95,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U2,25,143.0,185.0,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U2,25,143.0,186.05,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U2,25,144.05,183.95,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U2,25,144.05,185.0,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U2,25,144.05,186.05,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U1,49,141.4,152.4,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U1,49,141.4,153.466667,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U1,49,141.4,154.533333,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U1,49,141.4,155.6,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U1,49,142.466667,152.4,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U1,49,142.466667,153.466667,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U1,49,142.466667,154.533333,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U1,49,142.466667,155.6,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U1,49,143.533333,152.4,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U1,49,143.533333,153.466667,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U1,49,143.533333,154.533333,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U1,49,143.533333,155.6,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U1,49,144.6,152.4,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U1,49,144.6,153.466667,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U1,49,144.6,154.533333,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
+U1,49,144.6,155.6,0.2,0.5,Thermal EP via only: factory fill/cap and stencil review required
