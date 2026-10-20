@@ -1,0 +1,4 @@
+(version 1)
+(rule "12V and servo power paths minimum 2mm"
+  (condition "A.NetName == '/+12V_IN' || A.NetName == '/+12V_FUSED' || A.NetName == '/+12V' || A.NetName == '/+6V_A_RAW' || A.NetName == '/+6V_B_RAW' || A.NetName == '/+6V_A' || A.NetName == '/+6V_B'")
+  (constraint track_width (min 2.0mm) (opt 2.0mm)))

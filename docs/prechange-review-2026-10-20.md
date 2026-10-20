@@ -51,3 +51,7 @@ Các thay đổi được yêu cầu trước khi review lại:
 ERC/DRC sạch với thiết lập hợp lệ; netlist xuất thật từ schematic khớp PCB; BOM MPN và phương án thay thế có phân loại tương thích; bản vẽ lắp và harness; kết quả thử nghiệm thực. Các TODO về thời gian cơ cấu, nhiệt/môi trường và hộp không được đổi thành PASS khi chưa có dữ liệu.
 
 Các skill fv-pcb-* được nhắc trong AGENTS.md không có trong checkout và thư mục skill đã tìm. Chưa thực hiện quy trình skill thiết kế bắt buộc; không đánh dấu hoàn tất review/release theo skill.
+
+## Bổ sung trước lần sửa RX RevA2
+
+Người dùng đã cho phép thay quy trình skill thiếu bằng thao tác KiCad trực tiếp, giữ review và ERC/DRC. JaeBin yêu cầu thêm kéo lên 10k ngoài cho GPIO34/35 (không có pull-up nội) và 1k nối tiếp mỗi OUT RX để hạn dòng; mức LOW ước tính khoảng 0.4V với receiver đang sink khoảng 0.3mA, cần đo xác nhận. Không coi 1k là chứng nhận ESD. Jbungia yêu cầu vẫn giữ THT, đặt thêm bốn điện trở với courtyard và nhãn rõ, kiểm tra DRC lại, không chồng lên vùng DevKit hoặc anten.

@@ -30,7 +30,7 @@ def connector(ref,value,nets,pos,fp,mpn,dnp=False):
     if sym not in PIN_DB: PIN_DB[sym]=extract_symbol_pins('Connector_Generic.kicad_sym',sym.split(':')[1])
     add(ref,value,sym,fp,dict(enumerate(nets,1)),pos,mpn,dnp)
 def tp(ref,net,pos):
-    add(ref,net,'Connector:TestPoint','TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm',{1:net},pos,'Keystone 5000 loop; verify lead fit before ordering')
+    add(ref,net,'Connector:TestPoint','fv_reva2:Keystone_5000_Carrier_D3',{1:net},pos,'Keystone 5001 (GND) / 5000 (rails)')
 TER='Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_{}-G-5,08_1x{:02}_P5.08mm_Horizontal'
 connector('J1','12V INPUT',['+12V_IN','GND'],(108,108,180),TER.format(2,2),'Phoenix 1757242 + plug 1757019')
 for ref,x,rail in [('J2',133,'A'),('J3',163,'B')]:
@@ -53,7 +53,7 @@ left=['+3V3',None,None,None,'IR_RX1','IR_RX2','LS4','SPARE_GPIO33','LS1','LS2','
 right=['GND','ESP_IR_TX','I2C_SCL',None,None,'I2C_SDA','GND','ESP_S2_BOT_PWM','ESP_S2_TOP_PWM',None,'ESP_S1_BOT_PWM','ESP_S1_TOP_PWM',None,None,None,None,None,None,None]
 for ref,nets,x in [('J18',left,130),('J19',right,155.4)]:
     connector(ref,'DEVKITC V4 '+('LEFT' if ref=='J18' else 'RIGHT'),nets,(x,150,0),'Connector_PinSocket_2.54mm:PinSocket_1x19_P2.54mm_Vertical','Samtec SSQ-119-03-G-S; DevKitC-32E separate assembly item')
-cap('C5','10uF 25V',['+5V','GND'],(123,139,0),bulk=True)
+cap('C5','10uF 50V',['+5V','GND'],(123,139,0),bulk=True)
 cap('C6','100nF',['+3V3','GND'],(119,153,0))
 servo_names=['S1_TOP','S1_BOT','S2_TOP','S2_BOT']
 for i,name in enumerate(servo_names,1):
@@ -63,7 +63,9 @@ for i,name in enumerate(servo_names,1):
     resistor(f'R{i}','330R',['ESP_'+name+'_PWM',name+'_PWM'],(168,y,0))
     resistor(f'R{i+4}','10k',[name+'_PWM','GND'],(181,y,90))
 for i,y in [(1,156),(2,168)]:
-    connector(f'J{i+8}',f'IR RX{i} 3V3/OUT/G',['+3V3',f'IR_RX{i}','GND'],(106,y,270),'Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical','JST B3B-XH-A + XHP-3 + SXH-001T-P0.6')
+    connector(f'J{i+8}',f'IR RX{i} 3V3/OUT/G',['+3V3',f'IR_RX{i}_CABLE','GND'],(106,y,270),'Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical','JST B3B-XH-A + XHP-3 + SXH-001T-P0.6')
+    resistor(f'R{i+25}','10k',[f'IR_RX{i}','+3V3'],(120,y,0))
+    resistor(f'R{i+27}','1k',[f'IR_RX{i}_CABLE',f'IR_RX{i}'],(113,y-3,0))
 for i,y in [(1,180),(2,191)]:
     connector(f'J{i+10}',f'IR TX{i} A/K',[f'IR_TX{i}_A','IR_TX_RET'],(106,y,270),'Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical','JST B2B-XH-A + XHP-2 + SXH-001T-P0.6')
     resistor(f'R{i+13}','120R',['+5V',f'IR_TX{i}_A'],(115,y,0))
@@ -106,11 +108,16 @@ def footprints():
     # Official labeled TOP photo 0J10080: EN/VIN/GND/GND/VOUT left to right.
     # Mechanical PDF bottom view is mirrored; it is not the pinout reference.
     custom('Pololu_D24V25F5',[(str(i+1),i*2.54,0,1.9,1.0) for i in range(5)],(-5.1,-16.53,12.7,1.27))
+    name='TestPoint_THTPad_D3.0mm_Drill1.5mm'
+    tptext=(STD/'TestPoint.pretty'/(name+'.kicad_mod')).read_text(encoding='utf-8')
+    tptext=tptext.replace(name,'Keystone_5000_Carrier_D3').replace('(drill 1.5)','(drill 1.0)')
+    (LIB/'Keystone_5000_Carrier_D3.kicad_mod').write_text(tptext,encoding='utf-8')
     for parent,prefix in [(ROOT/'hardware','../'),(ROOT,'')]:
         (parent/'fp-lib-table').write_text(f'(fp_lib_table (version 7) (lib (name "fv_modules") (type "KiCad") (uri "${{KIPRJMOD}}/{prefix}libs/fv_modules.pretty") (options "") (descr "Legacy")) (lib (name "fv_reva2") (type "KiCad") (uri "${{KIPRJMOD}}/{prefix}libs/fv_reva2.pretty") (options "") (descr "Reviewed RevA2")))\n',encoding='utf-8')
     project=json.loads((ROOT/'hardware/FV-CTRL_RevA.kicad_pro').read_text())
     ds=project['board']['design_settings']; ds['drc_exclusions']=[]
     ds['rules'].update(min_clearance=.25,min_through_hole_diameter=.4,min_silk_clearance=.1)
+    project['net_settings']['classes'][0].update(clearance=.25,track_width=.3,via_diameter=.8,via_drill=.4)
     ds['rule_severities'].update(footprint_type_mismatch='warning',missing_courtyard='warning')
     (ROOT/'hardware'/f'{NAME}.kicad_pro').write_text(json.dumps(project,indent=2),encoding='utf-8')
 
@@ -121,7 +128,7 @@ def schematic():
     groups=[('POWER',lambda p:p['ref'] in ['J1','J2','J3','J4','F1','F2','F3','Q1','D1','D7','R9','C1','C2','C3','C4','C5','JP1']),
             ('DEVKIT AND IO',lambda p:p['ref'] in ['J18','J19','J17','TP8','C6']),
             ('SERVO PWM',lambda p:p['ref'] in ['J5','J6','J7','J8'] or p['ref'] in [f'R{i}' for i in range(1,9)]),
-            ('IR',lambda p:p['ref'] in ['J9','J10','J11','J12','Q2','R13','R14','R15','R25']),
+            ('IR',lambda p:p['ref'] in ['J9','J10','J11','J12','Q2','R13','R14','R15','R25','R26','R27','R28','R29']),
             ('LIMIT DNP / MOUNTING',lambda p:p['ref'].startswith('H') or p['ref'] in [f'J{i}' for i in range(13,17)]+[f'R{i}' for i in range(16,20)]+[f'C{i}' for i in range(7,11)]),
             ('DIAGNOSTICS',lambda p:p['ref'] in [f'R{i}' for i in range(20,25)]+[f'D{i}' for i in range(2,7)]+[f'TP{i}' for i in range(1,8)])]
     used=set()

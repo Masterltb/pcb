@@ -16,6 +16,8 @@ for node,net in {'J2.3':'+6V_A_RAW','F2.1':'+6V_A_RAW','F2.2':'+6V_A','J3.3':'+6
 for i in range(2,7):require(f'D{i}.1','GND');require(f'D{i}.2',f'LED{i}_A')
 for node,net in {'J4.2':'+12V','J4.3':'GND','J4.4':'GND','J4.5':'+5V'}.items():require(node,net)
 if not actual.get('J4.1','').startswith('unconnected-'):errors.append('Pololu EN must be NC')
+for i in [1,2]:
+    require(f'J{i+8}.2',f'IR_RX{i}_CABLE');require(f'R{i+27}.1',f'IR_RX{i}_CABLE');require(f'R{i+27}.2',f'IR_RX{i}');require(f'R{i+25}.1',f'IR_RX{i}');require(f'R{i+25}.2','+3V3')
 spec=json.loads((ROOT/'hardware/FV-CTRL_RevA2.design.json').read_text())
 for p in spec['parts']:
     for pin,net in p['pins'].items():
@@ -31,6 +33,8 @@ if '--pcb' in sys.argv:
             if pad.GetAttribute()==pcb.PAD_ATTRIB_SMD:errors.append('SMD pad '+fp.GetReference())
     pitch=pcb.ToMM(next(f for f in board.GetFootprints() if f.GetReference()=='J19').GetPosition().x-next(f for f in board.GetFootprints() if f.GetReference()=='J18').GetPosition().x)
     if abs(pitch-25.4)>.001:errors.append(f'DevKit row pitch {pitch}')
+    for track in board.GetTracks():
+        if track.GetClass()=='PCB_TRACK' and track.GetNetname().startswith(('/+12V','/+6V')) and track.GetWidth()<pcb.FromMM(2):errors.append('Power trace under 2mm: '+track.GetNetname())
 result=dict(status='FAIL' if errors else 'PASS',errors=errors,source='KiCad 10 exported XML',pcb_checked='--pcb' in sys.argv,limits='Does not prove thermal/EMC/ESD/mechanical safety or production qualification')
 (ROOT/'reports/RevA2-functional-gate.json').write_text(json.dumps(result,indent=2))
 print(json.dumps(result,indent=2));sys.exit(bool(errors))

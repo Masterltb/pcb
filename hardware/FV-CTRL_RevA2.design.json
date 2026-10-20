@@ -14,7 +14,7 @@
         108,
         180
       ],
-      "mpn": "Phoenix 1757242 + plug 1757019",
+      "mpn": "1757242 + mating 1757019",
       "dnp": false
     },
     {
@@ -33,7 +33,7 @@
         108,
         180
       ],
-      "mpn": "Phoenix 1757268 + plug 1757035",
+      "mpn": "1757268 + mating 1757035",
       "dnp": false
     },
     {
@@ -52,7 +52,7 @@
         108,
         180
       ],
-      "mpn": "Phoenix 1757268 + plug 1757035",
+      "mpn": "1757268 + mating 1757035",
       "dnp": false
     },
     {
@@ -69,7 +69,7 @@
         122,
         0
       ],
-      "mpn": "Littelfuse 0215005.MXP + 2x 01110001L; interrupt rating review required",
+      "mpn": "SCHURTER 0001.2511 + 2x Littelfuse 01110001L",
       "dnp": false
     },
     {
@@ -87,7 +87,7 @@
         124,
         0
       ],
-      "mpn": "Infineon IRF4905PBF",
+      "mpn": "IRF4905PBF",
       "dnp": false
     },
     {
@@ -104,7 +104,7 @@
         133,
         0
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-10K",
       "dnp": false
     },
     {
@@ -138,7 +138,7 @@
         131,
         0
       ],
-      "mpn": "Vishay BZX55C12",
+      "mpn": "BZX55C12",
       "dnp": false
     },
     {
@@ -155,7 +155,7 @@
         123,
         0
       ],
-      "mpn": "Bourns MF-R300",
+      "mpn": "MF-R300",
       "dnp": false
     },
     {
@@ -172,7 +172,7 @@
         123,
         0
       ],
-      "mpn": "Bourns MF-R300",
+      "mpn": "MF-R300",
       "dnp": false
     },
     {
@@ -189,7 +189,7 @@
         140,
         0
       ],
-      "mpn": "Panasonic EEU-FR1C222 (C1/C2); other capacitors pending exact MPN",
+      "mpn": "EEUFR1C222",
       "dnp": false
     },
     {
@@ -206,7 +206,7 @@
         150,
         0
       ],
-      "mpn": "Kemet C315 series; select capacitance suffix",
+      "mpn": "K104K15X7RF53H5",
       "dnp": false
     },
     {
@@ -223,7 +223,7 @@
         140,
         0
       ],
-      "mpn": "Panasonic EEU-FR1C222 (C1/C2); other capacitors pending exact MPN",
+      "mpn": "EEUFR1C222",
       "dnp": false
     },
     {
@@ -240,7 +240,7 @@
         150,
         0
       ],
-      "mpn": "Kemet C315 series; select capacitance suffix",
+      "mpn": "K104K15X7RF53H5",
       "dnp": false
     },
     {
@@ -260,7 +260,7 @@
         138,
         0
       ],
-      "mpn": "Pololu 2850 D24V25F5; socket + male header",
+      "mpn": "Pololu 2850 D24V25F5 + 1x05 female socket",
       "dnp": false
     },
     {
@@ -277,7 +277,7 @@
         193,
         0
       ],
-      "mpn": "Harwin M20-9990246 + M7567-05 shunt",
+      "mpn": "M20-9990246 + M7567-05 shunt",
       "dnp": false
     },
     {
@@ -311,7 +311,7 @@
         150,
         0
       ],
-      "mpn": "Samtec SSQ-119-03-G-S; DevKitC-32E separate assembly item",
+      "mpn": "SSQ-119-03-G-S",
       "dnp": false
     },
     {
@@ -345,12 +345,12 @@
         150,
         0
       ],
-      "mpn": "Samtec SSQ-119-03-G-S; DevKitC-32E separate assembly item",
+      "mpn": "SSQ-119-03-G-S",
       "dnp": false
     },
     {
       "ref": "C5",
-      "value": "10uF 25V",
+      "value": "10uF 50V",
       "lib_id": "Device:C_Polarized",
       "footprint": "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm",
       "pins": {
@@ -362,7 +362,7 @@
         139,
         0
       ],
-      "mpn": "Panasonic EEU-FR1C222 (C1/C2); other capacitors pending exact MPN",
+      "mpn": "EEUFR1H100",
       "dnp": false
     },
     {
@@ -379,7 +379,7 @@
         153,
         0
       ],
-      "mpn": "Kemet C315 series; select capacitance suffix",
+      "mpn": "K104K15X7RF53H5",
       "dnp": false
     },
     {
@@ -397,7 +397,7 @@
         157,
         0
       ],
-      "mpn": "Harwin M20-9990346",
+      "mpn": "M20-9990346",
       "dnp": false
     },
     {
@@ -414,7 +414,7 @@
         157,
         0
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-330R",
       "dnp": false
     },
     {
@@ -431,7 +431,7 @@
         157,
         90
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-10K",
       "dnp": false
     },
     {
@@ -449,7 +449,7 @@
         167,
         0
       ],
-      "mpn": "Harwin M20-9990346",
+      "mpn": "M20-9990346",
       "dnp": false
     },
     {
@@ -466,7 +466,7 @@
         167,
         0
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-330R",
       "dnp": false
     },
     {
@@ -483,7 +483,7 @@
         167,
         90
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-10K",
       "dnp": false
     },
     {
@@ -501,7 +501,7 @@
         177,
         0
       ],
-      "mpn": "Harwin M20-9990346",
+      "mpn": "M20-9990346",
       "dnp": false
     },
     {
@@ -518,7 +518,7 @@
         177,
         0
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-330R",
       "dnp": false
     },
     {
@@ -535,7 +535,7 @@
         177,
         90
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-10K",
       "dnp": false
     },
     {
@@ -553,7 +553,7 @@
         187,
         0
       ],
-      "mpn": "Harwin M20-9990346",
+      "mpn": "M20-9990346",
       "dnp": false
     },
     {
@@ -570,7 +570,7 @@
         187,
         0
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-330R",
       "dnp": false
     },
     {
@@ -587,7 +587,7 @@
         187,
         90
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-10K",
       "dnp": false
     },
     {
@@ -597,7 +597,7 @@
       "footprint": "Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical",
       "pins": {
         "1": "+3V3",
-        "2": "IR_RX1",
+        "2": "IR_RX1_CABLE",
         "3": "GND"
       },
       "pos": [
@@ -605,7 +605,41 @@
         156,
         270
       ],
-      "mpn": "JST B3B-XH-A + XHP-3 + SXH-001T-P0.6",
+      "mpn": "B3B-XH-A + XHP-3 + SXH-001T-P0.6",
+      "dnp": false
+    },
+    {
+      "ref": "R26",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "IR_RX1",
+        "2": "+3V3"
+      },
+      "pos": [
+        120,
+        156,
+        0
+      ],
+      "mpn": "CFR-25JR-52-10K",
+      "dnp": false
+    },
+    {
+      "ref": "R28",
+      "value": "1k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "IR_RX1_CABLE",
+        "2": "IR_RX1"
+      },
+      "pos": [
+        113,
+        153,
+        0
+      ],
+      "mpn": "CFR-25JR-52-1K",
       "dnp": false
     },
     {
@@ -615,7 +649,7 @@
       "footprint": "Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical",
       "pins": {
         "1": "+3V3",
-        "2": "IR_RX2",
+        "2": "IR_RX2_CABLE",
         "3": "GND"
       },
       "pos": [
@@ -623,7 +657,41 @@
         168,
         270
       ],
-      "mpn": "JST B3B-XH-A + XHP-3 + SXH-001T-P0.6",
+      "mpn": "B3B-XH-A + XHP-3 + SXH-001T-P0.6",
+      "dnp": false
+    },
+    {
+      "ref": "R27",
+      "value": "10k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "IR_RX2",
+        "2": "+3V3"
+      },
+      "pos": [
+        120,
+        168,
+        0
+      ],
+      "mpn": "CFR-25JR-52-10K",
+      "dnp": false
+    },
+    {
+      "ref": "R29",
+      "value": "1k",
+      "lib_id": "Device:R",
+      "footprint": "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal",
+      "pins": {
+        "1": "IR_RX2_CABLE",
+        "2": "IR_RX2"
+      },
+      "pos": [
+        113,
+        165,
+        0
+      ],
+      "mpn": "CFR-25JR-52-1K",
       "dnp": false
     },
     {
@@ -640,7 +708,7 @@
         180,
         270
       ],
-      "mpn": "JST B2B-XH-A + XHP-2 + SXH-001T-P0.6",
+      "mpn": "B2B-XH-A + XHP-2 + SXH-001T-P0.6",
       "dnp": false
     },
     {
@@ -657,7 +725,7 @@
         180,
         0
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-120R",
       "dnp": false
     },
     {
@@ -674,7 +742,7 @@
         191,
         270
       ],
-      "mpn": "JST B2B-XH-A + XHP-2 + SXH-001T-P0.6",
+      "mpn": "B2B-XH-A + XHP-2 + SXH-001T-P0.6",
       "dnp": false
     },
     {
@@ -691,7 +759,7 @@
         191,
         0
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-120R",
       "dnp": false
     },
     {
@@ -708,7 +776,7 @@
         172,
         0
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-330R",
       "dnp": false
     },
     {
@@ -725,7 +793,7 @@
         164,
         90
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-10K",
       "dnp": false
     },
     {
@@ -743,7 +811,7 @@
         174,
         0
       ],
-      "mpn": "onsemi P2N2222AG; do not substitute PN2222 without pinout check",
+      "mpn": "P2N2222AG",
       "dnp": false
     },
     {
@@ -760,7 +828,7 @@
         195,
         0
       ],
-      "mpn": "JST B2B-XH-A + XHP-2",
+      "mpn": "B2B-XH-A + XHP-2 + SXH-001T-P0.6",
       "dnp": true
     },
     {
@@ -777,7 +845,7 @@
         147,
         90
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-10K",
       "dnp": true
     },
     {
@@ -794,7 +862,7 @@
         143,
         0
       ],
-      "mpn": "Kemet C315 series; select capacitance suffix",
+      "mpn": "K104K15X7RF53H5",
       "dnp": true
     },
     {
@@ -811,7 +879,7 @@
         195,
         0
       ],
-      "mpn": "JST B2B-XH-A + XHP-2",
+      "mpn": "B2B-XH-A + XHP-2 + SXH-001T-P0.6",
       "dnp": true
     },
     {
@@ -828,7 +896,7 @@
         147,
         90
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-10K",
       "dnp": true
     },
     {
@@ -845,7 +913,7 @@
         143,
         0
       ],
-      "mpn": "Kemet C315 series; select capacitance suffix",
+      "mpn": "K104K15X7RF53H5",
       "dnp": true
     },
     {
@@ -862,7 +930,7 @@
         195,
         0
       ],
-      "mpn": "JST B2B-XH-A + XHP-2",
+      "mpn": "B2B-XH-A + XHP-2 + SXH-001T-P0.6",
       "dnp": true
     },
     {
@@ -879,7 +947,7 @@
         147,
         90
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-10K",
       "dnp": true
     },
     {
@@ -896,7 +964,7 @@
         143,
         0
       ],
-      "mpn": "Kemet C315 series; select capacitance suffix",
+      "mpn": "K104K15X7RF53H5",
       "dnp": true
     },
     {
@@ -913,7 +981,7 @@
         195,
         0
       ],
-      "mpn": "JST B2B-XH-A + XHP-2",
+      "mpn": "B2B-XH-A + XHP-2 + SXH-001T-P0.6",
       "dnp": true
     },
     {
@@ -930,7 +998,7 @@
         147,
         90
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-10K",
       "dnp": true
     },
     {
@@ -947,7 +1015,7 @@
         143,
         0
       ],
-      "mpn": "Kemet C315 series; select capacitance suffix",
+      "mpn": "K104K15X7RF53H5",
       "dnp": true
     },
     {
@@ -966,7 +1034,7 @@
         198,
         90
       ],
-      "mpn": "Harwin M20-9990446",
+      "mpn": "M20-9990446",
       "dnp": false
     },
     {
@@ -983,7 +1051,7 @@
         132,
         0
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-5K6",
       "dnp": false
     },
     {
@@ -1000,7 +1068,7 @@
         132,
         0
       ],
-      "mpn": "Kingbright L-934GD; resistor-limited indicator",
+      "mpn": "WP710A10GD",
       "dnp": false
     },
     {
@@ -1017,7 +1085,7 @@
         113,
         0
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-2K2",
       "dnp": false
     },
     {
@@ -1034,7 +1102,7 @@
         113,
         0
       ],
-      "mpn": "Kingbright L-934GD; resistor-limited indicator",
+      "mpn": "WP710A10GD",
       "dnp": false
     },
     {
@@ -1051,7 +1119,7 @@
         113,
         0
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-2K2",
       "dnp": false
     },
     {
@@ -1068,7 +1136,7 @@
         113,
         0
       ],
-      "mpn": "Kingbright L-934GD; resistor-limited indicator",
+      "mpn": "WP710A10GD",
       "dnp": false
     },
     {
@@ -1085,7 +1153,7 @@
         151,
         0
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-1K5",
       "dnp": false
     },
     {
@@ -1102,7 +1170,7 @@
         151,
         0
       ],
-      "mpn": "Kingbright L-934GD; resistor-limited indicator",
+      "mpn": "WP710A10GD",
       "dnp": false
     },
     {
@@ -1119,7 +1187,7 @@
         158,
         0
       ],
-      "mpn": "Vishay MRS25; select resistance suffix before ordering",
+      "mpn": "CFR-25JR-52-1K",
       "dnp": false
     },
     {
@@ -1136,14 +1204,14 @@
         158,
         0
       ],
-      "mpn": "Kingbright L-934GD; resistor-limited indicator",
+      "mpn": "WP710A10GD",
       "dnp": false
     },
     {
       "ref": "TP1",
       "value": "+12V",
       "lib_id": "Connector:TestPoint",
-      "footprint": "TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm",
+      "footprint": "fv_reva2:Keystone_5000_Carrier_D3",
       "pins": {
         "1": "+12V"
       },
@@ -1152,14 +1220,14 @@
         115,
         0
       ],
-      "mpn": "Keystone 5000 loop; verify lead fit before ordering",
+      "mpn": "5000",
       "dnp": false
     },
     {
       "ref": "TP2",
       "value": "+6V_A",
       "lib_id": "Connector:TestPoint",
-      "footprint": "TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm",
+      "footprint": "fv_reva2:Keystone_5000_Carrier_D3",
       "pins": {
         "1": "+6V_A"
       },
@@ -1168,14 +1236,14 @@
         154,
         0
       ],
-      "mpn": "Keystone 5000 loop; verify lead fit before ordering",
+      "mpn": "5000",
       "dnp": false
     },
     {
       "ref": "TP3",
       "value": "+6V_B",
       "lib_id": "Connector:TestPoint",
-      "footprint": "TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm",
+      "footprint": "fv_reva2:Keystone_5000_Carrier_D3",
       "pins": {
         "1": "+6V_B"
       },
@@ -1184,14 +1252,14 @@
         154,
         0
       ],
-      "mpn": "Keystone 5000 loop; verify lead fit before ordering",
+      "mpn": "5000",
       "dnp": false
     },
     {
       "ref": "TP4",
       "value": "+5V",
       "lib_id": "Connector:TestPoint",
-      "footprint": "TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm",
+      "footprint": "fv_reva2:Keystone_5000_Carrier_D3",
       "pins": {
         "1": "+5V"
       },
@@ -1200,14 +1268,14 @@
         132,
         0
       ],
-      "mpn": "Keystone 5000 loop; verify lead fit before ordering",
+      "mpn": "5000",
       "dnp": false
     },
     {
       "ref": "TP5",
       "value": "+3V3",
       "lib_id": "Connector:TestPoint",
-      "footprint": "TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm",
+      "footprint": "fv_reva2:Keystone_5000_Carrier_D3",
       "pins": {
         "1": "+3V3"
       },
@@ -1216,14 +1284,14 @@
         158,
         0
       ],
-      "mpn": "Keystone 5000 loop; verify lead fit before ordering",
+      "mpn": "5000",
       "dnp": false
     },
     {
       "ref": "TP6",
       "value": "GND",
       "lib_id": "Connector:TestPoint",
-      "footprint": "TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm",
+      "footprint": "fv_reva2:Keystone_5000_Carrier_D3",
       "pins": {
         "1": "GND"
       },
@@ -1232,14 +1300,14 @@
         114,
         0
       ],
-      "mpn": "Keystone 5000 loop; verify lead fit before ordering",
+      "mpn": "5001",
       "dnp": false
     },
     {
       "ref": "TP7",
       "value": "GND",
       "lib_id": "Connector:TestPoint",
-      "footprint": "TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm",
+      "footprint": "fv_reva2:Keystone_5000_Carrier_D3",
       "pins": {
         "1": "GND"
       },
@@ -1248,14 +1316,14 @@
         132,
         0
       ],
-      "mpn": "Keystone 5000 loop; verify lead fit before ordering",
+      "mpn": "5001",
       "dnp": false
     },
     {
       "ref": "TP8",
       "value": "SPARE_GPIO33",
       "lib_id": "Connector:TestPoint",
-      "footprint": "TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm",
+      "footprint": "fv_reva2:Keystone_5000_Carrier_D3",
       "pins": {
         "1": "SPARE_GPIO33"
       },
@@ -1264,7 +1332,7 @@
         185,
         0
       ],
-      "mpn": "Keystone 5000 loop; verify lead fit before ordering",
+      "mpn": "5000",
       "dnp": false
     },
     {
@@ -1278,7 +1346,7 @@
         104,
         0
       ],
-      "mpn": "M3 nylon standoff + screw; height per enclosure",
+      "mpn": "M3 nylon spacer/screw set, enclosure dependent",
       "dnp": false
     },
     {
@@ -1292,7 +1360,7 @@
         104,
         0
       ],
-      "mpn": "M3 nylon standoff + screw; height per enclosure",
+      "mpn": "M3 nylon spacer/screw set, enclosure dependent",
       "dnp": false
     },
     {
@@ -1306,7 +1374,7 @@
         196,
         0
       ],
-      "mpn": "M3 nylon standoff + screw; height per enclosure",
+      "mpn": "M3 nylon spacer/screw set, enclosure dependent",
       "dnp": false
     },
     {
@@ -1320,7 +1388,7 @@
         196,
         0
       ],
-      "mpn": "M3 nylon standoff + screw; height per enclosure",
+      "mpn": "M3 nylon spacer/screw set, enclosure dependent",
       "dnp": false
     }
   ],
@@ -1475,7 +1543,9 @@
         "C6.1",
         "J17.1",
         "J9.1",
+        "R26.2",
         "J10.1",
+        "R27.2",
         "R16.2",
         "R17.2",
         "R18.2",
@@ -1488,14 +1558,16 @@
       "type": "signal",
       "nodes": [
         "J18.5",
-        "J9.2"
+        "R26.1",
+        "R28.2"
       ]
     },
     "IR_RX2": {
       "type": "signal",
       "nodes": [
         "J18.6",
-        "J10.2"
+        "R27.1",
+        "R29.2"
       ]
     },
     "LS4": {
@@ -1620,6 +1692,20 @@
         "J8.3",
         "R4.2",
         "R8.1"
+      ]
+    },
+    "IR_RX1_CABLE": {
+      "type": "signal",
+      "nodes": [
+        "J9.2",
+        "R28.1"
+      ]
+    },
+    "IR_RX2_CABLE": {
+      "type": "signal",
+      "nodes": [
+        "J10.2",
+        "R29.1"
       ]
     },
     "IR_TX1_A": {
