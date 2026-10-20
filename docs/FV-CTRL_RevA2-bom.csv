@@ -71,3 +71,7 @@ TP5,+3V3,Keystone 5000 loop; verify lead fit before ordering,TestPoint:TestPoint
 TP6,GND,Keystone 5000 loop; verify lead fit before ordering,TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm,False,ENGINEERING - procurement not released
 TP7,GND,Keystone 5000 loop; verify lead fit before ordering,TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm,False,ENGINEERING - procurement not released
 TP8,SPARE_GPIO33,Keystone 5000 loop; verify lead fit before ordering,TestPoint:TestPoint_THTPad_D3.0mm_Drill1.5mm,False,ENGINEERING - procurement not released
+H1,M3 MOUNT,M3 nylon standoff + screw; height per enclosure,MountingHole:MountingHole_3.2mm_M3,False,ENGINEERING - procurement not released
+H2,M3 MOUNT,M3 nylon standoff + screw; height per enclosure,MountingHole:MountingHole_3.2mm_M3,False,ENGINEERING - procurement not released
+H3,M3 MOUNT,M3 nylon standoff + screw; height per enclosure,MountingHole:MountingHole_3.2mm_M3,False,ENGINEERING - procurement not released
+H4,M3 MOUNT,M3 nylon standoff + screw; height per enclosure,MountingHole:MountingHole_3.2mm_M3,False,ENGINEERING - procurement not released

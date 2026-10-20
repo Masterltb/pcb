@@ -249,11 +249,11 @@
       "lib_id": "Connector_Generic:Conn_01x05",
       "footprint": "fv_reva2:Pololu_D24V25F5",
       "pins": {
-        "1": "+5V",
-        "2": "GND",
+        "1": null,
+        "2": "+12V",
         "3": "GND",
-        "4": "+12V",
-        "5": null
+        "4": "GND",
+        "5": "+5V"
       },
       "pos": [
         113,
@@ -1266,6 +1266,62 @@
       ],
       "mpn": "Keystone 5000 loop; verify lead fit before ordering",
       "dnp": false
+    },
+    {
+      "ref": "H1",
+      "value": "M3 MOUNT",
+      "lib_id": "Mechanical:MountingHole",
+      "footprint": "MountingHole:MountingHole_3.2mm_M3",
+      "pins": {},
+      "pos": [
+        104,
+        104,
+        0
+      ],
+      "mpn": "M3 nylon standoff + screw; height per enclosure",
+      "dnp": false
+    },
+    {
+      "ref": "H2",
+      "value": "M3 MOUNT",
+      "lib_id": "Mechanical:MountingHole",
+      "footprint": "MountingHole:MountingHole_3.2mm_M3",
+      "pins": {},
+      "pos": [
+        196,
+        104,
+        0
+      ],
+      "mpn": "M3 nylon standoff + screw; height per enclosure",
+      "dnp": false
+    },
+    {
+      "ref": "H3",
+      "value": "M3 MOUNT",
+      "lib_id": "Mechanical:MountingHole",
+      "footprint": "MountingHole:MountingHole_3.2mm_M3",
+      "pins": {},
+      "pos": [
+        104,
+        196,
+        0
+      ],
+      "mpn": "M3 nylon standoff + screw; height per enclosure",
+      "dnp": false
+    },
+    {
+      "ref": "H4",
+      "value": "M3 MOUNT",
+      "lib_id": "Mechanical:MountingHole",
+      "footprint": "MountingHole:MountingHole_3.2mm_M3",
+      "pins": {},
+      "pos": [
+        196,
+        196,
+        0
+      ],
+      "mpn": "M3 nylon standoff + screw; height per enclosure",
+      "dnp": false
     }
   ],
   "nets": {
@@ -1290,8 +1346,8 @@
         "C3.2",
         "C2.2",
         "C4.2",
-        "J4.2",
         "J4.3",
+        "J4.4",
         "C5.2",
         "J18.14",
         "J19.1",
@@ -1335,7 +1391,7 @@
         "Q1.S",
         "D1.1",
         "D7.1",
-        "J4.4",
+        "J4.2",
         "R20.1",
         "TP1.1"
       ]
@@ -1396,7 +1452,7 @@
     "+5V": {
       "type": "power",
       "nodes": [
-        "J4.1",
+        "J4.5",
         "JP1.1",
         "C5.1",
         "R14.1",

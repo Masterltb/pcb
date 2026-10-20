@@ -2,6 +2,6 @@
   "status": "PASS",
   "errors": [],
   "source": "KiCad 10 exported XML",
-  "pcb_checked": false,
+  "pcb_checked": true,
   "limits": "Does not prove thermal/EMC/ESD/mechanical safety or production qualification"
 }

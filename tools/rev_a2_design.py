@@ -47,7 +47,7 @@ for i,x in [(1,168),(2,185)]:
     rail='A' if i==1 else 'B'
     cap(f'C{i}','2200uF 16V',[f'+6V_{rail}','GND'],(x,140,0),bulk=True)
     cap(f'C{i+2}','100nF',[f'+6V_{rail}','GND'],(x,150,0))
-connector('J4','5V D24V25F5',['+5V','GND','GND','+12V',None],(113,138,0),'fv_reva2:Pololu_D24V25F5','Pololu 2850 D24V25F5; socket + male header')
+connector('J4','5V D24V25F5',[None,'+12V','GND','GND','+5V'],(113,138,0),'fv_reva2:Pololu_D24V25F5','Pololu 2850 D24V25F5; socket + male header')
 connector('JP1','REMOVE BEFORE USB',['+5V','+5V_DEVKIT'],(124,193,0),'Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical','Harwin M20-9990246 + M7567-05 shunt')
 left=['+3V3',None,None,None,'IR_RX1','IR_RX2','LS4','SPARE_GPIO33','LS1','LS2','LS3',None,None,'GND',None,None,None,None,'+5V_DEVKIT']
 right=['GND','ESP_IR_TX','I2C_SCL',None,None,'I2C_SDA','GND','ESP_S2_BOT_PWM','ESP_S2_TOP_PWM',None,'ESP_S1_BOT_PWM','ESP_S1_TOP_PWM',None,None,None,None,None,None,None]
@@ -81,10 +81,12 @@ for idx,(rail,x,y,rval) in enumerate([('+12V',108,132,'5.6k'),('+6V_A',168,113,'
     resistor(f'R{idx+18}',rval,[rail,f'LED{idx}_A'],(x,y,0))
     add(f'D{idx}',rail,'Device:LED','LED_THT:LED_D3.0mm',{1:'GND',2:f'LED{idx}_A'},(x+10,y,0),'Kingbright L-934GD; resistor-limited indicator')
 for i,(net,x,y) in enumerate([('+12V',145,115),('+6V_A',166,154),('+6V_B',184,154),('+5V',120,132),('+3V3',124,158),('GND',128,114),('GND',190,132),('SPARE_GPIO33',124,185)],1): tp(f'TP{i}',net,(x,y,0))
+for i,(x,y) in enumerate([(104,104),(196,104),(104,196),(196,196)],1):
+    add('H'+str(i),'M3 MOUNT','Mechanical:MountingHole','MountingHole:MountingHole_3.2mm_M3',{},(x,y,0),'M3 nylon standoff + screw; height per enclosure')
 
 def footprints():
     # Letter-numbered generic symbols are explicitly mapped to physical leads.
-    for name,src,mapping in [('PMOS_GDS','Package_TO_SOT_THT:TO-220-3_Vertical',{'1':'G','2':'D','3':'S'}),('NPN_CBE','Package_TO_SOT_THT:TO-92_Inline',{'1':'C','2':'B','3':'E'})]:
+    for name,src,mapping in [('PMOS_GDS','Package_TO_SOT_THT:TO-220-3_Vertical',{'1':'G','2':'D','3':'S'}),('NPN_CBE','Package_TO_SOT_THT:TO-92_Inline_Wide',{'1':'C','2':'B','3':'E'})]:
         lib,n=src.split(':'); text=(STD/(lib+'.pretty')/(n+'.kicad_mod')).read_text(encoding='utf-8')
         text=text.replace(f'(footprint "{n}"',f'(footprint "{name}"',1)
         for k,v in mapping.items(): text=text.replace(f'(pad "{k}"',f'(pad "{v}"')
@@ -101,8 +103,8 @@ def footprints():
             lines.append(f'(pad "{num}" thru_hole {"rect" if num=="1" else "circle"} (at {x} {y}) (size {diam} {diam}) (drill {drill}) (layers "*.Cu" "*.Mask"))')
         lines.append(')'); (LIB/(name+'.kicad_mod')).write_text('\n'.join(lines),encoding='utf-8')
     custom('MF_R300',[('1',0,0,2.4,1.2),('2',5.1,0,2.4,1.2)],(-3.45,-1.5,8.55,1.5))
-    # Pololu drawing bottom-view left-to-right EN/VIN/GND/GND/VOUT;
-    # top view reversed: VOUT/GND/GND/VIN/EN. Pad 1 top left.
+    # Official labeled TOP photo 0J10080: EN/VIN/GND/GND/VOUT left to right.
+    # Mechanical PDF bottom view is mirrored; it is not the pinout reference.
     custom('Pololu_D24V25F5',[(str(i+1),i*2.54,0,1.9,1.0) for i in range(5)],(-5.1,-16.53,12.7,1.27))
     for parent,prefix in [(ROOT/'hardware','../'),(ROOT,'')]:
         (parent/'fp-lib-table').write_text(f'(fp_lib_table (version 7) (lib (name "fv_modules") (type "KiCad") (uri "${{KIPRJMOD}}/{prefix}libs/fv_modules.pretty") (options "") (descr "Legacy")) (lib (name "fv_reva2") (type "KiCad") (uri "${{KIPRJMOD}}/{prefix}libs/fv_reva2.pretty") (options "") (descr "Reviewed RevA2")))\n',encoding='utf-8')
@@ -120,7 +122,7 @@ def schematic():
             ('DEVKIT AND IO',lambda p:p['ref'] in ['J18','J19','J17','TP8','C6']),
             ('SERVO PWM',lambda p:p['ref'] in ['J5','J6','J7','J8'] or p['ref'] in [f'R{i}' for i in range(1,9)]),
             ('IR',lambda p:p['ref'] in ['J9','J10','J11','J12','Q2','R13','R14','R15','R25']),
-            ('LIMIT DNP',lambda p:p['ref'] in [f'J{i}' for i in range(13,17)]+[f'R{i}' for i in range(16,20)]+[f'C{i}' for i in range(7,11)]),
+            ('LIMIT DNP / MOUNTING',lambda p:p['ref'].startswith('H') or p['ref'] in [f'J{i}' for i in range(13,17)]+[f'R{i}' for i in range(16,20)]+[f'C{i}' for i in range(7,11)]),
             ('DIAGNOSTICS',lambda p:p['ref'] in [f'R{i}' for i in range(20,25)]+[f'D{i}' for i in range(2,7)]+[f'TP{i}' for i in range(1,8)])]
     used=set()
     for gi,(title,predicate) in enumerate(groups):
