@@ -1,0 +1,6 @@
+﻿Ref,Qty per board,Primary MPN,Alternative / qualification,Source
+U1,1,TSOP38238,TSOP38438 candidate only; AGC/burst and mechanical requalification required,https://www.vishay.com/docs/82491/tsop382.pdf
+R1,1,CFR25JR52100R,MFR25FBF52100R candidate; verify body/lead/ratings,https://yageogroup.com/content/datasheet/asset/file/YAGEO-CFR_DATASHEET
+C1,1,EEUFR1H4R7,EEUFR1J4R7 candidate; verify height and pitch before substitution,https://industrial.panasonic.com/cdbs/www-data/pdf/RDF0000/ast-ind-152838.pdf
+J1,1,B3B-XH-A + XHP-3 + SXH-001T-P0.6,B3B-XH-A(LF)(SN) ordering variant; verify exact housing,https://www.jst-mfg.com/product/pdf/eng/eXH.pdf
+H1,1,"M3 insulating mounting set, enclosure dependent",Metal hardware only after copper/insulator review,PROJECT.md
