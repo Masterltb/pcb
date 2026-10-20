@@ -1837,6 +1837,45 @@
       "dnp": false
     },
     {
+      "ref": "U5",
+      "value": "TLV803EA29DBZR",
+      "lib_id": "fv_revb:TLV803EA29DBZR",
+      "footprint": "Package_TO_SOT_SMD:SOT-23",
+      "pins": {
+        "1": "GND",
+        "2": "ESP_EN",
+        "3": "+3V3"
+      },
+      "sheet": "ESP32 core",
+      "mpn": "TLV803EA29DBZR",
+      "notes": "2.93V supervisor, 200ms nominal delay; TI pin1=GND variant",
+      "pos": [
+        143,
+        160,
+        0
+      ],
+      "dnp": false
+    },
+    {
+      "ref": "C56",
+      "value": "100nF",
+      "lib_id": "Device:C",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "+3V3",
+        "2": "GND"
+      },
+      "sheet": "ESP32 core",
+      "mpn": "GRM155R71C104KA88D",
+      "notes": "",
+      "pos": [
+        143,
+        160,
+        0
+      ],
+      "dnp": false
+    },
+    {
       "ref": "C11",
       "value": "10uF 50V",
       "lib_id": "Device:C_Polarized",
@@ -2095,8 +2134,8 @@
         "4": "GND"
       },
       "sheet": "Clock / RF",
-      "mpn": "ABM8G-40.000MHZ-10-1-U-T",
-      "notes": "Configured 10ppm tolerance/stability option; availability requires sourcing confirmation",
+      "mpn": "ABM8-40.000MHZ-10-1-U-T",
+      "notes": "Verified Abracon catalog: CL10pF, +/-10ppm tolerance and stability, 3225; -10..60C; sourcing/temperature range must be confirmed",
       "pos": [
         143,
         160,
@@ -2317,7 +2356,7 @@
       "ref": "U2",
       "value": "CP2102N-A02-GQFN24",
       "lib_id": "fv_revb:CP2102N-A02-GQFN24",
-      "footprint": "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm",
+      "footprint": "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm_ThermalVias",
       "pins": {
         "1": null,
         "2": "GND",
@@ -2347,7 +2386,7 @@
       },
       "sheet": "USB / programming",
       "mpn": "CP2102N-A02-GQFN24",
-      "notes": "Self powered 3.3V, VREGIN=VDD=VIO; USB does NOT power board",
+      "notes": "Self powered 3.3V, VREGIN=VDD=VIO; USB does NOT power board; grounded EP with vias",
       "pos": [
         143,
         160,

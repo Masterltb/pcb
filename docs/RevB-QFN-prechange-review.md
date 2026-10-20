@@ -39,3 +39,9 @@ Chưa chọn MPN cuối cho regulator/crystal/SMA/ESD/flash; chưa có xác nh�
 ## Trình tự thực hiện sau review
 
 Chọn part và pin map thật -> schematic nhiều trang theo chức năng, chữ đọc được -> ERC và kiểm tra net độc lập -> placement chip/crystal/flash/RF thủ công -> đi dây nguồn/servo và tín hiệu -> DRC/parity -> BOM/placement/ảnh xưởng và checklist mẫu -> người dùng duyệt rủi ro trước Gerber. Mỗi thay đổi schematic/PCB phải kèm kiểm tra theo AGENTS.md; không tự xuất Gerber.
+
+## Bổ sung review trước đi dây: giám sát nguồn
+
+JaeBin: nguồn servo dùng chung nguồn gốc 12V, nên thêm supervisor reset độc lập thay vì chỉ dựa RC EN. Chọn TLV803EA29DBZR theo ví dụ TI: ngưỡng 2.93V, giữ reset khoảng 200ms, open-drain chia sẻ EN với nút RESET và auto-download, không tranh chấp ngõ ra push-pull. Cần đo brownout thực; không coi ngưỡng nominal là bảo vệ tuyệt đối flash hoặc mọi xung nhanh. Jbungia: SOT23-3 pin1 GND, pin2 RESET, pin3 VDD; không thay bằng các hậu tố R/V có pinout khác. Thêm 100nF sát nguồn supervisor và kiểm tra lại ERC/DRC.
+
+Nguồn: https://www.ti.com/lit/ds/symlink/tlv803e.pdf (ví dụ TLV803EA29DBZR và bảng pinout).

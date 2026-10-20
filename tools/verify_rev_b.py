@@ -11,6 +11,7 @@ def expect(ref,pins):
         if found!=net:errors.append(f'{ref}.{pin}: {found} != {net}')
 expect('U1',{1:'+3V3',2:'RF_CHIP',3:'+3V3_RF',4:'+3V3_RF',9:'ESP_EN',10:'IR_RX1',11:'IR_RX2',12:'LS4',13:'SPARE_GPIO33',14:'LS1',15:'LS2',16:'LS3',18:'STRAP_GPIO12',19:'+3V3',21:'STRAP_GPIO15',22:'STRAP_GPIO2',23:'ESP_BOOT',25:'ESP_S1_TOP_PWM',26:'VDD_SDIO',27:'ESP_S1_BOT_PWM',28:'SPI_HD',29:'SPI_WP',30:'SPI_CS',31:'SPI_CLK',32:'SPI_Q',33:'SPI_D',34:'STRAP_GPIO5',35:'ESP_S2_TOP_PWM',36:'ESP_IR_TX',37:'+3V3',38:'ESP_S2_BOT_PWM',39:'I2C_SCL',40:'UART_RX',41:'UART_TX_RAW',42:'I2C_SDA',43:'+3V3',44:'XTAL_N',45:'XTAL_P',46:'+3V3',47:'CAP2',48:'CAP1',49:'GND'})
 expect('U3',{1:'GND',2:'+3V3',3:'+5V'})
+expect('U5',{1:'GND',2:'ESP_EN',3:'+3V3'})
 expect('U4',{1:'FLASH_CS',2:'FLASH_Q',3:'FLASH_WP',4:'GND',5:'FLASH_D',6:'FLASH_CLK',7:'FLASH_HD',8:'VDD_SDIO'})
 expect('U2',{2:'GND',3:'USB_DP',4:'USB_DM',5:'+3V3',6:'+3V3',7:'+3V3',8:'USB_VBUS_SENSE',9:'USB_RESET',19:'USB_RTS',20:'UART_TX',21:'UART_RX',23:'USB_DTR',25:'GND'})
 expect('J21',{1:'USB_VBUS',2:'USB_DM',3:'USB_DP',5:'GND','SH':'GND'})

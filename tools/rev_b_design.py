@@ -41,6 +41,7 @@ CP=sym('CP2102N-A02-GQFN24',dict(enumerate(['RI','GND','D+','D-','VIO','VDD','VR
 LDO=sym('LD1117V33',{'1':'GND','2':'VOUT_3V3','3':'VIN_5V'},{'1':'power_in','2':'power_out','3':'power_in'})
 FLASH=sym('W25Q32JVSSIQ',{'1':'CS#','2':'DO_IO1','3':'WP#_IO2','4':'GND','5':'DI_IO0','6':'CLK','7':'HOLD#_IO3','8':'VCC'},{'4':'power_in','8':'power_in'})
 NPN=sym('MMBT3904',{'1':'B','2':'E','3':'C'})
+SUP=sym('TLV803EA29DBZR',{'1':'GND','2':'RESET_OD','3':'VDD'},{'1':'power_in','2':'open_collector','3':'power_in'})
 
 R0402='Resistor_SMD:R_0402_1005Metric';C0402='Capacitor_SMD:C_0402_1005Metric';C0603='Capacitor_SMD:C_0603_1608Metric'
 C0201='Capacitor_SMD:C_0201_0603Metric';L0201='Inductor_SMD:L_0201_0603Metric'
@@ -66,6 +67,8 @@ c('C41','100nF','VDD_SDIO','GND','Flash','GRM155R71C104KA88D')
 for num,net in [(30,'ESP_EN'),(31,'ESP_BOOT'),(34,'STRAP_GPIO5'),(35,'STRAP_GPIO15')]:r('R'+str(num),'10k',net,'+3V3','ESP32 core','RC0402FR-0710KL')
 for num,net in [(32,'STRAP_GPIO2'),(33,'STRAP_GPIO12')]:r('R'+str(num),'10k',net,'GND','ESP32 core','RC0402FR-0710KL')
 c('C20','1uF','ESP_EN','GND','ESP32 core','GRM155R61A105KE15D')
+add('U5','TLV803EA29DBZR',SUP,'Package_TO_SOT_SMD:SOT-23',{1:'GND',2:'ESP_EN',3:'+3V3'},'ESP32 core','TLV803EA29DBZR','2.93V supervisor, 200ms nominal delay; TI pin1=GND variant')
+c('C56','100nF','+3V3','GND','ESP32 core','GRM155R71C104KA88D')
 for num in [11,12]:
     add('C'+str(num),'10uF 50V','Device:C_Polarized','Capacitor_THT:CP_Radial_D5.0mm_P2.00mm',{1:'+5V' if num==11 else '+3V3',2:'GND'},'Power','EEUFR1H100','LDO input/output reservoir; min 10uF per ST')
 for num,net in [(13,'+3V3'),(14,'+3V3_RF'),(15,'+3V3_RF')]:c('C'+str(num),'10uF',net,'GND','ESP32 core','GRM188R60J106ME47D',C0603,'Verify effective capacitance at 3.3V')
@@ -74,7 +77,7 @@ c('C21','1uF','+3V3_RF','GND','ESP32 core','GRM155R61A105KE15D')
 c('C22','100nF','+3V3_RF','GND','ESP32 core','GRM033R71C104KE14D',C0201)
 add('L2','2.0nH','Device:L',L0201,{1:'+3V3',2:'+3V3_RF'},'ESP32 core','LQP03TN2N0B02D','600mA rating per Murata; RF supply filter')
 
-add('Y1','40MHz CL10pF','Device:Crystal_GND24','Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm',{1:'XTAL_P_X',2:'GND',3:'XTAL_N',4:'GND'},'Clock / RF','ABM8G-40.000MHZ-10-1-U-T','Configured 10ppm tolerance/stability option; availability requires sourcing confirmation')
+add('Y1','40MHz CL10pF','Device:Crystal_GND24','Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm',{1:'XTAL_P_X',2:'GND',3:'XTAL_N',4:'GND'},'Clock / RF','ABM8-40.000MHZ-10-1-U-T','Abracon catalog CL10pF +/-10ppm tolerance/stability; -10..60C; factory sourcing needs confirmation')
 r('R36','0R','XTAL_P','XTAL_P_X','Clock / RF','RC0402JR-070RL','Crystal harmonic tuning footprint')
 c('C24','16pF','XTAL_P_X','GND','Clock / RF','GRM1555C1H160JA01D',notes='INITIAL: CL10pF, assumed stray2pF => C=16pF. Measure frequency and tune.')
 c('C25','16pF','XTAL_N','GND','Clock / RF','GRM1555C1H160JA01D',notes='INITIAL; not measured crystal tuning')
@@ -89,7 +92,7 @@ add('D8','PESD5V0X1BL','Device:D_TVS','Diode_SMD:D_SOD-882',{1:'RF_50',2:'GND'},
 
 cpnets={i:None for i in range(1,26)}
 cpnets.update({2:'GND',3:'USB_DP',4:'USB_DM',5:'+3V3',6:'+3V3',7:'+3V3',8:'USB_VBUS_SENSE',9:'USB_RESET',19:'USB_RTS',20:'UART_TX',21:'UART_RX',23:'USB_DTR',25:'GND'})
-add('U2','CP2102N-A02-GQFN24',CP,'Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm',cpnets,'USB / programming','CP2102N-A02-GQFN24','Self powered 3.3V, VREGIN=VDD=VIO; USB does NOT power board')
+add('U2','CP2102N-A02-GQFN24',CP,'Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.6x2.6mm_ThermalVias',cpnets,'USB / programming','CP2102N-A02-GQFN24','Self powered 3.3V, VREGIN=VDD=VIO; USB does NOT power board; grounded EP with vias')
 add('J21','USB MICRO DATA','Connector:USB_B_Micro','Connector_USB:USB_Micro-B_Molex-105017-0001',{1:'USB_VBUS',2:'USB_DM',3:'USB_DP',4:None,5:'GND','SH':'GND'},'USB / programming','Molex 105017-0001','Board needs 12V during programming; no USB power injection')
 r('R50','22.1k','USB_VBUS','USB_VBUS_SENSE','USB / programming','RC0402FR-0722K1L')
 r('R51','47.5k','USB_VBUS_SENSE','GND','USB / programming','RC0402FR-0747K5L')
@@ -167,7 +170,7 @@ def schematic():
         children.append(f'''(sheet (at {sx} {sy}) (size 105 40) (stroke (width 0.254) (type default)) (fill (color 0 0 0 0)) (uuid "{su}")
           (property "Sheetname" "{si+1}. {title}" (at {sx} {sy-2} 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
           (property "Sheetfile" "{filename}" (at {sx} {sy+42} 0) (effects (font (size 1.016 1.016)) (justify left top))))''')
-    data=root.build().replace('FV-CTRL Rev A (Fruit Vending Controller)','FV-CTRL RevB - schematic index').replace('Rev A (Engineering Draft)','RevB - NOT RELEASED').replace('2026-10-16','2026-10-20')
+    data=root.build().replace('FV-CTRL Rev A (Fruit Vending Controller)','FV-CTRL RevB - schematic index').replace('Rev A (Engineering Draft)','RevB - NOT RELEASED').replace('2026-10-16','2026-10-20').replace('2-layer THT | Dual-column FIFO servo & IR control','2-layer mixed SMT/THT | bare QFN | external SMA')
     data=data[:-2]+'\n'+ '\n'.join(children)+'\n)\n'
     (ROOT/'hardware'/f'{NAME}.kicad_sch').write_text(data,encoding='utf-8')
     (ROOT/'hardware'/f'{NAME}.design.json').write_text(json.dumps({'parts':PARTS},indent=2),encoding='utf-8')
@@ -175,8 +178,8 @@ def schematic():
         w=csv.writer(f);w.writerow(['Reference','Value','MPN','Footprint','Population','Assembly','Qualification'])
         for p in PARTS:w.writerow([p['ref'],p['value'],p['mpn'],p['footprint'],'DNP' if p['dnp'] else 'FIT','SMT' if any(t in p['footprint'] for t in ['_SMD:','Package_SO:','Package_DFN','SOT_SMD','Crystal:','Connector_USB:']) else 'THT',p.get('notes','Incoming inspection and prototype qualification required')])
     project=json.loads((ROOT/'hardware/FV-CTRL_RevA2.kicad_pro').read_text())
-    ds=project['board']['design_settings'];ds['rules'].update(min_clearance=.12,min_track_width=.12,min_through_hole_diameter=.2,min_via_diameter=.45)
-    project['net_settings']['classes'][0].update(clearance=.15,track_width=.2,via_diameter=.5,via_drill=.25)
+    ds=project['board']['design_settings'];ds['rules'].update(min_clearance=.12,min_track_width=.10,min_hole_clearance=.24,min_through_hole_diameter=.2,min_via_diameter=.45)
+    project['net_settings']['classes'][0].update(clearance=.12,track_width=.2,via_diameter=.5,via_drill=.25)
     (ROOT/'hardware'/f'{NAME}.kicad_pro').write_text(json.dumps(project,indent=2),encoding='utf-8')
     library='(kicad_symbol_lib (version 20250114) (generator "fv_revb")\n'
     library+='\n'.join(body.replace(f'(symbol "{lib}"',f'(symbol "{lib.split(":")[1]}"',1) for lib,(body,_) in CUSTOM.items())+'\n)\n'
