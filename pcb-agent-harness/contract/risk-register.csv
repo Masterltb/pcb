@@ -1,0 +1,2 @@
+id,title,category,likelihood,impact,mitigation,owner,closure_evidence,status
+RISK-001,REPLACE unverified physical behavior,technical,medium,high,prototype test,owner,,open

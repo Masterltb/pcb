@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "project_id": "REPLACE-ME",
+  "revision": "0.1",
+  "phase": "intake",
+  "toolchain": {
+    "eda": "KiCad",
+    "eda_version": "REPLACE-ME",
+    "python": "REPLACE-ME"
+  },
+  "sources": {
+    "kicad_project": "hardware/REPLACE-ME.kicad_pro",
+    "schematic": "hardware/REPLACE-ME.kicad_sch",
+    "board": "hardware/REPLACE-ME.kicad_pcb",
+    "firmware_pin_map": "",
+    "generator": "",
+    "build_directory": "build"
+  },
+  "policies": [
+    "AGENTS.md",
+    "pcb-agent-harness/policies/release-gates.md"
+  ],
+  "board_constraints": {
+    "max_width_mm": null,
+    "max_height_mm": null,
+    "layers": null,
+    "copper_oz": null,
+    "manufacturer": "",
+    "assembly": ""
+  },
+  "verification_commands": [
+    {
+      "id": "erc",
+      "when": [
+        "schematic",
+        "release"
+      ],
+      "command": "kicad-cli sch erc --output reports/erc.rpt hardware/REPLACE-ME.kicad_sch",
+      "evidence": "reports/erc.rpt"
+    },
+    {
+      "id": "drc",
+      "when": [
+        "pcb",
+        "release"
+      ],
+      "command": "kicad-cli pcb drc --format json --schematic-parity --output reports/drc.json hardware/REPLACE-ME.kicad_pcb",
+      "evidence": "reports/drc.json"
+    }
+  ],
+  "release": {
+    "prototype_quantity": 1,
+    "gerber_allowed": false,
+    "production_allowed": false,
+    "approval_record": ""
+  }
+}

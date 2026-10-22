@@ -1,0 +1,22 @@
+{
+  "work_items": [
+    {
+      "id": "INTAKE-001",
+      "title": "Complete contract and resolve critical unknowns",
+      "stage": "intake",
+      "status": "in_progress",
+      "inputs": [
+        "contract/project.json"
+      ],
+      "outputs": [
+        "contract/requirements.csv",
+        "contract/interfaces.csv"
+      ],
+      "acceptance": [
+        "No critical requirement has an empty source or verification method."
+      ],
+      "evidence": [],
+      "risks": []
+    }
+  ]
+}

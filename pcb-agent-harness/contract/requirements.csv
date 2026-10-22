@@ -1,0 +1,4 @@
+id,title,source,priority,design_artifact,verification_method,evidence,status,owner,notes
+REQ-001,REPLACE functional requirement,user,high,,inspection,,todo,owner,
+REQ-002,REPLACE input power range,user,critical,,test,,todo,owner,
+REQ-003,REPLACE external interface,user,high,,inspection,,todo,owner,

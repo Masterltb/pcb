@@ -1,0 +1,3 @@
+id,name,origin,destination,connector_and_mate,pinout,signal_or_power,voltage,current_or_impedance,cable_or_mechanical,protection,verification,evidence,status,notes
+IF-001,REPLACE primary power,input source,PCB,REPLACE,,,,,,,inspection,,todo,
+IF-002,REPLACE external I/O,PCB,external module,REPLACE,,,,,,,continuity and functional test,,todo,
