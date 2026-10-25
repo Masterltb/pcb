@@ -1,0 +1,21 @@
+name: One bowl and duplicate command
+version: 1
+steps:
+  - wait-serial: FRESHVEND_SIM_READY
+  - delay: 100ms
+  - write-serial: "arm\n"
+  - wait-serial: ARM_OK
+  - write-serial: "vend sim-success-1 1\n"
+  - wait-serial: "STATE id=sim-success-1 col=1 WAIT_DROP"
+  - set-control:
+      part-id: ir1
+      name: value
+      value: 1
+  - delay: 60ms
+  - set-control:
+      part-id: ir1
+      name: value
+      value: 0
+  - wait-serial: "RESULT id=sim-success-1 col=1 DONE"
+  - write-serial: "vend sim-success-1 1\n"
+  - wait-serial: "COMMAND id=sim-success-1 col=1 DUPLICATE"

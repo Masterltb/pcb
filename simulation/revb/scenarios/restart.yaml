@@ -1,0 +1,15 @@
+name: Interrupted transaction must not resume
+version: 1
+steps:
+  - wait-serial: FRESHVEND_SIM_READY
+  - delay: 100ms
+  - write-serial: "arm\n"
+  - wait-serial: ARM_OK
+  - write-serial: "vend sim-restart-1 1\n"
+  - wait-serial: "ACK id=sim-restart-1 col=1 ACCEPTED"
+  - write-serial: "reset\n"
+  - wait-serial: FRESHVEND_SIM_READY
+  - write-serial: "status\n"
+  - wait-serial: "RECORD id=sim-restart-1 col=1 INTERRUPTED"
+  - write-serial: "vend sim-restart-1 1\n"
+  - wait-serial: "COMMAND id=sim-restart-1 col=1 DUPLICATE"

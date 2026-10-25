@@ -1,0 +1,11 @@
+name: Missing bowl must fail
+version: 1
+steps:
+  - wait-serial: FRESHVEND_SIM_READY
+  - delay: 100ms
+  - write-serial: "arm\n"
+  - wait-serial: ARM_OK
+  - write-serial: "vend sim-timeout-1 1\n"
+  - wait-serial: "RESULT id=sim-timeout-1 col=1 IR_TIMEOUT"
+  - write-serial: "vend sim-timeout-1 1\n"
+  - wait-serial: "COMMAND id=sim-timeout-1 col=1 DUPLICATE"
