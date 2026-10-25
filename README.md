@@ -9,6 +9,7 @@
 - [ZIP review giữ nguyên thư mục](releases/revb/FV-CTRL_RevB-review.zip)
 - [BOM linh kiện](docs/revb/bom/FV-CTRL_RevB-bom-review.csv)
 - [Checklist cấp nguồn và chạy mẫu](docs/revb/RevB-review-and-bringup.md)
+- [Mô phỏng Wokwi: ESP32, servo, IR và server local](simulation/revb/README.md)
 
 Đọc [PROJECT.md](PROJECT.md) về yêu cầu và [AGENTS.md](AGENTS.md) trước khi sửa thiết kế. Không dùng các bản RevA/RevA2 để thay cho RevB.
 
@@ -21,6 +22,7 @@ hardware/
   archive/reva/         Nguồn RevA lịch sử, gồm các sửa đổi cục bộ chưa commit
 libs/                   Thư viện dùng chung, giữ nguyên tên thư viện
 cad/                    Cơ khí và mô phỏng FreeCAD
+simulation/revb/        Mô phỏng chức năng Wokwi; không phải firmware production
 
 docs/
   revb/

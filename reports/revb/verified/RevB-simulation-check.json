@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-25",
+  "status": "BUILD_AND_HOST_TESTS_PASS_WOKWI_ENGINE_NOT_RUN",
+  "implementation_commits": [
+    "a13667b",
+    "3383063"
+  ],
+  "build": {
+    "platform": "espressif32@6.5.0",
+    "arduino_core": "2.0.14",
+    "board": "esp32dev",
+    "status": "PASS",
+    "firmware_sha256": "8643f8119f07724497f614b394b1b38b068c388365ea6a7b865e1ab0fdf51fe4",
+    "ram_bytes": 46636,
+    "flash_bytes": 940997
+  },
+  "tests": {
+    "native_controller_scenarios": 18,
+    "python_protocol_and_diagram_tests": 9,
+    "status": "PASS",
+    "command": "simulation/revb/check.ps1",
+    "log_local": "reports/revb/work/sim-check.log"
+  },
+  "pcb_and_schematic_unchanged": {
+    "hardware/revb/FV-CTRL_RevB.kicad_pcb": true,
+    "hardware/revb/FV-CTRL_RevB.kicad_sch": true
+  },
+  "wokwi_engine": {
+    "status": "NOT_RUN",
+    "reason": "No configured WOKWI_CLI_TOKEN/runtime license; engine scenarios and visual behavior remain unverified"
+  },
+  "hardware_test": "NOT_RUN",
+  "production_qualified": false,
+  "limitations": [
+    "Positional servo drawing indicates pulse width only",
+    "IR logic injection after demodulation; no optical or AGC model",
+    "Limits off by default, matching PCB DNP option",
+    "No electrical/RF/thermal/EMC/ESD or mechanical load simulation",
+    "Network tests are host-side HTTP protocol tests, not simulated ESP32 end-to-end",
+    "NVS persistence across actual Wokwi runtime resets still requires engine test"
+  ]
+}
