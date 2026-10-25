@@ -1,0 +1,5 @@
+.pio/
+*.vcd
+test-controller.exe
+__pycache__/
+.local/
