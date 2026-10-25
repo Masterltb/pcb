@@ -13,14 +13,16 @@ def rows(name):
  assert len(matches)==1,name
  return list(csv.DictReader(matches[0].open(encoding='utf-8-sig')))
 quote=rows('FV-CTRL_RevB-SMT-quote.csv');positions=rows('FV-CTRL_RevB-SMT-position-review.csv')
-assert len(quote)==len(positions)==62
+assert len(quote)==len(positions)==63
+assert json.loads((ROOT/'reports/revb/verified/RevB-RECOM-check.json').read_text())['status']=='PASS'
+assert json.loads((ROOT/'reports/revb/verified/RevB-RECOM-check.json').read_text())['pcb_sha256']==hashlib.sha256((ROOT/'hardware/revb/FV-CTRL_RevB.kicad_pcb').read_bytes()).hexdigest()
 assert {r['Reference'] for r in quote}=={r['Ref'] for r in positions}
 assert len(rows('FV-CTRL_RevB-EP-vias.csv'))==25
 assert len(list((ROOT/'hardware/revb').glob('FV-CTRL_RevB*.kicad_sch')))==10
 paths=[]
 for pattern in ['hardware/revb/FV-CTRL_RevB*.kicad_*','hardware/revb/FV-CTRL_RevB.design.json','hardware/revb/fp-lib-table','hardware/revb/sym-lib-table','libs/fv_revb.kicad_sym','libs/fv_reva2.pretty/*.kicad_mod','libs/fv_modules.pretty/*.kicad_mod','docs/revb/bom/*.csv','docs/revb/assembly/*.csv','docs/revb/FV-CTRL_RevB-pins.h','docs/revb/schematic/*.svg','docs/revb/schematic/*.png','docs/revb/assembly/*.svg','docs/revb/assembly/*.png']:
  paths.extend(ROOT.glob(pattern))
-paths.extend(ROOT/p for p in ['README.md','PROJECT.md','AGENTS.md','docs/repository-layout.md','docs/revb/RevB-status.md','docs/revb/RevB-review-and-bringup.md','docs/revb/RevB-QFN-prechange-review.md','reports/revb/verified/RevB-final-erc.rpt','reports/revb/verified/RevB-final-drc.rpt','reports/revb/verified/RevB-final-drc.json','reports/revb/verified/RevB-functional-gate.json','reports/revb/verified/RevB-via-paste-check.json','reports/revb/verified/RevB.net.xml','tools/verify_rev_b.py','tools/verify_rev_b_via_paste.py'])
+paths.extend(ROOT/p for p in ['README.md','PROJECT.md','AGENTS.md','docs/repository-layout.md','docs/revb/RevB-status.md','docs/revb/RevB-review-and-bringup.md','docs/revb/RevB-QFN-prechange-review.md','reports/revb/verified/RevB-final-erc.rpt','reports/revb/verified/RevB-final-drc.rpt','reports/revb/verified/RevB-final-drc.json','reports/revb/verified/RevB-functional-gate.json','reports/revb/verified/RevB-via-paste-check.json','reports/revb/verified/RevB.net.xml','tools/verify_rev_b.py','tools/verify_rev_b_via_paste.py','tools/verify_rev_b_supply.py','docs/revb/RevB-RECOM-prechange-review.md','reports/revb/verified/RevB-RECOM-check.json'])
 paths=sorted(set(p for p in paths if p.is_file()))
 assert not any(p.suffix.lower() in ['.gbr','.drl','.ses','.dsn'] for p in paths)
 readme='''FV-CTRL RevB — NATIVE KICAD REVIEW ONLY
@@ -55,6 +57,6 @@ with zipfile.ZipFile(output) as archive:
  assert archive.testzip() is None
  for name,data in entries.items():assert archive.read(PREFIX+'/'+name)==data
 branch=subprocess.check_output(['git','branch','--show-current'],cwd=ROOT,text=True).strip()
-metadata=dict(type='engineering-review-only',layout_version=2,design_commit='a7dd57b',branch=branch,native_schematic_files=10,smt_references=62,thermal_ep_holes=25,erc_violations=0,drc_violations=0,unconnected=0,schematic_parity=0,gerber_exported=False,factory_approved=False,physical_qualification='NOT RUN',zip_file=output.name,zip_sha256=hashlib.sha256(output.read_bytes()).hexdigest(),archived_files=len(entries))
+metadata=dict(type='engineering-review-only',layout_version=2,design_commit=subprocess.check_output(['git','log','-1','--format=%h','--','hardware/revb'],cwd=ROOT,text=True).strip(),branch=branch,native_schematic_files=10,smt_references=len(quote),thermal_ep_holes=25,erc_violations=0,drc_violations=0,unconnected=0,schematic_parity=0,gerber_exported=False,factory_approved=False,physical_qualification='NOT RUN',zip_file=output.name,zip_sha256=hashlib.sha256(output.read_bytes()).hexdigest(),archived_files=len(entries))
 (ROOT/'releases/revb/FV-CTRL_RevB-review-manifest.json').write_text(json.dumps(metadata,indent=2),encoding='utf-8')
 print(json.dumps(metadata,indent=2))

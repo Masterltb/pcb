@@ -1,6 +1,6 @@
 # FreshVend — PCB điều khiển máy bán tô trái cây
 
-**Thiết kế hiện hành: RevB, ESP32 QFN rời + anten SMA.** Hai buck servo 6 V độc lập được gá ngoài. Bản hiện tại đã qua kiểm tra phần mềm; chưa nghiệm thu sản xuất hàng loạt.
+**Thiết kế hiện hành: RevB, ESP32 QFN rời + anten SMA.** Nguồn5V dùng RECOM R-78E5.0-1.0; hai buck servo6V độc lập được gá ngoài. Bản hiện tại đã qua kiểm tra phần mềm; chưa nghiệm thu sản xuất hàng loạt.
 
 ## Mở đúng file
 

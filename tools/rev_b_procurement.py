@@ -8,6 +8,8 @@ refs={p['ref']:p for p in s['parts']}
 refs['Y1']['mpn']='ABM8-40.000MHZ-10-1-U-T'
 refs['Y1']['notes']='Verified Abracon catalog: CL10pF, +/-10ppm tolerance and stability, 3225; -10..60C; sourcing/temperature range must be confirmed'
 sources={
+ 'J4':('','https://recom-power.com/en/products/switching-regulators/switching-regulators-sip/rec-p-R-78E5.0-1.0.html','No direct drop-in approved; preserve VIN/GND/VOUT, envelope and 1A load/thermal qualification'),
+ 'C57':('','https://industrial.panasonic.com/ww/products/pt/aluminum-cap-lead/models/EEUFR1H100','Same polarity, 10uF/50V, ESR and 5mm diameter/2mm pitch; verify incoming sample'),
  'U1':('C967021','https://jlcpcb.com/partdetail/EspressifSystems-ESP32_D0WDV3/C967021','No pin-compatible alternate approved; preserve GPIO16/17'),
  'U2':('C1550551','https://www.lcsc.com/product-detail/C1550551.html','CP2102N-A02-GQFN24R: tape/reel ordering variant; verify exact assembly SKU'),
  'U3':('','https://www.st.com/resource/en/datasheet/ld1117.pdf','LD1117V33 TO220 only; other 1117 models require pinout/stability/thermal review'),
@@ -22,9 +24,9 @@ sources={
 rows=[]
 for part in s['parts']:
  ref=part['ref'];base=old.get(ref);code=''
- if base:
+ if ref in sources:code,source,alt=sources[ref];status='Selected engineering MPN; factory stock/MOQ/price not verified'
+ elif base:
   source=base['Source / purchase'];alt=base['Alternative / qualification'];status=base['Status']
- elif ref in sources:code,source,alt=sources[ref];status='Selected engineering MPN; factory stock/MOQ/price not verified'
  elif ref.startswith('R'):
   source='https://www.yageo.com/en/Product/Index/rchip';alt='Same value/tolerance/power/0402 candidate requires exact MPN and footprint review';status='Selected engineering MPN; confirm Yageo ordering suffix and factory stock'
  elif ref.startswith('C'):

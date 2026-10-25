@@ -6,6 +6,7 @@ Chạy từ thư mục gốc repository. Mở project bằng KiCad không cần 
 |---|---|
 | Kiểm tra độc lập pin/net RevB | `verify_rev_b.py --pcb` |
 | Kiểm tra bổ sung via với paste/mask RevB | `verify_rev_b_via_paste.py` |
+| Kiểm tra RECOM/pin/pitch/budget/BOM | `verify_rev_b_supply.py` (KiCad Python; tùy chọn `--baseline <PCB cũ>`) |
 | Cập nhật BOM RevB | `rev_b_procurement.py` |
 | Đóng ZIP review RevB | `package_rev_b_review.py` |
 | Kiểm tra RevA2 | `verify_rev_a2.py --pcb` |

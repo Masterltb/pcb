@@ -1,8 +1,17 @@
 # FV-CTRL RevB — hồ sơ review trước chế tạo mẫu
 
-Ngày kiểm tra: 2026-10-21. Thiết kế: `a7dd57b`, nhánh `feat/esp32-qfn-sma`.
+Ngày kiểm tra: 2026-10-25. Nguồn5V: RECOM R-78E5.0-1.0; nhánh `fix/revb-recom-logic-supply`. Commit thiết kế và SHA256 xem manifest ZIP hiện hành.
 
 **Kết luận: bản KiCad đã đi dây và vượt qua kiểm tra phần mềm; chưa nghiệm thu production.** Hồ sơ này dùng để duyệt rủi ro và trao đổi DFM/báo giá. Chưa xuất Gerber, chưa đặt hàng và chưa gửi dữ liệu cho xưởng.
+
+## Cập nhật nguồn5V
+
+J4 hiện là RECOM R-78E5.0-1.0, ba chân1VIN/2GND/3VOUT, THT trực tiếp;
+không dùng Pololu/socket cũ. Thêm C57 10µF đầu12V và C58 100nF0402 đầu5V.
+Giữ Phoenix, hai XL4015 và GPIO. Budget tính0,887A, chưa đo; mẫu phải thử
+inrush/soft-start/hotplug/ripple/thermal, mục tiêu ambient0…50°C gầnmodule.
+Xem `RevB-RECOM-prechange-review.md` và `reports/revb/verified/RevB-RECOM-check.json`.
+Model3D J4 cùng envelope của họR-78E, không phải xác nhận mẫu nhận được.
 
 ## Kết quả trên file hiện tại
 
@@ -14,7 +23,7 @@ Ngày kiểm tra: 2026-10-21. Thiết kế: `a7dd57b`, nhánh `feat/esp32-qfn-sm
 | Đối chiếu schematic–PCB | 0 sai khác |
 | Kiểm tra độc lập chân/net/kiến trúc | PASS |
 | Lỗ via thông thường với mask/paste SMT | PASS, khoảng cách hình học tối thiểu 0,05 mm; EP review riêng |
-| BOM và tọa độ SMT | Khớp 62 reference lắp SMT |
+| BOM và tọa độ SMT | Khớp63 reference SMT, tổng151 reference BOM |
 | PCB | 100 × 100 mm, hai lớp, 1,6 mm danh định, chuẩn bị đồng 1 oz |
 
 Giữ IC ESP32-D0WD-V3 rời, anten SMA, bảng GPIO và hai XL4015 servo 6 V độc lập gá ngoài. Không nối song song đầu ra buck. USB chỉ truyền dữ liệu; phải cấp nguồn chính khi nạp. Limit switch mặc định DNP.

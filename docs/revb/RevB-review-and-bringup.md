@@ -55,3 +55,15 @@ Bus flash có đường đổi lớp và chiều dài khác nhau; ERC/DRC chỉ 
 ## Điểm phải duyệt trước Gerber
 
 Đường dòng lớn và sụt áp; vị trí tụ/đường hồi nguồn; nhiệt LD1117 và linh kiện công suất; khoảng cách và dây nối tới hai buck ngoài; truy cập USB/BOOT/RESET; ground reference và giới hạn RF hai lớp; via/paste QFN; BOM và điều kiện xưởng. Theo AGENTS.md, chỉ xuất Gerber sau khi người dùng duyệt hồ sơ rủi ro của layout cuối.
+
+## Bring-up RECOM — 2026-10-25
+
+J4 chỉ lắp R-78E5.0-1.0 đúng1VIN/2GND/3VOUT; bỏ Pololu/socket cũ.
+C57 đúng cực; C58 là100nF0402. Scope Vin khi bật/tắt/cắm nóng và xác nhận
+soft-start nguồn12V. Tăng tải5V từng bước tới0,9A để kiểm chứng budget có điều
+kiện; đồng thời đo3V3/LDO khiWi-Fi/IR chạy. Định mứcLDO không chứng minh nhiệt đạt.
+Đo ripple/transient tạiJ4 và IC; thử trong hộp ở nhiệt độ dự kiến. Mốc60°C trên
+derating không phải nhiệt độ vận hành đã duyệt. Tổngtụ bảo thủ kể cả20% là
+94,576µF <220µF; vẫn thử inrush/khởi động thực. Không thêm tải ngoài chưa tính.
+RF/crystal/6V/front12V và footprint cũ ngoàiJ4 đã đối chiếu baseline không đổi;
+điều này không thay thế đoRF/EMC/nhiệt hoặc thử máy.

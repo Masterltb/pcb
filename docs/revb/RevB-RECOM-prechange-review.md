@@ -53,9 +53,20 @@ https://www.st.com/resource/en/datasheet/ld1117.pdf
 ## Kế hoạch / bằng chứng
 
 - [x] Kiểm bản vẽ hãng, review hai góc trước thay.
-- [ ] Cập nhật symbol/footprint/spec; ERC và DRC/parity ghi rõ bước trung gian.
-- [ ] Đổi J4 và đi lại cục bộ, thêm tụ; kiểm tra cuối sạch.
-- [ ] Đồng bộ BOM/hình/ZIPreview/trạng thái; commit/push.
+- [x] Cập nhật symbol/footprint/spec; các bước trung gian lưu ở reports/revb/work/recom/.
+- [x] Đổi J4, thêm tụ; ERC/DRC/parity cuối sạch.
+- [x] Đồng bộ BOM/hình/ZIPreview/trạng thái; commit/push trên nhánhfix/revb-recom-logic-supply.
 - [ ] Mẫu thật: Vin/inrush/rail5V tải tới0,9A/ripple/thermal/USB/Wi-Fi/IR.
 
 Hai góc review nội bộ, không phải chứng nhận độc lập. Chưa mua hoặc gửi xưởng.
+
+## Kết quả trên file
+
+J4 THT trực tiếp; C57 THT10µF đầu12V; C58 SMT0402 100nF gần nhánh ra5V.
+PadJ4 1,9mm, lỗ1mm, pitch2,54mm. ERC/DRC=0, hởnet=0, parity=0;
+verifier pin/net và via/pastePASS. Budget0,887193A; tổngtụ bảo thủ gồm20%
+94,576001µF. So baseline: tất cả footprint cũ ngoàiJ4 giữ vị trí/chân/net;
+RF/crystal/6V/front12V giữ từng đoạn. Thêm nhánh12V mặtB tớiC57, không thêm
+via12V/6V. Cho phép làm mẫu có điều kiện, chưa nghiệm thu production.
+
+Thiết kế: `8282d76`. ZIP đã giải nén kiểm ERC/DRC/parity sạch và checksum từng file.

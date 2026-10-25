@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "errors": [],
+  "converter": "R-78E5.0-1.0",
+  "load_budget_A": 0.887193,
+  "load_budget_is_calculated_not_measured": true,
+  "full_load_datasheet_max_ambient_C": 60,
+  "conservative_capacitor_sum_uF": 78.813334,
+  "sum_with_20_percent_allowance_uF": 94.576001,
+  "datasheet_capacitive_limit_uF": 220,
+  "baseline_comparison": "PASS",
+  "pcb_sha256": "e7a699257d5bcc7f15ad79e27479b4a2eaea6ca02a7f32dfc90d4348509eb293",
+  "limits": "Does not prove hot-plug/soft-start, ripple, EMI, thermal derating, load transients or factory/incoming qualification",
+  "design_commit": "8282d76",
+  "portable_zip_native_checks": {
+    "status": "PASS",
+    "erc": 0,
+    "drc": 0,
+    "unconnected": 0,
+    "schematic_parity": 0,
+    "checked_before_document_only_task_status_update": true
+  },
+  "existing_local_project_metadata_preserved": true
+}

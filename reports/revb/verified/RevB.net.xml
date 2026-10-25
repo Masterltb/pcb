@@ -2,7 +2,7 @@
 <export version="E">
   <design>
     <source>F:\project\repo-github\pcb\pcb\hardware\revb\FV-CTRL_RevB.kicad_sch</source>
-    <date>2026-10-21T02:15:05</date>
+    <date>2026-10-25T17:12:22</date>
     <tool>Eeschema 10.0.7</tool>
     <sheet number="1" name="/" tstamps="/">
       <title_block>
@@ -354,6 +354,54 @@
         </unit>
       </units>
     </comp>
+    <comp ref="C57">
+      <value>10uF 50V</value>
+      <footprint>Capacitor_THT:CP_Radial_D5.0mm_P2.00mm</footprint>
+      <fields>
+        <field name="Footprint">Capacitor_THT:CP_Radial_D5.0mm_P2.00mm</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="C_Polarized" description="Polarized capacitor"/>
+      <property name="Sheetname" value="1. Power"/>
+      <property name="Sheetfile" value="FV-CTRL_RevB-01.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="CP_*"/>
+      <sheetpath names="/1. Power/" tstamps="/fc03132c-547e-43ee-82b8-02dd1e8dcda5/"/>
+      <tstamps>aef7f09b-3cea-4df8-8e6c-a26d6e4da8bb</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
+    <comp ref="C58">
+      <value>100nF</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Footprint">Capacitor_SMD:C_0402_1005Metric</field>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Sheetname" value="1. Power"/>
+      <property name="Sheetfile" value="FV-CTRL_RevB-01.kicad_sch"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <property name="ki_fp_filters" value="C_*"/>
+      <sheetpath names="/1. Power/" tstamps="/fc03132c-547e-43ee-82b8-02dd1e8dcda5/"/>
+      <tstamps>1c3782ff-3184-42e4-8409-0b8db343763b</tstamps>
+      <units>
+        <unit name="A">
+          <pins>
+            <pin num="1"/>
+            <pin num="2"/>
+          </pins>
+        </unit>
+      </units>
+    </comp>
     <comp ref="D1">
       <value>1.5KE15CA</value>
       <footprint>Diode_THT:D_DO-201AD_P15.24mm_Horizontal</footprint>
@@ -551,18 +599,16 @@
       </units>
     </comp>
     <comp ref="J4">
-      <value>5V D24V25F5</value>
-      <footprint>fv_reva2:Pololu_D24V25F5</footprint>
+      <value>5V R-78E5.0-1.0</value>
+      <footprint>fv_modules:RECOM_R78E5V1A</footprint>
       <fields>
-        <field name="Footprint">fv_reva2:Pololu_D24V25F5</field>
+        <field name="Footprint">fv_modules:RECOM_R78E5V1A</field>
         <field name="Datasheet"/>
         <field name="Description"/>
       </fields>
-      <libsource lib="Connector_Generic" part="Conn_01x05" description="Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <libsource lib="fv_revb" part="RECOM_R78E5V1A" description=""/>
       <property name="Sheetname" value="1. Power"/>
       <property name="Sheetfile" value="FV-CTRL_RevB-01.kicad_sch"/>
-      <property name="ki_keywords" value="connector"/>
-      <property name="ki_fp_filters" value="Connector*:*_1x??_*"/>
       <sheetpath names="/1. Power/" tstamps="/fc03132c-547e-43ee-82b8-02dd1e8dcda5/"/>
       <tstamps>aaabd60e-2c0f-4104-acd3-be48b799ee25</tstamps>
       <units>
@@ -571,8 +617,6 @@
             <pin num="1"/>
             <pin num="2"/>
             <pin num="3"/>
-            <pin num="4"/>
-            <pin num="5"/>
           </pins>
         </unit>
       </units>
@@ -3954,26 +3998,6 @@
         <pin num="4" name="Pin_4" type="passive"/>
       </pins>
     </libpart>
-    <libpart lib="Connector_Generic" part="Conn_01x05">
-      <description>Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
-      <footprints>
-        <fp>Connector*:*_1x??_*</fp>
-      </footprints>
-      <fields>
-        <field name="Reference">J</field>
-        <field name="Value">Conn_01x05</field>
-        <field name="Footprint"/>
-        <field name="Datasheet"/>
-        <field name="Description">Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)</field>
-      </fields>
-      <pins>
-        <pin num="1" name="Pin_1" type="passive"/>
-        <pin num="2" name="Pin_2" type="passive"/>
-        <pin num="3" name="Pin_3" type="passive"/>
-        <pin num="4" name="Pin_4" type="passive"/>
-        <pin num="5" name="Pin_5" type="passive"/>
-      </pins>
-    </libpart>
     <libpart lib="Device" part="C">
       <description>Unpolarized capacitor</description>
       <footprints>
@@ -4342,6 +4366,20 @@
         <pin num="3" name="C" type="passive"/>
       </pins>
     </libpart>
+    <libpart lib="fv_revb" part="RECOM_R78E5V1A">
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">R-78E5.0-1.0</field>
+        <field name="Footprint"/>
+        <field name="Datasheet"/>
+        <field name="Description"/>
+      </fields>
+      <pins>
+        <pin num="1" name="VIN" type="passive"/>
+        <pin num="2" name="GND" type="passive"/>
+        <pin num="3" name="VOUT_5V" type="passive"/>
+      </pins>
+    </libpart>
     <libpart lib="fv_revb" part="TLV803EA30DBZR">
       <fields>
         <field name="Reference">U</field>
@@ -4453,7 +4491,8 @@
     <net code="3" name="+5V" class="Default">
       <node ref="C11" pin="1" pintype="passive"/>
       <node ref="C5" pin="1" pintype="passive"/>
-      <node ref="J4" pin="5" pinfunction="Pin_5_5" pintype="passive"/>
+      <node ref="C58" pin="1" pintype="passive"/>
+      <node ref="J4" pin="3" pinfunction="VOUT_5V_3" pintype="passive"/>
       <node ref="R14" pin="1" pintype="passive"/>
       <node ref="R15" pin="1" pintype="passive"/>
       <node ref="R23" pin="1" pintype="passive"/>
@@ -4487,11 +4526,12 @@
       <node ref="J3" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
     </net>
     <net code="8" name="+12V" class="Default">
+      <node ref="C57" pin="1" pintype="passive"/>
       <node ref="D1" pin="1" pinfunction="A1_1" pintype="passive"/>
       <node ref="D7" pin="1" pinfunction="K_1" pintype="passive"/>
       <node ref="J2" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
       <node ref="J3" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
-      <node ref="J4" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
+      <node ref="J4" pin="1" pinfunction="VIN_1" pintype="passive"/>
       <node ref="Q1" pin="S" pinfunction="S_S" pintype="passive"/>
       <node ref="R20" pin="1" pintype="passive"/>
       <node ref="TP1" pin="1" pinfunction="1_1" pintype="passive"/>
@@ -4620,6 +4660,8 @@
       <node ref="C54" pin="2" pintype="passive"/>
       <node ref="C55" pin="2" pintype="passive"/>
       <node ref="C56" pin="2" pintype="passive"/>
+      <node ref="C57" pin="2" pintype="passive"/>
+      <node ref="C58" pin="2" pintype="passive"/>
       <node ref="C6" pin="2" pintype="passive"/>
       <node ref="C7" pin="2" pintype="passive"/>
       <node ref="C8" pin="2" pintype="passive"/>
@@ -4647,8 +4689,7 @@
       <node ref="J21" pin="SH" pinfunction="Shield_SH" pintype="passive"/>
       <node ref="J3" pin="2" pinfunction="Pin_2_2" pintype="passive"/>
       <node ref="J3" pin="4" pinfunction="Pin_4_4" pintype="passive"/>
-      <node ref="J4" pin="3" pinfunction="Pin_3_3" pintype="passive"/>
-      <node ref="J4" pin="4" pinfunction="Pin_4_4" pintype="passive"/>
+      <node ref="J4" pin="2" pinfunction="GND_2" pintype="passive"/>
       <node ref="J5" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
       <node ref="J6" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
       <node ref="J7" pin="1" pinfunction="Pin_1_1" pintype="passive"/>
@@ -4915,67 +4956,64 @@
       <node ref="R36" pin="2" pintype="passive"/>
       <node ref="Y1" pin="1" pinfunction="1_1" pintype="passive"/>
     </net>
-    <net code="80" name="unconnected-(J4-Pin_1-Pad1)" class="Default">
-      <node ref="J4" pin="1" pinfunction="Pin_1_1" pintype="passive+no_connect"/>
-    </net>
-    <net code="81" name="unconnected-(J21-ID-Pad4)" class="Default">
+    <net code="80" name="unconnected-(J21-ID-Pad4)" class="Default">
       <node ref="J21" pin="4" pinfunction="ID_4" pintype="passive+no_connect"/>
     </net>
-    <net code="82" name="unconnected-(U1-GPIO4-Pad24)" class="Default">
+    <net code="81" name="unconnected-(U1-GPIO4-Pad24)" class="Default">
       <node ref="U1" pin="24" pinfunction="GPIO4_24" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="83" name="unconnected-(U1-GPIO13-Pad20)" class="Default">
+    <net code="82" name="unconnected-(U1-GPIO13-Pad20)" class="Default">
       <node ref="U1" pin="20" pinfunction="GPIO13_20" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="84" name="unconnected-(U1-GPIO14-Pad17)" class="Default">
+    <net code="83" name="unconnected-(U1-GPIO14-Pad17)" class="Default">
       <node ref="U1" pin="17" pinfunction="GPIO14_17" pintype="bidirectional+no_connect"/>
     </net>
-    <net code="85" name="unconnected-(U1-SENSOR_CAPN-Pad7)" class="Default">
+    <net code="84" name="unconnected-(U1-SENSOR_CAPN-Pad7)" class="Default">
       <node ref="U1" pin="7" pinfunction="SENSOR_CAPN_7" pintype="input+no_connect"/>
     </net>
-    <net code="86" name="unconnected-(U1-SENSOR_CAPP-Pad6)" class="Default">
+    <net code="85" name="unconnected-(U1-SENSOR_CAPP-Pad6)" class="Default">
       <node ref="U1" pin="6" pinfunction="SENSOR_CAPP_6" pintype="input+no_connect"/>
     </net>
-    <net code="87" name="unconnected-(U1-SENSOR_VN-Pad8)" class="Default">
+    <net code="86" name="unconnected-(U1-SENSOR_VN-Pad8)" class="Default">
       <node ref="U1" pin="8" pinfunction="SENSOR_VN_8" pintype="input+no_connect"/>
     </net>
-    <net code="88" name="unconnected-(U1-SENSOR_VP-Pad5)" class="Default">
+    <net code="87" name="unconnected-(U1-SENSOR_VP-Pad5)" class="Default">
       <node ref="U1" pin="5" pinfunction="SENSOR_VP_5" pintype="input+no_connect"/>
     </net>
-    <net code="89" name="unconnected-(U2-CTS-Pad18)" class="Default">
+    <net code="88" name="unconnected-(U2-CTS-Pad18)" class="Default">
       <node ref="U2" pin="18" pinfunction="CTS_18" pintype="input+no_connect"/>
     </net>
-    <net code="90" name="unconnected-(U2-DCD-Pad24)" class="Default">
+    <net code="89" name="unconnected-(U2-DCD-Pad24)" class="Default">
       <node ref="U2" pin="24" pinfunction="DCD_24" pintype="input+no_connect"/>
     </net>
-    <net code="91" name="unconnected-(U2-DSR-Pad22)" class="Default">
+    <net code="90" name="unconnected-(U2-DSR-Pad22)" class="Default">
       <node ref="U2" pin="22" pinfunction="DSR_22" pintype="input+no_connect"/>
     </net>
-    <net code="92" name="unconnected-(U2-GPIO0-Pad14)" class="Default">
+    <net code="91" name="unconnected-(U2-GPIO0-Pad14)" class="Default">
       <node ref="U2" pin="14" pinfunction="GPIO0_14" pintype="passive+no_connect"/>
     </net>
-    <net code="93" name="unconnected-(U2-GPIO1-Pad13)" class="Default">
+    <net code="92" name="unconnected-(U2-GPIO1-Pad13)" class="Default">
       <node ref="U2" pin="13" pinfunction="GPIO1_13" pintype="passive+no_connect"/>
     </net>
-    <net code="94" name="unconnected-(U2-GPIO2-Pad12)" class="Default">
+    <net code="93" name="unconnected-(U2-GPIO2-Pad12)" class="Default">
       <node ref="U2" pin="12" pinfunction="GPIO2_12" pintype="passive+no_connect"/>
     </net>
-    <net code="95" name="unconnected-(U2-GPIO3-Pad11)" class="Default">
+    <net code="94" name="unconnected-(U2-GPIO3-Pad11)" class="Default">
       <node ref="U2" pin="11" pinfunction="GPIO3_11" pintype="passive+no_connect"/>
     </net>
-    <net code="96" name="unconnected-(U2-NC-Pad10)" class="Default">
+    <net code="95" name="unconnected-(U2-NC-Pad10)" class="Default">
       <node ref="U2" pin="10" pinfunction="NC_10" pintype="passive+no_connect"/>
     </net>
-    <net code="97" name="unconnected-(U2-NC-Pad16)" class="Default">
+    <net code="96" name="unconnected-(U2-NC-Pad16)" class="Default">
       <node ref="U2" pin="16" pinfunction="NC_16" pintype="passive+no_connect"/>
     </net>
-    <net code="98" name="unconnected-(U2-RI-Pad1)" class="Default">
+    <net code="97" name="unconnected-(U2-RI-Pad1)" class="Default">
       <node ref="U2" pin="1" pinfunction="RI_1" pintype="input+no_connect"/>
     </net>
-    <net code="99" name="unconnected-(U2-SUSPEND-Pad17)" class="Default">
+    <net code="98" name="unconnected-(U2-SUSPEND-Pad17)" class="Default">
       <node ref="U2" pin="17" pinfunction="SUSPEND_17" pintype="output+no_connect"/>
     </net>
-    <net code="100" name="unconnected-(U2-SUSPENDb-Pad15)" class="Default">
+    <net code="99" name="unconnected-(U2-SUSPENDb-Pad15)" class="Default">
       <node ref="U2" pin="15" pinfunction="SUSPENDb_15" pintype="output+no_connect"/>
     </net>
   </nets>
