@@ -1,6 +1,7 @@
 # PROJECT.md: PCB điều khiển máy bán tô trái cây tự động
 
 ## Quyết định mới nhất — RevB ESP32 QFN
+- Cập nhật được duyệt ngày 2026-10-25: thay Pololu D24V25F5 tại J4 bằng RECOM R-78E5.0-1.0, 5V/1A gắn THT ba chân (1 VIN/2 GND/3 VOUT); thêm C57 10µF đầu12V và C58 100nF đầu5V. Giữ hai XL4015, LDO3,3V, GPIO và đầu nối Phoenix. Đây là cấu hình mẫu cần thử tải/nhiệt/inrush/ripple, chưa nghiệm thu production; không dùng socket/footprint Pololu cũ. Xem `docs/revb/RevB-RECOM-prechange-review.md`.
 - Người dùng xác nhận dùng **IC ESP32 rời dạng QFN**, không DevKit, không module ESP32-WROOM. Yêu cầu này thay thế các mô tả DevKit/socket/THT-only bên dưới đối với khối điều khiển mới; RevA2 được giữ như bản cũ, không phải bản đáp ứng yêu cầu mới.
 - Anten ngoài qua **SMA**, người dùng đã chọn. Chưa dùng anten in PCB.
 - Chưa chọn xưởng; người dùng cho phép chuẩn bị theo **JLCPCB** trước. Giữ PCB hai lớp, tối đa 100 x 100 mm; khối MCU/RF/USB dùng SMT/reflow, đầu nối và công suất ưu tiên THT.

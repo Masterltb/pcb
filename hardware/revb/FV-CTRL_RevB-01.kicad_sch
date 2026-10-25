@@ -2062,7 +2062,16 @@
       (property "Value" "LD1117V33" (at 0 -7.62 0) (effects (font (size 1.27 1.27))))
       (symbol "LD1117V33_0_1" (rectangle (start -17.78 5.08) (end 17.78 -5.08) (stroke (width 0.254) (type default)) (fill (type background))))
       (symbol "LD1117V33_1_1" (pin power_in line (at -22.86 1.27 0) (length 5.08) (name "GND" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))(pin power_out line (at -22.86 -1.27 0) (length 5.08) (name "VOUT_3V3" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))(pin power_in line (at 22.86 0.0 180) (length 5.08) (name "VIN_5V" (effects (font (size 1.016 1.016)))) (number "3" (effects (font (size 1.016 1.016)))))))
-	)
+
+(symbol "fv_revb:RECOM_R78E5V1A" (pin_names (offset 0.762)) (exclude_from_sim no) (in_bom yes) (on_board yes)
+(property "Reference" "J" (at 2.54 10.16 0) (effects (font (size 1.27 1.27))))
+(property "Value" "R-78E5.0-1.0" (at 2.54 -10.16 0) (effects (font (size 1.27 1.27))))
+(symbol "RECOM_R78E5V1A_0_1" (rectangle (start -2.54 7.62) (end 7.62 -7.62) (stroke (width 0.254) (type default)) (fill (type background))))
+(symbol "RECOM_R78E5V1A_1_1"
+(pin passive line (at -5.08 2.54 0) (length 2.54) (name "VIN" (effects (font (size 1.016 1.016)))) (number "1" (effects (font (size 1.016 1.016)))))
+(pin passive line (at -5.08 0 0) (length 2.54) (name "GND" (effects (font (size 1.016 1.016)))) (number "2" (effects (font (size 1.016 1.016)))))
+(pin passive line (at -5.08 -5.08 0) (length 2.54) (name "VOUT_5V" (effects (font (size 1.016 1.016)))) (number "3" (effects (font (size 1.016 1.016)))))))
+)
 	(rectangle
 		(start 10.0000 10.0000)
 		(end 405.0000 275.0000)
@@ -2536,7 +2545,7 @@
 		(pin "2" (uuid "1c7595e8-d84c-4017-907e-ad5302bba195"))
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x05")
+		(lib_id "fv_revb:RECOM_R78E5V1A")
 		(at 248.9200 124.4600 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2545,14 +2554,14 @@
 		(dnp no)
 		(uuid "aaabd60e-2c0f-4104-acd3-be48b799ee25")
 		(property "Reference" "J4"
-			(at 248.9200 121.9200 0)
+			(at 251.4600 113.0300 0)
 			(effects (font (size 1.27 1.27)))
 		)
-		(property "Value" "5V D24V25F5"
-			(at 248.9200 127.0000 0)
+		(property "Value" "5V R-78E5.0-1.0"
+			(at 251.4600 135.8900 0)
 			(effects (font (size 1.27 1.27)))
 		)
-		(property "Footprint" "fv_reva2:Pololu_D24V25F5"
+		(property "Footprint" "fv_modules:RECOM_R78E5V1A"
 			(at 248.9200 124.4600 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
 		)
@@ -2564,11 +2573,9 @@
 			(at 248.9200 124.4600 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
 		)
-		(pin "1" (uuid "47688c54-2c88-4fe2-bbde-cd53f5f05618"))
-		(pin "2" (uuid "12c0e593-c04f-4e21-a271-f7b4f0c7fb12"))
-		(pin "3" (uuid "7fce7291-2cd5-4ca9-ab37-9b4748c8d2dc"))
-		(pin "4" (uuid "4084bd63-1342-4adf-9cd6-af497f51c453"))
-		(pin "5" (uuid "c7cb4f7e-3ac9-4dd9-a85d-aa769448ce39"))
+		(pin "1" (uuid "12c0e593-c04f-4e21-a271-f7b4f0c7fb12"))
+		(pin "2" (uuid "7fce7291-2cd5-4ca9-ab37-9b4748c8d2dc"))
+		(pin "3" (uuid "c7cb4f7e-3ac9-4dd9-a85d-aa769448ce39"))
 	)
 	(symbol
 		(lib_id "Device:C_Polarized")
@@ -2944,13 +2951,7 @@
 		(stroke (width 0) (type default))
 		(uuid "4b5d85be-f1d4-4c45-ae83-d9c73c4ddd7c")
 	)
-	(wire
-		(pts
-			(xy 243.8400 127.0000) (xy 238.7600 127.0000)
-		)
-		(stroke (width 0) (type default))
-		(uuid "121368a8-e1b2-402e-bb7c-f3150be3ce65")
-	)
+
 	(wire
 		(pts
 			(xy 243.8400 129.5400) (xy 238.7600 129.5400)
@@ -3056,7 +3057,7 @@
 (global_label "GND" (shape passive) (at 147.3200 128.2700 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "68720754-70cc-41b2-9b3c-c2be3c0811cf"))
 (global_label "+12V" (shape passive) (at 238.7600 121.9200 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "1fd76347-11ef-4e99-b545-f151553781c0"))
 (global_label "GND" (shape passive) (at 238.7600 124.4600 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "22ee38f0-85a9-47c8-a198-71aefd56c279"))
-(global_label "GND" (shape passive) (at 238.7600 127.0000 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "6f38fe1a-182d-41a9-98d9-765369eabf8a"))
+
 (global_label "+5V" (shape passive) (at 238.7600 129.5400 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "f9f659bc-88e3-446d-8256-4f5c0defffa5"))
 (global_label "+5V" (shape passive) (at 340.3600 120.6500 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "57aa30d6-a59e-4eb6-b357-e9cb7089cea0"))
 (global_label "GND" (shape passive) (at 340.3600 128.2700 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "5ff539b4-a4d8-4fd8-a47f-5dbb1ebd7149"))
@@ -3067,14 +3068,109 @@
 (global_label "GND" (shape passive) (at 147.3200 156.2100 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "c5003bb3-7803-4756-860e-17f9cd53bd05"))
 (global_label "+3V3" (shape passive) (at 243.8400 148.5900 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "30f8b534-795c-4848-8b69-6c3bbf3b19a3"))
 (global_label "GND" (shape passive) (at 243.8400 156.2100 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "0a4b33c8-a17f-4ff8-9d67-0952ecb9100b"))
-	(no_connect
-		(at 243.8400 119.3800)
-		(uuid "2c7ee186-524c-4e3f-8379-9561b9dc1906")
-	)
+
 
 	(sheet_instances
 		(path "/"
 			(page "1")
 		)
 	)
+
+	(symbol
+		(lib_id "Device:C_Polarized")
+		(at 345.4400 152.4000 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "aef7f09b-3cea-4df8-8e6c-a26d6e4da8bb")
+		(property "Reference" "C57"
+			(at 354.3300 151.1300 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "10uF 50V"
+			(at 354.3300 153.6700 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm"
+			(at 345.4400 152.4000 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(property "Datasheet" "~"
+			(at 345.4400 152.4000 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(property "Description" ""
+			(at 345.4400 152.4000 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(pin "1" (uuid "9c7be0cd-d820-4d64-a40e-f6bf2130d73a"))
+		(pin "2" (uuid "dde600d3-fc36-4359-80b1-21ab616268ab"))
+	)
+	(wire
+		(pts
+			(xy 345.4400 148.5900) (xy 340.3600 148.5900)
+		)
+		(stroke (width 0) (type default))
+		(uuid "0d4172c2-9088-4fff-887c-578cacec01ba")
+	)
+	(wire
+		(pts
+			(xy 345.4400 156.2100) (xy 340.3600 156.2100)
+		)
+		(stroke (width 0) (type default))
+		(uuid "43c2ccf9-99b7-4b4d-846d-586826f0f9b2")
+	)
+	(global_label "+12V" (shape passive) (at 340.3600 148.5900 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "4a6d499d-7cc4-4ec1-9309-f3f2464417d7"))
+	(global_label "GND" (shape passive) (at 340.3600 156.2100 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "358fbadb-1fe2-4024-9949-51a522763ff4"))
+
+	(symbol
+		(lib_id "Device:C")
+		(at 55.8800 180.3400 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1c3782ff-3184-42e4-8409-0b8db343763b")
+		(property "Reference" "C58"
+			(at 64.7700 179.0700 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "100nF"
+			(at 64.7700 181.6100 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+			(at 55.8800 180.3400 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(property "Datasheet" "~"
+			(at 55.8800 180.3400 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(property "Description" ""
+			(at 55.8800 180.3400 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+		(pin "1" (uuid "cbda10aa-056c-41b8-9a5f-ebdc74438c52"))
+		(pin "2" (uuid "88da3c45-9816-44f5-a626-c18358099a00"))
+	)
+	(wire
+		(pts
+			(xy 55.8800 176.5300) (xy 50.8000 176.5300)
+		)
+		(stroke (width 0) (type default))
+		(uuid "e71e03fa-ef6f-4cce-b286-a8414a084976")
+	)
+	(wire
+		(pts
+			(xy 55.8800 184.1500) (xy 50.8000 184.1500)
+		)
+		(stroke (width 0) (type default))
+		(uuid "ab0e0f16-116f-4e1d-bfdf-d6f501851c40")
+	)
+	(global_label "+5V" (shape passive) (at 50.8000 176.5300 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "de8a276b-9d33-4b3c-b84e-31d61e40edf5"))
+	(global_label "GND" (shape passive) (at 50.8000 184.1500 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "dcb58522-cc86-4496-8a4c-6c19540816fb"))
 )

@@ -66,11 +66,11 @@ def place():
     comps={c.attrib['ref']:c for c in x.findall('components/comp')}
     old=p.LoadBoard(str(ROOT/'hardware/reva2/FV-CTRL_RevA2.kicad_pcb'));oldpos={f.GetReference():(*xy(f.GetPosition()),f.GetOrientationDegrees()) for f in old.GetFootprints()}
     for part in spec['parts']:
-        lib,name=part['footprint'].split(':');path=ROOT/'libs/fv_reva2.pretty' if lib=='fv_reva2' else STD/(lib+'.pretty')
+        lib,name=part['footprint'].split(':');path=ROOT/'libs'/(lib+'.pretty') if lib in ['fv_reva2','fv_modules'] else STD/(lib+'.pretty')
         f=p.FootprintLoad(str(path),name)
         if not f:raise RuntimeError('Missing '+part['footprint'])
         b.Add(f);ref=part['ref'];f.SetReference(ref);f.SetValue(part['value']);f.SetFPIDAsString(part['footprint']);f.SetPath(p.KIID_PATH('/'+comps[ref].findtext('tstamps')))
-        x0,y0,a=FIXED.get(ref,PREF.get(ref,oldpos.get(ref,part['pos'])));f.SetPosition(pt(x0,y0));f.SetOrientationDegrees(a)
+        x0,y0,a=part['pos'] if ref in ['J4','C57','C58'] else FIXED.get(ref,PREF.get(ref,oldpos.get(ref,part['pos'])));f.SetPosition(pt(x0,y0));f.SetOrientationDegrees(a)
         f.Value().SetVisible(False);f.Reference().SetVisible(False)
         f.SetAttributes(f.GetAttributes()&~p.FP_EXCLUDE_FROM_BOM)
         if part['dnp']:f.SetAttributes(f.GetAttributes()|p.FP_DNP)

@@ -54,6 +54,17 @@ def r(ref,value,a,b,sheet,mpn=None,notes='',dnp=False):
 def c(ref,value,a,b,sheet,mpn,fp=C0402,notes='',dnp=False):add(ref,value,'Device:C',fp,{1:a,2:b},sheet,mpn,notes,dnp=dnp)
 def tp(ref,net):add(ref,net,'Connector:TestPoint','fv_reva2:Keystone_5000_Carrier_D3',{1:net},'USB / programming','Keystone 5000')
 
+BUCK=sym('RECOM_R78E5V1A',{'1':'VIN','2':'GND','3':'VOUT_5V'})
+for part in PARTS:
+    if part['ref']=='J4':
+        part.update(value='5V R-78E5.0-1.0',lib_id=BUCK,footprint='fv_modules:RECOM_R78E5V1A',
+                    pins={'1':'+12V','2':'GND','3':'+5V'},pos=[114.54,138,0],mpn='R-78E5.0-1.0',
+                    notes='Direct THT 5V/1A; qualify load, ripple, hot-plug and thermal behavior')
+add('C57','10uF 50V','Device:C_Polarized','Capacitor_THT:CP_Radial_D5.0mm_P2.00mm',
+    {1:'+12V',2:'GND'},'Power','EEUFR1H100','RECOM local input reservoir',pos=(120,124.5,270))
+c('C58','100nF','+5V','GND','Power','GRM155R71C104KA88D',notes='RECOM output bypass')
+PARTS[-1]['pos']=[118.1,141.25,270]
+
 espnets={i:None for i in range(1,50)}
 espnets.update({1:'+3V3',2:'RF_CHIP',3:'+3V3_RF',4:'+3V3_RF',9:'ESP_EN',10:'IR_RX1',11:'IR_RX2',12:'LS4',13:'SPARE_GPIO33',14:'LS1',15:'LS2',16:'LS3',18:'STRAP_GPIO12',19:'+3V3',21:'STRAP_GPIO15',22:'STRAP_GPIO2',23:'ESP_BOOT',25:'ESP_S1_TOP_PWM',26:'VDD_SDIO',27:'ESP_S1_BOT_PWM',28:'SPI_HD',29:'SPI_WP',30:'SPI_CS',31:'SPI_CLK',32:'SPI_Q',33:'SPI_D',34:'STRAP_GPIO5',35:'ESP_S2_TOP_PWM',36:'ESP_IR_TX',37:'+3V3',38:'ESP_S2_BOT_PWM',39:'I2C_SCL',40:'UART_RX',41:'UART_TX_RAW',42:'I2C_SDA',43:'+3V3',44:'XTAL_N',45:'XTAL_P',46:'+3V3',47:'CAP2',48:'CAP1',49:'GND'})
 add('U1','ESP32-D0WD-V3',ESP,'Package_DFN_QFN:QFN-48-1EP_5x5mm_P0.35mm_EP3.7x3.7mm_ThermalVias',espnets,'ESP32 core','ESP32-D0WD-V3','Bare IC; 5x5mm; 16 ground vias 0.2mm; bottom tented by mask definition; assembler review/X-ray required')

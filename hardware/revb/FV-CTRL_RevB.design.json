@@ -259,24 +259,23 @@
     },
     {
       "ref": "J4",
-      "value": "5V D24V25F5",
-      "lib_id": "Connector_Generic:Conn_01x05",
-      "footprint": "fv_reva2:Pololu_D24V25F5",
+      "value": "5V R-78E5.0-1.0",
+      "lib_id": "fv_revb:RECOM_R78E5V1A",
+      "footprint": "fv_modules:RECOM_R78E5V1A",
       "pins": {
-        "1": null,
-        "2": "+12V",
-        "3": "GND",
-        "4": "GND",
-        "5": "+5V"
+        "1": "+12V",
+        "2": "GND",
+        "3": "+5V"
       },
       "pos": [
-        113,
+        114.54,
         138,
         0
       ],
-      "mpn": "Pololu 2850 D24V25F5 + 1x05 female socket",
+      "mpn": "R-78E5.0-1.0",
       "dnp": false,
-      "sheet": "Power"
+      "sheet": "Power",
+      "notes": "Direct THT; 5V/1A; VIN8-28V; <=60C full-load; prototype qualification required; no Pololu socket"
     },
     {
       "ref": "C5",
@@ -2832,6 +2831,44 @@
         0
       ],
       "dnp": false
+    },
+    {
+      "ref": "C57",
+      "value": "10uF 50V",
+      "lib_id": "Device:C_Polarized",
+      "footprint": "Capacitor_THT:CP_Radial_D5.0mm_P2.00mm",
+      "pins": {
+        "1": "+12V",
+        "2": "GND"
+      },
+      "sheet": "Power",
+      "mpn": "EEUFR1H100",
+      "notes": "RECOM local input reservoir",
+      "pos": [
+        120,
+        124.5,
+        270
+      ],
+      "dnp": false
+    },
+    {
+      "ref": "C58",
+      "value": "100nF",
+      "lib_id": "Device:C",
+      "footprint": "Capacitor_SMD:C_0402_1005Metric",
+      "pins": {
+        "1": "+5V",
+        "2": "GND"
+      },
+      "pos": [
+        118.1,
+        141.25,
+        270
+      ],
+      "mpn": "GRM155R71C104KA88D",
+      "dnp": false,
+      "sheet": "Power",
+      "notes": "RECOM output high-frequency bypass; datasheet ripple measurement condition"
     }
   ]
 }
