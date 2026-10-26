@@ -267,7 +267,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "FV-CTRL_RevA.kicad_pro",
+    "filename": "FV-CTRL_RevB.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -332,8 +332,8 @@
     "legacy_lib_list": [],
     "top_level_sheets": [
       {
-        "filename": "FV-CTRL_RevA.kicad_sch",
-        "name": "FV-CTRL_RevA",
+        "filename": "FV-CTRL_RevB.kicad_sch",
+        "name": "FV-CTRL_RevB",
         "uuid": "00000000-0000-0000-0000-000000000000"
       }
     ]

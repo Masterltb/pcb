@@ -1,0 +1,82 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-22T10:17:26",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.7",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/7545a601-f70e-4f52-9d90-5467fb3858a3",
+            "violations": []
+        },
+        {
+            "path": "/1. Power/",
+            "uuid_path": "/7545a601-f70e-4f52-9d90-5467fb3858a3/fc03132c-547e-43ee-82b8-02dd1e8dcda5",
+            "violations": []
+        },
+        {
+            "path": "/4. Flash/",
+            "uuid_path": "/7545a601-f70e-4f52-9d90-5467fb3858a3/abbb72e2-7cbc-43ce-9a31-e8582593b34f",
+            "violations": []
+        },
+        {
+            "path": "/7. Limits DNP/",
+            "uuid_path": "/7545a601-f70e-4f52-9d90-5467fb3858a3/970ab88a-2fa8-4f23-b4fb-79f122e3fc6d",
+            "violations": []
+        },
+        {
+            "path": "/2. ESP32 core/",
+            "uuid_path": "/7545a601-f70e-4f52-9d90-5467fb3858a3/2f82bbd1-4939-4e68-97f7-ea10a1688ed7",
+            "violations": []
+        },
+        {
+            "path": "/5. Servo/",
+            "uuid_path": "/7545a601-f70e-4f52-9d90-5467fb3858a3/a44fbaec-b43b-44b0-be18-e80235902d4a",
+            "violations": []
+        },
+        {
+            "path": "/8. Diagnostics/",
+            "uuid_path": "/7545a601-f70e-4f52-9d90-5467fb3858a3/9ac82765-741f-4d0f-ac27-fa00b587a455",
+            "violations": []
+        },
+        {
+            "path": "/3. Clock / RF/",
+            "uuid_path": "/7545a601-f70e-4f52-9d90-5467fb3858a3/3854da93-1dcf-427e-bc42-527719579080",
+            "violations": []
+        },
+        {
+            "path": "/6. IR/",
+            "uuid_path": "/7545a601-f70e-4f52-9d90-5467fb3858a3/6e2f43ab-b147-42c0-8330-0513c8684d96",
+            "violations": []
+        },
+        {
+            "path": "/9. USB / programming/",
+            "uuid_path": "/7545a601-f70e-4f52-9d90-5467fb3858a3/020c9f6f-6df4-44c8-a68f-73c118ed0fcc",
+            "violations": []
+        }
+    ],
+    "source": "FV-CTRL_RevB.kicad_sch"
+}
