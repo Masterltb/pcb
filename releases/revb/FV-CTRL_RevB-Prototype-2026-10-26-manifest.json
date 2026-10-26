@@ -1,0 +1,117 @@
+{
+  "type": "prototype-fabrication-export",
+  "date": "2026-10-26",
+  "design_commit": "8282d76",
+  "repository_head": "9ca6f3d48b4e0c834e7a16d4acf47cf1a86dde1d",
+  "branch": "fix/revb-recom-logic-supply",
+  "authorization": "User requested Gerber export for third-party quotation and prototype testing in this chat; no order, external transmission, factory approval or production qualification authorized by this export.",
+  "native_source_unchanged": true,
+  "preexisting_local_project_metadata_preserved": true,
+  "source_sha256": {
+    "hardware/revb/fp-lib-table": "17b932bc0f0eab504f3753494b5d0ef73a2e6367cb41b83851d651f14491eee1",
+    "hardware/revb/FV-CTRL_RevB-01.kicad_sch": "682af5b53159a42bd75bfc7de808b674b4d4507b623e1f7a1c2071cf9e3641f2",
+    "hardware/revb/FV-CTRL_RevB-02.kicad_sch": "a1b6e1c1070b7b8eea8f310bdfec95b765d89681ce318eb99c02e65e190de857",
+    "hardware/revb/FV-CTRL_RevB-03.kicad_sch": "655131de27a7d2f23b83f2eb72f7145e7d63af228303342ac58cb3644abe9e05",
+    "hardware/revb/FV-CTRL_RevB-04.kicad_sch": "e910ded3b539f7fee81c22749a913ff1bb6e69b974a17b2ca3081d309e631e7c",
+    "hardware/revb/FV-CTRL_RevB-05.kicad_sch": "00670835be92c61f80faab8f2b442308127053677bbfd34f1546948d2238cc2f",
+    "hardware/revb/FV-CTRL_RevB-06.kicad_sch": "6146f5acf720b7abc7bacecedb4b8d6b70f08021ec39ebaa49fe2d1724f3362f",
+    "hardware/revb/FV-CTRL_RevB-07.kicad_sch": "ff2eae3aef9a54961d055b80d4dedb79249a59600ffcd7e07fbb8fd31b9edf94",
+    "hardware/revb/FV-CTRL_RevB-08.kicad_sch": "39d98474eaa29ce64427a1c3fb449a81aabefa415bd91e5a753032130bc08fc1",
+    "hardware/revb/FV-CTRL_RevB-09.kicad_sch": "1ccb7d6a8e7f15209e26a50fc6f63b6be6e14ae89c7b375d120d27ce91068be6",
+    "hardware/revb/FV-CTRL_RevB.design.json": "7f212df7d4cbd5df7c92ac5f6d0272563520c6e660c024e31d09f91b2074e52b",
+    "hardware/revb/FV-CTRL_RevB.kicad_pcb": "e7a699257d5bcc7f15ad79e27479b4a2eaea6ca02a7f32dfc90d4348509eb293",
+    "hardware/revb/FV-CTRL_RevB.kicad_pro": "e7a89f559755676e4a5fb9e570b3341e5ce576ca9e64a86d7948d8061296436d",
+    "hardware/revb/FV-CTRL_RevB.kicad_sch": "97f848d54fffd4fea843b392d4189273f00e275784f7a058e6e97e3e877d8c61",
+    "hardware/revb/sym-lib-table": "d95f49c3edb30979612ca465354a3287a3707c519952128e7f8fdd117fd7e248",
+    "libs/fv_modules.pretty/Converter_DCDC_MP1584EN.kicad_mod": "fb934551d5c990b95f35456716349cf407c6a72b34c8708626053a0e1eb79dfd",
+    "libs/fv_modules.pretty/Converter_DCDC_XH-M401_8A.kicad_mod": "c3c5281721fc2bc941f517f38cd5d30b202afc308fc7d330609444fc162d99eb",
+    "libs/fv_modules.pretty/ESP32-WROOM-32_HandSolder.kicad_mod": "a7d44778b4ceefb9f23ce2d40c1b46a4e645196f3d5ceffb188813131b030d05",
+    "libs/fv_modules.pretty/RECOM_R78E5V1A.kicad_mod": "0bdc5202588b9aac1f27235aa3c4b35b5866d2d314812fee4a851f660ba74298",
+    "libs/fv_reva2.pretty/Keystone_5000_Carrier_D3.kicad_mod": "0afdfaafb959aa82ce043766f92b733db69a4772e8598d595ebe413ccfc8b041",
+    "libs/fv_reva2.pretty/MF_R300.kicad_mod": "b27b75df96dcfe1ca96327cc828e664dfbc037919efdde2b2b9041dea465d005",
+    "libs/fv_reva2.pretty/NPN_CBE.kicad_mod": "67aa050e8c154bc76556f6116a50d964e003e7f0a7bccef0022d8b709c091072",
+    "libs/fv_reva2.pretty/PMOS_GDS.kicad_mod": "d0d4e69fc991386295c2d9d9b8b319b2562922cf07cf0cb7900afbdf63dc3fbb",
+    "libs/fv_reva2.pretty/Pololu_D24V25F5.kicad_mod": "db879212ceffc3c1c9f12acc508870640b0d819fd74e127a1bb6e1081d88a3b8",
+    "libs/fv_revb.kicad_sym": "f0e26733398e69237d95e57b1ac0a3172895c658c9c359cea53dfca0c6e65ded"
+  },
+  "gerber_exported": true,
+  "factory_approved": false,
+  "physical_qualification": "NOT_RUN",
+  "dimensions_mm": [
+    100,
+    100
+  ],
+  "copper_layers": 2,
+  "nominal_thickness_mm": 1.6,
+  "copper_weight_oz": 1,
+  "erc_violations": 0,
+  "drc_violations": 0,
+  "unconnected": 0,
+  "schematic_parity": 0,
+  "geometry_check": {
+    "status": "PASS",
+    "gerber_objects": {
+      "FV-CTRL_RevB-F_Cu.gtl": 2678,
+      "FV-CTRL_RevB-B_Cu.gbl": 1181,
+      "FV-CTRL_RevB-F_Mask.gts": 404,
+      "FV-CTRL_RevB-B_Mask.gbs": 189,
+      "FV-CTRL_RevB-F_Silkscreen.gto": 5772,
+      "FV-CTRL_RevB-B_Silkscreen.gbo": 3139,
+      "FV-CTRL_RevB-F_Paste.gtp": 223,
+      "FV-CTRL_RevB-B_Paste.gbp": 0,
+      "FV-CTRL_RevB-Edge_Cuts.gm1": 4
+    },
+    "outline_centerline_size_mm": [
+      100,
+      100
+    ],
+    "outline_closed": true,
+    "copper_layers": 2,
+    "drill_counts": {
+      "PTH": 375,
+      "NPTH": 4
+    },
+    "plated_slots": 2,
+    "drill_positions_diameters_slots_match_native": true,
+    "source_pcb_sha256": "e7a699257d5bcc7f15ad79e27479b4a2eaea6ca02a7f32dfc90d4348509eb293",
+    "drill_geometry_tolerance_mm": 0.001001,
+    "max_drill_export_rounding_mm": 0.0005,
+    "bottom_paste_empty_expected": true,
+    "renderer": "Gerbonara 1.5.0 + resvg-py 0.5.0",
+    "renderer_g85_note": "Two G85 slot records represented as Line objects for preview; original Excellon files unchanged.",
+    "parser_warnings": [
+      "F:\\project\\pcb\\reports\\revb\\work\\gerber-2026-10-26\\fabrication\\FV-CTRL_RevB-PTH.drl:42 \"G90\": G90 header statement found after end of header",
+      "F:\\project\\pcb\\reports\\revb\\work\\gerber-2026-10-26\\fabrication\\FV-CTRL_RevB-NPTH.drl:12 \"G90\": G90 header statement found after end of header"
+    ],
+    "visual_review": "PASS: actual Gerber top/bottom renders inspected for outline, copper/mask/silk, mounting holes, QFN area and USB slots; export sanity review, not factory DFM approval",
+    "kicad_gerbview_review": "NOT_RUN: computer-use node_repl runtime not available; independent Gerber renderer used instead"
+  },
+  "files": {
+    "FV-CTRL_RevB-Gerber-2026-10-26.zip": {
+      "sha256": "166fe908ec4b929aea05586a3faa40acc42cb3b093752debe91ccd54689867d6",
+      "bytes": 591933,
+      "members": 11
+    },
+    "FV-CTRL_RevB-Prototype-Handoff-2026-10-26.zip": {
+      "sha256": "2ea12f1f3d1dd8d06061764653657a5061328261484e6c12d16f2f0d29818ee2",
+      "bytes": 3079206,
+      "members": 33
+    }
+  },
+  "gerber_member_sha256": {
+    "FV-CTRL_RevB-B_Cu.gbl": "cf400050aa3dbd2c3e8916f7e014b2a0bb9a39fa89730214d69869eaba8ffb02",
+    "FV-CTRL_RevB-B_Mask.gbs": "ec5638d6a19aa64488f9897b4e927a51936fe86da10292d7c603d6158721295f",
+    "FV-CTRL_RevB-B_Paste.gbp": "60e2d1429a81251e1c74d5f6819ce39823e310cfcc703ed6c658156e4a249db5",
+    "FV-CTRL_RevB-B_Silkscreen.gbo": "d8ac32ff58b47866a3bc454b02ff834fd1c08f11b8449c94c47ca50f86e82e34",
+    "FV-CTRL_RevB-Edge_Cuts.gm1": "afe324c2c3d01800754b8836eda5edf96b0ce4ad2f3f18e71abc1d8cf859b7d5",
+    "FV-CTRL_RevB-F_Cu.gtl": "89058b3eaf1865449ba0a15bb3a15a3043dcf5d98f7cf9871af4d0b384cc21d1",
+    "FV-CTRL_RevB-F_Mask.gts": "306250c2a2a3a29ee7f318f10dd1fc1fd555c848f0ad1b5983c6a36d4501913c",
+    "FV-CTRL_RevB-F_Paste.gtp": "22e40807f8ee0251505715a667f26e20fa053ab20e04407f5deedc260a19128e",
+    "FV-CTRL_RevB-F_Silkscreen.gto": "580bd71321f3a57b31ef9b6bbb2fc461c6dd3b90603f8dcbc1aa6b059f2d3bdd",
+    "FV-CTRL_RevB-NPTH.drl": "d244860b1f8b1d99a781d432f0399568184f7b1299d92fb96e855061d596cd9f",
+    "FV-CTRL_RevB-PTH.drl": "285724cfd57127e1d9a6f762e612cf3034348fae06331f881a62670ea638b340"
+  },
+  "bom_references": 151,
+  "smt_references": 63,
+  "dnp_references": 12
+}

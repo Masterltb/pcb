@@ -2,7 +2,9 @@
 
 Ngày kiểm tra: 2026-10-25. Nguồn5V: RECOM R-78E5.0-1.0; nhánh `fix/revb-recom-logic-supply`. Commit thiết kế và SHA256 xem manifest ZIP hiện hành.
 
-**Kết luận: bản KiCad đã đi dây và vượt qua kiểm tra phần mềm; chưa nghiệm thu production.** Hồ sơ này dùng để duyệt rủi ro và trao đổi DFM/báo giá. Chưa xuất Gerber, chưa đặt hàng và chưa gửi dữ liệu cho xưởng.
+**Kết luận: bản KiCad đã đi dây và vượt qua kiểm tra phần mềm; chưa nghiệm thu production.** Hồ sơ này dùng để duyệt rủi ro và trao đổi DFM/báo giá. Gerber/drill mẫu đã xuất ngày 2026-10-26 theo yêu cầu trong chat, giữ nguyên thiết kế. Chưa đặt hàng và chưa gửi dữ liệu cho xưởng.
+
+Cập nhật xuất mẫu: [hồ sơ và kết quả kiểm tra](RevB-prototype-export-2026-10-26.md). ERC/DRC/parity, verifier và hình học Gerber/drill đã kiểm lại; ZIP Gerber và gói handoff có ngày nằm trong `releases/revb/`. Việc xuất file không phải nghiệm thu RF/nhiệt/phần cứng hoặc duyệt DFM của xưởng.
 
 ## Cập nhật nguồn5V
 

@@ -1,0 +1,78 @@
+{
+  "type": "prototype-fabrication-export",
+  "date": "2026-10-26",
+  "design_commit": "8282d76",
+  "repository_head": "9ca6f3d48b4e0c834e7a16d4acf47cf1a86dde1d",
+  "branch": "fix/revb-recom-logic-supply",
+  "authorization": "User requested Gerber export for third-party quotation and prototype testing in this chat; no order, external transmission, factory approval or production qualification authorized by this export.",
+  "native_source_unchanged": true,
+  "preexisting_local_project_metadata_preserved": true,
+  "gerber_exported": true,
+  "factory_approved": false,
+  "physical_qualification": "NOT_RUN",
+  "dimensions_mm": [
+    100,
+    100
+  ],
+  "copper_layers": 2,
+  "nominal_thickness_mm": 1.6,
+  "copper_weight_oz": 1,
+  "erc_violations": 0,
+  "drc_violations": 0,
+  "unconnected": 0,
+  "schematic_parity": 0,
+  "geometry_check": {
+    "status": "PASS",
+    "gerber_objects": {
+      "FV-CTRL_RevB-F_Cu.gtl": 2678,
+      "FV-CTRL_RevB-B_Cu.gbl": 1181,
+      "FV-CTRL_RevB-F_Mask.gts": 404,
+      "FV-CTRL_RevB-B_Mask.gbs": 189,
+      "FV-CTRL_RevB-F_Silkscreen.gto": 5772,
+      "FV-CTRL_RevB-B_Silkscreen.gbo": 3139,
+      "FV-CTRL_RevB-F_Paste.gtp": 223,
+      "FV-CTRL_RevB-B_Paste.gbp": 0,
+      "FV-CTRL_RevB-Edge_Cuts.gm1": 4
+    },
+    "outline_centerline_size_mm": [
+      100,
+      100
+    ],
+    "outline_closed": true,
+    "copper_layers": 2,
+    "drill_counts": {
+      "PTH": 375,
+      "NPTH": 4
+    },
+    "plated_slots": 2,
+    "drill_positions_diameters_slots_match_native": true,
+    "source_pcb_sha256": "e7a699257d5bcc7f15ad79e27479b4a2eaea6ca02a7f32dfc90d4348509eb293",
+    "drill_geometry_tolerance_mm": 0.001001,
+    "max_drill_export_rounding_mm": 0.0005,
+    "bottom_paste_empty_expected": true,
+    "renderer": "Gerbonara 1.5.0 + resvg-py 0.5.0",
+    "renderer_g85_note": "Two G85 slot records represented as Line objects for preview; original Excellon files unchanged.",
+    "parser_warnings": [
+      "F:\\project\\pcb\\reports\\revb\\work\\gerber-2026-10-26\\fabrication\\FV-CTRL_RevB-PTH.drl:42 \"G90\": G90 header statement found after end of header",
+      "F:\\project\\pcb\\reports\\revb\\work\\gerber-2026-10-26\\fabrication\\FV-CTRL_RevB-NPTH.drl:12 \"G90\": G90 header statement found after end of header"
+    ],
+    "visual_review": "PASS: actual Gerber top/bottom renders inspected for outline, copper/mask/silk, mounting holes, QFN area and USB slots; export sanity review, not factory DFM approval",
+    "kicad_gerbview_review": "NOT_RUN: computer-use node_repl runtime not available; independent Gerber renderer used instead"
+  },
+  "files": {
+    "FV-CTRL_RevB-Gerber-2026-10-26.zip": {
+      "sha256": "166fe908ec4b929aea05586a3faa40acc42cb3b093752debe91ccd54689867d6",
+      "bytes": 591933,
+      "members": 11
+    },
+    "FV-CTRL_RevB-Prototype-Handoff-2026-10-26.zip": {
+      "sha256": "2ea12f1f3d1dd8d06061764653657a5061328261484e6c12d16f2f0d29818ee2",
+      "bytes": 3079206,
+      "members": 33
+    }
+  },
+  "bom_references": 151,
+  "smt_references": 63,
+  "dnp_references": 12,
+  "manifest": "releases/revb/FV-CTRL_RevB-Prototype-2026-10-26-manifest.json"
+}

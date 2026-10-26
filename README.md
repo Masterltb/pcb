@@ -7,6 +7,9 @@
 - [Project KiCad 10 RevB](hardware/revb/FV-CTRL_RevB.kicad_pro)
 - [Trạng thái, kết quả kiểm tra và rủi ro cần duyệt](docs/revb/RevB-status.md)
 - [ZIP review giữ nguyên thư mục](releases/revb/FV-CTRL_RevB-review.zip)
+- [Gerber + drill mẫu RevB, 2026-10-26](releases/revb/FV-CTRL_RevB-Gerber-2026-10-26.zip)
+- [Gói gửi xưởng báo giá/mẫu: Gerber, BOM, CPL và DFM](releases/revb/FV-CTRL_RevB-Prototype-Handoff-2026-10-26.zip)
+- [Ghi chú lần xuất Gerber và giới hạn nghiệm thu](docs/revb/RevB-prototype-export-2026-10-26.md)
 - [BOM linh kiện](docs/revb/bom/FV-CTRL_RevB-bom-review.csv)
 - [Checklist cấp nguồn và chạy mẫu](docs/revb/RevB-review-and-bringup.md)
 - [Mô phỏng Wokwi: ESP32, servo, IR và server local](simulation/revb/README.md)
@@ -45,13 +48,13 @@ reports/
   local/                Dữ liệu phân tích cục bộ, không đưa vào Git
 
 releases/
-  revb/                 ZIP review hiện hành và manifest SHA256
+  revb/                 ZIP review, Gerber/handoff mẫu có ngày và manifest SHA256
   archive/              ZIP/Gerber/handover các bản cũ; không dùng đặt RevB
 
 tools/                  Công cụ; xem tools/README.md trước khi chạy
 tests/                 Các bài kiểm tra generator RevA lịch sử
 ```
 
-Các thư mục `hardware/<revision>` phải giữ quan hệ với `libs/`; không kéo riêng file project sang nơi khác. Gerber RevB chỉ được xuất sau khi người dùng duyệt rủi ro theo AGENTS.md. Bộ ZIP review không có Gerber/drill.
+Các thư mục `hardware/<revision>` phải giữ quan hệ với `libs/`; không kéo riêng file project sang nơi khác. Gerber RevB đã xuất ngày 2026-10-26 theo yêu cầu làm mẫu/báo giá; xem ghi chú DFM trước khi đặt. Chưa có nghiệm thu phần cứng hoặc chấp thuận của xưởng. Bộ ZIP review cũ vẫn không có Gerber/drill; dùng đúng ZIP Gerber/handoff có ngày ở trên.
 
 Xem [quy ước sắp xếp và kiểm tra](docs/repository-layout.md) để biết cách thêm file đúng chỗ.
