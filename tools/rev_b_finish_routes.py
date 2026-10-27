@@ -12,16 +12,22 @@ from rev_b_layout import FILE,pt,xy,segment,via
 STEP=.05; ORIGIN=100.; N=2001
 LAYERS=[p.F_Cu,p.B_Cu]
 
-def route(net,start,end,width=.12):
+def route(net,start,end,width=.20):
  b=p.LoadBoard(str(FILE)); refs={f.GetReference():f for f in b.GetFootprints()}
  def endpoint(key):
   if key.startswith('='):
    x,y,layer=key[1:].split(',');return (float(x),float(y)),[int(layer)]
   if key.startswith('@'):
    item=next((t for t in b.GetTracks() if t.m_Uuid.AsString()==key[1:]),None)
-   assert item and item.GetNetname()==net
-   if item.GetClass()=='PCB_TRACK':return xy(item.GetStart()),[LAYERS.index(item.GetLayer())]
-   return xy(item.GetPosition()),[i for i,l in enumerate(LAYERS) if item.IsOnLayer(l)]
+   if item:
+    assert item.GetNetname()==net
+    if item.GetClass()=='PCB_TRACK':return xy(item.GetStart()),[LAYERS.index(item.GetLayer())]
+    return xy(item.GetPosition()),[i for i,l in enumerate(LAYERS) if item.IsOnLayer(l)]
+   for f in refs.values():
+    for pad in f.Pads():
+     if pad.m_Uuid.AsString()==key[1:]:
+      assert pad.GetNetname()==net
+      return xy(pad.GetPosition()),[i for i,l in enumerate(LAYERS) if pad.IsOnLayer(l)]
   ref,pin=key.split(':'); a=next(a for a in refs[ref].Pads() if a.GetNumber()==pin)
   assert a.GetNetname()==net,(key,a.GetNetname(),net)
   return xy(a.GetPosition()),[i for i,l in enumerate(LAYERS) if a.IsOnLayer(l)]
@@ -44,14 +50,16 @@ def route(net,start,end,width=.12):
  # 0.12mm design clearance plus a 5um raster guard. Native DRC still decides.
  margin=width/2+.125
  for f in b.GetFootprints():
+  is_u1=f.GetReference()=='U1'
   for pad in f.Pads():
    q=pad.GetBoundingBox();bb=tuple(p.ToMM(v) for v in [q.GetX(),q.GetY(),q.GetRight(),q.GetBottom()])
    own=pad.GetNetname()==net
    if own and pad.IsOnLayer(p.F_Cu) and pad.IsOnLayer(p.B_Cu):
     xx,yy=xy(pad.GetPosition());existing_switch[idx(yy),idx(xx)]=(xx,yy)
    if not own:
+    pad_m=(width/2+.04) if is_u1 else margin
     for i,l in enumerate(LAYERS):
-     if pad.IsOnLayer(l):rect(blocked[i],bb,margin)
+     if pad.IsOnLayer(l):rect(blocked[i],bb,pad_m)
     rect(vb,bb,.345)
    elif pad.GetAttribute()==p.PAD_ATTRIB_SMD:
     # No unqualified via-in-pad on a reflow pad.
@@ -97,10 +105,18 @@ def route(net,start,end,width=.12):
  edge=math.ceil((.5+width/2)/STEP)
  blocked[:,:edge,:]=True;blocked[:,-edge:,:]=True;blocked[:,:,:edge]=True;blocked[:,:,-edge:]=True
  def component_anchors(key,original,layers):
-  if key.startswith('='):return [(original,layers)]
-  if key.startswith('@'):seed=next(t for t in b.GetTracks() if t.m_Uuid.AsString()==key[1:])
+  if key.startswith("="):return [(original,layers)]
+  seed=None
+  if key.startswith("@"):
+   seed=next((t for t in b.GetTracks() if t.m_Uuid.AsString()==key[1:]),None)
+   if not seed:
+    for fp in refs.values():
+     for pad in fp.Pads():
+      if pad.m_Uuid.AsString()==key[1:]:seed=pad;break
+     if seed:break
   else:
-   ref,pin=key.split(':');seed=next(q for q in refs[ref].Pads() if q.GetNumber()==pin)
+   ref,pin=key.split(":");seed=next(q for q in refs[ref].Pads() if q.GetNumber()==pin)
+  if not seed:return [(original,layers)]
   conn=b.GetConnectivity();queue=[seed];seen=set();result=[]
   while queue:
    item=queue.pop();uid=item.m_Uuid.AsString()
@@ -118,20 +134,21 @@ def route(net,start,end,width=.12):
   for (xx,yy),ls in points:
    for layer in ls:
     u=(layer,idx(yy),idx(xx))
-    if not blocked[u]:result.add(u);anchors[u]=(xx,yy)
+    result.add(u);anchors[u]=(xx,yy)
   return result
- sources=cells(component_anchors(start,a,la));targets=cells(component_anchors(end,c,lc))
- sources=[u for u in sources if not blocked[u]];targets={u for u in targets if not blocked[u]}
+ sources=list(cells(component_anchors(start,a,la)));targets=cells(component_anchors(end,c,lc))
+ for u in sources:blocked[u]=False
+ for u in targets:blocked[u]=False
  if not sources or not targets:raise RuntimeError('Endpoint blocked '+str((sources,targets)))
  ty0=min(u[1] for u in targets);ty1=max(u[1] for u in targets);tx0=min(u[2] for u in targets);tx1=max(u[2] for u in targets)
  moves=[(0,1),(0,-1),(1,0),(-1,0),(1,1),(1,-1),(-1,1),(-1,-1)]
- def h(u):return math.hypot(max(ty0-u[1],0,u[1]-ty1),max(tx0-u[2],0,u[2]-tx1))
+ def h(u):return 1.4*math.hypot(max(ty0-u[1],0,u[1]-ty1),max(tx0-u[2],0,u[2]-tx1))
  heap=[(h(u),0,u) for u in sources];heapq.heapify(heap);cost={u:0 for u in sources};parent={};goal=None;beg=time.monotonic()
  while heap:
   _,g,u=heapq.heappop(heap)
   if g!=cost.get(u):continue
   if u in targets:goal=u;break
-  if time.monotonic()-beg>45:break
+  if time.monotonic()-beg>90:break
   l,y,x=u
   for dy,dx in moves:
    yy,xx=y+dy,x+dx

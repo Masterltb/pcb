@@ -1,13 +1,13 @@
 {
   "status": "PASS",
-  "minimum_estimated_mask_to_drill_mm": 0.05,
+  "minimum_estimated_mask_to_drill_mm": 0.15,
   "closest": {
-    "reference": "C13",
-    "pad": "2",
-    "via": "48b73304-ae0b-4db8-93c0-857d7a69d429",
-    "x_mm": 142.0,
-    "y_mm": 164.2,
-    "estimated_mask_to_drill_mm": 0.05
+    "reference": "C20",
+    "pad": "1",
+    "via": "4acf6eb8-c819-44e2-9cbc-c842380dcbeb",
+    "x_mm": 136.9,
+    "y_mm": 163.75,
+    "estimated_mask_to_drill_mm": 0.15
   },
   "violations": [],
   "limits": "Bounding-box check, 0.05mm engineering mask-to-drill guard; excludes 25 thermal EP PTH pads requiring factory approval"

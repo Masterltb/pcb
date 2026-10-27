@@ -3142,7 +3142,7 @@
 			(at 64.7700 181.6100 0)
 			(effects (font (size 1.27 1.27)))
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 55.8800 180.3400 0)
 			(effects (font (size 1.27 1.27)) (hide yes))
 		)

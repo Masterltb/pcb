@@ -18,8 +18,8 @@ build/
 *.lck
 ~*
 fp-info-cache
-_autosave-*
 *-backups/
+*.bak_*
 
 # OS
 .DS_Store
