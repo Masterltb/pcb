@@ -875,7 +875,7 @@
 				)
 				(embedded_fonts no)
 			)
-		(symbol "Connector:USB_C_Receptacle_USB2.0_16P"
+		(symbol "fv_rev_s3:USB_C_Receptacle_USB2.0_16P_VBUS_UNUSED"
 				(pin_names
 					(offset 1.016)
 				)
@@ -894,7 +894,7 @@
 						)
 					)
 				)
-				(property "Value" "USB_C_Receptacle_USB2.0_16P"
+				(property "Value" "USB_C_Receptacle_USB2.0_16P_VBUS_UNUSED"
 					(at 0 19.685 0)
 					(show_name no)
 					(do_not_autoplace no)
@@ -959,7 +959,7 @@
 						)
 					)
 				)
-				(symbol "USB_C_Receptacle_USB2.0_16P_0_0"
+				(symbol "USB_C_Receptacle_USB2.0_16P_VBUS_UNUSED_0_0"
 					(rectangle
 						(start -0.254 -17.78)
 						(end 0.254 -16.764)
@@ -1071,7 +1071,7 @@
 						)
 					)
 				)
-				(symbol "USB_C_Receptacle_USB2.0_16P_0_1"
+				(symbol "USB_C_Receptacle_USB2.0_16P_VBUS_UNUSED_0_1"
 					(rectangle
 						(start -10.16 17.78)
 						(end 10.16 -17.78)
@@ -1272,7 +1272,7 @@
 						)
 					)
 				)
-				(symbol "USB_C_Receptacle_USB2.0_16P_1_1"
+				(symbol "USB_C_Receptacle_USB2.0_16P_VBUS_UNUSED_1_1"
 					(pin passive line
 						(at 0 -22.86 90)
 						(length 5.08)
@@ -1291,7 +1291,7 @@
 							)
 						)
 					)
-					(pin no_connect line
+					(pin passive line
 						(at 15.24 15.24 180)
 						(length 5.08)
 						(name "VBUS_L"
@@ -1381,10 +1381,9 @@
 							)
 						)
 					)
-					(pin no_connect line
-						(at 15.24 15.24 180)
+					(pin passive line
+						(at 15.24 12.7 180)
 						(length 5.08)
-						(hide yes)
 						(name "VBUS_R"
 							(effects
 								(font
@@ -1438,8 +1437,8 @@
 							)
 						)
 					)
-					(pin no_connect line
-						(at 15.24 15.24 180)
+					(pin passive line
+						(at 15.24 12.7 180)
 						(length 5.08)
 						(hide yes)
 						(name "VBUS_R"
@@ -1529,7 +1528,7 @@
 							)
 						)
 					)
-					(pin no_connect line
+					(pin passive line
 						(at 15.24 15.24 180)
 						(length 5.08)
 						(hide yes)
@@ -2785,7 +2784,7 @@
 	(global_label "GND" (shape passive) (at 208.2800 129.5400 0) (effects (font (size 1.016 1.016)) (justify left)) (uuid "66a8b75d-b6a1-49f0-aa7f-79cb67f8c40f"))
 
 	(symbol
-		(lib_id "Connector:USB_C_Receptacle_USB2.0_16P")
+		(lib_id "fv_rev_s3:USB_C_Receptacle_USB2.0_16P_VBUS_UNUSED")
 		(at 63.5000 63.5000 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2806,6 +2805,19 @@
 			(effects (font (size 1.27 1.27)) (hide yes))
 		)
 	)
+
+	(wire
+		(pts (xy 78.7400 48.2600) (xy 83.8200 48.2600))
+		(stroke (width 0) (type default))
+		(uuid "d15c4918-ff37-4c97-ad0f-cc60ea563a9f")
+	)
+	(global_label "USB_VBUS_UNUSED_L" (shape passive) (at 83.8200 48.2600 0) (effects (font (size 1.016 1.016)) (justify left)) (uuid "9b42f611-b6a7-4a69-b3e0-fd8c16744d48"))
+	(wire
+		(pts (xy 78.7400 50.8000) (xy 83.8200 50.8000))
+		(stroke (width 0) (type default))
+		(uuid "8ff23aec-3a4a-49b5-9010-751313e0a57f")
+	)
+	(global_label "USB_VBUS_UNUSED_R" (shape passive) (at 83.8200 50.8000 0) (effects (font (size 1.016 1.016)) (justify left)) (uuid "98320c42-01c6-4079-9064-f9a0ae143c34"))
 
 	(global_label "GND" (shape passive) (at 58.4200 86.3600 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "f7d47fb8-ea47-4caf-b840-5db47c359b22"))
 

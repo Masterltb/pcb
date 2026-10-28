@@ -3041,7 +3041,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net "Net-(J21-VBUS_L)")
+			(net "USB_VBUS_UNUSED_L")
 			(uuid "0298dfcc-df54-4401-9b80-8f47daa91ee0")
 		)
 		(pad "A5" smd roundrect
@@ -3081,7 +3081,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net "Net-(J21-VBUS_R)")
+			(net "USB_VBUS_UNUSED_R")
 			(uuid "f81d5204-1cd8-48e1-a5c8-d294213941b5")
 		)
 		(pad "A12" smd roundrect
@@ -3105,7 +3105,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net "Net-(J21-VBUS_R)")
+			(net "USB_VBUS_UNUSED_R")
 			(uuid "5d6fba0f-e58a-4e47-8ac5-3945ec7bd6cb")
 		)
 		(pad "B5" smd roundrect
@@ -3145,7 +3145,7 @@
 			(size 0.6 1.15)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(roundrect_rratio 0.25)
-			(net "Net-(J21-VBUS_L)")
+			(net "USB_VBUS_UNUSED_L")
 			(uuid "af9226ae-14ff-4c91-9ea8-d7016f61b131")
 		)
 		(pad "B12" smd roundrect
