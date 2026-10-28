@@ -32,27 +32,27 @@ OUT_RELEASE.mkdir(parents=True, exist_ok=True)
 OUT_GERBERS.mkdir(parents=True, exist_ok=True)
 OUT_DOCS.mkdir(parents=True, exist_ok=True)
 
-# LCSC Database for Rev-S3 components
+# LCSC Database for Rev-S3 components (Optimized for JLCPCB SMT in-stock parts)
 LCSC_DATABASE = {
     # Active ICs
-    "U1": ("ESP32-S3-WROOM-1U-N8", "C2913200", "SMD-41, 18x25.5mm", "Espressif Systems", "ESP32-S3 Dual-Core 240MHz, 8MB Flash, IPEX Ant", "SMT"),
-    "U3": ("LD1117S33TR", "C8054", "SOT-223-3", "STMicroelectronics", "LDO 3.3V 800mA Linear Regulator", "SMT"),
+    "U1": ("ESP32-S3-WROOM-1U-N8", "C2980297", "SMD-41, 18x25.5mm", "Espressif Systems", "ESP32-S3 Dual-Core 240MHz, 8MB Flash, IPEX Ant", "SMT"),
+    "U3": ("AMS1117-3.3", "C6186", "SOT-223-3", "Advanced Monolithic", "LDO 3.3V 1A Linear Regulator (Basic Part)", "SMT"),
     
     # USB & Diodes
     "J21": ("TYPE-C-31-M-12", "C165948", "USB-C-16P", "Korean Hroparts", "USB Type-C 16-Pin Receptacle Top Mount", "SMT"),
-    "D1": ("SMBJ12A", "C10825", "DO-214AA (SMB)", "Littelfuse / Yangzhou", "12V TVS Transient Voltage Suppressor 600W", "SMT"),
-    "D7": ("SS54", "C22453", "DO-214AB (SMC)", "MDD / Yangjie", "Schottky Barrier Diode 5A 40V", "SMT"),
+    "D1": ("SMBJ12A", "C5353258", "DO-214AA (SMB)", "FOSAN", "12V TVS Transient Voltage Suppressor 600W", "SMT"),
+    "D7": ("SS54C", "C16103", "DO-214AB (SMC)", "MDD", "Schottky Barrier Diode 5A 40V", "SMT"),
     
     # Indicator LEDs (0603)
-    "D2": ("Blue LED 0603", "C72041", "0603", "Everlight", "+12V Main DC Power Indicator", "SMT"),
-    "D3": ("Green LED 0603", "C72043", "0603", "Everlight", "+6V_A Servo Channel A Indicator", "SMT"),
-    "D4": ("Green LED 0603", "C72043", "0603", "Everlight", "+6V_B Servo Channel B Indicator", "SMT"),
-    "D5": ("Green LED 0603", "C72043", "0603", "Everlight", "+5V Logic Supply Indicator", "SMT"),
-    "D6": ("Green LED 0603", "C72043", "0603", "Everlight", "+3V3 ESP32-S3 VDD Indicator", "SMT"),
+    "D2": ("Blue LED 0603", "C84266", "0603", "NationStar", "+12V Main DC Power Indicator", "SMT"),
+    "D3": ("Green LED 0603", "C12624", "0603", "KENTO", "+6V_A Servo Channel A Indicator", "SMT"),
+    "D4": ("Green LED 0603", "C12624", "0603", "KENTO", "+6V_B Servo Channel B Indicator", "SMT"),
+    "D5": ("Green LED 0603", "C12624", "0603", "KENTO", "+5V Logic Supply Indicator", "SMT"),
+    "D6": ("Green LED 0603", "C12624", "0603", "KENTO", "+3V3 ESP32-S3 VDD Indicator", "SMT"),
     
-    # Tactile Buttons
-    "SW1": ("TS-1187A-C-A-B", "C115358", "3.5x2.9mm SMD", "Korean Hroparts", "Tactile Push Switch (RESET)", "SMT"),
-    "SW2": ("TS-1187A-C-A-B", "C115358", "3.5x2.9mm SMD", "Korean Hroparts", "Tactile Push Switch (BOOT GPIO0)", "SMT"),
+    # Tactile Buttons (3x4mm SMD)
+    "SW1": ("TS342A2P", "C398055", "3.5x2.9mm SMD", "SHOU HAN", "Tactile Push Switch (RESET)", "SMT"),
+    "SW2": ("TS342A2P", "C398055", "3.5x2.9mm SMD", "SHOU HAN", "Tactile Push Switch (BOOT GPIO0)", "SMT"),
     
     # Resistors 0603 1%
     "R11": ("22R 1% 0603", "C23345", "0603", "UNI-ROYAL", "USB D- series damping resistor", "SMT"),

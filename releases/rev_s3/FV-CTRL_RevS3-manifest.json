@@ -5,7 +5,7 @@
   "connector_type": "USB Type-C 16-Pin (Native USB-Serial-JTAG)",
   "drop_sensor_headers": "Dual Universal 4-Pin Headers (SW-420, HC-SR04, IR Beam)",
   "git_branch": "feat/esp32-s3-wroom-upgrade",
-  "git_commit": "7e97899",
+  "git_commit": "1b01a21",
   "board_dimensions_mm": [
     100.0,
     100.0
@@ -21,14 +21,14 @@
   "deliverables": {
     "gerber_zip": {
       "filename": "FV-CTRL_RevS3-Gerber.zip",
-      "bytes": 340431,
-      "sha256": "96b982f207c536cc9eae56596e71aca07968e2ce164ed7b4a7d30e1a86c26420",
+      "bytes": 340438,
+      "sha256": "b619a843cd58df25e5a581f640af3e5c189eb11680f0506eb656fc3b142e8c87",
       "layer_count": 11
     },
     "jlcpcb_bom": {
       "filename": "FV-CTRL_RevS3-BOM.csv",
-      "bytes": 717,
-      "sha256": "ef8b399267a3f3bc0b838d28c8b684217f5e774cc39266af715d0d5eb4bdb0ff"
+      "bytes": 719,
+      "sha256": "6f7e852b91f15b22e6a174f7be77f00bf8d8f30eb6a83de3fb77d8144ef7a1d2"
     },
     "jlcpcb_cpl": {
       "filename": "FV-CTRL_RevS3-CPL.csv",
@@ -38,12 +38,12 @@
     "schematic_pdf": {
       "filename": "FV-CTRL_RevS3-Schematic.pdf",
       "bytes": 211842,
-      "sha256": "274fb0762275746ac66bf218995ff4f4e97c3bea02b9dc2d83c5ff45e98769ab"
+      "sha256": "203d39b9f0f11817c2e1e7b9d30ed104f30a722f2516e660c80b36541a6aa154"
     },
     "cad_step_3d": {
       "filename": "FV-CTRL_RevS3-3D.step",
       "bytes": 3337026,
-      "sha256": "349abf712b61482a15ef938fd29fb968a79c85b7f6c794b35aff30baaab6882b"
+      "sha256": "f256b2977803095400b6b9cc926d00b0cbf51d1e3ff870237a656a39f38a3ade"
     },
     "firmware_pins_header": {
       "filename": "FV-CTRL_RevS3-pins.h",
