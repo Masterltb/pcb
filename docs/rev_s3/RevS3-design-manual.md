@@ -1,6 +1,6 @@
 # FreshVend Vending Controller — Rev-S3 Design & Fabrication Manual
 
-> **Đặt JLCPCB:** Hướng dẫn đặt hàng và mã linh kiện bên dưới thuộc gói release cũ. Trước khi tải Gerber/BOM/CPL, xem [kiểm tra đơn Rev-S3 ngày 2026-10-29](RevS3-JLCPCB-order-readiness-2026-10-29.md). Gói cũ chưa chứa các sửa đường nguồn mới và BOM/CPL chỉ dành cho SMT.
+> **Đặt JLCPCB:** Hướng dẫn đặt hàng và mã linh kiện bên dưới thuộc gói release cũ. Dùng [bộ bàn giao Rev-S3 hiện hành](handoff/README.md) trước khi tải Gerber/BOM/CPL. Gói cũ chưa chứa các sửa đường nguồn mới và BOM/CPL chỉ dành cho SMT.
 
 **Board Revision:** FV-CTRL Rev-S3  
 **Target MCU:** ESP32-S3-WROOM-1U-N8 (Dual-Core 240MHz Xtensa, 8MB Flash, 512KB SRAM, IPEX MHF1 Antenna)  
@@ -117,7 +117,7 @@ The board features a top-mount 16-pin USB Type-C connector (`J21`):
 
 ## 4. Firmware GPIO Pinout Mapping
 
-All pin definitions are codified in [`FV-CTRL_RevS3-pins.h`](file:///f:/project/repo-github/pcb/pcb/docs/rev_s3/FV-CTRL_RevS3-pins.h):
+All pin definitions are codified in [`FV-CTRL_RevS3-pins.h`](FV-CTRL_RevS3-pins.h):
 
 ```c
 // Servo Motor PWM (Channel A & B)
@@ -152,33 +152,9 @@ All pin definitions are codified in [`FV-CTRL_RevS3-pins.h`](file:///f:/project/
 
 ---
 
-## 5. JLCPCB Production Ordering Guide
+## 5. JLCPCB Production Ordering Guide — lịch sử
 
-To order the manufactured and SMT-assembled PCB from JLCPCB:
-
-1. **Upload Gerber:**
-   - Go to [JLCPCB Quote Page](https://cart.jlcpcb.com/quote).
-   - Drag & drop [`FV-CTRL_RevS3-Gerber.zip`](file:///f:/project/repo-github/pcb/pcb/releases/rev_s3/FV-CTRL_RevS3-Gerber.zip).
-   - Verify dimensions detected: **100 mm × 100 mm**, 2 Layers.
-   - Recommended PCB Color: Green, Blue, or Matte Black.
-   - Surface Finish: **HASL with lead** (or ENIG for premium oxidation resistance).
-   - Copper Weight: **1 oz**.
-
-2. **Enable PCB Assembly (SMT):**
-   - Toggle **PCB Assembly** switch to **ON**.
-   - PCBA Type: **Standard** (required for ESP32-S3 module and Type-C assembly).
-   - Assembly Side: **Top Side**.
-   - Click **Next**.
-
-3. **Upload BOM & CPL Files:**
-   - **BOM File:** Upload [`FV-CTRL_RevS3-BOM.csv`](file:///f:/project/repo-github/pcb/pcb/releases/rev_s3/FV-CTRL_RevS3-BOM.csv).
-   - **CPL File:** Upload [`FV-CTRL_RevS3-CPL.csv`](file:///f:/project/repo-github/pcb/pcb/releases/rev_s3/FV-CTRL_RevS3-CPL.csv).
-   - Click **Next**.
-
-4. **Component Match & Placement Review:**
-   - Check that all 24 line items (39 SMT parts) match their verified LCSC part numbers.
-   - Review 3D placement preview. Component orientations have been normalized to JLCPCB SMT library footprints.
-   - Save to Cart and checkout!
+Hướng dẫn đặt hàng và các file được liệt kê ở mục 6 được tạo trước các sửa đường nguồn, đổi lỗ sang 0,30 mm và BOM/CPL hỗn hợp SMT+THT. **Không upload hoặc checkout theo các file lịch sử này.** Dùng [checklist đặt JLCPCB hiện hành](handoff/JLCPCB-order.md) và [bản đồ phiên bản bàn giao](handoff/README.md).
 
 ---
 
@@ -186,11 +162,11 @@ To order the manufactured and SMT-assembled PCB from JLCPCB:
 
 | File | Description | Location |
 |---|---|---|
-| **Gerber Package** | 11 fabrication layers (zip) | [`FV-CTRL_RevS3-Gerber.zip`](file:///f:/project/repo-github/pcb/pcb/releases/rev_s3/FV-CTRL_RevS3-Gerber.zip) |
-| **JLCPCB SMT BOM** | Bill of Materials for SMT | [`FV-CTRL_RevS3-BOM.csv`](file:///f:/project/repo-github/pcb/pcb/releases/rev_s3/FV-CTRL_RevS3-BOM.csv) |
-| **JLCPCB SMT CPL** | Pick & Place Centroid file | [`FV-CTRL_RevS3-CPL.csv`](file:///f:/project/repo-github/pcb/pcb/releases/rev_s3/FV-CTRL_RevS3-CPL.csv) |
-| **Full Eng BOM** | Complete procurement table | [`FV-CTRL_RevS3-BOM-full.csv`](file:///f:/project/repo-github/pcb/pcb/docs/rev_s3/FV-CTRL_RevS3-BOM-full.csv) |
-| **Schematic PDF** | 5-sheet hierarchical schematic | [`FV-CTRL_RevS3-Schematic.pdf`](file:///f:/project/repo-github/pcb/pcb/docs/rev_s3/FV-CTRL_RevS3-Schematic.pdf) |
-| **3D STEP CAD** | Mechanical integration model | [`FV-CTRL_RevS3-3D.step`](file:///f:/project/repo-github/pcb/pcb/docs/rev_s3/FV-CTRL_RevS3-3D.step) |
-| **Firmware Pinout** | C/C++ pin configuration header | [`FV-CTRL_RevS3-pins.h`](file:///f:/project/repo-github/pcb/pcb/docs/rev_s3/FV-CTRL_RevS3-pins.h) |
-| **Release Manifest**| Verification & SHA256 hashes | [`FV-CTRL_RevS3-manifest.json`](file:///f:/project/repo-github/pcb/pcb/releases/rev_s3/FV-CTRL_RevS3-manifest.json) |
+| **Gerber Package (cũ)** | Gói lịch sử, không dùng cho đơn mới | [`FV-CTRL_RevS3-Gerber.zip`](../../releases/rev_s3/FV-CTRL_RevS3-Gerber.zip) |
+| **JLCPCB SMT BOM (cũ)** | Chỉ có SMT | [`FV-CTRL_RevS3-BOM.csv`](../../releases/rev_s3/FV-CTRL_RevS3-BOM.csv) |
+| **JLCPCB SMT CPL (cũ)** | Chỉ có SMT | [`FV-CTRL_RevS3-CPL.csv`](../../releases/rev_s3/FV-CTRL_RevS3-CPL.csv) |
+| **Full Eng BOM (cũ)** | Bảng mua hàng lịch sử | [`FV-CTRL_RevS3-BOM-full.csv`](FV-CTRL_RevS3-BOM-full.csv) |
+| **Schematic PDF** | 5-sheet hierarchical schematic | [`FV-CTRL_RevS3-Schematic.pdf`](FV-CTRL_RevS3-Schematic.pdf) |
+| **3D STEP CAD** | Tham khảo cơ khí, thiếu model U1/F2/F3 | [`FV-CTRL_RevS3-3D.step`](FV-CTRL_RevS3-3D.step) |
+| **Firmware Pinout** | C/C++ pin configuration header | [`FV-CTRL_RevS3-pins.h`](FV-CTRL_RevS3-pins.h) |
+| **Release Manifest (cũ)**| Hash của gói lịch sử | [`FV-CTRL_RevS3-manifest.json`](../../releases/rev_s3/FV-CTRL_RevS3-manifest.json) |

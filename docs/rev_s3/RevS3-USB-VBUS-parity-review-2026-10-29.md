@@ -17,5 +17,5 @@ Mục tiêu: giải quyết bốn cảnh báo schematic–PCB tại J21 A4/A9/B4
 
 - Thử xóa net khỏi bốn pad PCB không phù hợp: hai cặp pad trùng vị trí tạo 2 lỗi clearance, parity vẫn 4. Đã hoàn tác thử nghiệm đó.
 - Tạo ký hiệu J21 riêng trong `libs/fv_rev_s3.kicad_sym`, với A4/B9 thuộc `USB_VBUS_UNUSED_L` và A9/B4 thuộc `USB_VBUS_UNUSED_R`. Mỗi cặp pad đồng vị trí có cùng net; hai net không nối với nguồn hay track khác. Đồng bộ thư viện schematic tương đối và tên net của đúng bốn pad PCB.
-- ERC 0 lỗi/cảnh báo; DRC 0 violation, 0 unconnected và 0 schematic parity issue. Báo cáo ở `reports/rev_s3/work/RevS3-USB-VBUS-final-erc.rpt` và `RevS3-USB-VBUS-final-drc.json`.
+- ERC 0 lỗi/cảnh báo; DRC 0 violation, 0 unconnected và 0 schematic parity issue. Bản kiểm tra hiện hành đã lưu trong Git ở `reports/rev_s3/verified/RevS3-final-erc.rpt` và `RevS3-final-drc.json`.
 - `git diff` PCB chỉ thay bốn chuỗi tên net của pad J21. Không đổi tọa độ pad, copper, mask, paste, track, via, lỗ khoan hoặc outline. ZIP Gerber 0,30 mm trước đó có cùng hình học sản xuất; không cần tải lại chỉ vì sửa metadata VBUS. Chức năng USB vẫn cần thử trên board đã lắp và cấp 12 V.
