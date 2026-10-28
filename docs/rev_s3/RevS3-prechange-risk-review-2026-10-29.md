@@ -10,7 +10,7 @@
 
 - ESP32-S3-WROOM-1U thay cho ESP32 rời của RevB; cần soát pinout, reset/boot, 3,3 V và khoảng trống anten/cáp IPEX theo tài liệu hãng và mẫu thực.
 - PCB 1 oz có các đường +12V, +6V_A và +6V_B chủ yếu 0,5 mm; +6V_A có nhánh 0,2 mm dài khoảng 56 mm đi tới TP2/LED/C1. Mỗi rail servo có thể chịu dòng đỉnh khoảng 2,5 A theo PROJECT.md. Chưa có phân tích nhiệt, sụt áp, dòng qua via hoặc chỗ thắt cổ đồng. Không được coi DRC sạch là xác nhận dòng tải.
-- GND hiện dùng hai zone trên F.Cu, không có zone B.Cu; hai đường 6 V chạy một phần ở B.Cu. Cần kiểm tra đường hồi từ J5–J8 về buck tương ứng, đặc biệt nhiễu áp đất đối với MCU/USB.
+- GND có một zone F.Cu và một zone B.Cu (đã kiểm lại LayerSet, thay cho nhận định ban đầu sai). Zone B.Cu có một polygon liên tục sau khi thêm đường cấp 6 V A; zone F.Cu có ba polygon. Cần kiểm tra chỗ thắt cổ đồng và đo sụt áp đường hồi từ J5–J8 về buck tương ứng, đặc biệt nhiễu áp đất đối với MCU/USB.
 - USB D− 0,18 mm, D+ 0,20 mm, chiều dài hình học lần lượt khoảng 14,0 và 17,8 mm; cần kiểm tra cặp tín hiệu, trở kháng/return path và ESD. VBUS của J21 để hở có chủ đích theo design manual nhưng schematic và PCB còn lệch parity.
 
 ## Góc DFM / DFA
@@ -35,6 +35,18 @@ Một thử nghiệm thứ hai trong `reports/rev_s3/work/trial/` chỉ tăng 48
 - Ngày 2026-10-29: thêm đường `+6V_B` rộng 1,2 mm trên F.Cu từ F3.2 đi sát mép phải (x ≈ 198 mm) tới J7.2 và J8.2. Đường 0,5 mm cũ vẫn nối song song; không đổi footprint, schematic hoặc rail A.
 - Đường ngắn nhất theo graph từ F3.2 tới J7.2/J8.2 hiện có điện trở lý tưởng khoảng 0,026/0,030 Ω, tương ứng sụt áp đỉnh 2,5 A khoảng 0,065/0,075 V. Đây là ước lượng chỉ cho đồng dương 1 oz tại 20 °C, bỏ qua via/tiếp xúc/nhiệt và nhánh song song.
 - Sau khi đổ lại zone, ERC 0 lỗi/0 cảnh báo; DRC 0 violation/0 unconnected; parity còn 81 mục như trước. Đường GND của J7/J8 vẫn về zone F.Cu; chưa có kiểm chứng sụt áp/nhiệt đường hồi trên mẫu. Vì vậy chỉ đánh dấu đường dương 6 V B đã cải thiện trên file, chưa nghiệm thu toàn rail hoặc production.
+
+### Thay đổi đã áp dụng: đường cấp bổ sung 6 V A
+
+- Ngày 2026-10-29: thêm đường `+6V_A` rộng 1,2 mm trên B.Cu từ F2.2 qua vùng giữa board tới J5.2 và J6.2. Đường 0,5 mm cũ vẫn nối song song; không đổi rail B hoặc footprint.
+- Chiều dài hình học đường mới khoảng 65/75 mm tới J5/J6. Với đồng 1 oz tại 20 °C, điện trở lý tưởng khoảng 0,027/0,031 Ω; ở đỉnh 2,5 A tương ứng khoảng 0,067/0,077 V trên đường dương. Không tính đường cũ song song, pad, PTC, đầu nối và đường hồi.
+- ERC 0 lỗi/0 cảnh báo; DRC 0 violation/0 unconnected; parity còn 81 mục. GND B.Cu vẫn là một polygon liên tục sau đổ lại đồng. Đây là kiểm tra trên file, chưa phải thử tải/nhiệt.
+
+### Thay đổi đã áp dụng: liên kết 12 V giữa hai buck
+
+- Thêm đường `+12V` rộng 1,2 mm trên B.Cu từ J2.1 tới J3.1, dài 44 mm, song song với đường 0,5 mm cũ. Điện trở đường mới lý tưởng khoảng 0,018 Ω tại 20 °C (chưa tính nhánh song song).
+- ERC 0 lỗi/0 cảnh báo; DRC 0 violation/0 unconnected; parity vẫn 81 mục. Zone GND B.Cu vẫn là một polygon liên tục sau đổ lại đồng.
+- **Chưa xử lý:** đoạn `+12V` D7.1 → J2.1 vẫn là đường 0,5 mm dài khoảng 29,7 mm, điện trở hình học khoảng 0,029 Ω. Đoạn này có thể mang tổng dòng vào hai buck; nếu đồng thời đạt 5 A, sụt áp lý tưởng khoảng 0,15 V và tổn hao tức thời khoảng 0,73 W, chưa kể via/nhiệt/đường hồi. Phép thử thêm đường trực tiếp qua vùng D7/F1/F2 gây 7 lỗi DRC, nên không áp dụng. Cần bố trí lại riêng cụm này trước khi chốt nguồn.
 
 1. Xác định dòng liên tục/đỉnh của mỗi rail bằng thông số servo và phép đo; lập budget sụt áp/nhiệt cho 12 V, 6 V, GND, via, fuse/PTC và connector.
 2. Sửa layout nguồn/return theo budget; giữ hai rail 6 V độc lập. Sau mỗi sửa, chạy ERC/DRC/parity và xem lại thủ công.

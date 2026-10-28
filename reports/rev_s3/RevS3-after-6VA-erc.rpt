@@ -1,0 +1,22 @@
+ERC report (2026-10-29T01:26:19, Encoding UTF8)
+Report includes: Errors, Warnings
+
+***** Sheet /
+
+***** Sheet /1. Power Supply/
+
+***** Sheet /4. Universal Drop Sensors/
+
+***** Sheet /2. MCU ESP32-S3 & USB Type-C/
+
+***** Sheet /5. Diagnostics & Spares/
+
+***** Sheet /3. Servo 4x PWM/
+
+ ** ERC messages: 0  Errors 0  Warnings 0
+
+ ** Ignored checks:
+    - Global label only appears once in the schematic
+    - Four connection points are joined together
+    - SPICE model issue
+    - Assigned footprint doesn't match footprint filters
