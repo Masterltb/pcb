@@ -39,7 +39,7 @@ LCSC_DATABASE = {
     "U3": ("AMS1117-3.3", "C6186", "SOT-223-3", "Advanced Monolithic", "LDO 3.3V 1A Linear Regulator (Basic Part)", "SMT"),
     
     # USB & Diodes
-    "J21": ("TYPE-C-31-M-12", "C165948", "USB-C-16P", "Korean Hroparts", "USB Type-C 16-Pin Receptacle Top Mount", "SMT"),
+    "J21": ("USB4105-GF-A", "C3020560", "USB-C-16P", "GCT", "USB Type-C receptacle matching KiCad USB4105 footprint", "SMT"),
     "D1": ("SMBJ12A", "C5353258", "DO-214AA (SMB)", "FOSAN", "12V TVS Transient Voltage Suppressor 600W", "SMT"),
     "D7": ("SS54C", "C16103", "DO-214AB (SMC)", "MDD", "Schottky Barrier Diode 5A 40V", "SMT"),
     
@@ -86,24 +86,25 @@ LCSC_DATABASE = {
     "C6": ("10uF 25V X5R 0603", "C19702", "0603", "Samsung Electro-Mechanics", "LDO Output bulk capacitor", "SMT"),
     
     # THT Components (Manual Assembly / Post-SMT)
-    "C1": ("2200uF 25V Radial", "C331307", "D12.5mm P5.0mm", "Panasonic / Chongx", "Channel A Servo Inrush Bulk Capacitor", "THT"),
-    "C2": ("2200uF 25V Radial", "C331307", "D12.5mm P5.0mm", "Panasonic / Chongx", "Channel B Servo Inrush Bulk Capacitor", "THT"),
-    "C57": ("10uF 50V Radial", "C331295", "D5.0mm P2.0mm", "Panasonic / Chongx", "12V Input Filter Capacitor", "THT"),
-    "F1": ("5A 250V 5x20mm Fuse", "C2911299", "5x20mm Clip Holder", "Schurter 0031.8201", "Main 12V DC input fuse protection", "THT"),
-    "F2": ("Bourns MF-RHT300 2.5A PTC", "C514332", "Radial Leaded", "Bourns", "Channel A Servo Overcurrent PPTC Fuse", "THT"),
-    "F3": ("Bourns MF-RHT300 2.5A PTC", "C514332", "Radial Leaded", "Bourns", "Channel B Servo Overcurrent PPTC Fuse", "THT"),
-    "J1": ("Phoenix MSTBA 2-Pin 5.08mm", "C8444", "P5.08mm Horizontal", "Phoenix Contact", "Main +12V DC Power Input Header", "THT"),
-    "J2": ("Phoenix MSTBA 4-Pin 5.08mm", "C8446", "P5.08mm Horizontal", "Phoenix Contact", "Channel A XL4015 Buck Converter Interface", "THT"),
-    "J3": ("Phoenix MSTBA 4-Pin 5.08mm", "C8446", "P5.08mm Horizontal", "Phoenix Contact", "Channel B XL4015 Buck Converter Interface", "THT"),
-    "J4": ("RECOM R-78E5.0-1.0", "C2902347", "SIP-3", "RECOM Power", "5V 1A High-efficiency DC/DC Converter", "THT"),
+    # TBD entries are intentional: never use the old, unverified C-codes for full PCBA.
+    "C1": ("2200uF 25V Radial", "TBD", "D12.5mm P5.0mm", "TBD", "Channel A Servo Inrush Bulk Capacitor", "THT"),
+    "C2": ("2200uF 25V Radial", "TBD", "D12.5mm P5.0mm", "TBD", "Channel B Servo Inrush Bulk Capacitor", "THT"),
+    "C57": ("10uF 50V Radial", "TBD", "D5.0mm P2.0mm", "TBD", "12V Input Filter Capacitor", "THT"),
+    "F1": ("5A 250V 5x20mm Fuse", "C3204125", "5x20mm Clip Holder", "Schurter 0031.8201", "Main 12V DC input fuse protection", "THT"),
+    "F2": ("Bourns MF-RHT300 PTC", "TBD", "Radial Leaded", "Bourns", "Channel A Servo Overcurrent PPTC Fuse", "THT"),
+    "F3": ("Bourns MF-RHT300 PTC", "TBD", "Radial Leaded", "Bourns", "Channel B Servo Overcurrent PPTC Fuse", "THT"),
+    "J1": ("Phoenix MSTBA 2-Pin 5.08mm", "TBD", "P5.08mm Horizontal", "Phoenix Contact", "Main +12V DC Power Input Header", "THT"),
+    "J2": ("Phoenix MSTBA 4-Pin 5.08mm", "TBD", "P5.08mm Horizontal", "Phoenix Contact", "Channel A XL4015 Buck Converter Interface", "THT"),
+    "J3": ("Phoenix MSTBA 4-Pin 5.08mm", "TBD", "P5.08mm Horizontal", "Phoenix Contact", "Channel B XL4015 Buck Converter Interface", "THT"),
+    "J4": ("RECOM R-78E5.0-1.0", "C3033024", "SIP-3", "RECOM Power", "5V 1A High-efficiency DC/DC Converter; JLC stock to confirm", "THT"),
     "J5": ("1x03 Pin Header 2.54mm", "C49257", "P2.54mm Vertical", "BOOMELE", "Servo Channel 1 Top Header (S1_TOP)", "THT"),
     "J6": ("1x03 Pin Header 2.54mm", "C49257", "P2.54mm Vertical", "BOOMELE", "Servo Channel 1 Bottom Header (S1_BOT)", "THT"),
     "J7": ("1x03 Pin Header 2.54mm", "C49257", "P2.54mm Vertical", "BOOMELE", "Servo Channel 2 Top Header (S2_TOP)", "THT"),
     "J8": ("1x03 Pin Header 2.54mm", "C49257", "P2.54mm Vertical", "BOOMELE", "Servo Channel 2 Bottom Header (S2_BOT)", "THT"),
-    "J9": ("1x04 Pin Header 2.54mm", "C49258", "P2.54mm Vertical", "BOOMELE", "I2C Spare Expansion Bus Header", "THT"),
-    "J10": ("1x04 Pin Header 2.54mm", "C49258", "P2.54mm Vertical", "BOOMELE", "Limit Switches 4-Channel Input Header", "THT"),
-    "J11": ("JST-XH 4-Pin 2.50mm", "C157930", "B4B-XH-A P2.50mm", "JST", "Column 1 Universal Drop Sensor Header", "THT"),
-    "J12": ("JST-XH 4-Pin 2.50mm", "C157930", "B4B-XH-A P2.50mm", "JST", "Column 2 Universal Drop Sensor Header", "THT"),
+    "J9": ("1x04 Pin Header 2.54mm", "TBD", "P2.54mm Vertical", "BOOMELE", "I2C Spare Expansion Bus Header", "THT"),
+    "J10": ("1x04 Pin Header 2.54mm", "TBD", "P2.54mm Vertical", "BOOMELE", "Limit Switches 4-Channel Input Header", "THT"),
+    "J11": ("JST-XH 4-Pin 2.50mm", "C41422491", "B4B-XH-A P2.50mm", "JST", "Column 1 Universal Drop Sensor Header", "THT"),
+    "J12": ("JST-XH 4-Pin 2.50mm", "C41422491", "B4B-XH-A P2.50mm", "JST", "Column 2 Universal Drop Sensor Header", "THT"),
 }
 
 def main():

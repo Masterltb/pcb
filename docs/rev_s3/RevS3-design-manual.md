@@ -1,5 +1,7 @@
 # FreshVend Vending Controller — Rev-S3 Design & Fabrication Manual
 
+> **Đặt JLCPCB:** Hướng dẫn đặt hàng và mã linh kiện bên dưới thuộc gói release cũ. Trước khi tải Gerber/BOM/CPL, xem [kiểm tra đơn Rev-S3 ngày 2026-10-29](RevS3-JLCPCB-order-readiness-2026-10-29.md). Gói cũ chưa chứa các sửa đường nguồn mới và BOM/CPL chỉ dành cho SMT.
+
 **Board Revision:** FV-CTRL Rev-S3  
 **Target MCU:** ESP32-S3-WROOM-1U-N8 (Dual-Core 240MHz Xtensa, 8MB Flash, 512KB SRAM, IPEX MHF1 Antenna)  
 **Native Interface:** USB Type-C 16-Pin (Native USB-Serial-JTAG CDC on GPIO19/20)  
