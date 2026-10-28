@@ -22,7 +22,7 @@
 
 - IC/SI/PI: đo hoặc xác nhận dòng đỉnh hai servo, sụt áp đường dương và GND, nhiệt D7/F1/F2/F3/J4/U3, ripple 6 V/5 V/3,3 V; kiểm tra USB D+/D−/ESD và anten IPEX trên mẫu. Các phép tính đường đồng trong `RevS3-prechange-risk-review-2026-10-29.md` chưa thay thế đo tải.
 - DFM/DFA: khóa MPN theo footprint, hướng cắm connector, cực tính tụ/diode/LED, vùng mép PCB của J21, vị trí mô-đun/cáp anten; xác nhận JLCPCB review 2D/3D và tất cả linh kiện được chọn trong BOM match.
-- Sau khi sửa BOM/CPL và chốt linh kiện, chạy lại ERC/DRC/parity, xuất Gerber/drill từ HEAD, kiểm tra ZIP bằng Gerber viewer, so BOM/CPL với PCB, rồi trình rủi ro cuối để người dùng duyệt trước khi tải lên/đặt hàng.
+- Sau khi sửa BOM/CPL và chốt linh kiện, chạy lại ERC/DRC/parity, trình rủi ro layout cuối cho người dùng duyệt; sau duyệt mới xuất Gerber/drill từ HEAD, kiểm tra ZIP bằng Gerber viewer, so BOM/CPL với PCB và tải lên/đặt hàng theo yêu cầu.
 
 ## Thông số đặt mẫu đề xuất sau khi các gate đạt
 
