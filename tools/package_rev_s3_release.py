@@ -45,14 +45,14 @@ LCSC_DATABASE = {
     
     # Indicator LEDs (0603)
     "D2": ("Blue LED 0603", "C84266", "0603", "NationStar", "+12V Main DC Power Indicator", "SMT"),
-    "D3": ("Green LED 0603", "C87326", "0603", "NationStar", "+6V_A Servo Channel A Indicator", "SMT"),
-    "D4": ("Green LED 0603", "C87326", "0603", "NationStar", "+6V_B Servo Channel B Indicator", "SMT"),
-    "D5": ("Green LED 0603", "C87326", "0603", "NationStar", "+5V Logic Supply Indicator", "SMT"),
-    "D6": ("Green LED 0603", "C87326", "0603", "NationStar", "+3V3 ESP32-S3 VDD Indicator", "SMT"),
+    "D3": ("Red LED 0603", "C2286", "0603", "KENTO", "+6V_A Servo Channel A Indicator (Basic Part)", "SMT"),
+    "D4": ("Red LED 0603", "C2286", "0603", "KENTO", "+6V_B Servo Channel B Indicator (Basic Part)", "SMT"),
+    "D5": ("Red LED 0603", "C2286", "0603", "KENTO", "+5V Logic Supply Indicator (Basic Part)", "SMT"),
+    "D6": ("Red LED 0603", "C2286", "0603", "KENTO", "+3V3 ESP32-S3 VDD Indicator (Basic Part)", "SMT"),
     
-    # Tactile Buttons (3x4mm SMD)
-    "SW1": ("Tactile Switch 3x4x2", "C26638", "3.5x2.9mm SMD", "SHOU HAN", "Tactile Push Switch (RESET)", "SMT"),
-    "SW2": ("Tactile Switch 3x4x2", "C26638", "3.5x2.9mm SMD", "SHOU HAN", "Tactile Push Switch (BOOT GPIO0)", "SMT"),
+    # Tactile Buttons (4x3mm SMD Basic Part)
+    "SW1": ("TS-1088-AR02016", "C720477", "3.5x2.9mm SMD", "XUNPU", "Tactile Push Switch (RESET - Basic Part)", "SMT"),
+    "SW2": ("TS-1088-AR02016", "C720477", "3.5x2.9mm SMD", "XUNPU", "Tactile Push Switch (BOOT - Basic Part)", "SMT"),
     
     # Resistors 0603 1%
     "R11": ("22R 1% 0603", "C23345", "0603", "UNI-ROYAL", "USB D- series damping resistor", "SMT"),

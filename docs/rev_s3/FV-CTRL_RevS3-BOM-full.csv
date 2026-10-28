@@ -7,10 +7,10 @@ C58,100nF,100nF 50V X7R 0603,0603,C14663,Samsung Electro-Mechanics,SMT,High-freq
 C6,10uF,10uF 25V X5R 0603,0603,C19702,Samsung Electro-Mechanics,SMT,LDO Output bulk capacitor
 D1,SMBJ12A,SMBJ12A,DO-214AA (SMB),C5353258,FOSAN,SMT,12V TVS Transient Voltage Suppressor 600W
 D2,+12V,Blue LED 0603,0603,C84266,NationStar,SMT,+12V Main DC Power Indicator
-D3,+6V_A,Green LED 0603,0603,C87326,NationStar,SMT,+6V_A Servo Channel A Indicator
-D4,+6V_B,Green LED 0603,0603,C87326,NationStar,SMT,+6V_B Servo Channel B Indicator
-D5,+5V,Green LED 0603,0603,C87326,NationStar,SMT,+5V Logic Supply Indicator
-D6,+3V3,Green LED 0603,0603,C87326,NationStar,SMT,+3V3 ESP32-S3 VDD Indicator
+D3,+6V_A,Red LED 0603,0603,C2286,KENTO,SMT,+6V_A Servo Channel A Indicator (Basic Part)
+D4,+6V_B,Red LED 0603,0603,C2286,KENTO,SMT,+6V_B Servo Channel B Indicator (Basic Part)
+D5,+5V,Red LED 0603,0603,C2286,KENTO,SMT,+5V Logic Supply Indicator (Basic Part)
+D6,+3V3,Red LED 0603,0603,C2286,KENTO,SMT,+3V3 ESP32-S3 VDD Indicator (Basic Part)
 D7,SS54,SS54C,DO-214AB (SMC),C16103,MDD,SMT,Schottky Barrier Diode 5A 40V
 F1,5A 250V,5A 250V 5x20mm Fuse,5x20mm Clip Holder,C2911299,Schurter 0031.8201,THT,Main 12V DC input fuse protection
 F2,PTC 2.5A,Bourns MF-RHT300 2.5A PTC,Radial Leaded,C514332,Bourns,THT,Channel A Servo Overcurrent PPTC Fuse
@@ -52,7 +52,7 @@ R5,330R,330R 1% 0603,0603,C23138,UNI-ROYAL,SMT,Servo S2_TOP PWM series damping
 R6,10k,10k 1% 0603,0603,C25804,UNI-ROYAL,SMT,Servo S2_TOP PWM fail-safe pulldown
 R7,330R,330R 1% 0603,0603,C23138,UNI-ROYAL,SMT,Servo S2_BOT PWM series damping
 R8,10k,10k 1% 0603,0603,C25804,UNI-ROYAL,SMT,Servo S2_BOT PWM fail-safe pulldown
-SW1,RESET,Tactile Switch 3x4x2,3.5x2.9mm SMD,C26638,SHOU HAN,SMT,Tactile Push Switch (RESET)
-SW2,BOOT,Tactile Switch 3x4x2,3.5x2.9mm SMD,C26638,SHOU HAN,SMT,Tactile Push Switch (BOOT GPIO0)
+SW1,RESET,TS-1088-AR02016,3.5x2.9mm SMD,C720477,XUNPU,SMT,Tactile Push Switch (RESET - Basic Part)
+SW2,BOOT,TS-1088-AR02016,3.5x2.9mm SMD,C720477,XUNPU,SMT,Tactile Push Switch (BOOT - Basic Part)
 U1,ESP32-S3-WROOM-1U,ESP32-S3-WROOM-1U-N8,"SMD-41, 18x25.5mm",C2980297,Espressif Systems,SMT,"ESP32-S3 Dual-Core 240MHz, 8MB Flash, IPEX Ant"
 U3,LD1117S33,AMS1117-3.3,SOT-223-3,C6186,Advanced Monolithic,SMT,LDO 3.3V 1A Linear Regulator (Basic Part)
