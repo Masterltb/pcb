@@ -2,6 +2,15 @@
 
 **Trạng thái: CHƯA ĐƯỢC TẢI GÓI CŨ LÊN JLCPCB.** Người dùng chọn JLCPCB lắp cả SMT và THT. Đây là review cho mẫu thử, chưa nghiệm thu production.
 
+## Cập nhật 2026-10-29: file đặt thử và thứ tự kiểm tra
+
+- Người dùng xác nhận sụt áp, nhiệt và xung dòng phải đo trên PCB mẫu; đây là gate **sau khi nhận mẫu**, không phải điều kiện để xuất Gerber thử nghiệm.
+- Đã xuất ZIP Gerber/drill mới từ PCB hiện tại tại `releases/rev_s3/prototype-2026-10-29/FV-CTRL_RevS3-prototype-2026-10-29-Gerber.zip` (SHA-256 `3660051F6D0FDA5299C6B26E66AF0AB633E37D2EB8D7596F096BA71DF0295948`). ZIP gồm 2 lớp đồng, 2 mask, 2 silkscreen, 2 paste, outline, PTH và NPTH. Gói cũ ở thư mục `releases/rev_s3/` vẫn giữ làm bản lưu nhưng không dùng đặt hàng.
+- Bản nháp tải lên để **kiểm tra match, chưa thanh toán**: `assembly/rev_s3/draft/RevS3-JLCPCB-BOM-MATCHING-DRAFT.csv` (30 dòng, 57 vị trí) và `RevS3-JLCPCB-CPL-MATCHING-DRAFT.csv` (57 vị trí). F2/F3 vẫn là `TBD`; JLCPCB có thể từ chối hoặc để chưa match. Không bỏ hai vị trí này khỏi yêu cầu PCBA đầy đủ.
+- File khoan có **12 lỗ 0,20 mm trong pad tản nhiệt U1**, 62 via 0,25/0,50 mm và 2 via 0,50/1,00 mm. Tùy chọn `Min via hole size/diameter = 0.30/0.45 mm` trong ảnh JLCPCB không đúng với file. Chọn tùy chọn có lỗ 0,20 mm phù hợp, rồi xem giá/khả năng DFM của JLCPCB; hãng lưu ý lỗ 0,20/0,25 mm với via nhỏ có thể tăng phí. Pad U1 có 9 cửa sổ paste riêng; cần xác nhận JLCPCB chấp nhận 12 lỗ xuyên dưới module khi lắp reflow, nhất là nguy cơ hút thiếc vào lỗ. https://jlcpcb.com/capabilities/pcb-capabilities/ và https://jlcpcb.com/help/article/pcb-via-covering
+- ERC mới: 0 violation. DRC mới: 0 violation, 0 unconnected; parity còn 4 warning VBUS J21 (các pad USB VBUS không được cấp nguồn trên thiết kế data-only). Xem `reports/rev_s3/work/RevS3-order-erc-2026-10-29.rpt` và `RevS3-order-drc-2026-10-29.json`. Duyệt USB chức năng bằng thử mẫu cấp nguồn 12 V, USB truyền dữ liệu/nạp code.
+- Trình tự đặt thử: tải Gerber mới → kiểm tra outline/lỗ/lớp và option lỗ 0,20 mm → bật PCBA SMT+THT → tải BOM/CPL nháp để xem khả năng match → kiểm tra đủ 57 vị trí, MPN, chiều đặt/cực tính → giải quyết F2/F3, nguồn J4, cầu chì rời và DFM U1 → chỉ thanh toán khi danh sách lắp cuối đã được xác nhận.
+
 ## Nguồn thiết kế và kiểm tra trên file
 
 - PCB/schematic hiện tại ở `hardware/rev_s3/`, HEAD lúc review `238401d`.
