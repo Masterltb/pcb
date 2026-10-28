@@ -15,19 +15,19 @@ SS54,D7,Diode_SMD:D_SMC,C16103,SS54C,MDD,SMT,Schottky Barrier Diode 5A 40V
 5A 250V,F1,Fuse:Fuseholder_Cylinder-5x20mm_Schurter_0031_8201_Horizontal_Open,C3204125,5A 250V 5x20mm Fuse,Schurter 0031.8201,THT,Main 12V DC input fuse protection
 PTC 2.5A,F2,Fuse:Fuse_Bourns_MF-RHT300,TBD,Bourns MF-RHT300 PTC,Bourns,THT,Channel A Servo Overcurrent PPTC Fuse
 PTC 2.5A,F3,Fuse:Fuse_Bourns_MF-RHT300,TBD,Bourns MF-RHT300 PTC,Bourns,THT,Channel B Servo Overcurrent PPTC Fuse
-12V INPUT,J1,"Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal",TBD,Phoenix MSTBA 2-Pin 5.08mm,Phoenix Contact,THT,Main +12V DC Power Input Header
-LIMIT SWITCHES,J10,Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical,TBD,1x04 Pin Header 2.54mm,BOOMELE,THT,Limit Switches 4-Channel Input Header
+12V INPUT,J1,"Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal",C90074,Phoenix 1757242 MSTBA 2-Pin 5.08mm,Phoenix Contact,THT,Main +12V DC Power Input Header
+LIMIT SWITCHES,J10,Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical,C2691448,XFCN PZ254V-11-04P,XFCN,THT,Limit Switches 4-Channel Input Header
 DROP SENSOR COL 1,J11,Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical,C41422491,JST-XH 4-Pin 2.50mm,JST,THT,Column 1 Universal Drop Sensor Header
 DROP SENSOR COL 2,J12,Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical,C41422491,JST-XH 4-Pin 2.50mm,JST,THT,Column 2 Universal Drop Sensor Header
-XL4015 A,J2,"Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_4-G-5,08_1x04_P5.08mm_Horizontal",TBD,Phoenix MSTBA 4-Pin 5.08mm,Phoenix Contact,THT,Channel A XL4015 Buck Converter Interface
+XL4015 A,J2,"Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_4-G-5,08_1x04_P5.08mm_Horizontal",C90076,Phoenix 1757268 MSTBA 4-Pin 5.08mm,Phoenix Contact,THT,Channel A XL4015 Buck Converter Interface
 USB_C_16P,J21,Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal,C3020560,USB4105-GF-A,GCT,SMT,USB Type-C receptacle matching KiCad USB4105 footprint
-XL4015 B,J3,"Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_4-G-5,08_1x04_P5.08mm_Horizontal",TBD,Phoenix MSTBA 4-Pin 5.08mm,Phoenix Contact,THT,Channel B XL4015 Buck Converter Interface
+XL4015 B,J3,"Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_4-G-5,08_1x04_P5.08mm_Horizontal",C90076,Phoenix 1757268 MSTBA 4-Pin 5.08mm,Phoenix Contact,THT,Channel B XL4015 Buck Converter Interface
 5V R-78E5.0-1.0,J4,fv_modules:RECOM_R78E5V1A,C3033024,RECOM R-78E5.0-1.0,RECOM Power,THT,5V 1A High-efficiency DC/DC Converter; JLC stock to confirm
 S1_TOP,J5,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,C49257,1x03 Pin Header 2.54mm,BOOMELE,THT,Servo Channel 1 Top Header (S1_TOP)
 S1_BOT,J6,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,C49257,1x03 Pin Header 2.54mm,BOOMELE,THT,Servo Channel 1 Bottom Header (S1_BOT)
 S2_TOP,J7,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,C49257,1x03 Pin Header 2.54mm,BOOMELE,THT,Servo Channel 2 Top Header (S2_TOP)
 S2_BOT,J8,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,C49257,1x03 Pin Header 2.54mm,BOOMELE,THT,Servo Channel 2 Bottom Header (S2_BOT)
-I2C SPARE,J9,Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical,TBD,1x04 Pin Header 2.54mm,BOOMELE,THT,I2C Spare Expansion Bus Header
+I2C SPARE,J9,Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical,C2691448,XFCN PZ254V-11-04P,XFCN,THT,I2C Spare Expansion Bus Header
 330R,R1,Resistor_SMD:R_0603_1608Metric,C23138,330R 1% 0603,UNI-ROYAL,SMT,Servo S1_TOP PWM series damping
 10k,R10,Resistor_SMD:R_0603_1608Metric,C25804,10k 1% 0603,UNI-ROYAL,SMT,EN / Reset line external pull-up
 22R,R11,Resistor_SMD:R_0603_1608Metric,C23345,22R 1% 0603,UNI-ROYAL,SMT,USB D- series damping resistor
