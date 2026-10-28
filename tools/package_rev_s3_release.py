@@ -227,7 +227,14 @@ def main():
                 "Layer": "Top"
             })
             
-            key = (val, pkg, lcsc)
+            # Group by LCSC Part and Footprint so multiple identical parts (e.g. LEDs, switches) merge into one line
+            comment = val
+            if lcsc == "C2286":
+                comment = "LED_RED"
+            elif lcsc in ["C720477", "C26638", "C398055"]:
+                comment = "SW_PUSH"
+                
+            key = (comment, pkg, lcsc)
             if key not in smt_bom_dict:
                 smt_bom_dict[key] = []
             smt_bom_dict[key].append(ref)
