@@ -10,6 +10,7 @@ Chạy từ thư mục gốc repository. Mở project bằng KiCad không cần 
 | Cập nhật BOM RevB | `rev_b_procurement.py` |
 | Đóng ZIP review RevB | `package_rev_b_review.py` |
 | Kiểm tra RevA2 | `verify_rev_a2.py --pcb` |
+| Tạo BOM/CPL nháp Rev-S3 cho review SMT+THT, không xuất Gerber | `prepare_rev_s3_pcba_draft.py` (KiCad Python) |
 
 Các verifier dùng Python đi kèm KiCad để có `pcbnew`. Trước kiểm tra RevB, xuất netlist đúng dạng XML:
 

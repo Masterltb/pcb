@@ -8,6 +8,7 @@
 - ERC 0 lỗi/cảnh báo; DRC 0 violation/0 unconnected; parity còn 4 cảnh báo tại VBUS J21. Xem `reports/rev_s3/RevS3-after-holes-{erc.rpt,drc.json}`.
 - Board 100 × 100 mm, 2 lớp, đồng danh định 1 oz, bề rộng track nhỏ nhất 0,15 mm. JLCPCB công bố năng lực 1 oz 0,10/0,10 mm, nhưng điều này không xác nhận dòng tải, nhiệt, USB hoặc lắp linh kiện thực tế: https://jlcpcb.com/capabilities/pcb-capabilities/
 - `releases/rev_s3/FV-CTRL_RevS3-Gerber.zip` và manifest là gói từ commit `5c4371f`, trước các sửa đường nguồn ở `f676345`, `d76042f`, `238401d`. Không dùng gói này cho đơn hàng.
+- Bản nháp BOM/CPL hỗn hợp tại `assembly/rev_s3/draft/` được tạo từ PCB hiện hành: 57 vị trí (39 SMT, 18 THT). Đây là dữ liệu review, **chưa được tải lên JLCPCB**. CPL giữ tọa độ KiCad gốc (X 100–200, Y 100–200 mm); phải kiểm tra từng vị trí/hướng trong preview của JLCPCB. Script release cũ đổi tọa độ về 0–100 mm và đảo Y, vì vậy không dùng CPL cũ cho đơn hàng mới.
 
 ## Chặn đơn PCBA đầy đủ
 
@@ -19,6 +20,10 @@
 6. **Cầu chì và PTC cần chốt giá trị riêng.** C3204125 là *đế cầu chì* 5 × 20 mm; phải chọn thêm cầu chì 5 A đúng loại và xác nhận JLCPCB có lắp cầu chì vào đế không. Bourns MF-RHT300 có `Ihold = 3,0 A` tại 23 °C, trong khi tên giá trị trên PCB ghi `PTC 2.5A`; cần duyệt dòng giữ/trip theo tải servo và nhiệt môi trường. https://jlcpcb.com/partdetail/SCHURTER-00318201/C3204125 ; https://www.bourns.com/docs/product-datasheets/mf-rht.pdf
 
 Ứng viên tụ chưa khóa: C1/C2 SamYoung `NXA25V2200M12.5*25 5.0TP`, C2835644 (2200 µF/25 V, Ø12,5 mm, pitch 5 mm, cao 25 mm); C57 AISHI `ERS1HM100D11OT`, C106654 (10 µF/50 V, Ø5 mm, pitch 2 mm, cao 11 mm). Cần so chiều cao với hộp, ripple/ESR và bản vẽ hãng trước khi đưa vào BOM đặt hàng. https://jlcpcb.com/partdetail/3000420-NXA25V2200M12_5_25_50TP/C2835644 ; https://jlcpcb.com/partdetail/AISHI_Aihua_Group-ERS1HM100D11OT/C106654
+
+Ứng viên đầu nối: Phoenix `1757242`/C90074 cho J1 (2 chân) và `1757268`/C90076 cho J2/J3 (4 chân), cùng họ MSTBA 2,5 pitch 5,08 mm. J2/J3 cần xác nhận mã C90076 có trong dịch vụ PCBA JLCPCB, bản vẽ thân/độ cao, hướng cắm và đầu cắm tương ứng. J9/J10 có thể dùng header thẳng 1×4 pitch 2,54 mm, nhưng chưa khóa MPN theo bản vẽ. https://jlcpcb.com/partdetail/PhoenixContact-1757242/C90074 ; https://www.lcsc.com/product-detail/Pluggable-System-Terminal-Block_Phoenix-Contact_MSTBA2-5-4-G-5-08_Phoenix-Contact-MSTBA2-5-4-G-5-08_C90076.html
+
+Danh sách C-code còn `TBD` trong BOM nháp: **C1, C2, C57, F2, F3, J1, J2, J3, J9, J10**. Không đổi thành mã ứng viên trước khi so bản vẽ và kiểm tra nguồn hàng. Riêng J4 đúng mã nhưng JLCPCB đang báo hết hàng; F1 có mã của *đế* nhưng chưa có cầu chì rời. Hai vấn đề này vẫn chặn PCBA đủ 57 vị trí.
 
 ## Gate cuối trước khi xuất file fabrication mới
 

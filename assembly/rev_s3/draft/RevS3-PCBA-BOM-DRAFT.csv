@@ -1,0 +1,58 @@
+﻿Comment,Designator,Footprint,LCSC Part #,MPN,Manufacturer,Assembly,Description
+2200uF 25V,C1,Capacitor_THT:CP_Radial_D12.5mm_P5.00mm,TBD,2200uF 25V Radial,TBD,THT,Channel A Servo Inrush Bulk Capacitor
+1uF,C10,Capacitor_SMD:C_0603_1608Metric,C15849,1uF 50V X7R 0603,Samsung Electro-Mechanics,SMT,EN RC delay timing filter
+2200uF 25V,C2,Capacitor_THT:CP_Radial_D12.5mm_P5.00mm,TBD,2200uF 25V Radial,TBD,THT,Channel B Servo Inrush Bulk Capacitor
+10uF 50V,C57,Capacitor_THT:CP_Radial_D5.0mm_P2.00mm,TBD,10uF 50V Radial,TBD,THT,12V Input Filter Capacitor
+100nF,C58,Capacitor_SMD:C_0603_1608Metric,C14663,100nF 50V X7R 0603,Samsung Electro-Mechanics,SMT,High-frequency decoupling cap
+10uF,C6,Capacitor_SMD:C_0603_1608Metric,C19702,10uF 25V X5R 0603,Samsung Electro-Mechanics,SMT,LDO Output bulk capacitor
+SMBJ12A,D1,Diode_SMD:D_SMB,C5353258,SMBJ12A,FOSAN,SMT,12V TVS Transient Voltage Suppressor 600W
++12V,D2,LED_SMD:LED_0603_1608Metric,C84266,Blue LED 0603,NationStar,SMT,+12V Main DC Power Indicator
++6V_A,D3,LED_SMD:LED_0603_1608Metric,C2286,Red LED 0603,KENTO,SMT,+6V_A Servo Channel A Indicator (Basic Part)
++6V_B,D4,LED_SMD:LED_0603_1608Metric,C2286,Red LED 0603,KENTO,SMT,+6V_B Servo Channel B Indicator (Basic Part)
++5V,D5,LED_SMD:LED_0603_1608Metric,C2286,Red LED 0603,KENTO,SMT,+5V Logic Supply Indicator (Basic Part)
++3V3,D6,LED_SMD:LED_0603_1608Metric,C2286,Red LED 0603,KENTO,SMT,+3V3 ESP32-S3 VDD Indicator (Basic Part)
+SS54,D7,Diode_SMD:D_SMC,C16103,SS54C,MDD,SMT,Schottky Barrier Diode 5A 40V
+5A 250V,F1,Fuse:Fuseholder_Cylinder-5x20mm_Schurter_0031_8201_Horizontal_Open,C3204125,5A 250V 5x20mm Fuse,Schurter 0031.8201,THT,Main 12V DC input fuse protection
+PTC 2.5A,F2,Fuse:Fuse_Bourns_MF-RHT300,TBD,Bourns MF-RHT300 PTC,Bourns,THT,Channel A Servo Overcurrent PPTC Fuse
+PTC 2.5A,F3,Fuse:Fuse_Bourns_MF-RHT300,TBD,Bourns MF-RHT300 PTC,Bourns,THT,Channel B Servo Overcurrent PPTC Fuse
+12V INPUT,J1,"Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal",TBD,Phoenix MSTBA 2-Pin 5.08mm,Phoenix Contact,THT,Main +12V DC Power Input Header
+LIMIT SWITCHES,J10,Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical,TBD,1x04 Pin Header 2.54mm,BOOMELE,THT,Limit Switches 4-Channel Input Header
+DROP SENSOR COL 1,J11,Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical,C41422491,JST-XH 4-Pin 2.50mm,JST,THT,Column 1 Universal Drop Sensor Header
+DROP SENSOR COL 2,J12,Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical,C41422491,JST-XH 4-Pin 2.50mm,JST,THT,Column 2 Universal Drop Sensor Header
+XL4015 A,J2,"Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_4-G-5,08_1x04_P5.08mm_Horizontal",TBD,Phoenix MSTBA 4-Pin 5.08mm,Phoenix Contact,THT,Channel A XL4015 Buck Converter Interface
+USB_C_16P,J21,Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal,C3020560,USB4105-GF-A,GCT,SMT,USB Type-C receptacle matching KiCad USB4105 footprint
+XL4015 B,J3,"Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_4-G-5,08_1x04_P5.08mm_Horizontal",TBD,Phoenix MSTBA 4-Pin 5.08mm,Phoenix Contact,THT,Channel B XL4015 Buck Converter Interface
+5V R-78E5.0-1.0,J4,fv_modules:RECOM_R78E5V1A,C3033024,RECOM R-78E5.0-1.0,RECOM Power,THT,5V 1A High-efficiency DC/DC Converter; JLC stock to confirm
+S1_TOP,J5,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,C49257,1x03 Pin Header 2.54mm,BOOMELE,THT,Servo Channel 1 Top Header (S1_TOP)
+S1_BOT,J6,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,C49257,1x03 Pin Header 2.54mm,BOOMELE,THT,Servo Channel 1 Bottom Header (S1_BOT)
+S2_TOP,J7,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,C49257,1x03 Pin Header 2.54mm,BOOMELE,THT,Servo Channel 2 Top Header (S2_TOP)
+S2_BOT,J8,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,C49257,1x03 Pin Header 2.54mm,BOOMELE,THT,Servo Channel 2 Bottom Header (S2_BOT)
+I2C SPARE,J9,Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical,TBD,1x04 Pin Header 2.54mm,BOOMELE,THT,I2C Spare Expansion Bus Header
+330R,R1,Resistor_SMD:R_0603_1608Metric,C23138,330R 1% 0603,UNI-ROYAL,SMT,Servo S1_TOP PWM series damping
+10k,R10,Resistor_SMD:R_0603_1608Metric,C25804,10k 1% 0603,UNI-ROYAL,SMT,EN / Reset line external pull-up
+22R,R11,Resistor_SMD:R_0603_1608Metric,C23345,22R 1% 0603,UNI-ROYAL,SMT,USB D- series damping resistor
+22R,R12,Resistor_SMD:R_0603_1608Metric,C23345,22R 1% 0603,UNI-ROYAL,SMT,USB D+ series damping resistor
+5.1k,R14,Resistor_SMD:R_0603_1608Metric,C23186,5.1k 1% 0603,UNI-ROYAL,SMT,USB-C CC1 5.1k pulldown (UFP device mode)
+5.1k,R15,Resistor_SMD:R_0603_1608Metric,C23186,5.1k 1% 0603,UNI-ROYAL,SMT,USB-C CC2 5.1k pulldown (UFP device mode)
+1k,R16,Resistor_SMD:R_0603_1608Metric,C21190,1k 1% 0603,UNI-ROYAL,SMT,Drop Sensor Col 1 ECHO divider top (1k)
+2k,R17,Resistor_SMD:R_0603_1608Metric,C22975,2k 1% 0603,UNI-ROYAL,SMT,Drop Sensor Col 1 ECHO divider bot (2k)
+1k,R18,Resistor_SMD:R_0603_1608Metric,C21190,1k 1% 0603,UNI-ROYAL,SMT,Drop Sensor Col 2 ECHO divider top (1k)
+2k,R19,Resistor_SMD:R_0603_1608Metric,C22975,2k 1% 0603,UNI-ROYAL,SMT,Drop Sensor Col 2 ECHO divider bot (2k)
+10k,R2,Resistor_SMD:R_0603_1608Metric,C25804,10k 1% 0603,UNI-ROYAL,SMT,Servo S1_TOP PWM fail-safe pulldown
+4.7k,R21,Resistor_SMD:R_0603_1608Metric,C23162,4.7k 1% 0603,UNI-ROYAL,SMT,+12V LED ballast resistor
+2.2k,R22,Resistor_SMD:R_0603_1608Metric,C4190,2.2k 1% 0603,UNI-ROYAL,SMT,+6V_A LED ballast resistor
+2.2k,R23,Resistor_SMD:R_0603_1608Metric,C4190,2.2k 1% 0603,UNI-ROYAL,SMT,+6V_B LED ballast resistor
+1.5k,R24,Resistor_SMD:R_0603_1608Metric,C22854,1.5k 1% 0603,UNI-ROYAL,SMT,+5V LED ballast resistor
+1k,R25,Resistor_SMD:R_0603_1608Metric,C21190,1k 1% 0603,UNI-ROYAL,SMT,+3V3 LED ballast resistor
+4.7k,R26,Resistor_SMD:R_0603_1608Metric,C23162,4.7k 1% 0603,UNI-ROYAL,SMT,I2C SDA pull-up to +3V3
+4.7k,R27,Resistor_SMD:R_0603_1608Metric,C23162,4.7k 1% 0603,UNI-ROYAL,SMT,I2C SCL pull-up to +3V3
+330R,R3,Resistor_SMD:R_0603_1608Metric,C23138,330R 1% 0603,UNI-ROYAL,SMT,Servo S1_BOT PWM series damping
+10k,R4,Resistor_SMD:R_0603_1608Metric,C25804,10k 1% 0603,UNI-ROYAL,SMT,Servo S1_BOT PWM fail-safe pulldown
+330R,R5,Resistor_SMD:R_0603_1608Metric,C23138,330R 1% 0603,UNI-ROYAL,SMT,Servo S2_TOP PWM series damping
+10k,R6,Resistor_SMD:R_0603_1608Metric,C25804,10k 1% 0603,UNI-ROYAL,SMT,Servo S2_TOP PWM fail-safe pulldown
+330R,R7,Resistor_SMD:R_0603_1608Metric,C23138,330R 1% 0603,UNI-ROYAL,SMT,Servo S2_BOT PWM series damping
+10k,R8,Resistor_SMD:R_0603_1608Metric,C25804,10k 1% 0603,UNI-ROYAL,SMT,Servo S2_BOT PWM fail-safe pulldown
+RESET,SW1,Button_Switch_SMD:SW_Push_SPST_NO_Alps_SKRK,C720477,TS-1088-AR02016,XUNPU,SMT,Tactile Push Switch (RESET - Basic Part)
+BOOT,SW2,Button_Switch_SMD:SW_Push_SPST_NO_Alps_SKRK,C720477,TS-1088-AR02016,XUNPU,SMT,Tactile Push Switch (BOOT - Basic Part)
+ESP32-S3-WROOM-1U,U1,RF_Module:ESP32-S3-WROOM-1U,C2980297,ESP32-S3-WROOM-1U-N8,Espressif Systems,SMT,"ESP32-S3 Dual-Core 240MHz, 8MB Flash, IPEX Ant"
+LD1117S33,U3,Package_TO_SOT_SMD:SOT-223-3_TabPin2,C6186,AMS1117-3.3,Advanced Monolithic,SMT,LDO 3.3V 1A Linear Regulator (Basic Part)
