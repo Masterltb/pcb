@@ -1,0 +1,53 @@
+{
+  "project": "FreshVend Controller Board",
+  "revision": "Rev-S3",
+  "target_mcu": "ESP32-S3-WROOM-1U-N8",
+  "connector_type": "USB Type-C 16-Pin (Native USB-Serial-JTAG)",
+  "drop_sensor_headers": "Dual Universal 4-Pin Headers (SW-420, HC-SR04, IR Beam)",
+  "git_branch": "feat/esp32-s3-wroom-upgrade",
+  "git_commit": "7e97899",
+  "board_dimensions_mm": [
+    100.0,
+    100.0
+  ],
+  "copper_layers": 2,
+  "copper_weight_oz": 1,
+  "nominal_thickness_mm": 1.6,
+  "erc_violations": 0,
+  "drc_violations": 0,
+  "unconnected_items": 0,
+  "smt_components_count": 39,
+  "total_components_count": 57,
+  "deliverables": {
+    "gerber_zip": {
+      "filename": "FV-CTRL_RevS3-Gerber.zip",
+      "bytes": 340431,
+      "sha256": "96b982f207c536cc9eae56596e71aca07968e2ce164ed7b4a7d30e1a86c26420",
+      "layer_count": 11
+    },
+    "jlcpcb_bom": {
+      "filename": "FV-CTRL_RevS3-BOM.csv",
+      "bytes": 717,
+      "sha256": "ef8b399267a3f3bc0b838d28c8b684217f5e774cc39266af715d0d5eb4bdb0ff"
+    },
+    "jlcpcb_cpl": {
+      "filename": "FV-CTRL_RevS3-CPL.csv",
+      "bytes": 1559,
+      "sha256": "41ecda2929bff156793080d6d8a87b0b9db1bc17162d08d12d6ede01bed48d6a"
+    },
+    "schematic_pdf": {
+      "filename": "FV-CTRL_RevS3-Schematic.pdf",
+      "bytes": 211842,
+      "sha256": "274fb0762275746ac66bf218995ff4f4e97c3bea02b9dc2d83c5ff45e98769ab"
+    },
+    "cad_step_3d": {
+      "filename": "FV-CTRL_RevS3-3D.step",
+      "bytes": 3337026,
+      "sha256": "349abf712b61482a15ef938fd29fb968a79c85b7f6c794b35aff30baaab6882b"
+    },
+    "firmware_pins_header": {
+      "filename": "FV-CTRL_RevS3-pins.h",
+      "path": "docs/rev_s3/FV-CTRL_RevS3-pins.h"
+    }
+  }
+}

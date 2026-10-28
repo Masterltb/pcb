@@ -1,0 +1,903 @@
+(kicad_sch
+	(version 20250114)
+	(generator "fv_native_s3_generator")
+	(generator_version "10.0")
+	(uuid "31fdd217-2620-49cc-a54f-4f5df212607f")
+	(paper "A3")
+	(title_block
+		(title "3. Servo 4x PWM")
+		(date "2026-10-28")
+		(rev "Rev-S3 - PROTOTYPE")
+		(company "FreshVend Project")
+		(comment 1 "ESP32-S3-WROOM-1U | USB Type-C | Universal Drop Sensor")
+		(comment 2 "2-Layer 0603 DFM Standard")
+	)
+	(lib_symbols
+		(symbol "Connector_Generic:Conn_01x03"
+				(pin_names
+					(offset 1.016)
+					(hide yes)
+				)
+				(exclude_from_sim no)
+				(in_bom yes)
+				(on_board yes)
+				(in_pos_files yes)
+				(duplicate_pin_numbers_are_jumpers no)
+				(property "Reference" "J"
+					(at 0 5.08 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Value" "Conn_01x03"
+					(at 0 -5.08 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Footprint" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Datasheet" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Description" "Generic connector, single row, 01x03, script generated (kicad-library-utils/schlib/autogen/connector/)"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_keywords" "connector"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_fp_filters" "Connector*:*_1x??_*"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(symbol "Conn_01x03_1_1"
+					(rectangle
+						(start -1.27 3.81)
+						(end 1.27 -3.81)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type background)
+						)
+					)
+					(rectangle
+						(start -1.27 2.667)
+						(end 0 2.413)
+						(stroke
+							(width 0.1524)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(rectangle
+						(start -1.27 0.127)
+						(end 0 -0.127)
+						(stroke
+							(width 0.1524)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(rectangle
+						(start -1.27 -2.413)
+						(end 0 -2.667)
+						(stroke
+							(width 0.1524)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+					(pin passive line
+						(at -5.08 2.54 0)
+						(length 3.81)
+						(name "Pin_1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at -5.08 0 0)
+						(length 3.81)
+						(name "Pin_2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at -5.08 -2.54 0)
+						(length 3.81)
+						(name "Pin_3"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "3"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(embedded_fonts no)
+			)
+		(symbol "Device:R"
+				(pin_numbers
+					(hide yes)
+				)
+				(pin_names
+					(offset 0)
+				)
+				(exclude_from_sim no)
+				(in_bom yes)
+				(on_board yes)
+				(in_pos_files yes)
+				(duplicate_pin_numbers_are_jumpers no)
+				(property "Reference" "R"
+					(at 2.032 0 90)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Value" "R"
+					(at 0 0 90)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Footprint" ""
+					(at -1.778 0 90)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Datasheet" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Description" "Resistor"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_keywords" "R res resistor"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_fp_filters" "R_*"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(symbol "R_0_1"
+					(rectangle
+						(start -1.016 -2.54)
+						(end 1.016 2.54)
+						(stroke
+							(width 0.254)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+				)
+				(symbol "R_1_1"
+					(pin passive line
+						(at 0 3.81 270)
+						(length 1.27)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+					(pin passive line
+						(at 0 -3.81 90)
+						(length 1.27)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "2"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(embedded_fonts no)
+			)
+		(symbol "power:GND"
+				(power global)
+				(pin_numbers
+					(hide yes)
+				)
+				(pin_names
+					(offset 0)
+					(hide yes)
+				)
+				(exclude_from_sim no)
+				(in_bom yes)
+				(on_board yes)
+				(in_pos_files yes)
+				(duplicate_pin_numbers_are_jumpers no)
+				(property "Reference" "#PWR"
+					(at 0 -6.35 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Value" "GND"
+					(at 0 -3.81 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Footprint" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Datasheet" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_keywords" "global power"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(symbol "GND_0_1"
+					(polyline
+						(pts
+							(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+				)
+				(symbol "GND_1_1"
+					(pin power_in line
+						(at 0 0 270)
+						(length 0)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(embedded_fonts no)
+			)
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x03")
+		(at 127.0000 63.5000 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "44e1cdfc-d737-40e9-af71-06fa76d644d2")
+		(property "Reference" "J5"
+			(at 127.0000 60.9600 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "S1_TOP"
+			(at 127.0000 66.0400 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
+			(at 127.0000 63.5000 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+	)
+
+	(global_label "GND" (shape passive) (at 116.8400 60.9600 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "2e979150-c83b-4a1e-b055-816aa74105b5"))
+
+	(wire
+		(pts
+			(xy 121.9200 60.9600) (xy 116.8400 60.9600)
+		)
+		(stroke (width 0) (type default))
+		(uuid "40266829-30eb-4101-bd1e-10537f761054")
+	)
+
+	(global_label "+6V_A" (shape passive) (at 116.8400 63.5000 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "fc4cea00-d14d-4a9f-b1e9-335ccc00f0e5"))
+
+	(wire
+		(pts
+			(xy 121.9200 63.5000) (xy 116.8400 63.5000)
+		)
+		(stroke (width 0) (type default))
+		(uuid "f6c5a60f-e57f-4aa7-b142-be786efeafff")
+	)
+
+	(symbol
+		(lib_id "Device:R")
+		(at 88.9000 63.5000 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e426d5ea-1a6d-4acc-98c7-157648347969")
+		(property "Reference" "R1"
+			(at 88.9000 60.9600 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "330R"
+			(at 88.9000 66.0400 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 88.9000 63.5000 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+	)
+
+	(wire
+		(pts
+			(xy 121.9200 66.0400) (xy 92.7100 63.5000)
+		)
+		(stroke (width 0) (type default))
+		(uuid "c106ee27-c69e-450b-820d-2f0432400176")
+	)
+
+	(global_label "S1_TOP_PWM" (shape passive) (at 80.0100 63.5000 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "97d11ba2-2532-4d8f-8fd8-12e7d57d23d6"))
+
+	(wire
+		(pts
+			(xy 85.0900 63.5000) (xy 80.0100 63.5000)
+		)
+		(stroke (width 0) (type default))
+		(uuid "1a32d5cb-c8b9-40a1-97c1-37d08d2a09a4")
+	)
+
+	(symbol
+		(lib_id "Device:R")
+		(at 63.5000 73.6600 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d19801c3-defe-4850-a9b2-8138bc2577c5")
+		(property "Reference" "R2"
+			(at 63.5000 71.1200 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "10k"
+			(at 63.5000 76.2000 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 63.5000 73.6600 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+	)
+
+	(global_label "S1_TOP_PWM" (shape passive) (at 63.5000 69.8500 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "aca32b73-6727-4eb0-a26e-f5890685bfd5"))
+
+	(global_label "GND" (shape passive) (at 63.5000 77.4700 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "3de9dfb2-7dd0-4790-967f-4e629d69e530"))
+
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x03")
+		(at 127.0000 93.9800 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1d602dca-2ce9-4496-8cda-1613031f77be")
+		(property "Reference" "J6"
+			(at 127.0000 91.4400 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "S1_BOT"
+			(at 127.0000 96.5200 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
+			(at 127.0000 93.9800 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+	)
+
+	(global_label "GND" (shape passive) (at 116.8400 91.4400 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "fc4cc041-59eb-4ca6-9fef-f3143c7952dd"))
+
+	(wire
+		(pts
+			(xy 121.9200 91.4400) (xy 116.8400 91.4400)
+		)
+		(stroke (width 0) (type default))
+		(uuid "08d7a5d1-54f9-4cb1-afd6-354f45e6e703")
+	)
+
+	(global_label "+6V_A" (shape passive) (at 116.8400 93.9800 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "61930cd7-f91c-472a-9374-c6b497a78e30"))
+
+	(wire
+		(pts
+			(xy 121.9200 93.9800) (xy 116.8400 93.9800)
+		)
+		(stroke (width 0) (type default))
+		(uuid "2b2cd1f7-966e-4441-8e9d-71aa3718bfc0")
+	)
+
+	(symbol
+		(lib_id "Device:R")
+		(at 88.9000 93.9800 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "95a1ef6b-9873-41db-933d-d4774adbfb50")
+		(property "Reference" "R3"
+			(at 88.9000 91.4400 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "330R"
+			(at 88.9000 96.5200 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 88.9000 93.9800 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+	)
+
+	(wire
+		(pts
+			(xy 121.9200 96.5200) (xy 92.7100 93.9800)
+		)
+		(stroke (width 0) (type default))
+		(uuid "c96db166-caac-4f55-b3c3-d7af023f9b0f")
+	)
+
+	(global_label "S1_BOT_PWM" (shape passive) (at 80.0100 93.9800 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "29a9ad72-172e-43ce-8d98-45e045e66596"))
+
+	(wire
+		(pts
+			(xy 85.0900 93.9800) (xy 80.0100 93.9800)
+		)
+		(stroke (width 0) (type default))
+		(uuid "eec21d18-27da-4460-9764-81d6a5e4998b")
+	)
+
+	(symbol
+		(lib_id "Device:R")
+		(at 63.5000 104.1400 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a3e9dc53-9016-42d6-acd3-bcf43aad808b")
+		(property "Reference" "R4"
+			(at 63.5000 101.6000 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "10k"
+			(at 63.5000 106.6800 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 63.5000 104.1400 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+	)
+
+	(global_label "S1_BOT_PWM" (shape passive) (at 63.5000 100.3300 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "21447414-dcff-4bb1-841c-ad66a51e535c"))
+
+	(global_label "GND" (shape passive) (at 63.5000 107.9500 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "7c4f3a78-88d0-415c-87a2-9de2850c7ab5"))
+
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x03")
+		(at 127.0000 124.4600 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "abc113ac-190c-4c77-a055-79ef0e7b188d")
+		(property "Reference" "J7"
+			(at 127.0000 121.9200 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "S2_TOP"
+			(at 127.0000 127.0000 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
+			(at 127.0000 124.4600 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+	)
+
+	(global_label "GND" (shape passive) (at 116.8400 121.9200 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "0edac9c3-86f5-4baa-9311-70739281d42d"))
+
+	(wire
+		(pts
+			(xy 121.9200 121.9200) (xy 116.8400 121.9200)
+		)
+		(stroke (width 0) (type default))
+		(uuid "58a4df39-f5d8-48b7-91ea-aeae2f59b615")
+	)
+
+	(global_label "+6V_B" (shape passive) (at 116.8400 124.4600 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "ae2decf9-266e-4c7a-b92d-9efd6c5ecf69"))
+
+	(wire
+		(pts
+			(xy 121.9200 124.4600) (xy 116.8400 124.4600)
+		)
+		(stroke (width 0) (type default))
+		(uuid "300090e1-64cf-4512-9ecf-4fa3b25b1bfa")
+	)
+
+	(symbol
+		(lib_id "Device:R")
+		(at 88.9000 124.4600 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "20073813-ec1e-449e-80d0-f41f3c278c61")
+		(property "Reference" "R5"
+			(at 88.9000 121.9200 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "330R"
+			(at 88.9000 127.0000 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 88.9000 124.4600 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+	)
+
+	(wire
+		(pts
+			(xy 121.9200 127.0000) (xy 92.7100 124.4600)
+		)
+		(stroke (width 0) (type default))
+		(uuid "152335ef-fa27-458a-bc65-5564e7b51ccd")
+	)
+
+	(global_label "S2_TOP_PWM" (shape passive) (at 80.0100 124.4600 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "b9997330-b3d5-400b-b273-e73e218f940f"))
+
+	(wire
+		(pts
+			(xy 85.0900 124.4600) (xy 80.0100 124.4600)
+		)
+		(stroke (width 0) (type default))
+		(uuid "11530c55-1873-46c0-9242-196f92bf02dc")
+	)
+
+	(symbol
+		(lib_id "Device:R")
+		(at 63.5000 134.6200 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b81e21e4-818a-4cdc-a58f-a5e41b420ef1")
+		(property "Reference" "R6"
+			(at 63.5000 132.0800 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "10k"
+			(at 63.5000 137.1600 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 63.5000 134.6200 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+	)
+
+	(global_label "S2_TOP_PWM" (shape passive) (at 63.5000 130.8100 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "8c4c3147-80dc-4e25-926b-5264539a714b"))
+
+	(global_label "GND" (shape passive) (at 63.5000 138.4300 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "23bf525e-c49c-419f-a0c6-6fda889063cd"))
+
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x03")
+		(at 127.0000 154.9400 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b32e18fc-6067-4aa9-96a4-3c4c7eb02889")
+		(property "Reference" "J8"
+			(at 127.0000 152.4000 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "S2_BOT"
+			(at 127.0000 157.4800 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
+			(at 127.0000 154.9400 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+	)
+
+	(global_label "GND" (shape passive) (at 116.8400 152.4000 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "43a0dddb-9d20-4c81-a23d-9ac889acc7c1"))
+
+	(wire
+		(pts
+			(xy 121.9200 152.4000) (xy 116.8400 152.4000)
+		)
+		(stroke (width 0) (type default))
+		(uuid "93ec6abd-4e36-4ab3-901c-236de8c99b0d")
+	)
+
+	(global_label "+6V_B" (shape passive) (at 116.8400 154.9400 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "388ed374-0fc4-4dc0-b781-e6a313870b72"))
+
+	(wire
+		(pts
+			(xy 121.9200 154.9400) (xy 116.8400 154.9400)
+		)
+		(stroke (width 0) (type default))
+		(uuid "547eba8b-544a-4dbd-bb24-7ebaa75df90b")
+	)
+
+	(symbol
+		(lib_id "Device:R")
+		(at 88.9000 154.9400 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "dcd7740c-f8a8-4e40-aa79-78f03bbfb36b")
+		(property "Reference" "R7"
+			(at 88.9000 152.4000 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "330R"
+			(at 88.9000 157.4800 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 88.9000 154.9400 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+	)
+
+	(wire
+		(pts
+			(xy 121.9200 157.4800) (xy 92.7100 154.9400)
+		)
+		(stroke (width 0) (type default))
+		(uuid "677f25b1-8396-44a2-9b48-990bbe049864")
+	)
+
+	(global_label "S2_BOT_PWM" (shape passive) (at 80.0100 154.9400 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "0f1c5ea2-172e-4239-ad76-126ce293d4b8"))
+
+	(wire
+		(pts
+			(xy 85.0900 154.9400) (xy 80.0100 154.9400)
+		)
+		(stroke (width 0) (type default))
+		(uuid "9d9c2461-fdf9-4026-b640-55d242016760")
+	)
+
+	(symbol
+		(lib_id "Device:R")
+		(at 63.5000 165.1000 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1b836e41-c404-4c93-ae71-1760fa8afcf7")
+		(property "Reference" "R8"
+			(at 63.5000 162.5600 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "10k"
+			(at 63.5000 167.6400 0)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 63.5000 165.1000 0)
+			(effects (font (size 1.27 1.27)) (hide yes))
+		)
+	)
+
+	(global_label "S2_BOT_PWM" (shape passive) (at 63.5000 161.2900 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "0424aa71-9fd4-46b3-8d66-a1dfc499b37c"))
+
+	(global_label "GND" (shape passive) (at 63.5000 168.9100 180) (effects (font (size 1.016 1.016)) (justify right)) (uuid "e58503f4-7d1d-43f7-8a8b-7cebd6df9551"))
+
+)

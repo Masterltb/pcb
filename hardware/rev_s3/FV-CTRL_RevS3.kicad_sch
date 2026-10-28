@@ -1,0 +1,149 @@
+(kicad_sch
+	(version 20250114)
+	(generator "fv_native_s3_generator")
+	(generator_version "10.0")
+	(uuid "76dfc951-2019-4ebb-9feb-d1fc92a0403b")
+	(paper "A3")
+	(title_block
+		(title "FreshVend Rev-S3 - Index")
+		(date "2026-10-28")
+		(rev "Rev-S3 - PROTOTYPE")
+		(company "FreshVend Project")
+		(comment 1 "ESP32-S3-WROOM-1U | USB Type-C | Universal Drop Sensor")
+		(comment 2 "2-Layer 0603 DFM Standard")
+	)
+	(lib_symbols
+		(symbol "power:PWR_FLAG"
+				(power global)
+				(pin_numbers
+					(hide yes)
+				)
+				(pin_names
+					(offset 0)
+					(hide yes)
+				)
+				(exclude_from_sim no)
+				(in_bom yes)
+				(on_board yes)
+				(in_pos_files yes)
+				(duplicate_pin_numbers_are_jumpers no)
+				(property "Reference" "#FLG"
+					(at 0 1.905 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Value" "PWR_FLAG"
+					(at 0 3.81 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Footprint" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Datasheet" ""
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "Description" "Special symbol for telling ERC where power comes from"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(property "ki_keywords" "flag power"
+					(at 0 0 0)
+					(show_name no)
+					(do_not_autoplace no)
+					(hide yes)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(symbol "PWR_FLAG_0_0"
+					(pin power_out line
+						(at 0 0 90)
+						(length 0)
+						(name ""
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+						(number "1"
+							(effects
+								(font
+									(size 1.27 1.27)
+								)
+							)
+						)
+					)
+				)
+				(symbol "PWR_FLAG_0_1"
+					(polyline
+						(pts
+							(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+						)
+						(stroke
+							(width 0)
+							(type default)
+						)
+						(fill
+							(type none)
+						)
+					)
+				)
+				(embedded_fonts no)
+			)
+	)
+
+	(sheet (at 25.4 50.8) (size 101.6 38.1) (stroke (width 0.254) (type default)) (fill (color 0 0 0 0)) (uuid "0e7ee6db-8e06-4c1c-8d34-69edf8fed976")
+		(property "Sheetname" "1. Power Supply" (at 25.4 48.26 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
+		(property "Sheetfile" "FV-CTRL_RevS3-01.kicad_sch" (at 25.4 91.44 0) (effects (font (size 1.016 1.016)) (justify left top))))
+	(sheet (at 152.4 50.8) (size 101.6 38.1) (stroke (width 0.254) (type default)) (fill (color 0 0 0 0)) (uuid "74734228-6460-4fc1-9484-fc230e5ce1b8")
+		(property "Sheetname" "2. MCU ESP32-S3 & USB Type-C" (at 152.4 48.26 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
+		(property "Sheetfile" "FV-CTRL_RevS3-02.kicad_sch" (at 152.4 91.44 0) (effects (font (size 1.016 1.016)) (justify left top))))
+	(sheet (at 279.4 50.8) (size 101.6 38.1) (stroke (width 0.254) (type default)) (fill (color 0 0 0 0)) (uuid "f52a955a-5170-4855-9e78-4581b617f1db")
+		(property "Sheetname" "3. Servo 4x PWM" (at 279.4 48.26 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
+		(property "Sheetfile" "FV-CTRL_RevS3-03.kicad_sch" (at 279.4 91.44 0) (effects (font (size 1.016 1.016)) (justify left top))))
+	(sheet (at 25.4 114.3) (size 101.6 38.1) (stroke (width 0.254) (type default)) (fill (color 0 0 0 0)) (uuid "6b13369a-e652-44da-a17c-e06d6b01b897")
+		(property "Sheetname" "4. Universal Drop Sensors" (at 25.4 111.76 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
+		(property "Sheetfile" "FV-CTRL_RevS3-04.kicad_sch" (at 25.4 154.94 0) (effects (font (size 1.016 1.016)) (justify left top))))
+	(sheet (at 152.4 114.3) (size 101.6 38.1) (stroke (width 0.254) (type default)) (fill (color 0 0 0 0)) (uuid "ef38150c-7f32-4941-8a79-f64c760195ae")
+		(property "Sheetname" "5. Diagnostics & Spares" (at 152.4 111.76 0) (effects (font (size 1.27 1.27)) (justify left bottom)))
+		(property "Sheetfile" "FV-CTRL_RevS3-05.kicad_sch" (at 152.4 154.94 0) (effects (font (size 1.016 1.016)) (justify left top))))
+
+)
