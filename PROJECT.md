@@ -1,6 +1,7 @@
 # PROJECT.md: PCB điều khiển máy bán tô trái cây tự động
 
 ## Quyết định mới nhất — đánh giá Rev-S3 (2026-10-29)
+- Người dùng sửa mô tả servo: MG996R dùng để đưa cơ cấu đến vị trí **mở**, rồi quay ngược về vị trí **đóng**; không coi là động cơ quay liên tục 360° trong điều khiển. Cần xác minh chính xác biến thể servo, góc hành trình cơ khí và hai điểm dừng trên mẫu trước khi viết thuật toán phục hồi. Mô tả “servo 360/timed rotation” bên dưới là lịch sử, không áp dụng cho Rev-S3.
 - Người dùng duyệt tiếp tục kiểm tra và cải thiện Rev-S3, đồng thời yêu cầu giữ nguyên các bản cũ để dự phòng. RevA, RevA2 và RevB là các mốc lịch sử, không được sửa trong công việc Rev-S3.
 - Rev-S3 dùng ESP32-S3-WROOM-1U-N8, anten ngoài qua IPEX, USB-C dữ liệu và pinout tại `docs/rev_s3/FV-CTRL_RevS3-pins.h`. Đây là cấu hình đang phát triển; chưa được nghiệm thu sản xuất. Các quyết định RevB bên dưới vẫn mô tả RevB, không áp dụng mặc định cho Rev-S3.
 - Giữ hai XL4015 ngoài hộp và hai rail servo 6 V độc lập. Trước khi phát hành Rev-S3 mới, phải kiểm tra dòng/đường hồi nguồn, parity schematic–PCB, DFM/assembly và thử mẫu có tải. Xem `docs/rev_s3/RevS3-prechange-risk-review-2026-10-29.md`.
