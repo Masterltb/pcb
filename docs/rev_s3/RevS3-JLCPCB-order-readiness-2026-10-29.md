@@ -18,9 +18,11 @@
 5. **Chưa khóa tất cả THT còn lại:** tụ C1/C2/C57, PTC F2/F3, Phoenix J1/J2/J3 và header 4 chân J9/J10 cần MPN/C-code đúng, bản vẽ hãng và xác nhận JLCPCB nhận lắp. Thiếu hàng có thể cần pre-order, global sourcing hoặc consignment; không tự thay giá trị/footprint. https://jlcpcb.com/help/article/pcba-parts-sourcing-instruction
 6. **Cầu chì và PTC cần chốt giá trị riêng.** C3204125 là *đế cầu chì* 5 × 20 mm; phải chọn thêm cầu chì 5 A đúng loại và xác nhận JLCPCB có lắp cầu chì vào đế không. Bourns MF-RHT300 có `Ihold = 3,0 A` tại 23 °C, trong khi tên giá trị trên PCB ghi `PTC 2.5A`; cần duyệt dòng giữ/trip theo tải servo và nhiệt môi trường. https://jlcpcb.com/partdetail/SCHURTER-00318201/C3204125 ; https://www.bourns.com/docs/product-datasheets/mf-rht.pdf
 
+Ứng viên tụ chưa khóa: C1/C2 SamYoung `NXA25V2200M12.5*25 5.0TP`, C2835644 (2200 µF/25 V, Ø12,5 mm, pitch 5 mm, cao 25 mm); C57 AISHI `ERS1HM100D11OT`, C106654 (10 µF/50 V, Ø5 mm, pitch 2 mm, cao 11 mm). Cần so chiều cao với hộp, ripple/ESR và bản vẽ hãng trước khi đưa vào BOM đặt hàng. https://jlcpcb.com/partdetail/3000420-NXA25V2200M12_5_25_50TP/C2835644 ; https://jlcpcb.com/partdetail/AISHI_Aihua_Group-ERS1HM100D11OT/C106654
+
 ## Gate cuối trước khi xuất file fabrication mới
 
-- IC/SI/PI: đo hoặc xác nhận dòng đỉnh hai servo, sụt áp đường dương và GND, nhiệt D7/F1/F2/F3/J4/U3, ripple 6 V/5 V/3,3 V; kiểm tra USB D+/D−/ESD và anten IPEX trên mẫu. Các phép tính đường đồng trong `RevS3-prechange-risk-review-2026-10-29.md` chưa thay thế đo tải.
+- IC/SI/PI trước đơn mẫu: xác nhận dòng đỉnh theo thông số servo và review đường dương/GND, nhiệt D7/F1/F2/F3/J4/U3, USB D+/D−/ESD và anten IPEX. Các phép tính đường đồng trong `RevS3-prechange-risk-review-2026-10-29.md` chưa thay thế đo tải. Sụt áp, nhiệt và ripple sẽ đo trên **mẫu JLCPCB nhận về**, trước khi đặt sản xuất tiếp.
 - DFM/DFA: khóa MPN theo footprint, hướng cắm connector, cực tính tụ/diode/LED, vùng mép PCB của J21, vị trí mô-đun/cáp anten; xác nhận JLCPCB review 2D/3D và tất cả linh kiện được chọn trong BOM match.
 - Sau khi sửa BOM/CPL và chốt linh kiện, chạy lại ERC/DRC/parity, trình rủi ro layout cuối cho người dùng duyệt; sau duyệt mới xuất Gerber/drill từ HEAD, kiểm tra ZIP bằng Gerber viewer, so BOM/CPL với PCB và tải lên/đặt hàng theo yêu cầu.
 
