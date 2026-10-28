@@ -1,8 +1,8 @@
 ﻿Comment,Designator,Footprint,LCSC Part #,MPN,Manufacturer,Assembly,Description
-2200uF 25V,C1,Capacitor_THT:CP_Radial_D12.5mm_P5.00mm,TBD,2200uF 25V Radial,TBD,THT,Channel A Servo Inrush Bulk Capacitor
+2200uF 25V,C1,Capacitor_THT:CP_Radial_D12.5mm_P5.00mm,C2835644,SamYoung NXA25V2200M12.5*25 5.0TP,SamYoung Electronics,THT,Channel A Servo Inrush Bulk Capacitor
 1uF,C10,Capacitor_SMD:C_0603_1608Metric,C15849,1uF 50V X7R 0603,Samsung Electro-Mechanics,SMT,EN RC delay timing filter
-2200uF 25V,C2,Capacitor_THT:CP_Radial_D12.5mm_P5.00mm,TBD,2200uF 25V Radial,TBD,THT,Channel B Servo Inrush Bulk Capacitor
-10uF 50V,C57,Capacitor_THT:CP_Radial_D5.0mm_P2.00mm,TBD,10uF 50V Radial,TBD,THT,12V Input Filter Capacitor
+2200uF 25V,C2,Capacitor_THT:CP_Radial_D12.5mm_P5.00mm,C2835644,SamYoung NXA25V2200M12.5*25 5.0TP,SamYoung Electronics,THT,Channel B Servo Inrush Bulk Capacitor
+10uF 50V,C57,Capacitor_THT:CP_Radial_D5.0mm_P2.00mm,C106654,AISHI ERS1HM100D11OT,AISHI,THT,12V Input Filter Capacitor
 100nF,C58,Capacitor_SMD:C_0603_1608Metric,C14663,100nF 50V X7R 0603,Samsung Electro-Mechanics,SMT,High-frequency decoupling cap
 10uF,C6,Capacitor_SMD:C_0603_1608Metric,C19702,10uF 25V X5R 0603,Samsung Electro-Mechanics,SMT,LDO Output bulk capacitor
 SMBJ12A,D1,Diode_SMD:D_SMB,C5353258,SMBJ12A,FOSAN,SMT,12V TVS Transient Voltage Suppressor 600W
@@ -12,7 +12,7 @@ SMBJ12A,D1,Diode_SMD:D_SMB,C5353258,SMBJ12A,FOSAN,SMT,12V TVS Transient Voltage 
 +5V,D5,LED_SMD:LED_0603_1608Metric,C2286,Red LED 0603,KENTO,SMT,+5V Logic Supply Indicator (Basic Part)
 +3V3,D6,LED_SMD:LED_0603_1608Metric,C2286,Red LED 0603,KENTO,SMT,+3V3 ESP32-S3 VDD Indicator (Basic Part)
 SS54,D7,Diode_SMD:D_SMC,C16103,SS54C,MDD,SMT,Schottky Barrier Diode 5A 40V
-5A 250V,F1,Fuse:Fuseholder_Cylinder-5x20mm_Schurter_0031_8201_Horizontal_Open,C3204125,5A 250V 5x20mm Fuse,Schurter 0031.8201,THT,Main 12V DC input fuse protection
+5A 250V,F1,Fuse:Fuseholder_Cylinder-5x20mm_Schurter_0031_8201_Horizontal_Open,C3204125,Schurter 0031.8201 fuse holder,Schurter,THT,Main 12V DC input fuse holder; cartridge fuse is a separate procurement item
 PTC 2.5A,F2,Fuse:Fuse_Bourns_MF-RHT300,TBD,Bourns MF-RHT300 PTC,Bourns,THT,Channel A Servo Overcurrent PPTC Fuse
 PTC 2.5A,F3,Fuse:Fuse_Bourns_MF-RHT300,TBD,Bourns MF-RHT300 PTC,Bourns,THT,Channel B Servo Overcurrent PPTC Fuse
 12V INPUT,J1,"Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal",C90074,Phoenix 1757242 MSTBA 2-Pin 5.08mm,Phoenix Contact,THT,Main +12V DC Power Input Header

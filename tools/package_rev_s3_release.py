@@ -2,8 +2,8 @@
 Release Packaging Script for FV-CTRL Rev-S3
 Generates JLCPCB Fabrication deliverables:
 - Gerber & Drill ZIP
-- JLCPCB SMT BOM CSV (with verified LCSC part numbers)
-- JLCPCB SMT CPL CSV (Pick & Place)
+- JLCPCB mixed SMT/THT BOM CSV
+- JLCPCB mixed SMT/THT CPL CSV (placement coordinates)
 - Full Engineering BOM CSV
 - Schematic PDF & 3D STEP
 - Release Manifest JSON with SHA256 checksums
@@ -87,10 +87,10 @@ LCSC_DATABASE = {
     
     # THT Components (Manual Assembly / Post-SMT)
     # TBD entries are intentional: never use the old, unverified C-codes for full PCBA.
-    "C1": ("2200uF 25V Radial", "TBD", "D12.5mm P5.0mm", "TBD", "Channel A Servo Inrush Bulk Capacitor", "THT"),
-    "C2": ("2200uF 25V Radial", "TBD", "D12.5mm P5.0mm", "TBD", "Channel B Servo Inrush Bulk Capacitor", "THT"),
-    "C57": ("10uF 50V Radial", "TBD", "D5.0mm P2.0mm", "TBD", "12V Input Filter Capacitor", "THT"),
-    "F1": ("5A 250V 5x20mm Fuse", "C3204125", "5x20mm Clip Holder", "Schurter 0031.8201", "Main 12V DC input fuse protection", "THT"),
+    "C1": ("SamYoung NXA25V2200M12.5*25 5.0TP", "C2835644", "D12.5mm P5.0mm H25mm", "SamYoung Electronics", "Channel A Servo Inrush Bulk Capacitor", "THT"),
+    "C2": ("SamYoung NXA25V2200M12.5*25 5.0TP", "C2835644", "D12.5mm P5.0mm H25mm", "SamYoung Electronics", "Channel B Servo Inrush Bulk Capacitor", "THT"),
+    "C57": ("AISHI ERS1HM100D11OT", "C106654", "D5.0mm P2.0mm H11mm", "AISHI", "12V Input Filter Capacitor", "THT"),
+    "F1": ("Schurter 0031.8201 fuse holder", "C3204125", "5x20mm Clip Holder", "Schurter", "Main 12V DC input fuse holder; cartridge fuse is a separate procurement item", "THT"),
     "F2": ("Bourns MF-RHT300 PTC", "TBD", "Radial Leaded", "Bourns", "Channel A Servo Overcurrent PPTC Fuse", "THT"),
     "F3": ("Bourns MF-RHT300 PTC", "TBD", "Radial Leaded", "Bourns", "Channel B Servo Overcurrent PPTC Fuse", "THT"),
     "J1": ("Phoenix 1757242 MSTBA 2-Pin 5.08mm", "C90074", "P5.08mm Horizontal", "Phoenix Contact", "Main +12V DC Power Input Header", "THT"),
@@ -108,6 +108,12 @@ LCSC_DATABASE = {
 }
 
 def main():
+    unresolved = [ref for ref, info in LCSC_DATABASE.items() if info[1] == "TBD"]
+    if unresolved:
+        raise RuntimeError(
+            "PCBA BOM is incomplete; refusing fabrication export. "
+            "Unresolved JLCPCB parts: " + ", ".join(unresolved)
+        )
     print("=" * 70)
     print("STARTING FRESHVEND FV-CTRL REV-S3 RELEASE PACKAGING")
     print("=" * 70)
@@ -174,16 +180,17 @@ def main():
     print(f"  -> Created JLCPCB Gerber ZIP: {gerber_zip.name} ({gerber_zip.stat().st_size:,} bytes, 11 files)")
 
     # 4. Export BOM and CPL files
-    print("\n[4/6] Generating JLCPCB SMT Assembly BOM & CPL (Centroid) files...")
+    print("\n[4/6] Generating JLCPCB mixed SMT/THT Assembly BOM & CPL files...")
     
     # Load Board via pcbnew Python API
     import pcbnew
     board = pcbnew.LoadBoard(str(PCB_PATH))
     fps = list(board.GetFootprints())
     
-    # Parse footprints into SMT rows and full BOM rows
-    smt_cpl_rows = []
-    smt_bom_dict = {} # Key: (Comment, Footprint, LCSC) -> list of refs
+    # Include both SMT and THT in the order files. Native KiCad mm coordinates
+    # are required to stay aligned with Gerber; verify rotation in JLC preview.
+    assembly_cpl_rows = []
+    assembly_bom_dict = {} # Key: (Comment, Footprint, LCSC) -> list of refs
     full_bom_rows = []
 
     for fp in sorted(fps, key=lambda x: x.GetReference()):
@@ -209,53 +216,43 @@ def main():
             "Description": desc
         })
         
-        # SMT Pick & Place
-        if asm_type == "SMT":
-            pos = fp.GetPosition()
-            rot = fp.GetOrientation().AsDegrees()
-            # Calculate board-relative coordinates (bottom-left = 0,0)
-            # Board: X in [100.0, 200.0], Y in [100.0, 200.0]
-            mid_x = (pos.x / 1e6) - 100.0
-            mid_y = 200.0 - (pos.y / 1e6)
-            
-            smt_cpl_rows.append({
-                "Designator": ref,
-                "Val": val,
-                "Package": pkg,
-                "Mid X": f"{mid_x:.3f}",
-                "Mid Y": f"{mid_y:.3f}",
-                "Rotation": f"{rot:.1f}",
-                "Layer": "Top"
-            })
-            
-            # Group by LCSC Part and Footprint so multiple identical parts (e.g. LEDs, switches) merge into one line
-            comment = val
-            if lcsc == "C2286":
-                comment = "LED_RED"
-            elif lcsc in ["C720477", "C26638", "C398055"]:
-                comment = "SW_PUSH"
-                
-            key = (comment, pkg, lcsc)
-            if key not in smt_bom_dict:
-                smt_bom_dict[key] = []
-            smt_bom_dict[key].append(ref)
+        pos = fp.GetPosition()
+        assembly_cpl_rows.append({
+            "Designator": ref,
+            "Val": val,
+            "Package": pkg,
+            "Mid X": f"{pos.x / 1e6:.3f}",
+            "Mid Y": f"{pos.y / 1e6:.3f}",
+            "Rotation": f"{fp.GetOrientation().AsDegrees():.1f}",
+            "Layer": "Bottom" if fp.IsFlipped() else "Top"
+        })
 
-    # Write JLCPCB SMT BOM CSV
+        comment = val
+        if lcsc == "C2286":
+            comment = "LED_RED"
+        elif lcsc in ["C720477", "C26638", "C398055"]:
+            comment = "SW_PUSH"
+        key = (comment, pkg, lcsc)
+        if key not in assembly_bom_dict:
+            assembly_bom_dict[key] = []
+        assembly_bom_dict[key].append(ref)
+
+    # Write JLCPCB mixed-assembly BOM CSV
     bom_jlc_path = OUT_RELEASE / "FV-CTRL_RevS3-BOM.csv"
     with open(bom_jlc_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(["Comment", "Designator", "Footprint", "LCSC Part #"])
-        for (comment, footprint, lcsc), refs in sorted(smt_bom_dict.items(), key=lambda x: x[1][0]):
+        for (comment, footprint, lcsc), refs in sorted(assembly_bom_dict.items(), key=lambda x: x[1][0]):
             writer.writerow([comment, ",".join(refs), footprint, lcsc])
-    print(f"  -> Created JLCPCB SMT BOM: {bom_jlc_path.name} ({len(smt_bom_dict)} unique line items, {sum(len(r) for r in smt_bom_dict.values())} SMT components)")
+    print(f"  -> Created JLCPCB mixed BOM: {bom_jlc_path.name} ({len(assembly_bom_dict)} unique line items, {sum(len(r) for r in assembly_bom_dict.values())} components)")
 
-    # Write JLCPCB SMT CPL CSV
+    # Write JLCPCB mixed-assembly CPL CSV
     cpl_jlc_path = OUT_RELEASE / "FV-CTRL_RevS3-CPL.csv"
     with open(cpl_jlc_path, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=["Designator", "Val", "Package", "Mid X", "Mid Y", "Rotation", "Layer"])
         writer.writeheader()
-        writer.writerows(smt_cpl_rows)
-    print(f"  -> Created JLCPCB SMT CPL: {cpl_jlc_path.name} ({len(smt_cpl_rows)} placement entries)")
+        writer.writerows(assembly_cpl_rows)
+    print(f"  -> Created JLCPCB mixed CPL: {cpl_jlc_path.name} ({len(assembly_cpl_rows)} placement entries)")
 
     # Write Full Engineering BOM CSV
     full_bom_path = OUT_DOCS / "FV-CTRL_RevS3-BOM-full.csv"
@@ -297,7 +294,7 @@ def main():
         "erc_violations": 0,
         "drc_violations": 0,
         "unconnected_items": 0,
-        "smt_components_count": len(smt_cpl_rows),
+        "smt_components_count": sum(row["Assembly_Type"] == "SMT" for row in full_bom_rows),
         "total_components_count": len(full_bom_rows),
         "deliverables": {
             "gerber_zip": {
