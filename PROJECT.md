@@ -1,5 +1,10 @@
 # PROJECT.md: PCB điều khiển máy bán tô trái cây tự động
 
+## Quyết định mới nhất — đánh giá Rev-S3 (2026-10-29)
+- Người dùng duyệt tiếp tục kiểm tra và cải thiện Rev-S3, đồng thời yêu cầu giữ nguyên các bản cũ để dự phòng. RevA, RevA2 và RevB là các mốc lịch sử, không được sửa trong công việc Rev-S3.
+- Rev-S3 dùng ESP32-S3-WROOM-1U-N8, anten ngoài qua IPEX, USB-C dữ liệu và pinout tại `docs/rev_s3/FV-CTRL_RevS3-pins.h`. Đây là cấu hình đang phát triển; chưa được nghiệm thu sản xuất. Các quyết định RevB bên dưới vẫn mô tả RevB, không áp dụng mặc định cho Rev-S3.
+- Giữ hai XL4015 ngoài hộp và hai rail servo 6 V độc lập. Trước khi phát hành Rev-S3 mới, phải kiểm tra dòng/đường hồi nguồn, parity schematic–PCB, DFM/assembly và thử mẫu có tải. Xem `docs/rev_s3/RevS3-prechange-risk-review-2026-10-29.md`.
+
 ## Quyết định mới nhất — RevB ESP32 QFN
 - Cập nhật được duyệt ngày 2026-10-25: thay Pololu D24V25F5 tại J4 bằng RECOM R-78E5.0-1.0, 5V/1A gắn THT ba chân (1 VIN/2 GND/3 VOUT); thêm C57 10µF đầu12V và C58 100nF đầu5V. Giữ hai XL4015, LDO3,3V, GPIO và đầu nối Phoenix. Đây là cấu hình mẫu cần thử tải/nhiệt/inrush/ripple, chưa nghiệm thu production; không dùng socket/footprint Pololu cũ. Xem `docs/revb/RevB-RECOM-prechange-review.md`.
 - Người dùng xác nhận dùng **IC ESP32 rời dạng QFN**, không DevKit, không module ESP32-WROOM. Yêu cầu này thay thế các mô tả DevKit/socket/THT-only bên dưới đối với khối điều khiển mới; RevA2 được giữ như bản cũ, không phải bản đáp ứng yêu cầu mới.
