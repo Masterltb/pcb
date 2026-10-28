@@ -15,7 +15,7 @@
 "10k","R10,R2,R4,R6,R8","Resistor_SMD:R_0603_1608Metric","C25804"
 "LIMIT SWITCHES","J10,J9","Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical","C2691448"
 "2200uF 25V","C1,C2","Capacitor_THT:CP_Radial_D12.5mm_P5.00mm","C2835644"
-"ESP32-S3-WROOM-1U","U1","RF_Module:ESP32-S3-WROOM-1U","C2980297"
+"ESP32-S3-WROOM-1U","U1","fv_rev_s3:ESP32-S3-WROOM-1U_0p3","C2980297"
 "USB_C_16P","J21","Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal","C3020560"
 "5V R-78E5.0-1.0","J4","fv_modules:RECOM_R78E5V1A","C3033024"
 "5A 250V","F1","Fuse:Fuseholder_Cylinder-5x20mm_Schurter_0031_8201_Horizontal_Open","C3204125"

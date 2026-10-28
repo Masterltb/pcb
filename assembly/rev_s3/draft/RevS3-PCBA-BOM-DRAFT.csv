@@ -54,5 +54,5 @@ I2C SPARE,J9,Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical,C2691448
 10k,R8,Resistor_SMD:R_0603_1608Metric,C25804,10k 1% 0603,UNI-ROYAL,SMT,Servo S2_BOT PWM fail-safe pulldown
 RESET,SW1,Button_Switch_SMD:SW_Push_SPST_NO_Alps_SKRK,C720477,TS-1088-AR02016,XUNPU,SMT,Tactile Push Switch (RESET - Basic Part)
 BOOT,SW2,Button_Switch_SMD:SW_Push_SPST_NO_Alps_SKRK,C720477,TS-1088-AR02016,XUNPU,SMT,Tactile Push Switch (BOOT - Basic Part)
-ESP32-S3-WROOM-1U,U1,RF_Module:ESP32-S3-WROOM-1U,C2980297,ESP32-S3-WROOM-1U-N8,Espressif Systems,SMT,"ESP32-S3 Dual-Core 240MHz, 8MB Flash, IPEX Ant"
+ESP32-S3-WROOM-1U,U1,fv_rev_s3:ESP32-S3-WROOM-1U_0p3,C2980297,ESP32-S3-WROOM-1U-N8,Espressif Systems,SMT,"ESP32-S3 Dual-Core 240MHz, 8MB Flash, IPEX Ant"
 LD1117S33,U3,Package_TO_SOT_SMD:SOT-223-3_TabPin2,C6186,AMS1117-3.3,Advanced Monolithic,SMT,LDO 3.3V 1A Linear Regulator (Basic Part)
