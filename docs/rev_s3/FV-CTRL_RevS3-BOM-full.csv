@@ -7,10 +7,10 @@ C58,100nF,100nF 50V X7R 0603,0603,C14663,Samsung Electro-Mechanics,SMT,High-freq
 C6,10uF,10uF 25V X5R 0603,0603,C19702,Samsung Electro-Mechanics,SMT,LDO Output bulk capacitor
 D1,SMBJ12A,SMBJ12A,DO-214AA (SMB),C5353258,FOSAN,SMT,12V TVS Transient Voltage Suppressor 600W
 D2,+12V,Blue LED 0603,0603,C84266,NationStar,SMT,+12V Main DC Power Indicator
-D3,+6V_A,Green LED 0603,0603,C12624,KENTO,SMT,+6V_A Servo Channel A Indicator
-D4,+6V_B,Green LED 0603,0603,C12624,KENTO,SMT,+6V_B Servo Channel B Indicator
-D5,+5V,Green LED 0603,0603,C12624,KENTO,SMT,+5V Logic Supply Indicator
-D6,+3V3,Green LED 0603,0603,C12624,KENTO,SMT,+3V3 ESP32-S3 VDD Indicator
+D3,+6V_A,Green LED 0603,0603,C87326,NationStar,SMT,+6V_A Servo Channel A Indicator
+D4,+6V_B,Green LED 0603,0603,C87326,NationStar,SMT,+6V_B Servo Channel B Indicator
+D5,+5V,Green LED 0603,0603,C87326,NationStar,SMT,+5V Logic Supply Indicator
+D6,+3V3,Green LED 0603,0603,C87326,NationStar,SMT,+3V3 ESP32-S3 VDD Indicator
 D7,SS54,SS54C,DO-214AB (SMC),C16103,MDD,SMT,Schottky Barrier Diode 5A 40V
 F1,5A 250V,5A 250V 5x20mm Fuse,5x20mm Clip Holder,C2911299,Schurter 0031.8201,THT,Main 12V DC input fuse protection
 F2,PTC 2.5A,Bourns MF-RHT300 2.5A PTC,Radial Leaded,C514332,Bourns,THT,Channel A Servo Overcurrent PPTC Fuse
@@ -35,13 +35,13 @@ R12,22R,22R 1% 0603,0603,C23345,UNI-ROYAL,SMT,USB D+ series damping resistor
 R14,5.1k,5.1k 1% 0603,0603,C23186,UNI-ROYAL,SMT,USB-C CC1 5.1k pulldown (UFP device mode)
 R15,5.1k,5.1k 1% 0603,0603,C23186,UNI-ROYAL,SMT,USB-C CC2 5.1k pulldown (UFP device mode)
 R16,1k,1k 1% 0603,0603,C21190,UNI-ROYAL,SMT,Drop Sensor Col 1 ECHO divider top (1k)
-R17,2k,2k 1% 0603,0603,C21193,UNI-ROYAL,SMT,Drop Sensor Col 1 ECHO divider bot (2k)
+R17,2k,2k 1% 0603,0603,C22975,UNI-ROYAL,SMT,Drop Sensor Col 1 ECHO divider bot (2k)
 R18,1k,1k 1% 0603,0603,C21190,UNI-ROYAL,SMT,Drop Sensor Col 2 ECHO divider top (1k)
-R19,2k,2k 1% 0603,0603,C21193,UNI-ROYAL,SMT,Drop Sensor Col 2 ECHO divider bot (2k)
+R19,2k,2k 1% 0603,0603,C22975,UNI-ROYAL,SMT,Drop Sensor Col 2 ECHO divider bot (2k)
 R2,10k,10k 1% 0603,0603,C25804,UNI-ROYAL,SMT,Servo S1_TOP PWM fail-safe pulldown
 R21,4.7k,4.7k 1% 0603,0603,C23162,UNI-ROYAL,SMT,+12V LED ballast resistor
-R22,2.2k,2.2k 1% 0603,0603,C21194,UNI-ROYAL,SMT,+6V_A LED ballast resistor
-R23,2.2k,2.2k 1% 0603,0603,C21194,UNI-ROYAL,SMT,+6V_B LED ballast resistor
+R22,2.2k,2.2k 1% 0603,0603,C4190,UNI-ROYAL,SMT,+6V_A LED ballast resistor
+R23,2.2k,2.2k 1% 0603,0603,C4190,UNI-ROYAL,SMT,+6V_B LED ballast resistor
 R24,1.5k,1.5k 1% 0603,0603,C22854,UNI-ROYAL,SMT,+5V LED ballast resistor
 R25,1k,1k 1% 0603,0603,C21190,UNI-ROYAL,SMT,+3V3 LED ballast resistor
 R26,4.7k,4.7k 1% 0603,0603,C23162,UNI-ROYAL,SMT,I2C SDA pull-up to +3V3
@@ -52,7 +52,7 @@ R5,330R,330R 1% 0603,0603,C23138,UNI-ROYAL,SMT,Servo S2_TOP PWM series damping
 R6,10k,10k 1% 0603,0603,C25804,UNI-ROYAL,SMT,Servo S2_TOP PWM fail-safe pulldown
 R7,330R,330R 1% 0603,0603,C23138,UNI-ROYAL,SMT,Servo S2_BOT PWM series damping
 R8,10k,10k 1% 0603,0603,C25804,UNI-ROYAL,SMT,Servo S2_BOT PWM fail-safe pulldown
-SW1,RESET,TS342A2P,3.5x2.9mm SMD,C398055,SHOU HAN,SMT,Tactile Push Switch (RESET)
-SW2,BOOT,TS342A2P,3.5x2.9mm SMD,C398055,SHOU HAN,SMT,Tactile Push Switch (BOOT GPIO0)
+SW1,RESET,Tactile Switch 3x4x2,3.5x2.9mm SMD,C26638,SHOU HAN,SMT,Tactile Push Switch (RESET)
+SW2,BOOT,Tactile Switch 3x4x2,3.5x2.9mm SMD,C26638,SHOU HAN,SMT,Tactile Push Switch (BOOT GPIO0)
 U1,ESP32-S3-WROOM-1U,ESP32-S3-WROOM-1U-N8,"SMD-41, 18x25.5mm",C2980297,Espressif Systems,SMT,"ESP32-S3 Dual-Core 240MHz, 8MB Flash, IPEX Ant"
 U3,LD1117S33,AMS1117-3.3,SOT-223-3,C6186,Advanced Monolithic,SMT,LDO 3.3V 1A Linear Regulator (Basic Part)

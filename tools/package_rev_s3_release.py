@@ -45,14 +45,14 @@ LCSC_DATABASE = {
     
     # Indicator LEDs (0603)
     "D2": ("Blue LED 0603", "C84266", "0603", "NationStar", "+12V Main DC Power Indicator", "SMT"),
-    "D3": ("Green LED 0603", "C12624", "0603", "KENTO", "+6V_A Servo Channel A Indicator", "SMT"),
-    "D4": ("Green LED 0603", "C12624", "0603", "KENTO", "+6V_B Servo Channel B Indicator", "SMT"),
-    "D5": ("Green LED 0603", "C12624", "0603", "KENTO", "+5V Logic Supply Indicator", "SMT"),
-    "D6": ("Green LED 0603", "C12624", "0603", "KENTO", "+3V3 ESP32-S3 VDD Indicator", "SMT"),
+    "D3": ("Green LED 0603", "C87326", "0603", "NationStar", "+6V_A Servo Channel A Indicator", "SMT"),
+    "D4": ("Green LED 0603", "C87326", "0603", "NationStar", "+6V_B Servo Channel B Indicator", "SMT"),
+    "D5": ("Green LED 0603", "C87326", "0603", "NationStar", "+5V Logic Supply Indicator", "SMT"),
+    "D6": ("Green LED 0603", "C87326", "0603", "NationStar", "+3V3 ESP32-S3 VDD Indicator", "SMT"),
     
     # Tactile Buttons (3x4mm SMD)
-    "SW1": ("TS342A2P", "C398055", "3.5x2.9mm SMD", "SHOU HAN", "Tactile Push Switch (RESET)", "SMT"),
-    "SW2": ("TS342A2P", "C398055", "3.5x2.9mm SMD", "SHOU HAN", "Tactile Push Switch (BOOT GPIO0)", "SMT"),
+    "SW1": ("Tactile Switch 3x4x2", "C26638", "3.5x2.9mm SMD", "SHOU HAN", "Tactile Push Switch (RESET)", "SMT"),
+    "SW2": ("Tactile Switch 3x4x2", "C26638", "3.5x2.9mm SMD", "SHOU HAN", "Tactile Push Switch (BOOT GPIO0)", "SMT"),
     
     # Resistors 0603 1%
     "R11": ("22R 1% 0603", "C23345", "0603", "UNI-ROYAL", "USB D- series damping resistor", "SMT"),
@@ -69,12 +69,12 @@ LCSC_DATABASE = {
     "R8": ("10k 1% 0603", "C25804", "0603", "UNI-ROYAL", "Servo S2_BOT PWM fail-safe pulldown", "SMT"),
     "R10": ("10k 1% 0603", "C25804", "0603", "UNI-ROYAL", "EN / Reset line external pull-up", "SMT"),
     "R16": ("1k 1% 0603", "C21190", "0603", "UNI-ROYAL", "Drop Sensor Col 1 ECHO divider top (1k)", "SMT"),
-    "R17": ("2k 1% 0603", "C21193", "0603", "UNI-ROYAL", "Drop Sensor Col 1 ECHO divider bot (2k)", "SMT"),
+    "R17": ("2k 1% 0603", "C22975", "0603", "UNI-ROYAL", "Drop Sensor Col 1 ECHO divider bot (2k)", "SMT"),
     "R18": ("1k 1% 0603", "C21190", "0603", "UNI-ROYAL", "Drop Sensor Col 2 ECHO divider top (1k)", "SMT"),
-    "R19": ("2k 1% 0603", "C21193", "0603", "UNI-ROYAL", "Drop Sensor Col 2 ECHO divider bot (2k)", "SMT"),
+    "R19": ("2k 1% 0603", "C22975", "0603", "UNI-ROYAL", "Drop Sensor Col 2 ECHO divider bot (2k)", "SMT"),
     "R21": ("4.7k 1% 0603", "C23162", "0603", "UNI-ROYAL", "+12V LED ballast resistor", "SMT"),
-    "R22": ("2.2k 1% 0603", "C21194", "0603", "UNI-ROYAL", "+6V_A LED ballast resistor", "SMT"),
-    "R23": ("2.2k 1% 0603", "C21194", "0603", "UNI-ROYAL", "+6V_B LED ballast resistor", "SMT"),
+    "R22": ("2.2k 1% 0603", "C4190", "0603", "UNI-ROYAL", "+6V_A LED ballast resistor", "SMT"),
+    "R23": ("2.2k 1% 0603", "C4190", "0603", "UNI-ROYAL", "+6V_B LED ballast resistor", "SMT"),
     "R24": ("1.5k 1% 0603", "C22854", "0603", "UNI-ROYAL", "+5V LED ballast resistor", "SMT"),
     "R25": ("1k 1% 0603", "C21190", "0603", "UNI-ROYAL", "+3V3 LED ballast resistor", "SMT"),
     "R26": ("4.7k 1% 0603", "C23162", "0603", "UNI-ROYAL", "I2C SDA pull-up to +3V3", "SMT"),
