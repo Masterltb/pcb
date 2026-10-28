@@ -1,0 +1,89 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-10-29T01:34:06",
+    "ignored_checks": [
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning"
+    ],
+    "kicad_version": "10.0.7",
+    "schematic_parity": [
+        {
+            "description": "Pad net (Net-(J21-VBUS_L)) doesn't match net given by schematic (unconnected-(J21-VBUS_L-PadA4))",
+            "items": [
+                {
+                    "description": "Pad A4 [Net-(J21-VBUS_L)] of J21 on F.Cu",
+                    "pos": {
+                        "x": 147.6,
+                        "y": 192.82
+                    },
+                    "uuid": "0298dfcc-df54-4401-9b80-8f47daa91ee0"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Pad net (Net-(J21-VBUS_R)) doesn't match net given by schematic (unconnected-(J21-VBUS_R-PadA9))",
+            "items": [
+                {
+                    "description": "Pad A9 [Net-(J21-VBUS_R)] of J21 on F.Cu",
+                    "pos": {
+                        "x": 152.4,
+                        "y": 192.82
+                    },
+                    "uuid": "f81d5204-1cd8-48e1-a5c8-d294213941b5"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Pad net (Net-(J21-VBUS_R)) doesn't match net given by schematic (unconnected-(J21-VBUS_R-PadB4))",
+            "items": [
+                {
+                    "description": "Pad B4 [Net-(J21-VBUS_R)] of J21 on F.Cu",
+                    "pos": {
+                        "x": 152.4,
+                        "y": 192.82
+                    },
+                    "uuid": "5d6fba0f-e58a-4e47-8ac5-3945ec7bd6cb"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        },
+        {
+            "description": "Pad net (Net-(J21-VBUS_L)) doesn't match net given by schematic (unconnected-(J21-VBUS_L-PadB9))",
+            "items": [
+                {
+                    "description": "Pad B9 [Net-(J21-VBUS_L)] of J21 on F.Cu",
+                    "pos": {
+                        "x": 147.6,
+                        "y": 192.82
+                    },
+                    "uuid": "af9226ae-14ff-4c91-9ea8-d7016f61b131"
+                }
+            ],
+            "severity": "warning",
+            "type": "net_conflict"
+        }
+    ],
+    "source": "FV-CTRL_RevS3.kicad_pcb",
+    "unconnected_items": [],
+    "violations": []
+}

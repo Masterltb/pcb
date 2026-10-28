@@ -46,7 +46,14 @@ Một thử nghiệm thứ hai trong `reports/rev_s3/work/trial/` chỉ tăng 48
 
 - Thêm đường `+12V` rộng 1,2 mm trên B.Cu từ J2.1 tới J3.1, dài 44 mm, song song với đường 0,5 mm cũ. Điện trở đường mới lý tưởng khoảng 0,018 Ω tại 20 °C (chưa tính nhánh song song).
 - ERC 0 lỗi/0 cảnh báo; DRC 0 violation/0 unconnected; parity vẫn 81 mục. Zone GND B.Cu vẫn là một polygon liên tục sau đổ lại đồng.
-- **Chưa xử lý:** đoạn `+12V` D7.1 → J2.1 vẫn là đường 0,5 mm dài khoảng 29,7 mm, điện trở hình học khoảng 0,029 Ω. Đoạn này có thể mang tổng dòng vào hai buck; nếu đồng thời đạt 5 A, sụt áp lý tưởng khoảng 0,15 V và tổn hao tức thời khoảng 0,73 W, chưa kể via/nhiệt/đường hồi. Phép thử thêm đường trực tiếp qua vùng D7/F1/F2 gây 7 lỗi DRC, nên không áp dụng. Cần bố trí lại riêng cụm này trước khi chốt nguồn.
+- Đoạn `+12V` D7.1 → J2.1 ban đầu rộng 0,5 mm dài khoảng 29,7 mm, điện trở hình học khoảng 0,029 Ω. Đoạn này mang tổng dòng vào hai buck. Với hai đầu ra 6 V × 2,5 A đỉnh, hiệu suất buck giả định 85%, dòng vào 12 V xấp xỉ 2,94 A chưa gồm logic; cần dùng số đo thật để chốt. Phép thử thêm đường trực tiếp qua vùng D7/F1/F2 gây 7 lỗi DRC, nên không áp dụng.
+
+### Thay đổi đã áp dụng: bypass 12 V từ D7 tới J2 và giảm parity
+
+- Thêm đường `+12V` rộng 1,5 mm trên B.Cu đi vòng phía trên J2, nối D7.1 qua hai via xuyên lỗ 1,0/0,5 mm rồi về J2.1. Đường 0,5 mm cũ được giữ song song. Đường mới dài khoảng 62 mm, điện trở đồng lý tưởng khoảng 0,020 Ω tại 20 °C (chưa tính via và nhánh song song). Ở 3 A, sụt áp riêng đường mới khoảng 0,061 V và tổn hao tức thời khoảng 0,18 W; cần đo nhiệt/áp trên mẫu.
+- Bổ sung thư viện định danh cho 65 footprint trên PCB; đánh dấu H1–H4 là footprint chỉ thuộc board; đặt TP1–TP8 ngoài BOM trên schematic để khớp thuộc tính PCB. Các thay đổi này không đổi hình học đồng hoặc net. Parity giảm từ 81 xuống 4 mục.
+- Bốn mục còn lại là pad VBUS chồng nhau ở USB-C J21: schematic đánh dấu không kết nối riêng từng chân, còn hai cặp pad vật lý chồng lên nhau phải cùng net trên PCB. Thử xoá net tại pad làm DRC phát sinh lỗi clearance; giữ cấu hình hiện tại, cần kiểm tra thủ công footprint USB-C và ghi ngoại lệ khi phát hành.
+- Sau thay đổi: ERC 0 lỗi/0 cảnh báo; DRC 0 violation/0 unconnected; zone GND B.Cu vẫn một polygon liên tục. Chưa thử tải, nhiệt hoặc DFM xưởng; chưa phát hành Gerber mới.
 
 1. Xác định dòng liên tục/đỉnh của mỗi rail bằng thông số servo và phép đo; lập budget sụt áp/nhiệt cho 12 V, 6 V, GND, via, fuse/PTC và connector.
 2. Sửa layout nguồn/return theo budget; giữ hai rail 6 V độc lập. Sau mỗi sửa, chạy ERC/DRC/parity và xem lại thủ công.
