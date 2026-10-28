@@ -26,6 +26,7 @@ Nguồn công tắc: https://components.omron.com/sites/default/files/datasheet_
 ## Ảnh hưởng đến board hiện tại
 
 - Hai cảm biến tổng cộng (mỗi cột một) có thể dùng J11/J12 nếu là loại 5 V, tín hiệu số 0–5 V và dòng tiêu thụ nằm trong ngân sách nguồn 5 V; pin 1 = +5 V, pin 2 = TRIG, pin 3 = SENSE, pin 4 = GND. Đối chiếu đúng model trước khi đấu.
+- Cặp IR break-beam 5 V là phương án thử rẻ nếu tia cắt qua trái cây/nhãn hoặc gờ tô, nhưng tô PET/PP trong suốt có thể không chặn tia. Ví dụ Adafruit 2168 tầm danh định 50 cm, ngõ thu là **open collector**; hướng dẫn của hãng cần điện trở kéo lên. **Không dùng mặc định pull-up 10 kΩ với J11/J12 hiện tại:** R16/R18 = 1 kΩ nối tiếp và R17/R19 = 2 kΩ kéo xuống có thể giữ mức cao dưới ngưỡng đọc. Phải đo mức logic ở chân GPIO và thiết kế bộ đệm/điện trở phù hợp hoặc chọn module có ngõ ra push-pull 0–5 V đã xác minh. https://www.adafruit.com/product/2168 ; https://learn.adafruit.com/ir-breakbeam-sensors/arduino
 - Bốn cảm biến tổng cộng cần **hai ngõ vào độc lập bổ sung** và dây/đầu nối thích hợp. Có thể xem xét module I²C ở J9 hoặc sửa Rev-S3 sau khi duyệt GPIO/kiến trúc; không nối hai ngõ ra chung vào một chân. Cảm biến công nghiệp 12–24 V NPN/PNP cần interface riêng, không đưa điện áp đó vào chân J11/J12.
 - Trước khi chốt linh kiện, đo khoảng cách ngang thực giữa hai vách ống, cao độ cơ cấu nhả/cửa ra, thời gian rơi tối thiểu/tối đa của tô thật và điều kiện ánh sáng/bẩn. 80 × 60 cm của tủ không tự quyết định tầm quét cảm biến.
 
