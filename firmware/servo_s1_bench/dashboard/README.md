@@ -1,23 +1,24 @@
-# FreshVend bench dashboard
+# Dashboard bàn thử FreshVend
 
-Dashboard cục bộ cho firmware ESP32-S3 S1_TOP tại `../`. Nó dùng MQTT qua một
-Python bridge; broker password và CA certificate chỉ nằm ở backend. Đây là công
-cụ thử bench, chưa có tài khoản/role nhiều người dùng hay audit service production.
+Dashboard chạy cục bộ cho firmware ESP32-S3 S1_TOP tại `../`. Dashboard kết nối MQTT
+qua cầu nối Python; mật khẩu broker và chứng chỉ CA chỉ lưu ở backend. Đây là công
+cụ thử nghiệm, chưa có hệ thống nhiều tài khoản/phân quyền hoặc nhật ký kiểm toán cho
+môi trường vận hành.
 
 ## Broker setup
 
 Tạo hai tài khoản TLS với ACL riêng:
 
-| Account | Publish | Subscribe |
+| Tài khoản | Được publish | Được subscribe |
 |---|---|---|
 | Device (`MQTT_USERNAME` trong `secrets.h`) | `freshvend/rev-s3-s1-bench-01/admin/ack`, `.../status`, `.../availability` | `freshvend/rev-s3-s1-bench-01/admin/command` |
 | Dashboard backend | `freshvend/rev-s3-s1-bench-01/admin/command` | `freshvend/rev-s3-s1-bench-01/admin/ack`, `.../status`, `.../availability` |
 
-Cho phép retained status/availability; lệnh admin phải được broker gửi với
-`retain=false`. Device kiểm tra `device_id`, thời gian phát lệnh, ID lặp và xung
-servo 1000–2000 µs trước khi thao tác.
+Cho phép lưu retained cho trạng thái và availability; lệnh quản trị phải được gửi
+với `retain=false`. Board kiểm tra `device_id`, thời điểm phát lệnh, ID trùng và
+xung servo 1000–2000 µs trước khi thực hiện.
 
-## Run on Windows PowerShell
+## Chạy trên Windows PowerShell
 
 ```powershell
 cd F:\project\repo-github\pcb\pcb\firmware\servo_s1_bench\dashboard
@@ -31,20 +32,19 @@ $env:FV_ADMIN_TOKEN = "set-a-random-token-of-at-least-24-characters"
 python server.py
 ```
 
-Open `http://127.0.0.1:8787` and enter the admin token. The local HTTP server binds
-to loopback by default. To use the dashboard from another machine, place it behind
-an HTTPS reverse proxy and keep broker credentials on this backend; do not expose
-the plain HTTP listener or place broker credentials in browser code.
+Mở `http://127.0.0.1:8787` rồi nhập mã quản trị. Máy chủ HTTP chỉ lắng nghe loopback
+theo mặc định. Nếu cần truy cập từ máy khác, đặt dashboard sau reverse proxy dùng
+HTTPS; giữ thông tin broker trong backend, không đưa thông tin này vào mã trình duyệt
+và không mở trực tiếp HTTP ra mạng.
 
-## Dashboard actions
+## Các chức năng
 
-- **Refresh status** asks the device for current bench state.
-- **Set pulse / Center / PWM on / PWM off** control only GPIO16 on the bench fixture.
-- **Restart board** requires a reason and browser confirmation; it disables PWM,
-  restarts the CPU, then waits for the device's offline/online and retained status.
-- Command rows show the MQTT command ID and device ACK (`done`, `accepted`,
-  `restarting`, `duplicate`, or `rejected`). Sending a command is not proof of
-  hardware recovery; check online status and the reset reason after restart.
+- **Làm mới trạng thái** yêu cầu board gửi trạng thái bàn thử hiện tại.
+- **Đặt xung / Về giữa / Bật PWM / Tắt PWM** chỉ điều khiển GPIO16 trên bàn thử.
+- **Khởi động lại board** yêu cầu nhập lý do và xác nhận; firmware tắt PWM, khởi động
+  lại CPU, rồi dashboard chờ board ngoại tuyến/trực tuyến và trạng thái retained mới.
+- Lịch sử hiển thị ID lệnh MQTT và ACK từ board. Gửi lệnh thành công chưa có nghĩa
+  phần cứng đã phục hồi; hãy kiểm tra trạng thái online và mã nguyên nhân reset.
 
-For hardware tests, secure the mechanism or disconnect the servo linkage first.
-Firmware starts by applying its existing 1500 µs center pulse after every boot.
+Trước khi thử phần cứng, hãy cố định cơ cấu hoặc tháo liên kết servo. Mỗi lần boot,
+firmware hiện phát xung giữa 1500 µs như hành vi mặc định.

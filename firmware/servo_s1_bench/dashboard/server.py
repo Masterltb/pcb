@@ -116,7 +116,7 @@ class Bridge:
         if info.rc != mqtt.MQTT_ERR_SUCCESS:
             with self.lock:
                 entry["state"] = "failed"
-                entry["detail"] = "MQTT broker is not connected; command was not queued"
+                entry["detail"] = "Chưa kết nối được MQTT broker; lệnh chưa được gửi"
             raise RuntimeError(entry["detail"])
         return entry
 
@@ -148,33 +148,33 @@ def make_handler(bridge: Bridge):
                 self.respond(200, (WEB_DIR / "app.js").read_bytes(), "text/javascript; charset=utf-8")
             elif path == "/api/snapshot":
                 if not self.authorized():
-                    self.respond(401, {"error": "Admin token required"})
+                    self.respond(401, {"error": "Cần mã quản trị"})
                     return
                 self.respond(200, bridge.snapshot())
             else:
-                self.respond(404, {"error": "Not found"})
+                self.respond(404, {"error": "Không tìm thấy đường dẫn"})
 
         def do_POST(self):
             if urlparse(self.path).path != "/api/command":
-                self.respond(404, {"error": "Not found"})
+                self.respond(404, {"error": "Không tìm thấy đường dẫn"})
                 return
             if not self.authorized():
-                self.respond(401, {"error": "Admin token required"})
+                self.respond(401, {"error": "Cần mã quản trị"})
                 return
             try:
                 size = int(self.headers.get("Content-Length", "0"))
                 if not 1 <= size <= 2048:
-                    raise ValueError("Invalid request size")
+                    raise ValueError("Kích thước yêu cầu không hợp lệ")
                 request = json.loads(self.rfile.read(size))
                 action = request.get("action")
                 reason = str(request.get("reason", "")).strip()[:160]
                 if action not in {"restart", "status", "servo.center", "servo.off", "servo.on", "servo.set"}:
-                    raise ValueError("Unsupported command")
+                    raise ValueError("Lệnh không được hỗ trợ")
                 if action == "restart" and len(reason) < 3:
-                    raise ValueError("Enter a reason for the restart")
+                    raise ValueError("Hãy nhập lý do khởi động lại")
                 pulse = request.get("pulse_us")
                 if action == "servo.set" and (type(pulse) is not int or not 1000 <= pulse <= 2000):
-                    raise ValueError("Pulse must be an integer from 1000 to 2000 microseconds")
+                    raise ValueError("Độ rộng xung phải là số nguyên từ 1000 đến 2000 micro giây")
                 result = bridge.publish(action, reason, pulse)
                 self.respond(202, result)
             except (ValueError, TypeError, RuntimeError, json.JSONDecodeError) as error:
@@ -189,13 +189,13 @@ def make_handler(bridge: Bridge):
 
 def main() -> None:
     if len(ADMIN_TOKEN) < 24:
-        raise SystemExit("Set FV_ADMIN_TOKEN to a random value of at least 24 characters")
+        raise SystemExit("Hãy đặt FV_ADMIN_TOKEN thành mã ngẫu nhiên dài ít nhất 24 ký tự")
     bridge = Bridge()
     bridge.start()
     host = os.getenv("FV_DASHBOARD_HOST", "127.0.0.1")
     port = int(os.getenv("FV_DASHBOARD_PORT", "8787"))
     server = ThreadingHTTPServer((host, port), make_handler(bridge))
-    print(f"FreshVend bench dashboard: http://{host}:{port} (device {DEVICE_ID})", flush=True)
+    print(f"Dashboard bàn thử FreshVend: http://{host}:{port} (thiết bị {DEVICE_ID})", flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:

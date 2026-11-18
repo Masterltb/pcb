@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="dark">
-  <title>FreshVend · Bench dashboard</title>
+  <title>FreshVend · Bảng điều khiển thử nghiệm</title>
   <style>
     :root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:#e8edf3;background:#0b1017;font-synthesis:none;font-optical-sizing:auto}
     *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 12% -10%,#1c3441 0,transparent 45%),#0b1017}
@@ -25,34 +25,34 @@
 <body>
   <div class="auth" id="auth-overlay">
     <form class="authbox" id="auth-form">
-      <h2>Admin access</h2>
-      <p>Enter the local dashboard token configured as <code>FV_ADMIN_TOKEN</code>.</p>
-      <label for="admin-token">Admin token</label><input id="admin-token" type="password" autocomplete="current-password" required>
+      <h2>Đăng nhập quản trị</h2>
+      <p>Nhập mã quản trị của dashboard đã đặt trong biến <code>FV_ADMIN_TOKEN</code>.</p>
+      <label for="admin-token">Mã quản trị</label><input id="admin-token" type="password" autocomplete="current-password" required>
       <div class="autherror" id="auth-error"></div>
-      <button class="btn primary" type="submit">Connect dashboard</button>
+      <button class="btn primary" type="submit">Đăng nhập</button>
     </form>
   </div>
   <main class="shell">
     <header class="top">
-      <div class="brand"><div class="mark">F</div><div><h1>Bench control</h1><div class="sub">Rev-S3 · S1_TOP · MQTT test dashboard</div></div></div>
-      <div class="row"><span class="tag" id="device-tag">rev-s3-s1-bench-01</span><button class="btn" id="logout">Clear admin token</button></div>
+      <div class="brand"><div class="mark">F</div><div><h1>Bảng điều khiển thử nghiệm</h1><div class="sub">Rev-S3 · S1_TOP · Kết nối MQTT</div></div></div>
+      <div class="row"><span class="tag" id="device-tag">rev-s3-s1-bench-01</span><button class="btn" id="logout">Đăng xuất</button></div>
     </header>
-    <div class="warning"><strong>Bench fixture only.</strong> Servo controls move the mechanism. Test unloaded or mechanically secured. CPU restart disables PWM, then firmware boot reapplies the 1500 µs center pulse. This dashboard does not control a production vending machine.</div>
+    <div class="warning"><strong>Chỉ dùng trên bàn thử.</strong> Điều khiển servo sẽ làm cơ cấu chuyển động. Hãy tháo tải hoặc cố định cơ cấu an toàn. Khi khởi động lại CPU, PWM bị tắt; sau đó firmware sẽ phát lại xung giữa 1500 µs lúc khởi động. Dashboard này không điều khiển máy bán hàng đang vận hành.</div>
     <section class="grid">
-      <article class="card"><h2>Device</h2><div class="value" id="availability"><i class="dot"></i>Unknown</div><div class="muted" id="device-meta">Waiting for retained MQTT status</div></article>
-      <article class="card"><h2>MQTT bridge</h2><div class="value" id="broker">Connecting</div><div class="muted">TLS connection · broker credentials stay on backend</div></article>
-      <article class="card"><h2>Servo output · GPIO16</h2><div class="value" id="pulse">— µs</div><div class="muted" id="output">Output state unknown</div></article>
+      <article class="card"><h2>Thiết bị</h2><div class="value" id="availability"><i class="dot"></i>Chưa rõ</div><div class="muted" id="device-meta">Đang chờ trạng thái MQTT từ board</div></article>
+      <article class="card"><h2>Kết nối MQTT</h2><div class="value" id="broker">Đang kết nối</div><div class="muted">Kết nối TLS · thông tin broker chỉ lưu ở backend</div></article>
+      <article class="card"><h2>Ngõ ra servo · GPIO16</h2><div class="value" id="pulse">— µs</div><div class="muted" id="output">Chưa rõ trạng thái PWM</div></article>
 
-      <article class="card wide"><h2>Servo bench controls</h2>
-        <div class="formrow"><div><label for="pulse-input">Pulse width (1000–2000 µs)</label><input class="pulse" id="pulse-input" type="number" min="1000" max="2000" step="10" value="1500"></div><button class="btn primary" id="set-pulse">Set pulse</button><button class="btn" data-action="servo.center">Center</button><button class="btn" data-action="servo.on">PWM on</button><button class="btn" data-action="servo.off">PWM off</button></div>
-        <div class="muted">Pulse controls are only for the single S1_TOP bench servo. Stay within the tested mechanical travel.</div>
+      <article class="card wide"><h2>Điều khiển servo bàn thử</h2>
+        <div class="formrow"><div><label for="pulse-input">Độ rộng xung (1000–2000 µs)</label><input class="pulse" id="pulse-input" type="number" min="1000" max="2000" step="10" value="1500"></div><button class="btn primary" id="set-pulse">Đặt xung</button><button class="btn" data-action="servo.center">Về giữa</button><button class="btn" data-action="servo.on">Bật PWM</button><button class="btn" data-action="servo.off">Tắt PWM</button></div>
+        <div class="muted">Các nút chỉ điều khiển servo S1_TOP trên bàn thử qua GPIO16. Không vượt quá hành trình cơ khí đã kiểm tra.</div>
       </article>
-      <article class="card"><h2>Device actions</h2><div class="controls"><button class="btn" data-action="status">Refresh status</button></div><div class="muted" id="last-update">No device update yet</div></article>
+      <article class="card"><h2>Thao tác thiết bị</h2><div class="controls"><button class="btn" data-action="status">Làm mới trạng thái</button></div><div class="muted" id="last-update">Chưa có cập nhật từ board</div></article>
 
-      <article class="card full"><h2>Admin CPU restart</h2><div class="formrow"><div class="reason"><label for="reason">Reason for audit</label><input id="reason" maxlength="160" placeholder="Example: bench firmware recovery test"></div><button class="btn danger" id="restart">Restart board</button></div><div class="muted">Requires confirmation. The backend sends a non-retained MQTT command with a unique ID and current timestamp.</div></article>
-      <article class="card full"><h2>Command activity</h2><div class="log" id="log"><div class="empty">No commands yet.</div></div></article>
+      <article class="card full"><h2>Khởi động lại CPU từ xa</h2><div class="formrow"><div class="reason"><label for="reason">Lý do khởi động lại</label><input id="reason" maxlength="160" placeholder="Ví dụ: thử khôi phục firmware bàn thử"></div><button class="btn danger" id="restart">Khởi động lại board</button></div><div class="muted">Dashboard sẽ yêu cầu xác nhận, sau đó gửi lệnh MQTT không lưu retained với mã lệnh và thời gian phát duy nhất.</div></article>
+      <article class="card full"><h2>Lịch sử lệnh</h2><div class="log" id="log"><div class="empty">Chưa có lệnh nào.</div></div></article>
     </section>
-    <div class="foot">Admin access is for bench testing. Use a TLS reverse proxy before exposing the dashboard beyond localhost.</div>
+    <div class="foot">Chỉ dùng mã quản trị cho thử nghiệm. Nếu truy cập dashboard ngoài máy cục bộ, hãy đặt sau reverse proxy dùng HTTPS/TLS.</div>
   </main>
   <script src="/app.js" defer></script>
 </body>
