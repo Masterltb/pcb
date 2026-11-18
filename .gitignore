@@ -50,3 +50,5 @@ reports/reva2/work/
 reports/local/
 scratch/
 **/.history/
+firmware/servo_s1_bench/secrets.h
+**/.pio/

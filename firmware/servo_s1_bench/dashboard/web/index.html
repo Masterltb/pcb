@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>FreshVend · Bench dashboard</title>
+  <style>
+    :root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color:#e8edf3;background:#0b1017;font-synthesis:none;font-optical-sizing:auto}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 12% -10%,#1c3441 0,transparent 45%),#0b1017}
+    .shell{max-width:1120px;margin:auto;padding:34px 24px 60px}.top{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:28px}
+    .brand{display:flex;align-items:center;gap:14px}.mark{width:42px;height:42px;border-radius:13px;background:#88e0b2;color:#08150e;display:grid;place-items:center;font-weight:900;font-size:20px}
+    h1{font-size:23px;margin:0;letter-spacing:-.04em}.sub{color:#8997a7;margin-top:5px;font-size:13px}.tag{font:11px ui-monospace,monospace;color:#a7b5c4;border:1px solid #293541;border-radius:999px;padding:7px 10px;white-space:nowrap}
+    .warning{border:1px solid #664d20;background:#211a0c;color:#e7c782;border-radius:12px;padding:13px 16px;font-size:13px;line-height:1.5;margin-bottom:18px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:#121a23;border:1px solid #202d39;border-radius:16px;padding:18px}.card h2{font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:#91a0af;margin:0 0 16px}
+    .value{font-size:23px;font-weight:650;letter-spacing:-.03em}.muted{font-size:12px;color:#8190a0;margin-top:7px}.dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#65717c;margin-right:8px}.dot.online{background:#6fe2a7;box-shadow:0 0 12px #6fe26666}.dot.offline{background:#ff7777}
+    .wide{grid-column:span 2}.full{grid-column:1/-1}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.controls{display:flex;gap:9px;flex-wrap:wrap}.formrow{display:flex;gap:10px;align-items:end;flex-wrap:wrap;margin-bottom:14px}
+    label{font-size:12px;color:#9ba9b8;display:block;margin-bottom:7px}input{font:inherit;color:#e8edf3;background:#0c1219;border:1px solid #2b3946;border-radius:9px;padding:10px 12px;min-height:40px}input:focus{outline:2px solid #68c896}
+    .pulse{width:140px}.reason{flex:1;min-width:220px}.btn{border:1px solid #314150;border-radius:9px;background:#1a2631;color:#e6edf4;padding:10px 13px;font:600 12px/1.2 Inter,system-ui,sans-serif;min-height:40px;cursor:pointer}.btn:hover{background:#243442}.btn.primary{background:#8ce2b5;border-color:#8ce2b5;color:#07140c}.btn.danger{background:#392020;border-color:#754040;color:#ffb5ae}.btn:disabled{opacity:.45;cursor:not-allowed}
+    .log{display:grid;gap:8px;max-height:260px;overflow:auto}.entry{display:flex;justify-content:space-between;gap:14px;padding:10px 12px;border:1px solid #202d39;border-radius:10px;background:#0e151d;font-size:12px}.entry strong{font-family:ui-monospace,monospace}.entry span{color:#9aa8b5}.empty{color:#72808d;font-size:13px;padding:8px 0}.foot{color:#71808e;font-size:11px;margin-top:16px}
+    .auth{position:fixed;inset:0;background:#080d13ee;display:grid;place-items:center;padding:20px;z-index:5}.auth[hidden]{display:none}.authbox{width:min(420px,100%);background:#121a23;border:1px solid #2a3946;border-radius:18px;padding:24px;box-shadow:0 24px 80px #0009}.authbox h2{margin:0 0 8px}.authbox p{margin:0 0 18px;color:#91a0af;font-size:13px;line-height:1.5}.authbox input{width:100%;margin-bottom:12px}.autherror{color:#ff9a91;font-size:12px;min-height:18px;margin:0 0 9px}
+    @media(max-width:760px){.shell{padding:22px 15px}.grid{grid-template-columns:1fr}.wide,.full{grid-column:auto}.top{align-items:flex-start}.tag{display:none}}
+  </style>
+</head>
+<body>
+  <div class="auth" id="auth-overlay">
+    <form class="authbox" id="auth-form">
+      <h2>Admin access</h2>
+      <p>Enter the local dashboard token configured as <code>FV_ADMIN_TOKEN</code>.</p>
+      <label for="admin-token">Admin token</label><input id="admin-token" type="password" autocomplete="current-password" required>
+      <div class="autherror" id="auth-error"></div>
+      <button class="btn primary" type="submit">Connect dashboard</button>
+    </form>
+  </div>
+  <main class="shell">
+    <header class="top">
+      <div class="brand"><div class="mark">F</div><div><h1>Bench control</h1><div class="sub">Rev-S3 · S1_TOP · MQTT test dashboard</div></div></div>
+      <div class="row"><span class="tag" id="device-tag">rev-s3-s1-bench-01</span><button class="btn" id="logout">Clear admin token</button></div>
+    </header>
+    <div class="warning"><strong>Bench fixture only.</strong> Servo controls move the mechanism. Test unloaded or mechanically secured. CPU restart disables PWM, then firmware boot reapplies the 1500 µs center pulse. This dashboard does not control a production vending machine.</div>
+    <section class="grid">
+      <article class="card"><h2>Device</h2><div class="value" id="availability"><i class="dot"></i>Unknown</div><div class="muted" id="device-meta">Waiting for retained MQTT status</div></article>
+      <article class="card"><h2>MQTT bridge</h2><div class="value" id="broker">Connecting</div><div class="muted">TLS connection · broker credentials stay on backend</div></article>
+      <article class="card"><h2>Servo output · GPIO16</h2><div class="value" id="pulse">— µs</div><div class="muted" id="output">Output state unknown</div></article>
+
+      <article class="card wide"><h2>Servo bench controls</h2>
+        <div class="formrow"><div><label for="pulse-input">Pulse width (1000–2000 µs)</label><input class="pulse" id="pulse-input" type="number" min="1000" max="2000" step="10" value="1500"></div><button class="btn primary" id="set-pulse">Set pulse</button><button class="btn" data-action="servo.center">Center</button><button class="btn" data-action="servo.on">PWM on</button><button class="btn" data-action="servo.off">PWM off</button></div>
+        <div class="muted">Pulse controls are only for the single S1_TOP bench servo. Stay within the tested mechanical travel.</div>
+      </article>
+      <article class="card"><h2>Device actions</h2><div class="controls"><button class="btn" data-action="status">Refresh status</button></div><div class="muted" id="last-update">No device update yet</div></article>
+
+      <article class="card full"><h2>Admin CPU restart</h2><div class="formrow"><div class="reason"><label for="reason">Reason for audit</label><input id="reason" maxlength="160" placeholder="Example: bench firmware recovery test"></div><button class="btn danger" id="restart">Restart board</button></div><div class="muted">Requires confirmation. The backend sends a non-retained MQTT command with a unique ID and current timestamp.</div></article>
+      <article class="card full"><h2>Command activity</h2><div class="log" id="log"><div class="empty">No commands yet.</div></div></article>
+    </section>
+    <div class="foot">Admin access is for bench testing. Use a TLS reverse proxy before exposing the dashboard beyond localhost.</div>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>
