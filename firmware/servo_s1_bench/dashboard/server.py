@@ -33,15 +33,18 @@ class Bridge:
         self.broker = "connecting"
         self.updated_at: str | None = None
         self.commands: list[dict] = []
+        self.tls_enabled = os.getenv("FV_MQTT_TLS", "1") == "1"
         host = os.environ["FV_MQTT_HOST"]
         port = int(os.getenv("FV_MQTT_PORT", "8883"))
-        username = os.environ["FV_MQTT_USERNAME"]
-        password = os.environ["FV_MQTT_PASSWORD"]
-        ca_file = os.environ["FV_MQTT_CA"]
+        username = os.getenv("FV_MQTT_USERNAME", "")
+        password = os.getenv("FV_MQTT_PASSWORD", "")
         self.client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2,
                                   client_id=f"fv-admin-dashboard-{uuid4().hex[:10]}")
-        self.client.username_pw_set(username, password)
-        self.client.tls_set(ca_certs=ca_file)
+        if username:
+            self.client.username_pw_set(username, password)
+        if self.tls_enabled:
+            ca_file = os.environ["FV_MQTT_CA"]
+            self.client.tls_set(ca_certs=ca_file)
         self.client.reconnect_delay_set(min_delay=1, max_delay=30)
         self.client.will_set(AVAILABILITY_TOPIC, "offline", qos=1, retain=True)
         self.client.on_connect = self.on_connect
@@ -81,7 +84,10 @@ class Bridge:
                     match = next((item for item in self.commands
                                   if item.get("command_id") == ack.get("command_id")), None)
                     if match:
-                        match.update(ack)
+                        ack["action"] = match.get("action", "")
+                        ack["reason"] = match.get("reason", "")
+                        ack["created_at"] = datetime.now(timezone.utc).isoformat()
+                        self.commands.insert(0, ack)
                     else:
                         self.commands.insert(0, ack)
                     self.commands = self.commands[:50]
@@ -97,6 +103,7 @@ class Bridge:
     def snapshot(self) -> dict:
         with self.lock:
             return {"device_id": DEVICE_ID, "broker": self.broker,
+                    "tls_enabled": self.tls_enabled,
                     "availability": self.availability, "status": self.status,
                     "updated_at": self.updated_at, "commands": list(self.commands)}
 

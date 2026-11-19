@@ -38,6 +38,18 @@ function brokerLabel(value) {
   return value;
 }
 
+function resetReasonLabel(value) {
+  const names = {
+    0: "Không xác định", 1: "Cấp nguồn", 2: "Reset ngoài",
+    3: "Reset phần mềm", 4: "Lỗi panic", 5: "Watchdog ngắt",
+    6: "Watchdog tác vụ", 7: "Watchdog", 8: "Thoát deep sleep",
+    9: "Brownout / sụt áp", 10: "Reset SDIO",
+  };
+  if (value === "power_on") return "Cấp nguồn";
+  if (value === "software_restart") return "Reset phần mềm";
+  return names[value] || `Mã ${value}`;
+}
+
 async function api(path, options = {}) {
   const response = await fetch(path, {
     ...options,
@@ -91,6 +103,9 @@ async function refresh() {
     const snapshot = await api("/api/snapshot");
     $("device-tag").textContent = snapshot.device_id;
     $("broker").textContent = brokerLabel(snapshot.broker);
+    $("broker-meta").textContent = snapshot.tls_enabled
+      ? "Kết nối TLS · thông tin broker chỉ lưu ở backend"
+      : "MQTT nội bộ trong mạng Docker demo · không mở cổng ra máy chủ";
     const online = snapshot.availability === "online";
     const availabilityName = { online: "Đang hoạt động", offline: "Ngoại tuyến", unknown: "Chưa rõ" }[snapshot.availability] || snapshot.availability;
     $("availability").replaceChildren();
@@ -98,8 +113,8 @@ async function refresh() {
     $("availability").append(dot, document.createTextNode(availabilityName));
     const status = snapshot.status || {};
     const ip = status.ip ? ` · ${status.ip}` : "";
-    const firmware = status.firmware ? `Firmware ${status.firmware}` : "Đang chờ trạng thái MQTT từ board";
-    const reset = status.reset_reason !== undefined ? ` · mã nguyên nhân reset ${status.reset_reason}` : "";
+    const firmware = status.firmware ? (status.firmware.startsWith("demo-simulator") ? "Thiết bị mô phỏng" : `Firmware ${status.firmware}`) : "Đang chờ trạng thái MQTT từ board";
+    const reset = status.reset_reason !== undefined ? ` · nguyên nhân khởi động: ${resetReasonLabel(status.reset_reason)}` : "";
     $("device-meta").textContent = `${firmware}${ip}${reset}`;
     $("pulse").textContent = status.pulse_us === undefined ? "— µs" : `${status.pulse_us} µs`;
     $("output").textContent = status.output_enabled === undefined ? "Chưa rõ trạng thái PWM" : `PWM ${status.output_enabled ? "đang bật" : "đã tắt"}`;

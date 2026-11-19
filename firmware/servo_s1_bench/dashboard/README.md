@@ -5,6 +5,44 @@ qua cầu nối Python; mật khẩu broker và chứng chỉ CA chỉ lưu ở 
 cụ thử nghiệm, chưa có hệ thống nhiều tài khoản/phân quyền hoặc nhật ký kiểm toán cho
 môi trường vận hành.
 
+## Chạy demo đầy đủ không cần board
+
+Cần Docker Desktop đang chạy. Demo gồm Mosquitto, dashboard và một thiết bị ESP32
+mô phỏng. Broker chỉ nằm trong mạng Docker, không mở cổng MQTT ra máy chủ; dashboard
+chỉ mở tại `127.0.0.1`.
+
+```powershell
+cd F:\project\repo-github\pcb\pcb\firmware\servo_s1_bench\dashboard
+docker compose -f compose.demo.yaml up --build -d
+docker compose -f compose.demo.yaml logs -f
+```
+
+Mở `http://127.0.0.1:8787`, nhập mã demo mặc định
+`freshvend-demo-admin-token-change-me`. Có thể đặt mã riêng trước khi chạy bằng
+`$env:FV_ADMIN_TOKEN = "mã-ngẫu-nhiên-dài-hơn-24-ký-tự"`.
+
+Thử theo thứ tự:
+
+1. Chờ thiết bị báo **Đang hoạt động** và trạng thái hiện **Thiết bị mô phỏng**.
+2. Thử **Đặt xung** với `1500`, **Tắt PWM**, rồi **Bật PWM**; lịch sử phải nhận ACK.
+3. Nhập lý do, nhấn **Khởi động lại board**, rồi xác nhận.
+4. Kỳ vọng lịch sử hiện **Đã nhận lệnh** rồi **Đang khởi động lại**; trạng thái thoáng
+   chuyển ngoại tuyến, sau đó trực tuyến lại. Nguyên nhân khởi động hiển thị **Reset
+   phần mềm**, xung trở về `1500 µs`.
+
+Lệnh trong demo chỉ đổi trạng thái phần mềm; không điều khiển servo vật lý. Dừng demo:
+
+```powershell
+docker compose -f compose.demo.yaml down
+```
+
+## Chuyển sang board thật
+
+Tắt demo trước để simulator không chiếm cùng `device_id`. Nạp firmware bench sau khi
+cấu hình `secrets.h`, rồi chạy dashboard backend theo phần bên dưới với broker TLS
+thật, ACL giới hạn theo topic và tài khoản riêng. Board phải truy cập được broker
+qua mạng Wi-Fi. Dashboard demo Docker không mở broker cho board thật.
+
 ## Broker setup
 
 Tạo hai tài khoản TLS với ACL riêng:
