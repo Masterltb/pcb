@@ -43,6 +43,31 @@ cấu hình `secrets.h`, rồi chạy dashboard backend theo phần bên dưới
 thật, ACL giới hạn theo topic và tài khoản riêng. Board phải truy cập được broker
 qua mạng Wi-Fi. Dashboard demo Docker không mở broker cho board thật.
 
+### Dựng broker TLS cục bộ trên PC
+
+Nếu chưa có broker, máy tính có thể chạy broker TLS riêng trong Docker. ESP32 và PC
+cần cùng mạng LAN; ESP32 cần Wi-Fi 2,4 GHz. Broker chỉ bind vào IPv4 LAN của PC,
+dùng tài khoản và ACL tách riêng cho firmware/dashboard.
+
+```powershell
+cd F:\project\repo-github\pcb\pcb\firmware\servo_s1_bench\dashboard
+python -m pip install -r requirements-setup.txt
+python prepare_hardware_demo.py
+```
+
+Script hỏi SSID và mật khẩu Wi-Fi trong terminal (mật khẩu không hiện khi gõ), tự tạo
+CA TLS, tài khoản broker, ACL và file `secrets.h` bị Git bỏ qua. Không gửi mật khẩu
+vào chat. Sau đó dừng simulator và chạy broker TLS/dashboard:
+
+```powershell
+docker compose -f compose.demo.yaml down
+docker compose --env-file .env.hardware -f compose.hardware.yaml up --build -d
+```
+
+Mã dashboard được lưu cục bộ trong `admin-token.txt`. Nếu Windows Firewall chặn board,
+chỉ cho phép TCP 8883 từ mạng Private/LAN; không mở profile Public. Broker không có
+cổng MQTT không mã hóa.
+
 Trước khi nạp, tháo tải servo hoặc cố định cơ cấu an toàn: firmware phát xung giữa
 1500 µs ở GPIO16 mỗi lần boot, kể cả sau reset từ xa. Không dùng firmware một-servo
 này cho máy bán hàng đang vận hành.
@@ -75,6 +100,12 @@ này cho máy bán hàng đang vận hành.
 4. Mở `http://127.0.0.1:8787`, đăng nhập mã quản trị, chờ board báo **Đang hoạt
    động**, rồi mới thử lệnh reset. Nếu board không online, xem Serial Monitor ở
    115200 baud và kiểm tra Wi-Fi/NTP/TLS/broker trước; không gửi lệnh retained.
+
+Khi kết thúc thử board thật:
+
+```powershell
+docker compose --env-file .env.hardware -f compose.hardware.yaml down
+```
 
 ## Broker setup
 

@@ -1,0 +1,36 @@
+name: freshvend-board-test
+services:
+  mqtt:
+    image: eclipse-mosquitto:2
+    command: ["mosquitto", "-c", "/mosquitto/config/mosquitto.conf"]
+    volumes:
+      - ./hardware/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./.local-hardware:/certs:ro
+    ports:
+      - "${FV_BROKER_BIND_IP}:8883:8883"
+    networks: [hardware]
+
+  dashboard:
+    build: .
+    command: ["python", "server.py"]
+    environment:
+      FV_MQTT_HOST: mqtt
+      FV_MQTT_PORT: "8883"
+      FV_MQTT_TLS: "1"
+      FV_MQTT_CA: /certs/ca.crt
+      FV_MQTT_USERNAME: fv-dashboard
+      FV_MQTT_PASSWORD: ${FV_DASHBOARD_MQTT_PASSWORD:?Run prepare_hardware_demo.py first}
+      FV_DEVICE_ID: rev-s3-s1-bench-01
+      FV_ADMIN_TOKEN: ${FV_ADMIN_TOKEN:?Run prepare_hardware_demo.py first}
+      FV_DASHBOARD_HOST: 0.0.0.0
+      FV_DASHBOARD_PORT: "8787"
+    volumes:
+      - ./.local-hardware/ca.crt:/certs/ca.crt:ro
+    ports:
+      - "127.0.0.1:8787:8787"
+    depends_on: [mqtt]
+    networks: [hardware]
+
+networks:
+  hardware:
+    driver: bridge

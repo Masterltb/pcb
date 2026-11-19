@@ -52,3 +52,6 @@ scratch/
 **/.history/
 firmware/servo_s1_bench/secrets.h
 **/.pio/
+firmware/servo_s1_bench/dashboard/.local-hardware/
+firmware/servo_s1_bench/dashboard/.env.hardware
+firmware/servo_s1_bench/dashboard/admin-token.txt
