@@ -43,6 +43,39 @@ cấu hình `secrets.h`, rồi chạy dashboard backend theo phần bên dưới
 thật, ACL giới hạn theo topic và tài khoản riêng. Board phải truy cập được broker
 qua mạng Wi-Fi. Dashboard demo Docker không mở broker cho board thật.
 
+Trước khi nạp, tháo tải servo hoặc cố định cơ cấu an toàn: firmware phát xung giữa
+1500 µs ở GPIO16 mỗi lần boot, kể cả sau reset từ xa. Không dùng firmware một-servo
+này cho máy bán hàng đang vận hành.
+
+1. Mở `firmware/servo_s1_bench/secrets.h` trên máy và điền SSID/mật khẩu Wi-Fi,
+   MQTT host/port, tài khoản thiết bị và chứng chỉ CA của broker. Không gửi các bí mật
+   này vào chat; file `secrets.h` đã được Git bỏ qua.
+2. Kiểm tra board xuất hiện đúng cổng COM trong `platformio.ini` (hiện đặt `COM4`),
+   rồi build và nạp:
+
+   ```powershell
+   pio run --project-dir F:\project\repo-github\pcb\pcb\firmware\servo_s1_bench
+   pio run --project-dir F:\project\repo-github\pcb\pcb\firmware\servo_s1_bench --target upload
+   ```
+
+3. Chạy backend dashboard trên máy tính với cùng broker TLS, nhưng dùng tài khoản
+   backend riêng theo ACL bên dưới. Ví dụ:
+
+   ```powershell
+   cd F:\project\repo-github\pcb\pcb\firmware\servo_s1_bench\dashboard
+   $env:FV_MQTT_HOST = "mqtt.example.net"
+   $env:FV_MQTT_PORT = "8883"
+   $env:FV_MQTT_USERNAME = "rev-s3-dashboard"
+   $env:FV_MQTT_PASSWORD = "đặt-cục-bộ-trên-máy"
+   $env:FV_MQTT_CA = "C:\path\to\broker-root-ca.pem"
+   $env:FV_ADMIN_TOKEN = "mã-ngẫu-nhiên-dài-hơn-24-ký-tự"
+   python server.py
+   ```
+
+4. Mở `http://127.0.0.1:8787`, đăng nhập mã quản trị, chờ board báo **Đang hoạt
+   động**, rồi mới thử lệnh reset. Nếu board không online, xem Serial Monitor ở
+   115200 baud và kiểm tra Wi-Fi/NTP/TLS/broker trước; không gửi lệnh retained.
+
 ## Broker setup
 
 Tạo hai tài khoản TLS với ACL riêng:
