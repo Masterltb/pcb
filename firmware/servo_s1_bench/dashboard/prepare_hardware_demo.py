@@ -55,7 +55,11 @@ def write_certs(host_ip: str) -> None:
                .add_extension(x509.KeyUsage(digital_signature=True, key_encipherment=False,
                             key_cert_sign=True, key_agreement=False, content_commitment=False,
                             data_encipherment=False, crl_sign=True, encipher_only=False,
-                            decipher_only=False), critical=True).sign(ca_key, hashes.SHA256()))
+                            decipher_only=False), critical=True)
+               .add_extension(x509.SubjectKeyIdentifier.from_public_key(ca_key.public_key()),
+                              critical=False)
+               .add_extension(x509.AuthorityKeyIdentifier.from_issuer_public_key(ca_key.public_key()),
+                              critical=False).sign(ca_key, hashes.SHA256()))
 
     server_key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
     server_name = x509.Name([x509.NameAttribute(NameOID.COMMON_NAME, host_ip)])
@@ -67,6 +71,10 @@ def write_certs(host_ip: str) -> None:
                    .add_extension(x509.SubjectAlternativeName(sans), critical=False)
                    .add_extension(x509.BasicConstraints(ca=False, path_length=None), critical=True)
                    .add_extension(x509.ExtendedKeyUsage([ExtendedKeyUsageOID.SERVER_AUTH]), critical=False)
+                   .add_extension(x509.SubjectKeyIdentifier.from_public_key(server_key.public_key()),
+                                  critical=False)
+                   .add_extension(x509.AuthorityKeyIdentifier.from_issuer_public_key(ca_key.public_key()),
+                                  critical=False)
                    .sign(ca_key, hashes.SHA256()))
 
     (LOCAL / "ca.crt").write_bytes(ca_cert.public_bytes(serialization.Encoding.PEM))

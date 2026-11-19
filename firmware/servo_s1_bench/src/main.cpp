@@ -158,7 +158,10 @@ void mqttTick() {
     const bool connected = mqtt.connect(DEVICE_ID, MQTT_USERNAME, MQTT_PASSWORD,
                                         availabilityTopic, 0, true, "offline");
     if (!connected) {
-      Serial.printf("MQTT connect failed state=%d\n", mqtt.state());
+      char tlsError[128] = {};
+      tlsClient.lastError(tlsError, sizeof(tlsError));
+      Serial.printf("MQTT connect failed state=%d tls=%s epoch=%lu\n", mqtt.state(),
+                    tlsError, static_cast<unsigned long>(time(nullptr)));
       return;
     }
     mqtt.publish(availabilityTopic, "online", true);
